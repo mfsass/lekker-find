@@ -1,0 +1,1218 @@
+/* Lekker Find — Design System */
+@import './components/ui/GetStartedButton.css';
+
+
+/* ===== CSS Variables (Design Tokens) ===== */
+:root {
+    /* Primary — Ocean Teal */
+    --primary-h: 174;
+    --primary-s: 72%;
+    --primary-l: 40%;
+    --primary: hsl(var(--primary-h) var(--primary-s) var(--primary-l));
+    --primary-foreground: hsl(0 0% 100%);
+    --primary-light: hsl(174 72% 95%);
+    --primary-glow: hsla(174, 72%, 50%, 0.3);
+
+    /* Secondary — Sunset Orange */
+    --secondary-h: 24;
+    --secondary-s: 95%;
+    --secondary-l: 53%;
+    --secondary: hsl(var(--secondary-h) var(--secondary-s) var(--secondary-l));
+    --secondary-foreground: hsl(0 0% 100%);
+
+    /* Neutral Palette */
+    --background: hsl(40 20% 98%);
+    --foreground: hsl(220 20% 14%);
+    --muted: hsl(40 15% 92%);
+    --muted-foreground: hsl(220 10% 40%);
+    --border: hsl(40 15% 88%);
+    --ring: var(--primary);
+
+    /* Sizing */
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+    --radius-full: 9999px;
+
+    /* Font */
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px hsla(220, 20%, 10%, 0.05);
+    --shadow-md: 0 4px 12px hsla(220, 20%, 10%, 0.08);
+    --shadow-lg: 0 8px 30px hsla(220, 20%, 10%, 0.12);
+    --shadow-xl: 0 20px 50px hsla(220, 20%, 10%, 0.18);
+    --shadow-primary: 0 8px 30px hsla(174, 72%, 40%, 0.3);
+
+    /* Transitions */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== Reset & Base ===== */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-sans);
+    background: var(--background);
+    color: var(--foreground);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== Typography ===== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+/* ===== Focus States ===== */
+:focus {
+    outline: none;
+}
+
+:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* ===== Selection ===== */
+::selection {
+    background: var(--primary-light);
+    color: var(--foreground);
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--muted);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--muted-foreground);
+}
+
+/* ===== Utility Classes ===== */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* ===== Container ===== */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding: 0 2rem;
+    }
+}
+
+/* ===== Landing Page Specific ===== */
+.landing-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle gradient background */
+.landing-background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, hsla(174, 72%, 50%, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, hsla(24, 95%, 53%, 0.06) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 50% at 20% 60%, hsla(174, 72%, 50%, 0.04) 0%, transparent 40%),
+        var(--background);
+}
+
+/* Floating orbs */
+.landing-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.5;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.landing-orb-1 {
+    width: 400px;
+    height: 400px;
+    background: hsla(174, 72%, 50%, 0.15);
+    top: -100px;
+    right: -100px;
+    animation: float 20s ease-in-out infinite;
+}
+
+.landing-orb-2 {
+    width: 300px;
+    height: 300px;
+    background: hsla(24, 95%, 53%, 0.1);
+    bottom: -50px;
+    left: -100px;
+    animation: float 25s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    25% {
+        transform: translate(30px, -20px) scale(1.05);
+    }
+
+    50% {
+        transform: translate(-20px, 20px) scale(0.95);
+    }
+
+    75% {
+        transform: translate(20px, 10px) scale(1.02);
+    }
+}
+
+/* Content container */
+.landing-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    max-width: 600px;
+    margin-bottom: 6rem;
+    /* Space for footer on mobile */
+}
+
+@media (max-width: 767px) {
+    .landing-content {
+        margin-bottom: 2rem;
+    }
+}
+
+/* Logo */
+.landing-logo {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.landing-logo-img {
+    width: 120px;
+    height: auto;
+    transition: transform var(--transition-normal);
+}
+
+.landing-logo-img:hover {
+    transform: scale(1.02);
+}
+
+@media (min-width: 768px) {
+    .landing-logo-img {
+        width: 160px;
+    }
+}
+
+/* Slogan */
+.landing-slogan {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 700;
+    color: var(--foreground);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.landing-slogan-accent {
+    background: linear-gradient(135deg, var(--primary), hsl(174, 72%, 30%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Description */
+.landing-description {
+    font-size: 1.125rem;
+    color: var(--muted-foreground);
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    max-width: 440px;
+}
+
+@media (min-width: 768px) {
+    .landing-description {
+        font-size: 1.25rem;
+    }
+}
+
+/* CTA Button Container */
+.landing-ctas {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+
+/* Primary Button */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    min-width: 200px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-foreground);
+    background: linear-gradient(135deg, var(--primary), hsl(174, 72%, 35%));
+    border: none;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    box-shadow: var(--shadow-primary);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent, hsla(0, 0%, 100%, 0.15));
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px hsla(174, 72%, 40%, 0.4);
+}
+
+.btn-primary:hover::before {
+    opacity: 1;
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary .icon {
+    width: 20px;
+    height: 20px;
+    transition: transform var(--transition-fast);
+}
+
+.btn-primary:hover .icon {
+    transform: scale(1.1);
+}
+
+/* Secondary Button (for side CTA) */
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--muted-foreground);
+    background: hsla(0, 0%, 100%, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.btn-secondary:hover {
+    background: hsla(0, 0%, 100%, 0.9);
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secondary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary .icon {
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+    transition: all var(--transition-fast);
+}
+
+.btn-secondary:hover .icon {
+    opacity: 1;
+}
+
+/* Secondary Curious Button (inline) */
+.btn-secondary-curious {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--muted-foreground);
+    background: hsla(0, 0%, 100%, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.btn-secondary-curious:hover {
+    background: hsla(0, 0%, 100%, 0.9);
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secondary-curious:active {
+    transform: translateY(0);
+}
+
+.btn-secondary-curious .icon {
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+    transition: all var(--transition-fast);
+}
+
+.btn-secondary-curious:hover .icon {
+    opacity: 1;
+    transform: rotate(15deg);
+}
+
+/* Shuffle Button */
+.mood-refresh-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.75rem;
+    /* Reduced from 1.5rem for better connection */
+}
+
+.btn-shuffle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px dashed var(--border);
+    border-radius: 9999px;
+    color: var(--muted-foreground);
+    font-family: var(--font-sans);
+    font-size: 0.825rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-shuffle:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+    background-color: hsla(174, 72%, 40%, 0.05);
+    /* Slight tint of primary */
+}
+
+/* Icon rotation on hover */
+.btn-shuffle:hover svg {
+    animation: spin 1s linear infinite;
+    /* Optional: spin icon */
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes sparkle {
+
+    0%,
+    100% {
+        opacity: 0.7;
+        transform: rotate(0deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: rotate(15deg);
+    }
+}
+
+/* Footer minimal */
+.landing-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    z-index: 1;
+}
+
+@media (max-width: 767px) {
+    .landing-footer {
+        position: relative;
+        margin-top: 4rem;
+        padding: 1rem;
+    }
+}
+
+.landing-footer-text {
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
+    opacity: 0.7;
+}
+
+/* ===== App Container ===== */
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* ===== Question Flow ===== */
+.question-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    max-width: 500px;
+    width: 100%;
+}
+
+/* Back Button */
+.btn-back {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: hsla(0, 0%, 100%, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    color: var(--muted-foreground);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.btn-back:hover {
+    background: hsla(0, 0%, 100%, 0.95);
+    color: var(--foreground);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-back .icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Progress Indicator */
+.question-progress {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.progress-bar {
+    width: 120px;
+    height: 4px;
+    background: var(--muted);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), hsl(174, 72%, 50%));
+    border-radius: var(--radius-full);
+    transition: width var(--transition-slow);
+}
+
+.progress-text {
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
+    font-weight: 500;
+}
+
+/* Question Title */
+.question-title {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    font-weight: 700;
+    color: var(--foreground);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+}
+
+.question-subtitle {
+    font-size: 1rem;
+    color: var(--muted-foreground);
+    margin-bottom: 1.25rem;
+    /* Tighter connection to options */
+}
+
+/* Vibe Options */
+.vibeOptionList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.vibeOptionItem {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: hsla(0, 0%, 100%, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    text-align: left;
+}
+
+.vibeOptionItem:hover {
+    background: hsla(0, 0%, 100%, 0.95);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-md);
+}
+
+.vibeOptionItem.selected {
+    background: var(--primary-light);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px hsla(174, 72%, 40%, 0.15);
+}
+
+/* Subtle gradient tints for visual spectrum - maintain glassmorphism */
+/* Using specific class selector strength to ensure application */
+
+.vibeOptionItem:nth-child(1) {
+    background: linear-gradient(135deg, hsla(24, 95%, 53%, 0.05), hsla(0, 0%, 100%, 0.8));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.vibeOptionItem:nth-child(2) {
+    background: linear-gradient(135deg, hsla(24, 95%, 53%, 0.03), hsla(0, 0%, 100%, 0.8));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.vibeOptionItem:nth-child(3) {
+    background: hsla(0, 0%, 100%, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.vibeOptionItem:nth-child(4) {
+    background: linear-gradient(135deg, hsla(174, 72%, 40%, 0.03), hsla(0, 0%, 100%, 0.8));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.vibeOptionItem:nth-child(5) {
+    background: linear-gradient(135deg, hsla(174, 72%, 40%, 0.05), hsla(0, 0%, 100%, 0.8));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.vibeOptionIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--muted);
+    border-radius: var(--radius-md);
+    color: var(--muted-foreground);
+    transition: all var(--transition-normal);
+}
+
+.vibeOptionIcon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.vibeOptionItem:hover .vibeOptionIcon,
+.vibeOptionItem.selected .vibeOptionIcon {
+    background: var(--primary);
+    color: var(--primary-foreground);
+}
+
+.vibeOptionText {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+
+.vibeOptionLabel {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--foreground);
+}
+
+.vibeOptionSub {
+    font-size: 0.8125rem;
+    color: var(--muted-foreground);
+}
+
+.vibeOptionCheck {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--primary);
+    border-radius: var(--radius-full);
+    color: var(--primary-foreground);
+}
+
+.vibeOptionCheck svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Question Hint */
+.question-hint {
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+    transition: opacity var(--transition-normal);
+}
+
+/* ===== Mood Tags Multi-select ===== */
+.moodTagsList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    /* Slightly tighter for better grouping */
+    margin-bottom: 1.25rem;
+    /* Reduced spacing to shuffle */
+}
+
+.moodTagItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.625rem 1rem;
+    background: hsla(0, 0%, 100%, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--foreground);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.moodTagItem:hover {
+    background: hsla(0, 0%, 100%, 0.95);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.moodTagItem.selected {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--primary-foreground);
+}
+
+.moodTagCheck {
+    width: 14px;
+    height: 14px;
+}
+
+/* Mood Actions */
+.moodActions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    margin-top: 0;
+    /* No extra margin, uses parent's margin-bottom */
+}
+
+.btn-shuffle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    background: transparent;
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-full);
+    font-size: 0.8125rem;
+    color: var(--muted-foreground);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.btn-shuffle:hover {
+    border-color: var(--foreground);
+    color: var(--foreground);
+    background: hsla(0, 0%, 100%, 0.5);
+}
+
+.btn-skip {
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--muted-foreground);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+/* Generate Button (with AI icon) */
+.btn-generate {
+    background: var(--primary);
+    box-shadow: var(--shadow-md), var(--shadow-primary);
+}
+
+.btn-generate:hover {
+    box-shadow: var(--shadow-lg), 0 6px 30px hsla(174, 72%, 40%, 0.35);
+}
+
+.btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ===== Motion preferences ===== */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .landing-orb {
+        animation: none !important;
+    }
+}
+
+/* Generate Action Container */
+.generateActionContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1.25rem;
+    /* Consistent with other spacing */
+}
+
+/* ===== Currency Toggle ===== */
+/* ===== Currency Mini Toggle (Inline) ===== */
+.budgetSubtitleWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.currencyToggleContainer {
+    display: inline-flex;
+    align-items: center;
+    background: hsla(0, 0%, 100%, 0.6);
+    backdrop-filter: blur(4px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    padding: 3px;
+    height: 32px;
+    /* Slightly taller for breathing room */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.currencyToggleBtn {
+    appearance: none;
+    border: none;
+    background: transparent;
+    padding: 0 10px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--muted-foreground);
+    cursor: pointer;
+    border-radius: var(--radius-full);
+    transition: all var(--transition-fast);
+    line-height: 1;
+}
+
+.currencyToggleBtn:hover {
+    color: var(--foreground);
+    background: hsla(0, 0%, 0%, 0.03);
+}
+
+.currencyToggleBtn.active {
+    background: var(--primary);
+    color: #ffffff;
+    /* White text on primary background */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+}
+
+.currencyDivider {
+    width: 1px;
+    height: 12px;
+    background-color: var(--border);
+    margin: 0 1px;
+}
+
+
+/* ===== Rainbow Button (Clear Premium) ===== */
+:root {
+    /* Cleaner, more vibrant spectrum - shifting away from murky greens */
+    --color-1: 210 100% 56%;
+    /* Bright Blue */
+    --color-2: 260 100% 65%;
+    /* Soft Purple */
+    --color-3: 24 95% 53%;
+    /* Brand Orange */
+    --color-4: 174 72% 40%;
+    /* Brand Teal */
+    --color-5: 210 100% 56%;
+    /* Loop Blue */
+    --speed: 4s;
+}
+
+.btn-rainbow {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.25rem;
+    /* ~52px - refined mobile touch target */
+    padding: 0 1.5rem;
+    /* Further reduced width */
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+    overflow: hidden;
+    /* Explicitly animate background and border-color for smoother state switch */
+    transition:
+        transform 0.4s cubic-bezier(0.2, 0, 0, 1),
+        box-shadow 0.4s cubic-bezier(0.2, 0, 0, 1),
+        opacity 0.4s ease,
+        filter 0.4s ease,
+        background 1s ease,
+        border-color 1s ease,
+        color 0.4s ease;
+    will-change: transform, box-shadow, background;
+
+    /* Hardware acceleration for crisp text during animation */
+    -webkit-font-smoothing: antialiased;
+    transform: translateZ(0);
+
+    /* Glassy Background with Rainbow Border */
+    background:
+        /* Top layer: Semi-transparent dark glass - slightly lighter for better visibility */
+        linear-gradient(hsla(220, 20%, 12%, 0.8), hsla(220, 20%, 12%, 0.8)) padding-box,
+        /* Bottom layer: The moving rainbow gradient */
+        linear-gradient(90deg,
+            hsl(var(--color-1)),
+            hsl(var(--color-2)),
+            hsl(var(--color-3)),
+            hsl(var(--color-4)),
+            hsl(var(--color-5))) border-box;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    background-size: 200% 100%;
+    border: 2px solid transparent;
+    /* Refined border width */
+
+    animation: rainbow var(--speed) infinite linear;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    /* Wider spacing for "clean" feel */
+}
+
+.btn-rainbow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-rainbow:active {
+    transform: scale(0.98);
+}
+
+/* Glow Effect - Subtler */
+.btn-rainbow::before {
+    content: "";
+    position: absolute;
+    bottom: -30%;
+    left: 50%;
+    z-index: 0;
+    height: 40%;
+    width: 60%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg,
+            hsl(var(--color-1)),
+            hsl(var(--color-2)),
+            hsl(var(--color-3)),
+            hsl(var(--color-4)),
+            hsl(var(--color-5)));
+    background-size: 200% 100%;
+    filter: blur(25px);
+    opacity: 0.4;
+    /* Reduced intensity */
+    animation: rainbow var(--speed) infinite linear;
+    pointer-events: none;
+}
+
+/* Inner content wrapper */
+.btn-rainbow-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-shadow: none;
+    /* Cleaner text */
+}
+
+@keyframes rainbow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+.btn-rainbow.inactive {
+    filter: none;
+    /* Remove grayscale to control colors manually */
+    opacity: 1;
+    /* Reset opacity */
+    animation: none;
+    /* Stop the rainbow move when inactive */
+    background: var(--muted);
+    /* Fallback */
+    border: 2px solid var(--border);
+    color: var(--muted-foreground);
+    /* Override the fancy background */
+    background: linear-gradient(hsla(40, 15%, 92%, 0.8), hsla(40, 15%, 92%, 0.8)) padding-box,
+        linear-gradient(var(--border), var(--border)) border-box;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.btn-rainbow.inactive::before {
+    display: none;
+    /* Hide glow */
+}
+
+/* Progressive excitement states - subtle escalation */
+
+/* 1 selection: Very calm, muted, encouraging */
+.btn-rainbow[data-excitement="1"] {
+    --speed: 8s;
+    /* Very slow */
+    animation: rainbow var(--speed) infinite linear;
+    opacity: 0.7;
+    /* Slightly faded to encourage more selections */
+    filter: saturate(0.6);
+    /* Desaturated colors */
+}
+
+/* 2 selections: Full vibrancy, faster animation */
+.btn-rainbow[data-excitement="2"] {
+    --speed: 3.5s;
+    /* Slightly faster than default */
+    animation: rainbow var(--speed) infinite linear;
+    opacity: 1;
+    /* Fully visible */
+}
+
+/* 3 selections: Add subtle pulse movement */
+.btn-rainbow[data-excitement="3"] {
+    --speed: 3s;
+    /* Faster */
+    animation: rainbow var(--speed) infinite linear, pulse-gentle 2s ease-in-out infinite;
+    opacity: 1;
+    filter: saturate(1.1);
+    /* Slightly enhanced */
+}
+
+/* 4+ selections: High energy, enhanced glow and movement */
+.btn-rainbow[data-excitement="4"],
+.btn-rainbow[data-excitement="5"],
+.btn-rainbow[data-excitement="6"],
+.btn-rainbow[data-excitement="7"],
+.btn-rainbow[data-excitement="8"],
+.btn-rainbow[data-excitement="9"],
+.btn-rainbow[data-excitement="10"] {
+    --speed: 2s;
+    /* Fast, excited */
+    animation: rainbow var(--speed) infinite linear, pulse-energetic 1.2s ease-in-out infinite;
+    opacity: 1;
+    filter: saturate(1.2);
+    /* Vivid colors */
+}
+
+/* Enhanced glow for 4+ selections */
+.btn-rainbow[data-excitement="4"]::before,
+.btn-rainbow[data-excitement="5"]::before,
+.btn-rainbow[data-excitement="6"]::before,
+.btn-rainbow[data-excitement="7"]::before,
+.btn-rainbow[data-excitement="8"]::before,
+.btn-rainbow[data-excitement="9"]::before,
+.btn-rainbow[data-excitement="10"]::before {
+    opacity: 0.7;
+    /* Stronger glow */
+    filter: blur(30px);
+    /* More spread */
+}
+
+/* Gentle pulse for 3 selections */
+@keyframes pulse-gentle {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.015);
+        /* Very subtle */
+    }
+}
+
+/* Energetic pulse for 4+ selections */
+@keyframes pulse-energetic {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    50% {
+        transform: scale(1.03);
+        /* More noticeable */
+        box-shadow:
+            0 8px 24px rgba(0, 0, 0, 0.15),
+            0 0 30px hsla(174, 72%, 50%, 0.4),
+            /* Teal glow */
+            0 0 15px hsla(24, 95%, 53%, 0.3);
+        /* Orange glow */
+    }
+}
