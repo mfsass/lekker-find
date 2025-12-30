@@ -1,93 +1,102 @@
 # 🌊 Lekker Find
 
-> **Your local plug for Cape Town.**  
-> A vibe-based recommendation engine that helps you discover something lekker in under 60 seconds.
+> **The AI-native discovery engine for Cape Town.**  
+> A privacy-first, client-side recommendation system that matches 250+ curated spots to your vibe using semantic search.
 
 [![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://lekker-find.co.za)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-18.3-61dafb)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-6.0-646CFF)](https://vitejs.dev/)
 
 ---
 
-## 📖 About
+## 🚀 Overview
 
-**Lekker Find** is not your typical venue directory. It's a carefully curated collection of **261 hand-picked Cape Town spots** matched to your mood, budget, and whether you're a local or visitor.
+**Lekker Find** reimagines local discovery by moving beyond keyword search. Instead of "pizza" or "hike", it understands "romantic hidden gem with a view" or "cheap eats that feel authentic".
 
-### The Problem
+Built as a **technical showcase** of modern AI engineering, it features a **serverless vector search architecture** that runs entirely in the user's browser, ensuring zero latency and 100% privacy.
 
-- 🗺️ Google Maps overwhelms you with 5,000+ "average" results
-- 🏖️ TripAdvisor sends locals to tourist traps
-- 🔍 Most apps understand "Pizza" but not "I want something secret and romantic"
-
-### The Solution
-
-Lekker Find uses **AI-powered semantic matching** to understand vibe, not just keywords. Tell us you want "swimming" or "romantic" and we'll find spots that *feel* right, not just match a category.
-
-**No ads. No sign-up. Free, personal, instant.**
+### Why is this special?
+- **🧠 Zero-Backend AI**: Performs vector similarity search (Cosine Similarity) over 256-dimensional embeddings directly in JavaScript.
+- **⚡ sub-100ms Interactions**: Pre-computed embeddings + React 18 concurrency = instant results.
+- **🎨 Creative Direction**: A bespoke design system inspired by Cape Town's ocean/sunset palette, utilizing advanced CSS glassmorphism and Framer Motion orchestrations.
 
 ---
 
-## ✨ Features
+## 🛠️ Architecture
 
-### 🎯 Smart Recommendation Engine
-- **Vibe-Based Matching**: Powered by OpenAI embeddings and cosine similarity
-- **Two Discovery Modes**:
-  - 🎨 **Personalize**: Answer 3 quick questions for tailored results
-  - 🎲 **Surprise Me**: Instant random recommendations with enforced diversity
+Lekker Find uses a sophisticated **ETL (Extract, Transform, Load)** pipeline to turn raw data into a smart client-side application.
 
-### 🌍 Local Intelligence
-- **Persona Modes**: Different experiences for Locals, Explorers, and Tourists
-- **Budget-Aware**: Filter by Free, R, RR, or RRR price tiers with **real prices in ZAR, EUR, USD**
-- **Real Prices**: Multi-currency support with real-time exchange rates
+```mermaid
+graph LR
+    A[Raw CSV Data] -->|Enrichment| B(GPT-4o)
+    B -->|Description Generation| C{Embedding Engine}
+    C -->|text-embedding-3-small| D[Vector Store JSON]
+    D -->|Hydration| E[React Client]
+    E -->|Cosine Similarity| F[Personalized Results]
+```
 
-### 🎨 Premium User Experience
-- **Vibrant Cape Town Aesthetic**: Inspired by ocean sunsets and Table Mountain
-- **Smooth Animations**: Built with Framer Motion for delightful micro-interactions
-- **Responsive Design**: Mobile-first, works beautifully on all devices
-- **Offline-Ready**: All processing happens client-side - works with zero signal
+### 1. Data Pipeline (Python & OpenAI)
+- **Ingestion**: Raw venue data is managed via a custom Admin Tool (`admin/add-venue.html`).
+- **Enrichment**: A Python script (`enrich_venues.py`) uses **GPT-4o** to generate rich, semantic descriptions based on raw tags.
+- **Vectorization**: `generate_embeddings.py` converts these descriptions into **256-dimensional vectors** using OpenAI's `text-embedding-3-small` model.
+- **Optimization**: Vectors are quantized and optimized for client-side delivery (~2MB total payload).
 
-### 🏷️ 15 Curated Vibe Tags
-Choose from mood, setting, crowd, and budget vibes:
-- **Mood**: Chill · Lively · Romantic · Authentic · Unique
-- **Setting**: Nature · Ocean · Indoors · Views
-- **Crowd**: Date Night · Group Fun · Solo · Family
-- **Money**: Cheap Eat · Boujee
-
----
-
-## 🛠️ Tech Stack
-
-### Frontend
-- **⚛️ React 18.3** - UI library
-- **📘 TypeScript 5.6** - Type safety
-- **⚡ Vite 6.0** - Lightning-fast build tool
-- **🎭 Framer Motion 11** - Smooth animations
-- **🎨 Vanilla CSS** - Custom design system with premium utilities
-
-### Data & AI
-- **🤖 OpenAI Embeddings** (`text-embedding-3-small`)
-- **📊 Matryoshka Optimization** - 256-dim truncated embeddings (83% size reduction)
-- **🔢 Cosine Similarity** - Client-side vector matching
-- **💱 ECB Exchange Rates** - Real-time currency conversion
-
-### Development
-- **🔧 ESLint** - Code quality
-- **📦 npm** - Package management
+### 2. Frontend Core (React & TypeScript)
+- **Vector Search**: A custom `Matcher` class implements optimized cosine similarity math using `Float32Array` for maximum performance.
+- **State Management**: Complex multi-step wizard state (Intent → Persona → Budget → Vibes) handled with precision.
+- **Performance**:
+    - **App Shell**: Instant paint with zero layout shift (CLS 0).
+    - **LCP Optimization**: Preloaded critical assets and `fetchpriority` hints.
+    - **Lazy Loading**: Code splitting for non-critical routes.
 
 ---
 
-## 🚀 Quick Start
+## ✨ Key Features
+
+### 🎯 Semantic Vibe Matching
+Unlike traditional filters, our engine understands nuance. A search for "quiet nature spot" matches venues tagged with `Peaceful`, `Secret`, and `Scenic` via vector proximity, even if the exact words don't match.
+
+### 💰 Real-Time Currency Logic
+A built-in currency engine converts ZAR prices to **USD**, **EUR**, or **GBP** using live exchange rates, making the app accessible to international tourists immediately.
+
+### 🕵️ Local vs. Tourist Personalization
+The engine adjusts rankings based on user persona:
+- **Locals**: Filters out "Tourist Traps" (Tourist Level > 7).
+- **Visitors**: Boosts iconic landmarks while still suggesting safe hidden gems.
+- **Explorers**: Pure, unfiltered discovery.
+
+### 📊 Smart Ranking & Boosting
+The algorithm implements a "Satisfaction Boost" logic:
+- **Base Score**: Semantic match (0-100%)
+- **Quality Boost**: Venues with exceptionally high ratings (4.8+) get a **+5% probability boost**.
+- **Penalty Box**: Venues with ratings < 4.0 are automatically filtered out of the dataset.
+
+---
+
+## 🎨 Design System
+
+The UI is built on a custom design system that prioritizes "Joy of Use".
+
+- **Micro-interactions**: Every button press, toggle, and card swipe is animated with spring physics (Framer Motion).
+- **Glassmorphism**: Context-aware blur effects to maintain legibility over rich background imagery.
+- **Typography**: Uses a variable font (**Inter**) for perfect readability at any weight.
+- **Touch-First**: Optimized hit targets (min 44px) and swipe gestures for mobile users.
+
+---
+
+## 🏃‍♂️ Getting Started
 
 ### Prerequisites
-- Node.js 18+ and npm
+- Node.js 18+
+- OpenAI API Key (for data pipeline only)
 
 ### Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/lekker-find.git
-cd lekker-find
+git clone https://github.com/mfsass/lekker-find.git
 
 # Install dependencies
 npm install
@@ -96,218 +105,43 @@ npm install
 npm run dev
 ```
 
-Visit `http://localhost:5173` to see the app in action! 🎉
+### Running the Data Pipeline (Optional)
 
-### Build for Production
+If you want to add venues or regenerate embeddings:
 
 ```bash
-# Create optimized production build
-npm run build
+# Install Python dependencies
+pip install openai pandas python-dotenv
 
-# Preview production build locally
-npm run preview
+# Run the Admin Server
+python scripts/serve_admin.py
+
+# Visit http://localhost:8000/admin/add-venue.html
 ```
 
 ---
 
 ## 📁 Project Structure
 
+```bash
+src/
+├── components/         # React components (Atomic design)
+│   ├── ui/             # Reusable primitives (Buttons, Cards)
+│   └── wizard/         # Step-by-step flow logic
+├── utils/              # Core logic
+│   ├── matcher.ts      # 🧠 The Vector Search Engine
+│   └── currency.ts     # 💱 Exchange rate logic
+├── styles/             # Global CSS & Design Tokens
+└── scripts/            # 🐍 Python ETL Pipeline
+    ├── enrich_venues.py       # GPT-4o description generator
+    ├── generate_embeddings.py # Vector creation
+    └── serve_admin.py         # Automation server
 ```
-lekker-find/
-├─ src/
-│  ├─ components/
-│  │  └─ ui/
-│  │     ├─ LoadingScreen.tsx      # Animated loading with SA personality
-│  │     └─ RainbowButton.tsx      # Premium gradient CTA button
-│  ├─ data/
-│  │  ├─ vibes.ts                  # 15 curated vibe tags
-│  │  └─ loadingWords.ts           # SA-flavored loading messages
-│  ├─ lib/
-│  │  └─ utils.ts                  # Utility functions (classNames, etc.)
-│  ├─ App.tsx                      # Main application component
-│  ├─ index.css                    # Design system & utilities
-│  └─ main.tsx                     # React entry point
-├─ public/
-│  ├─ images/                      # Venue images (static)
-│  └─ logo.png                     # App logo
-├─ .agent/
-│  └─ rules/                       # AI agent build rules
-├─ package.json
-├─ tsconfig.json
-├─ vite.config.ts
-└─ README.md
-```
-
----
-
-## 🎨 Design Philosophy
-
-### Voice & Tone
-Friendly, local, slightly cheeky. Like a mate who knows every spot in the city.
-
-### Loading Messages
-- *"Yoh, checking what's lekker for you…"*
-- *"Asking the car guard for advice…"*
-- *"Waiting for the mist to clear…"*
-
-### Color Palette
-Inspired by Cape Town's natural beauty:
-- **Ocean Blues** - `#0891b2`, `#06b6d4`
-- **Sunset Orange** - `#f97316`
-- **Table Mountain Slate** - `#475569`
-- **Golden Hour** - `#fbbf24`
-
-### Typography
-Modern, clean, and readable with **Inter** font family.
-
----
-
-## 🧠 How It Works
-
-### Algorithm Overview
-
-All processing is **100% client-side JavaScript**. No server calls for recommendations.
-
-#### Personalize Flow
-1. **Filter** - Remove spots that don't match budget or persona
-2. **Match** - Average selected tag vectors to create "target vibe"
-3. **Compare** - Calculate cosine similarity between target and all venues
-4. **Rank** - Sort by match score, return top 20 results
-
-#### Surprise Me Flow
-1. Shuffle all 261 spots
-2. Sample 10 with diversity constraints:
-   - At least 2 categories represented
-   - Mix of price tiers
-   - Mix of tourist levels (local gems + popular spots)
-3. Return in random order
-
-### Persona Intelligence
-
-| Persona | Behavior |
-|---------|----------|
-| **Local** | Hides tourist traps (Tourist_Level > 7) |
-| **Tourist** | Boosts famous spots in ranking |
-| **Explorer** | Shows everything, no filtering |
-
----
-
-## 📊 The Dataset
-
-**261 curated Cape Town experiences** across:
-
-### Categories
-- 🍽️ **Food** - 91 spots (35%)
-- 🎯 **Activity** - 45 spots (17%)
-- 🌿 **Nature** - 44 spots (17%)
-- 🍹 **Drink** - 41 spots (16%)
-- 🎭 **Culture** - 40 spots (15%)
-
-### Price Tiers
-- 💚 **Free** - 49 spots
-- 💰 **R (Budget)** - 99 spots
-- 💰💰 **RR (Mid-range)** - 81 spots
-- 💰💰💰 **RRR (Premium)** - 32 spots
-
-### Tourist Levels (1-10 scale)
-- **1-2**: True local secrets (13 spots)
-- **6-7**: Popular but not over-touristed (116 spots, 44%)
-- **8-10**: Well-known attractions (54 spots)
-
----
-
-## 🔮 Roadmap
-
-### ✅ Phase 1: Complete
-- [x] Design system implementation
-- [x] Questionnaire flow (Persona → Budget → Vibe selection)
-- [x] Multi-currency support with real exchange rates
-- [x] Premium UI components (RainbowButton, LoadingScreen)
-- [x] Responsive mobile-first design
-
-### 🚧 Phase 2: In Progress
-- [ ] AI recommendation engine integration
-- [ ] Results display with card flipping
-- [ ] "Surprise Me" random mode
-- [ ] Image integration
-
-### 🎯 Phase 3: Planned
-- [ ] PWA support for offline usage
-- [ ] Analytics integration (Vercel Analytics)
-- [ ] Lighthouse optimization (target: >90)
-- [ ] Domain setup: `lekker-find.co.za`
-
-### 🔮 Future Enhancements
-- **v1.1**: Google Maps integration ("Go" button)
-- **v1.2**: Community suggestion form
-- **v2.0**: Save favorites, share results
-
----
-
-## 🎓 Technical Highlights
-
-This project showcases:
-
-### Frontend Engineering Excellence
-- ✨ **Advanced React Patterns**: Custom hooks, component composition
-- 🎨 **Premium CSS**: Glassmorphism, gradients, micro-animations
-- 📱 **Responsive Design**: Mobile-first with smooth breakpoints
-- ⚡ **Performance**: Sub-second load times, optimized bundle size
-
-### AI & Data Science
-- 🤖 **Embedding-Based Search**: Semantic similarity over keyword matching
-- 📉 **Dimensionality Reduction**: Matryoshka embeddings (83% smaller)
-- 🎯 **Client-Side ML**: No backend required for recommendations
-- 🔢 **Vector Mathematics**: Cosine similarity for vibe matching
-
-### Developer Experience
-- 📘 **Type Safety**: Full TypeScript coverage
-- 🧹 **Code Quality**: ESLint rules, consistent formatting
-- 📚 **Documentation**: Comprehensive specs and agent rules
-- 🔄 **Version Control**: Git best practices
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT © [Markus Sass](https://github.com/mfsass)
 
----
-
-## 👨‍💻 About the Developer
-
-Built with ❤️ by **Markus Sass** as a showcase of modern frontend engineering and AI integration.
-
-This project demonstrates:
-- Full-stack thinking (though client-side only)
-- Product design sensibility
-- Senior frontend engineering skills
-- AI/ML integration expertise
-- Attention to UX details
-
----
-
-## 🔗 Links
-
-- **Live Demo**: [lekker-find.co.za](https://lekker-find.co.za) *(coming soon)*
-- **Portfolio**: [Your Portfolio URL]
-- **LinkedIn**: [Your LinkedIn]
-- **Email**: [Your Email]
-
----
-
-## 🙏 Acknowledgments
-
-- **OpenAI** - For embedding models
-- **Cape Town** - For being inspirational
-- **The 261 venues** - For making CT lekker
-
----
-
-<div align="center">
-
-**[⬆ back to top](#-lekker-find)**
-
-Made with 🌊 in Cape Town
-
-</div>
+Made with 🌊 in Cape Town.
