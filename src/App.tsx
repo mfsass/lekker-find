@@ -1,5 +1,5 @@
-import { useState, useMemo, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useMemo, useEffect, lazy, Suspense } from 'react';
+import { LazyMotion, domAnimation, m, AnimatePresence } from 'framer-motion';
 import {
     Sparkles, Gem, ChevronRight, ArrowLeft,
     Camera, Star, Heart, Scale,
@@ -8,8 +8,11 @@ import {
 } from 'lucide-react';
 
 import { RainbowButton } from './components/ui/RainbowButton';
-import { LoadingScreen } from './components/ui/LoadingScreen';
+// Lazy load heavy components
+const LoadingScreen = lazy(() => import('./components/ui/LoadingScreen').then(module => ({ default: module.LoadingScreen })));
+const SwipeableResults = lazy(() => import('./components/ui/SwipeableResults').then(module => ({ default: module.SwipeableResults })));
 import { getContextualMoods, shouldShowPriceDisclaimer, getBudgetDisplay } from './data/vibes';
+import { useRecommendations, VenueWithMatch } from './utils/matcher';
 
 
 /**
@@ -22,7 +25,7 @@ import { getContextualMoods, shouldShowPriceDisclaimer, getBudgetDisplay } from 
  * Accessibility: Uses clear, simple language for diverse audiences.
  */
 
-type AppStep = 'landing' | 'question-intent' | 'question-vibe' | 'question-budget' | 'question-mood';
+type AppStep = 'landing' | 'question-intent' | 'question-vibe' | 'question-budget' | 'question-mood' | 'results';
 
 // Intent options - simple, action-oriented wording
 const intentOptions = [
@@ -55,17 +58,12 @@ const getBudgetOptions = (currency: 'ZAR' | 'EUR' | 'USD', rates: Record<string,
 ];
 
 function App() {
-    const handleCurious = () => {
-        // Preset for "Surprise Me" flow
-        setSelectedIntent('any');
-        setSelectedTouristLevel(3); // Balanced
-        setSelectedBudget('any');
-        setSelectedMoods(['Surprise Medium', 'Hidden Gem']); // Dummy moods for context
-        setIsLoading(true);
-    };
+    // Recommendation engine
+    const { findMatches, surpriseMe, ready: recommendationsReady } = useRecommendations();
 
     const [isLoading, setIsLoading] = useState(false);
     const [currentStep, setCurrentStep] = useState<AppStep>('landing');
+    const [matchedVenues, setMatchedVenues] = useState<VenueWithMatch[]>([]);
 
     const [selectedIntent, setSelectedIntent] = useState<string | null>(null);
     const [selectedTouristLevel, setSelectedTouristLevel] = useState<number | null>(null);
@@ -73,6 +71,18 @@ function App() {
     const [selectedMoods, setSelectedMoods] = useState<string[]>([]);
     const [currency, setCurrency] = useState<'ZAR' | 'EUR' | 'USD'>('ZAR');
     const [exchangeRates, setExchangeRates] = useState<Record<string, number>>({ ZAR: 1, EUR: 0.05, USD: 0.053 });
+
+    const handleCurious = () => {
+        // Preset for "Surprise Me" flow
+        if (!recommendationsReady) return;
+        const results = surpriseMe(20);
+        setMatchedVenues(results);
+        setSelectedIntent('any');
+        setSelectedTouristLevel(3);
+        setSelectedBudget('any');
+        setSelectedMoods([]);
+        setIsLoading(true);
+    };
 
     // Fetch live exchange rates on mount
     useEffect(() => {
@@ -137,7 +147,10 @@ function App() {
 
     // Page transition variants
     const pageVariants = {
-        initial: { opacity: 0, y: 20 },
+        initial: (custom: { isFirstMount: boolean }) => ({
+            opacity: custom.isFirstMount ? 1 : 0,
+            y: custom.isFirstMount ? 0 : 20
+        }),
         animate: {
             opacity: 1,
             y: 0,
@@ -227,15 +240,27 @@ function App() {
     };
 
     const handleMoodContinue = () => {
-        setIsLoading(true);
-        // Navigate to results
-        console.log({
+        if (!recommendationsReady) return;
+
+        // Get matches from recommendation engine
+        const results = findMatches({
             intent: selectedIntent,
             touristLevel: selectedTouristLevel,
             budget: selectedBudget,
-            moods: selectedMoods
-        });
-        // TODO: Navigate to results page
+            moods: selectedMoods,
+        }, { minScore: 0.35, maxResults: 20 });
+
+        setMatchedVenues(results);
+        setIsLoading(true);
+    };
+
+    const handleStartOver = () => {
+        setCurrentStep('landing');
+        setSelectedIntent(null);
+        setSelectedTouristLevel(null);
+        setSelectedBudget(null);
+        setSelectedMoods([]);
+        setMatchedVenues([]);
     };
 
     // Render a question page
@@ -247,14 +272,14 @@ function App() {
         onSelect: (value: any) => void,
         hint?: string
     ) => (
-        <motion.article
+        <m.article
             className="question-content"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
         >
             {/* Back Button */}
-            <motion.button
+            <m.button
                 className="btn-back"
                 variants={itemVariants}
                 onClick={handleBack}
@@ -263,12 +288,12 @@ function App() {
                 aria-label="Go back"
             >
                 <ArrowLeft className="icon" aria-hidden="true" />
-            </motion.button>
+            </m.button>
 
             {/* Progress Indicator */}
-            <motion.div className="question-progress" variants={itemVariants}>
+            <m.div className="question-progress" variants={itemVariants}>
                 <div className="progress-bar">
-                    <motion.div
+                    <m.div
                         className="progress-fill"
                         initial={{ width: 0 }}
                         animate={{ width: `${getProgress()}% ` }}
@@ -276,18 +301,18 @@ function App() {
                     />
                 </div>
                 <span className="progress-text">{getStepNumber()} of 4</span>
-            </motion.div>
+            </m.div>
 
             {/* Question */}
-            <motion.h2 className="question-title" variants={itemVariants}>
+            <m.h2 className="question-title" variants={itemVariants}>
                 {title}
-            </motion.h2>
-            <motion.p className="question-subtitle" variants={itemVariants}>
+            </m.h2>
+            <m.p className="question-subtitle" variants={itemVariants}>
                 {subtitle}
-            </motion.p>
+            </m.p>
 
             {/* Options */}
-            <motion.div
+            <m.div
                 className="vibeOptionList"
                 variants={itemVariants}
             >
@@ -296,7 +321,7 @@ function App() {
                     const isSelected = selectedValue === option.value;
 
                     return (
-                        <motion.button
+                        <m.button
                             key={option.value}
                             className={`vibeOptionItem ${isSelected ? 'selected' : ''}`}
                             onClick={() => onSelect(option.value)}
@@ -312,29 +337,29 @@ function App() {
                                 <span className="vibeOptionSub">{option.sublabel}</span>
                             </div>
                             {isSelected && (
-                                <motion.div
+                                <m.div
                                     className="vibeOptionCheck"
                                     initial={{ scale: 0 }}
                                     animate={{ scale: 1 }}
                                     transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                                 >
                                     <ChevronRight aria-hidden="true" />
-                                </motion.div>
+                                </m.div>
                             )}
-                        </motion.button>
+                        </m.button>
                     );
                 })}
-            </motion.div>
+            </m.div>
 
             {/* Optional hint/disclaimer */}
             {
                 hint && (
-                    <motion.p className="question-hint" variants={itemVariants}>
+                    <m.p className="question-hint" variants={itemVariants}>
                         {hint}
-                    </motion.p>
+                    </m.p>
                 )
             }
-        </motion.article >
+        </m.article >
     );
 
     const budgetSubtitle = (
@@ -369,45 +394,70 @@ function App() {
     );
 
     return (
-        <>
+        <LazyMotion features={domAnimation}>
             {/* JSON-LD Structured Data for SEO & LLM */}
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
-                    __html: JSON.stringify({
-                        '@context': 'https://schema.org',
-                        '@type': 'WebApplication',
-                        name: 'Lekker Find — Best Things to Do in Cape Town',
-                        description:
-                            'Discover the best things to do in Cape Town. 320+ hand-picked hidden gems, date spots, and local favorites. AI-matched to your vibe.',
-                        url: 'https://lekker-find.co.za',
-                        applicationCategory: 'TravelApplication',
-                        operatingSystem: 'Web',
-                        offers: {
-                            '@type': 'Offer',
-                            price: '0',
-                            priceCurrency: 'ZAR',
-                        },
-                        aggregateRating: {
-                            '@type': 'AggregateRating',
-                            ratingValue: '4.9',
-                            reviewCount: '320',
-                        },
-
-                        author: {
-                            '@type': 'Organization',
-                            name: 'Lekker Find',
-                        },
-                        areaServed: {
-                            '@type': 'City',
-                            name: 'Cape Town',
-                            containedInPlace: {
-                                '@type': 'Country',
-                                name: 'South Africa',
+                    __html: JSON.stringify([
+                        {
+                            '@context': 'https://schema.org',
+                            '@type': 'WebApplication',
+                            name: 'Lekker Find - Best Things to Do in Cape Town',
+                            alternateName: 'Lekker Find',
+                            description:
+                                'Discover the best things to do in Cape Town. 320+ hand-picked hidden gems, date spots, and local favorites. AI-matched to your vibe.',
+                            url: 'https://lekker-find.co.za',
+                            applicationCategory: 'TravelApplication',
+                            operatingSystem: 'Web',
+                            offers: {
+                                '@type': 'Offer',
+                                price: '0',
+                                priceCurrency: 'ZAR',
                             },
+                            aggregateRating: {
+                                '@type': 'AggregateRating',
+                                ratingValue: '4.9',
+                                reviewCount: '320',
+                            },
+                            author: {
+                                '@type': 'Organization',
+                                name: 'Lekker Find',
+                                logo: 'https://lekker-find.co.za/logo-min.png'
+                            },
+                            areaServed: {
+                                '@type': 'City',
+                                name: 'Cape Town',
+                                containedInPlace: {
+                                    '@type': 'Country',
+                                    name: 'South Africa',
+                                },
+                            },
+                            keywords: 'best things to do in Cape Town, things to do in Cape Town, Cape Town hidden gems, Cape Town date ideas, Cape Town travel guide'
                         },
-                        keywords: 'best things to do in Cape Town, things to do in Cape Town, Cape Town hidden gems, Cape Town date ideas'
-                    }),
+                        {
+                            '@context': 'https://schema.org',
+                            '@type': 'FAQPage',
+                            mainEntity: [
+                                {
+                                    '@type': 'Question',
+                                    name: 'What are the best things to do in Cape Town?',
+                                    acceptedAnswer: {
+                                        '@type': 'Answer',
+                                        text: 'The best things to do in Cape Town include visiting iconic spots like Table Mountain and Cape Point, as well as exploring hidden gems like secret beaches, local craft markets, and world-class wine estates in Constantia and Stellenbosch. Lekker Find helps you discover 320+ of these hand-picked spots.'
+                                    }
+                                },
+                                {
+                                    '@type': 'Question',
+                                    name: 'How do I find local recommendations in Cape Town?',
+                                    acceptedAnswer: {
+                                        '@type': 'Answer',
+                                        text: 'Lekker Find provides AI-matched recommendations based on your personal vibe, budget, and interests. Whether you want to eat, drink, or explore, we match you with the best local-approved spots in the Mother City.'
+                                    }
+                                }
+                            ]
+                        }
+                    ]),
                 }}
             />
 
@@ -419,16 +469,17 @@ function App() {
 
                 <AnimatePresence mode="wait">
                     {currentStep === 'landing' && (
-                        <motion.div
+                        <m.div
                             key="landing"
                             className="page-wrapper"
                             variants={pageVariants}
                             initial="initial"
                             animate="animate"
                             exit="exit"
+                            custom={{ isFirstMount: currentStep === 'landing' }}
                         >
                             {/* Landing Page Content */}
-                            <motion.article
+                            <m.article
                                 className="landing-content"
                                 variants={containerVariants}
                                 initial="hidden"
@@ -436,39 +487,43 @@ function App() {
                                 itemScope
                                 itemType="https://schema.org/WebPage"
                             >
-                                <motion.header
+                                <m.header
                                     className="landing-logo"
                                     variants={logoVariants}
                                     aria-label="Lekker Find"
                                 >
                                     <img
-                                        src="/logo.png"
+                                        src="/logo-min.png"
                                         alt="Lekker Find - Best things to do in Cape Town"
                                         className="landing-logo-img"
+                                        width="160"
+                                        height="160"
+                                        decoding="async"
+                                        {...{ fetchpriority: "high" } as any}
                                     />
-                                </motion.header>
+                                </m.header>
 
-                                <motion.h1
+                                <m.h1
                                     className="landing-slogan"
                                     variants={itemVariants}
                                     itemProp="headline"
                                 >
                                     Discover something{' '}
                                     <span className="landing-slogan-accent">lekker</span>
-                                </motion.h1>
+                                </m.h1>
 
-                                <motion.p
+                                <m.p
                                     className="landing-description"
                                     variants={itemVariants}
                                     itemProp="description"
                                 >
                                     Not sure what to do in Cape Town?<br />
                                     Let us help you. Free, personal, instant.
-                                </motion.p>
+                                </m.p>
 
 
-                                <motion.div className="landing-ctas" variants={itemVariants}>
-                                    <motion.button
+                                <m.div className="landing-ctas" variants={itemVariants}>
+                                    <m.button
                                         className="btn-get-started"
                                         whileTap={{ scale: 0.98 }}
                                         onClick={handleBegin}
@@ -478,9 +533,9 @@ function App() {
                                             <Sparkles className="icon" aria-hidden="true" />
                                         </div>
                                         Get Started
-                                    </motion.button>
+                                    </m.button>
 
-                                    <motion.button
+                                    <m.button
                                         className="btn-secondary-curious"
                                         whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
@@ -489,10 +544,10 @@ function App() {
                                     >
                                         <Shuffle className="icon" aria-hidden="true" />
                                         <span>Feeling curious?</span>
-                                    </motion.button>
+                                    </m.button>
 
-                                </motion.div>
-                            </motion.article>
+                                </m.div>
+                            </m.article>
 
                             <footer className="landing-footer" role="contentinfo">
                                 <p className="landing-footer-text">
@@ -501,17 +556,18 @@ function App() {
                                     </span>
                                 </p>
                             </footer>
-                        </motion.div>
+                        </m.div>
                     )}
 
                     {currentStep === 'question-intent' && (
-                        <motion.div
+                        <m.div
                             key="question-intent"
                             className="page-wrapper"
                             variants={pageVariants}
                             initial="initial"
                             animate="animate"
                             exit="exit"
+                            custom={{ isFirstMount: false }}
                         >
                             {renderQuestionPage(
                                 "What are you in the mood for?",
@@ -520,17 +576,18 @@ function App() {
                                 selectedIntent,
                                 handleIntentSelect
                             )}
-                        </motion.div>
+                        </m.div>
                     )}
 
                     {currentStep === 'question-vibe' && (
-                        <motion.div
+                        <m.div
                             key="question-vibe"
                             className="page-wrapper"
                             variants={pageVariants}
                             initial="initial"
                             animate="animate"
                             exit="exit"
+                            custom={{ isFirstMount: false }}
                         >
                             {renderQuestionPage(
                                 "What kind of experience?",
@@ -539,17 +596,18 @@ function App() {
                                 selectedTouristLevel,
                                 handleTouristLevelSelect
                             )}
-                        </motion.div>
+                        </m.div>
                     )}
 
                     {currentStep === 'question-budget' && (
-                        <motion.div
+                        <m.div
                             key="question-budget"
                             className="page-wrapper"
                             variants={pageVariants}
                             initial="initial"
                             animate="animate"
                             exit="exit"
+                            custom={{ isFirstMount: false }}
                         >
                             {renderQuestionPage(
                                 "What's your budget?",
@@ -559,26 +617,27 @@ function App() {
                                 handleBudgetSelect,
                                 showPriceDisclaimer ? "* Note: Prices are estimates and may vary by season" : undefined
                             )}
-                        </motion.div>
+                        </m.div>
                     )}
 
                     {currentStep === 'question-mood' && (
-                        <motion.div
+                        <m.div
                             key="question-mood"
                             className="page-wrapper"
                             variants={pageVariants}
                             initial="initial"
                             animate="animate"
                             exit="exit"
+                            custom={{ isFirstMount: false }}
                         >
-                            <motion.article
+                            <m.article
                                 className="question-content"
                                 variants={containerVariants}
                                 initial="hidden"
                                 animate="visible"
                             >
                                 {/* Back Button */}
-                                <motion.button
+                                <m.button
                                     className="btn-back"
                                     variants={itemVariants}
                                     onClick={handleBack}
@@ -587,12 +646,12 @@ function App() {
                                     aria-label="Go back"
                                 >
                                     <ArrowLeft className="icon" aria-hidden="true" />
-                                </motion.button>
+                                </m.button>
 
                                 {/* Progress Indicator */}
-                                <motion.div className="question-progress" variants={itemVariants}>
+                                <m.div className="question-progress" variants={itemVariants}>
                                     <div className="progress-bar">
-                                        <motion.div
+                                        <m.div
                                             className="progress-fill"
                                             initial={{ width: 0 }}
                                             animate={{ width: `${getProgress()}% ` }}
@@ -600,19 +659,19 @@ function App() {
                                         />
                                     </div>
                                     <span className="progress-text">{getStepNumber()} of 4</span>
-                                </motion.div>
+                                </m.div>
 
                                 {/* Question */}
-                                <motion.h2 className="question-title" variants={itemVariants}>
+                                <m.h2 className="question-title" variants={itemVariants}>
                                     What's the vibe?
-                                </motion.h2>
-                                <motion.p className="question-subtitle" variants={itemVariants}>
+                                </m.h2>
+                                <m.p className="question-subtitle" variants={itemVariants}>
                                     Pick a few that match your mood
-                                </motion.p>
+                                </m.p>
 
                                 {/* Mood Tags Multi-select */}
                                 <AnimatePresence mode="wait">
-                                    <motion.div
+                                    <m.div
                                         key={availableMoods.join('-')}
                                         className="moodTagsList"
                                         initial={{ opacity: 0 }}
@@ -623,7 +682,7 @@ function App() {
                                         {availableMoods.map((tag) => {
                                             const isSelected = selectedMoods.includes(tag);
                                             return (
-                                                <motion.button
+                                                <m.button
                                                     key={tag}
                                                     className={`moodTagItem ${isSelected ? 'selected' : ''}`}
                                                     onClick={() => handleMoodToggle(tag)}
@@ -636,14 +695,14 @@ function App() {
                                                     aria-label={`Select ${tag} mood`}
                                                 >
                                                     {tag}
-                                                </motion.button>
+                                                </m.button>
                                             );
                                         })}
-                                    </motion.div>
+                                    </m.div>
                                 </AnimatePresence>
 
                                 {/* Actions */}
-                                <motion.div
+                                <m.div
                                     className="moodActions"
                                     variants={itemVariants}
                                     initial="hidden"
@@ -673,10 +732,10 @@ function App() {
                                         <RefreshCcw size={14} aria-hidden="true" />
                                         <span>Shuffle options</span>
                                     </button>
-                                </motion.div>
+                                </m.div>
 
                                 {/* Generate CTA */}
-                                <motion.div className="generateActionContainer" variants={itemVariants}>
+                                <m.div className="generateActionContainer" variants={itemVariants}>
                                     <RainbowButton
                                         onClick={handleMoodContinue}
                                         disabled={selectedMoods.length === 0}
@@ -685,31 +744,36 @@ function App() {
                                     >
                                         Your Suggestions
                                     </RainbowButton>
-                                </motion.div>
-                            </motion.article>
-                        </motion.div>
+                                </m.div>
+                            </m.article>
+                        </m.div>
 
                     )}
                 </AnimatePresence>
 
-                <LoadingScreen
-                    isVisible={isLoading}
-                    touristLevel={selectedTouristLevel}
-                    intent={selectedIntent}
-                    onComplete={() => {
-                        setIsLoading(false);
-                        // Navigate to results
-                        console.log({
-                            intent: selectedIntent,
-                            touristLevel: selectedTouristLevel,
-                            budget: selectedBudget,
-                            moods: selectedMoods
-                        });
-                        // TODO: Navigate to results page
-                    }}
-                />
+                <Suspense fallback={null}>
+                    <LoadingScreen
+                        isVisible={isLoading}
+                        touristLevel={selectedTouristLevel}
+                        intent={selectedIntent}
+                        venues={matchedVenues}
+                        onComplete={() => {
+                            setIsLoading(false);
+                            setCurrentStep('results');
+                        }}
+                    />
+
+                    {/* Results View */}
+                    {currentStep === 'results' && (
+                        <SwipeableResults
+                            venues={matchedVenues}
+                            onClose={handleStartOver}
+                            onStartOver={handleStartOver}
+                        />
+                    )}
+                </Suspense>
             </main >
-        </>
+        </LazyMotion>
     );
 }
 

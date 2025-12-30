@@ -1,10 +1,10 @@
-/* Lekker Find — Design System */
+/* Lekker Find - Design System */
 @import './components/ui/GetStartedButton.css';
 
 
 /* ===== CSS Variables (Design Tokens) ===== */
 :root {
-    /* Primary — Ocean Teal */
+    /* Primary - Ocean Teal */
     --primary-h: 174;
     --primary-s: 72%;
     --primary-l: 40%;
@@ -13,7 +13,7 @@
     --primary-light: hsl(174 72% 95%);
     --primary-glow: hsla(174, 72%, 50%, 0.3);
 
-    /* Secondary — Sunset Orange */
+    /* Secondary - Sunset Orange */
     --secondary-h: 24;
     --secondary-s: 95%;
     --secondary-l: 53%;
