@@ -77,7 +77,21 @@
             overflow-x: hidden;
             color: var(--foreground);
         }
+    </style>
+</head>
 
+<body>
+    <div id="root"></div>
+
+    <!-- App Shell Overlay (Preserves LCP while React loads) -->
+    <div id="app-shell" class="shell-container">
+        <div class="shell-orb shell-orb-1"></div>
+        <div class="shell-orb shell-orb-2"></div>
+        <img src="/logo-min.png" alt="" class="shell-logo" width="160" fetchpriority="high" decoding="async">
+    </div>
+
+    <!-- Shell Styles minimized for splash screen -->
+    <style>
         .shell-container {
             position: fixed;
             inset: 0;
@@ -85,10 +99,11 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            z-index: -1;
-            background: var(--bg-main);
+            z-index: 9999;
+            background: #fbfbfd;
             padding: 2rem;
             text-align: center;
+            transition: opacity 0.6s ease-out;
         }
 
         .shell-orb {
@@ -104,7 +119,7 @@
             height: 40vw;
             top: -10vw;
             right: -10vw;
-            background: var(--primary);
+            background: #2e9e8f;
         }
 
         .shell-orb-2 {
@@ -117,60 +132,28 @@
 
         .shell-logo {
             width: 120px;
-            height: 120px;
+            height: auto;
             margin-bottom: 2rem;
-        }
-
-        .shell-title {
-            font-size: clamp(2rem, 6vw, 3.5rem);
-            font-weight: 700;
-            color: var(--foreground);
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            max-width: 600px;
-        }
-
-        .shell-accent {
-            background: linear-gradient(135deg, var(--primary), #116b5e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .shell-text {
-            font-size: 1.125rem;
-            color: #666;
-            max-width: 440px;
-            line-height: 1.6;
-            margin-bottom: 3rem;
         }
 
         @media (min-width: 768px) {
             .shell-logo {
                 width: 160px;
-                height: 160px;
-            }
-
-            .shell-text {
-                font-size: 1.25rem;
             }
         }
     </style>
-</head>
 
-<body>
-    <div id="root">
-        <!-- Pre-paint App Shell -->
-        <div class="shell-container">
-            <div class="shell-orb shell-orb-1"></div>
-            <div class="shell-orb shell-orb-2"></div>
-            <img src="/logo-min.png" alt="" class="shell-logo" width="160" height="160" fetchpriority="high"
-                decoding="async">
-            <h1 class="shell-title">Discover something <span class="shell-accent">lekker</span></h1>
-            <p class="shell-text">Not sure what to do in Cape Town?<br>Let us help you. Free, personal, instant.</p>
-        </div>
-    </div>
+    <script>
+        // Failsafe: Remove shell if React takes too long or fails (5s timeout)
+        setTimeout(() => {
+            const shell = document.getElementById('app-shell');
+            if (shell) {
+                shell.style.opacity = '0';
+                shell.style.pointerEvents = 'none';
+                setTimeout(() => shell.remove(), 500);
+            }
+        }, 5000);
+    </script>
     <script type="module" src="/src/main.tsx"></script>
 </body>
 

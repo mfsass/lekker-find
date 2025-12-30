@@ -251,7 +251,18 @@ h6 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* Added to prepare for animation */
+    /* opacity: 0; */
+    /* transform: scale(0.8); */
+    /* animation: fadeScaleIn 0.8s ease-out forwards; */
 }
+
+/* @keyframes fadeScaleIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+} */
 
 .landing-logo-img {
     width: 120px;

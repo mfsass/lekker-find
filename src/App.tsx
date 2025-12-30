@@ -105,6 +105,25 @@ function App() {
         };
 
         fetchRates();
+
+        // --------------------------------------------------------
+        // Seamless Hydration Strategy:
+        // The HTML Shell (#app-shell) is covering the screen (LCP).
+        // React renders the Landing page underneath (isFirstVisit=true sets it to visible).
+        // Now we fade out the Shell to reveal the interactive App.
+        // --------------------------------------------------------
+        const shell = document.getElementById('app-shell');
+        if (shell) {
+            // Small delay to ensure React has painted
+            setTimeout(() => {
+                shell.style.opacity = '0';
+                shell.style.pointerEvents = 'none';
+                setTimeout(() => {
+                    shell.remove();
+                }, 600); // 600ms matches index.html transition
+            }, 100);
+        }
+
     }, []);
 
     // Show price disclaimer (general variability note)
@@ -520,6 +539,7 @@ function App() {
                                     Not sure what to do in Cape Town?<br />
                                     Let us help you. Free, personal, instant.
                                 </m.p>
+
 
 
                                 <m.div className="landing-ctas" variants={itemVariants}>
