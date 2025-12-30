@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Specifically allow AI crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://lekker-find.co.za/sitemap.xml
