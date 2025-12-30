@@ -574,11 +574,11 @@ function App() {
                                         whileTap={{ scale: 0.98 }}
                                         onClick={handleCurious}
                                         disabled={!recommendationsReady}
-                                        style={{ opacity: recommendationsReady ? 1 : 0.6, cursor: recommendationsReady ? 'pointer' : 'wait' }}
+                                        style={{ opacity: recommendationsReady ? 1 : 0.8, cursor: recommendationsReady ? 'pointer' : 'wait' }}
                                         aria-label="Feeling curious? Explore Cape Town randomly"
                                     >
-                                        <Shuffle className={`icon ${!recommendationsReady ? 'animate-spin' : ''}`} aria-hidden="true" />
-                                        <span>{recommendationsReady ? 'Feeling curious?' : 'Loading...'}</span>
+                                        <Shuffle className="icon" aria-hidden="true" />
+                                        <span>Feeling curious?</span>
                                     </m.button>
 
                                 </m.div>
