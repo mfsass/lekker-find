@@ -344,6 +344,7 @@ function App() {
 
             {/* Options */}
             <m.div
+                key={title} // Forces re-mount to clear focus/hover states
                 className="vibeOptionList"
                 variants={itemVariants}
             >
@@ -572,10 +573,12 @@ function App() {
                                         whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
                                         onClick={handleCurious}
+                                        disabled={!recommendationsReady}
+                                        style={{ opacity: recommendationsReady ? 1 : 0.6, cursor: recommendationsReady ? 'pointer' : 'wait' }}
                                         aria-label="Feeling curious? Explore Cape Town randomly"
                                     >
-                                        <Shuffle className="icon" aria-hidden="true" />
-                                        <span>Feeling curious?</span>
+                                        <Shuffle className={`icon ${!recommendationsReady ? 'animate-spin' : ''}`} aria-hidden="true" />
+                                        <span>{recommendationsReady ? 'Feeling curious?' : 'Loading...'}</span>
                                     </m.button>
 
                                 </m.div>

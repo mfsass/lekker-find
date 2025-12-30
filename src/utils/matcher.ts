@@ -415,11 +415,11 @@ export function useRecommendations(): UseRecommendationsResult {
             }
         }
 
-        // Delay fetch to prioritize LCP/FCP even more
-        // User takes ~3-5s to read the landing page anyway
+        // Delay fetch to prioritize LCP/FCP, but keep it snappy
+        // User takes ~1-2s to orient, so load soon
         const timer = setTimeout(() => {
             loadData();
-        }, 3500);
+        }, 800);
 
         return () => clearTimeout(timer);
     }, []);
