@@ -3,7 +3,7 @@ trigger: model_decision
 description: When designer or imporving css, follow this style guide for frontend
 ---
 
-# Antigravity Rules — UI/UX Design Specialist
+# Antigravity Rules - UI/UX Design Specialist
 
 > Pixel-perfect, accessible, delightful. Every class matters.
 

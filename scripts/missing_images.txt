@@ -1,0 +1,11 @@
+VENUES REQUIRING MANUAL REVIEW
+==================================================
+
+These venues have no Google Places photos.
+Options:
+  1. Fix the venue name in the CSV (e.g., 'Darling Toffee' → 'Darling Sweet')
+  2. Remove the venue if it's closed
+  3. Manually add an image_url
+
+--------------------------------------------------
+

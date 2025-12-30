@@ -39,3 +39,7 @@ pnpm-debug.log*
 
 # Optional eslint cache
 .eslintcache
+
+# Vite
+.vite/
+dist/

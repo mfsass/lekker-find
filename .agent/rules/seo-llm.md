@@ -3,7 +3,7 @@ trigger: model_decision
 description: When optimising SEO and LLM traffic and detection to improve search results and increase traffic to site, use were applicable.
 ---
 
-# Antigravity Rules — UI/UX Design Specialist
+# Antigravity Rules - UI/UX Design Specialist
 
 > Pixel-perfect, accessible, delightful. Every class matters.
 

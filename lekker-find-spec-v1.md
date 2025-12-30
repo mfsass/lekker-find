@@ -1,4 +1,4 @@
-# Lekker Find — Product Specification
+# Lekker Find - Product Specification
 
 **Your local plug for Cape Town.**
 
@@ -58,8 +58,8 @@ The dataset contains **261 unique activities** across Cape Town.
 
 ### Tourist Levels (1-10)
 
-- **Levels 6-7** dominate (116 items, 44%) — popular but not over-touristed
-- **Levels 1-2** are rare (13 items) — true local gems
+- **Levels 6-7** dominate (116 items, 44%) - popular but not over-touristed
+- **Levels 1-2** are rare (13 items) - true local gems
 - **Levels 8-10** represent well-known attractions (54 items)
 
 ### Key Insight
@@ -93,9 +93,9 @@ Friendly, local, slightly cheeky. Like a mate who knows every spot in the city.
 ### SEO Content (Embed in Footer/Meta)
 
 ```
-Lekker Find — We built this to help you find your next thing to do in 
+Lekker Find - We built this to help you find your next thing to do in 
 Cape Town. No ads. No sign-up. Free, personal, instant. Hidden gems, 
-date spots, local favourites — matched to your vibe by AI.
+date spots, local favourites - matched to your vibe by AI.
 
 Keywords: things to do in Cape Town, Cape Town hidden gems, what to do 
 Cape Town, Cape Town date ideas, local Cape Town recommendations, 
@@ -105,9 +105,9 @@ Cape Town this weekend, best spots Cape Town.
 ### Meta Tags
 
 ```html
-<title>Lekker Find — Discover Things to Do in Cape Town</title>
+<title>Lekker Find - Discover Things to Do in Cape Town</title>
 <meta name="description" content="Find your next thing to do in Cape Town. No ads. No sign-up. Free, personal, instant. AI-matched to your vibe.">
-<meta property="og:title" content="Lekker Find — Discover Something Lekker">
+<meta property="og:title" content="Lekker Find - Discover Something Lekker">
 <meta property="og:description" content="260 hand-picked Cape Town spots. AI-matched to your vibe. Free.">
 ```
 
@@ -143,9 +143,9 @@ Landing Page
 
 ### The 3 Questions (Personalize Flow)
 
-1. **Who are you?** — Local · Explorer · Tourist
-2. **What's the budget?** — Free · R · RR · RRR
-3. **What's the vibe?** — Multi-select tags (Romantic, Chill, Ocean, etc.)
+1. **Who are you?** - Local · Explorer · Tourist
+2. **What's the budget?** - Free · R · RR · RRR
+3. **What's the vibe?** - Multi-select tags (Romantic, Chill, Ocean, etc.)
 
 After completing → single CTA with AI icon: `[✨ Find Something]`
 
@@ -184,9 +184,9 @@ All processing is **client-side JavaScript**. No server calls for recommendation
 
 ### Personalize Flow
 
-1. **Filter** — Remove spots that don't match budget or persona
-2. **Match** — Average selected tag vectors to create "target vibe," compare via cosine similarity
-3. **Rank** — Sort by score, apply persona boost if Tourist, return top 20
+1. **Filter** - Remove spots that don't match budget or persona
+2. **Match** - Average selected tag vectors to create "target vibe," compare via cosine similarity
+3. **Rank** - Sort by score, apply persona boost if Tourist, return top 20
 
 ### Surprise Me Flow
 
@@ -201,7 +201,7 @@ All processing is **client-side JavaScript**. No server calls for recommendation
 | Zero tags selected | Skip vector matching, return filtered results by default sort |
 | Conflicting tags (Indoors + Nature) | Vector averaging finds hybrids (aquariums, conservatories) |
 | No results (< 3 matches) | Relax price filter, show toast explaining why |
-| Budget + Boujee tag conflict | Budget wins — shows "classiest cheap places" |
+| Budget + Boujee tag conflict | Budget wins - shows "classiest cheap places" |
 
 ---
 
@@ -211,10 +211,10 @@ All processing is **client-side JavaScript**. No server calls for recommendation
 
 A curated CSV with 261 Cape Town spots containing: Name, Category, Vibe tags, Description, Price, Tourist_Level, Image_Source (real/generate).
 
-### Build Process (Python Script — One-Time)
+### Build Process (Python Script - One-Time)
 
 1. Generate text embeddings per spot using OpenAI `text-embedding-3-small`
-2. Truncate to **256 dimensions** (Matryoshka optimization — 83% size reduction)
+2. Truncate to **256 dimensions** (Matryoshka optimization - 83% size reduction)
 3. Pre-compute tag vectors for the 15 filter tags
 4. Export as `data.json` (Structure of Arrays format)
 
@@ -256,8 +256,8 @@ Production app (100% static)
 
 | Priority | Source | When |
 |----------|--------|------|
-| 1 | **Real photo** | Venue website, Unsplash, Pexels — download and save locally |
-| 2 | **Gemini-generated** | No suitable real photo found — generate once, save hard copy |
+| 1 | **Real photo** | Venue website, Unsplash, Pexels - download and save locally |
+| 2 | **Gemini-generated** | No suitable real photo found - generate once, save hard copy |
 
 ### Gemini Prompt Template
 
@@ -292,7 +292,7 @@ All images stored at `/public/images/{venue-id}.jpg`. Production app references 
 | Animations | Framer Motion |
 | Hosting | Vercel (free tier) |
 | Analytics | Vercel Analytics or Plausible |
-| Backend | None — fully static |
+| Backend | None - fully static |
 
 ### Key Constraints
 
@@ -366,7 +366,7 @@ Responsive design, PWA setup, loading states, analytics, deploy to Vercel.
 
 - User accounts
 - Saved favourites
-- User-submitted spots *(see v1.2 — suggestion form)*
+- User-submitted spots *(see v1.2 - suggestion form)*
 - Reviews or ratings
 - Live weather integration
 - Social sharing

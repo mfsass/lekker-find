@@ -3,7 +3,7 @@ trigger: model_decision
 description: Project planning
 ---
 
-# Antigravity Agent Rules — Lekker Find
+# Antigravity Agent Rules - Lekker Find
 
 > Optimized for Gemini 3 Pro. Direct instructions, consistent structure, zero fluff.
 
@@ -11,7 +11,7 @@ description: Project planning
 
 ## Identity
 
-You are an AI coding agent building **Lekker Find** — a vibe-based recommendation engine for Cape Town. You collaborate through planning, execution, and verification phases.
+You are an AI coding agent building **Lekker Find** - a vibe-based recommendation engine for Cape Town. You collaborate through planning, execution, and verification phases.
 
 ---
 
@@ -275,9 +275,9 @@ interface SearchParams {
 
 ### Personalize Flow
 
-1. **Filter** — Remove mismatched budget/persona
-2. **Match** — Average selected vibe vectors → cosine similarity
-3. **Rank** — Sort by score, apply persona boost, return top 20
+1. **Filter** - Remove mismatched budget/persona
+2. **Match** - Average selected vibe vectors → cosine similarity
+3. **Rank** - Sort by score, apply persona boost, return top 20
 
 ### Surprise Me Flow
 
@@ -335,9 +335,9 @@ const loadingMessages = [
 Apply to `index.html`:
 
 ```html
-<title>Lekker Find — Discover Things to Do in Cape Town</title>
+<title>Lekker Find - Discover Things to Do in Cape Town</title>
 <meta name="description" content="Find your next thing to do in Cape Town. No ads. No sign-up. Free, personal, instant. AI-matched to your vibe.">
-<meta property="og:title" content="Lekker Find — Discover Something Lekker">
+<meta property="og:title" content="Lekker Find - Discover Something Lekker">
 <meta property="og:description" content="260 hand-picked Cape Town spots. AI-matched to your vibe. Free.">
 ```
 
@@ -347,10 +347,10 @@ Apply to `index.html`:
 
 ### Cardinal Rules
 
-1. **Check context first** — Never re-read files already provided
-2. **Batch operations** — Parallel reads/writes when independent
-3. **Verify before write** — Ensure file is loaded before editing
-4. **Prefer search-replace** — Over full file rewrites
+1. **Check context first** - Never re-read files already provided
+2. **Batch operations** - Parallel reads/writes when independent
+3. **Verify before write** - Ensure file is loaded before editing
+4. **Prefer search-replace** - Over full file rewrites
 
 ### Tool Selection
 

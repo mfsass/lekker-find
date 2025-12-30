@@ -1,0 +1,414 @@
+/**
+ * SwipeableResults CSS
+ * ====================
+ * Following design rules: Ocean teal primary, warm neutrals, premium feel
+ */
+
+.results-container {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: hsl(40 20% 98%);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Header */
+.results-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    background: hsl(40 20% 98% / 0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid hsl(40 15% 88%);
+    z-index: 10;
+}
+
+.results-close,
+.results-restart {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background: transparent;
+    border: none;
+    color: hsl(220 10% 40%);
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.results-close:hover,
+.results-restart:hover {
+    background: hsl(40 15% 92%);
+    color: hsl(220 20% 14%);
+}
+
+.results-counter {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: hsl(220 10% 40%);
+}
+
+/* Card wrapper */
+.results-card-wrapper {
+    flex: 1;
+    position: relative;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Card */
+.results-card {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    height: 100%;
+    max-height: 680px;
+    border-radius: 1.5rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.25),
+        0 0 0 1px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    cursor: grab;
+    touch-action: pan-y;
+}
+
+.results-card:active {
+    cursor: grabbing;
+}
+
+.results-card-skeleton {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg,
+            hsl(40 15% 92%) 8%,
+            hsl(40 15% 96%) 18%,
+            hsl(40 15% 92%) 33%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Gradient overlay */
+.results-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+            hsl(220 20% 10% / 0.95) 0%,
+            hsl(220 20% 10% / 0.7) 30%,
+            hsl(220 20% 10% / 0.2) 60%,
+            transparent 100%);
+    pointer-events: none;
+}
+
+/* Match badge */
+.results-match-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    background: hsl(0 0% 100% / 0.95);
+    backdrop-filter: blur(8px);
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: hsl(174 72% 35%);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Card content */
+.results-card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    color: white;
+    z-index: 5;
+}
+
+.results-venue-name {
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 0.5rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.results-venue-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: hsl(0 0% 100% / 0.85);
+    margin-bottom: 0.75rem;
+}
+
+.results-divider {
+    opacity: 0.5;
+}
+
+.results-category {
+    font-weight: 600;
+}
+
+.results-vibes {
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.results-description {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: hsl(0 0% 100% / 0.9);
+    margin: 0 0 1.25rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Maps button */
+.results-maps-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: hsl(174 72% 40%);
+    color: white;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px hsl(174 72% 40% / 0.3);
+}
+
+.results-maps-btn:hover {
+    background: hsl(174 72% 35%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px hsl(174 72% 40% / 0.4);
+}
+
+.results-maps-btn:active {
+    transform: translateY(0);
+}
+
+/* Navigation */
+.results-nav {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    padding: 1rem 1.5rem 1.5rem;
+}
+
+.results-nav-btn {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 2px solid hsl(40 15% 88%);
+    border-radius: 9999px;
+    color: hsl(220 20% 14%);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.results-nav-btn:hover:not(:disabled) {
+    border-color: hsl(174 72% 40%);
+    color: hsl(174 72% 40%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.results-nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* Swipe Tutorial - Mobile overlay */
+.results-swipe-tutorial {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: hsl(220 20% 10% / 0.85);
+    backdrop-filter: blur(8px);
+    animation: fadeIn 0.3s ease;
+    cursor: pointer;
+}
+
+.swipe-tutorial-content {
+    text-align: center;
+    color: white;
+    padding: 2rem;
+    animation: scaleIn 0.4s ease 0.1s both;
+}
+
+.swipe-hand {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: swipeMotion 1.5s ease-in-out infinite;
+}
+
+@keyframes swipeMotion {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-30px);
+    }
+
+    75% {
+        transform: translateX(30px);
+    }
+}
+
+.swipe-instruction {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 1rem;
+    line-height: 1.4;
+}
+
+.swipe-dismiss {
+    font-size: 0.8125rem;
+    opacity: 0.7;
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Attribution */
+.results-attribution {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.6875rem;
+    color: hsl(220 10% 40% / 0.7);
+    white-space: nowrap;
+}
+
+/* Empty state */
+.results-empty {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+    background: hsl(40 20% 98%);
+}
+
+.results-empty-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.results-empty h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: hsl(220 20% 14%);
+    margin: 0 0 0.5rem;
+}
+
+.results-empty p {
+    color: hsl(220 10% 40%);
+    margin: 0 0 1.5rem;
+}
+
+.results-empty .btn-primary {
+    padding: 0.875rem 2rem;
+    background: hsl(174 72% 40%);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.results-empty .btn-primary:hover {
+    background: hsl(174 72% 35%);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .results-card-wrapper {
+        padding: 0.5rem;
+    }
+
+    .results-card {
+        border-radius: 1rem;
+        max-height: none;
+        height: calc(100% - 0.5rem);
+    }
+
+    .results-venue-name {
+        font-size: 1.5rem;
+    }
+
+    .results-nav {
+        gap: 2rem;
+        padding-bottom: 1rem;
+    }
+
+    .results-nav-btn {
+        width: 52px;
+        height: 52px;
+    }
+}
