@@ -280,10 +280,23 @@ export function findMatches(
         const normalized = (boostedScore - lowestScore) / scoreRange;
 
         // Map to display range: 55% (worst in set) to 90% (best in set)
-        // Add small bonus for keyword matches (up to +5%)
         const basePercent = 55 + (normalized * 35); // 55-90%
-        const keywordBonus = Math.min(5, matchingVibes * 2); // Up to 5% extra
-        const finalPercent = Math.min(95, basePercent + keywordBonus);
+
+        // Bonus 1: Keyword matches (up to +5%)
+        const keywordBonus = Math.min(5, matchingVibes * 2);
+
+        // Bonus 2: Rating Quality Boost
+        // We boost high-rated venues so quality naturally rises to the top
+        // 4.9+ -> +5% | 4.7+ -> +3% | 4.5+ -> +1% | <4.0 -> -5%
+        let ratingBonus = 0;
+        if (venue.rating) {
+            if (venue.rating >= 4.9) ratingBonus = 5;
+            else if (venue.rating >= 4.7) ratingBonus = 3;
+            else if (venue.rating >= 4.5) ratingBonus = 1;
+            else if (venue.rating < 4.0) ratingBonus = -5;
+        }
+
+        const finalPercent = Math.min(98, basePercent + keywordBonus + ratingBonus);
 
         return {
             ...venue,
@@ -291,25 +304,10 @@ export function findMatches(
         };
     });
 
-    // Filter by threshold and sort
+    // Filter by threshold and sort by final score (descending)
     const filtered = scored
         .filter(v => v.matchPercentage >= options.minScore! * 100)
-        .sort((a, b) => {
-            const scoreDiff = b.matchPercentage - a.matchPercentage;
-
-            // If scores are within 5%, prefer the one with the higher rating
-            // This pushes quality venues up even if the flavor match is slightly lower
-            if (Math.abs(scoreDiff) <= 5) {
-                const ratingA = a.rating || 0;
-                const ratingB = b.rating || 0;
-                // Only if ratings differ meaningfully (e.g. > 0.1)
-                if (Math.abs(ratingB - ratingA) > 0.1) {
-                    return ratingB - ratingA;
-                }
-            }
-
-            return scoreDiff;
-        });
+        .sort((a, b) => b.matchPercentage - a.matchPercentage);
 
     const results = filtered.slice(0, maxResults);
 

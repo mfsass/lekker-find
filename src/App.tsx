@@ -237,17 +237,29 @@ function App() {
 
     const handleIntentSelect = (value: string) => {
         setSelectedIntent(value);
-        setTimeout(() => setCurrentStep('question-vibe'), 300);
+        setTimeout(() => {
+            setCurrentStep('question-vibe');
+            window.scrollTo(0, 0);
+            if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
+        }, 300);
     };
 
     const handleTouristLevelSelect = (value: number) => {
         setSelectedTouristLevel(value);
-        setTimeout(() => setCurrentStep('question-budget'), 300);
+        setTimeout(() => {
+            setCurrentStep('question-budget');
+            window.scrollTo(0, 0);
+            if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
+        }, 300);
     };
 
     const handleBudgetSelect = (value: string) => {
         setSelectedBudget(value);
-        setTimeout(() => setCurrentStep('question-mood'), 300);
+        setTimeout(() => {
+            setCurrentStep('question-mood');
+            window.scrollTo(0, 0);
+            if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
+        }, 300);
     };
 
     const handleMoodToggle = (mood: string) => {

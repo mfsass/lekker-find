@@ -13,7 +13,7 @@
 
 import React, { useState, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence, PanInfo } from 'framer-motion';
-import { MapPin, ChevronLeft, ChevronRight, X, RotateCcw } from 'lucide-react';
+import { MapPin, ChevronLeft, ChevronRight, X, RotateCcw, Star } from 'lucide-react';
 import { VenueWithMatch } from '../../utils/matcher';
 import { convertPriceString } from '../../utils/currency';
 import './SwipeableResults.css';
@@ -243,7 +243,10 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
                                 {currentVenue.rating && (
                                     <>
                                         <span className="results-divider">•</span>
-                                        <span className="results-rating">⭐ {currentVenue.rating.toFixed(1)}</span>
+                                        <span className="results-rating" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                                            <Star size={14} fill="currentColor" strokeWidth={0} />
+                                            {currentVenue.rating.toFixed(1)}/5
+                                        </span>
                                     </>
                                 )}
                                 {priceDisplay && (
