@@ -15,6 +15,7 @@ import React, { useState, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence, PanInfo } from 'framer-motion';
 import { MapPin, ChevronLeft, ChevronRight, X, RotateCcw } from 'lucide-react';
 import { VenueWithMatch } from '../../utils/matcher';
+import { convertPriceString } from '../../utils/currency';
 import './SwipeableResults.css';
 
 // Fallback images by category (Unsplash URLs)
@@ -48,7 +49,16 @@ const CARD_VARIANTS = {
 };
 
 function getVenueImage(venue: VenueWithMatch): string {
+    // Priority: 1. External image_url, 2. Local venue image, 3. Category fallback
     if (venue.image_url) return venue.image_url;
+
+    // Use local image based on venue id (e.g., v0.jpg, v1.jpg)
+    // The id format is "v{idx}" so we extract the number
+    const idMatch = venue.id?.match(/v(\d+)/);
+    if (idMatch) {
+        return `/images/venues/v${idMatch[1]}.jpg`;
+    }
+
     const category = venue.category?.toLowerCase() || 'nature';
     return FALLBACK_IMAGES[category] || FALLBACK_IMAGES.nature;
 }
@@ -57,12 +67,16 @@ interface SwipeableResultsProps {
     venues: VenueWithMatch[];
     onClose: () => void;
     onStartOver: () => void;
+    currency: 'ZAR' | 'EUR' | 'USD' | 'GBP';
+    exchangeRates: Record<string, number>;
 }
 
 export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
     venues,
     onClose,
     onStartOver,
+    currency = 'ZAR',
+    exchangeRates = { ZAR: 1 }
 }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [direction, setDirection] = useState<'left' | 'right' | null>(null);
@@ -88,17 +102,24 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
     const hasPrev = currentIndex > 0;
     const imageUrl = useMemo(() => currentVenue ? getVenueImage(currentVenue) : '', [currentVenue]);
 
-    // Format price display
+    // Format price display with currency conversion
     const priceDisplay = useMemo(() => {
         if (!currentVenue) return '';
         const tier = currentVenue.price_tier?.toLowerCase();
-        if (tier === 'free' || !tier) return '';
-        // Show numerical price if available
-        if (currentVenue.numerical_price && currentVenue.numerical_price !== 'Free') {
-            return currentVenue.numerical_price;
+
+        // Always show "Free" if applicable
+        if (tier === 'free' || currentVenue.price_tier === 'Free') return 'Free';
+        if (currentVenue.numerical_price === 'Free') return 'Free';
+
+        // Show numerical price if available, converted
+        if (currentVenue.numerical_price) {
+            return convertPriceString(currentVenue.numerical_price, currency, exchangeRates);
         }
+
+        // If only tier is available (R, RR, RRR), maybe imply range?
+        // For now just return tier if no numerical price
         return currentVenue.price_tier;
-    }, [currentVenue]);
+    }, [currentVenue, currency, exchangeRates]);
 
     // Hide swipe guide after first swipe
     const dismissGuide = useCallback(() => {
@@ -219,6 +240,12 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
 
                             <div className="results-venue-meta">
                                 <span className="results-category">{currentVenue.category}</span>
+                                {currentVenue.rating && (
+                                    <>
+                                        <span className="results-divider">•</span>
+                                        <span className="results-rating">⭐ {currentVenue.rating.toFixed(1)}</span>
+                                    </>
+                                )}
                                 {priceDisplay && (
                                     <>
                                         <span className="results-divider">•</span>

@@ -789,6 +789,8 @@ function App() {
                             venues={matchedVenues}
                             onClose={handleStartOver}
                             onStartOver={handleStartOver}
+                            currency={currency}
+                            exchangeRates={exchangeRates}
                         />
                     )}
                 </Suspense>

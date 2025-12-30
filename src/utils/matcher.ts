@@ -42,6 +42,7 @@ export interface Venue {
     image_width?: number;
     image_height?: number;
     image_attribution?: string;
+    rating?: number;  // Google Maps rating (1-5)
 }
 
 export interface VenueWithMatch extends Venue {
@@ -252,25 +253,69 @@ export function findMatches(
     // Create user vibe vector
     const userVibe = meanPool(moodEmbeddings);
 
-    // Calculate similarity for each venue
-    const scored = venues.map(venue => {
-        const score = cosineSimilarity(userVibe, venue.embedding);
+    // Step 1: Calculate raw scores with keyword boost
+    const rawScored = venues.map(venue => {
+        const rawScore = cosineSimilarity(userVibe, venue.embedding);
+
+        // KEYWORD BOOST: Add bonus when venue has exact mood tag match
+        const matchingVibes = params.moods.filter(mood =>
+            venue.vibes.some(v => v.toLowerCase() === mood.toLowerCase())
+        );
+        const keywordBoost = matchingVibes.length * 0.08; // +8% per matching vibe
+        const boostedScore = rawScore + keywordBoost;
+
+        return { venue, boostedScore, matchingVibes: matchingVibes.length };
+    });
+
+    // Step 2: Find min/max for RELATIVE scaling
+    const scores = rawScored.map(r => r.boostedScore);
+    const highestScore = Math.max(...scores);
+    const lowestScore = Math.min(...scores);
+    const scoreRange = highestScore - lowestScore || 0.1; // Avoid division by zero
+
+    // Step 3: Relative scaling - best match gets 85-95%, others scale down
+    // The top score maps to ~90%, spread based on actual score distribution
+    const scored = rawScored.map(({ venue, boostedScore, matchingVibes }) => {
+        // Normalize to 0-1 range within this result set
+        const normalized = (boostedScore - lowestScore) / scoreRange;
+
+        // Map to display range: 55% (worst in set) to 90% (best in set)
+        // Add small bonus for keyword matches (up to +5%)
+        const basePercent = 55 + (normalized * 35); // 55-90%
+        const keywordBonus = Math.min(5, matchingVibes * 2); // Up to 5% extra
+        const finalPercent = Math.min(95, basePercent + keywordBonus);
+
         return {
             ...venue,
-            matchPercentage: Math.round(score * 100)
+            matchPercentage: Math.round(finalPercent)
         };
     });
 
     // Filter by threshold and sort
     const filtered = scored
-        .filter(v => v.matchPercentage >= minScore * 100)
-        .sort((a, b) => b.matchPercentage - a.matchPercentage);
+        .filter(v => v.matchPercentage >= options.minScore! * 100)
+        .sort((a, b) => {
+            const scoreDiff = b.matchPercentage - a.matchPercentage;
+
+            // If scores are within 5%, prefer the one with the higher rating
+            // This pushes quality venues up even if the flavor match is slightly lower
+            if (Math.abs(scoreDiff) <= 5) {
+                const ratingA = a.rating || 0;
+                const ratingB = b.rating || 0;
+                // Only if ratings differ meaningfully (e.g. > 0.1)
+                if (Math.abs(ratingB - ratingA) > 0.1) {
+                    return ratingB - ratingA;
+                }
+            }
+
+            return scoreDiff;
+        });
 
     const results = filtered.slice(0, maxResults);
 
     const duration = performance.now() - startTime;
     console.log(`✓ Found ${results.length} matches in ${duration.toFixed(1)}ms`);
-    console.log(`  Top score: ${results[0]?.matchPercentage ?? 0}%`);
+    console.log(`  Score range: ${Math.round(lowestScore * 100)}-${Math.round(highestScore * 100)}% → Display: ${results[results.length - 1]?.matchPercentage}-${results[0]?.matchPercentage}%`);
 
     return results;
 }

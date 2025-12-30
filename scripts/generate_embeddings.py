@@ -211,12 +211,24 @@ def main():
     print(f"Dimensions: {EMBEDDING_DIMENSIONS}")
     
     # Initialize client
-    print("\n[1/4] Initializing OpenAI client...")
+    print("\n[1/5] Initializing OpenAI client...")
     client = get_client()
     print("✓ Client initialized")
     
+    # Load existing data to preserve images, place_id, etc.
+    print("\n[2/5] Loading existing data to preserve images...")
+    existing_venues = {}
+    if os.path.exists(OUTPUT_JSON):
+        with open(OUTPUT_JSON, 'r', encoding='utf-8') as f:
+            existing_data = json.load(f)
+        for v in existing_data.get('venues', []):
+            existing_venues[v['name']] = v
+        print(f"✓ Loaded {len(existing_venues)} existing venues with images")
+    else:
+        print("⚠ No existing data found, will generate fresh")
+    
     # Load CSV
-    print("\n[2/4] Loading venue data...")
+    print("\n[3/5] Loading venue data...")
     if not os.path.exists(INPUT_CSV):
         print(f"✗ {INPUT_CSV} not found")
         sys.exit(1)
@@ -225,27 +237,29 @@ def main():
     print(f"✓ Loaded {len(df)} venues")
     
     # Generate venue embeddings
-    print("\n[3/4] Generating venue embeddings...")
+    print("\n[4/5] Generating venue embeddings...")
     venues = []
     total_tokens = 0
     
     for idx, row in df.iterrows():
-        # OPTIMIZED: Use ONLY vibes for embedding
-        # Research shows vibes-only gives best signal clarity (69% vs 44% for full)
-        # Description and name dilute the semantic signal
-        name_str = str(row['Name']) if pd.notna(row['Name']) else ''
-        category_str = str(row['Category']) if pd.notna(row['Category']) else ''
+        # Use VibeDescription (AI-enriched) if available, otherwise fall back to Vibe
+        vibe_desc = str(row.get('VibeDescription', '')) if pd.notna(row.get('VibeDescription')) else ''
         vibe_str = str(row['Vibe']) if pd.notna(row['Vibe']) else ''
         desc_str = str(row['Description']) if pd.notna(row['Description']) else ''
         
-        # Embed vibes only for semantic matching
-        embedding_text = vibe_str
+        # Prefer enriched VibeDescription for better semantic matching
+        embedding_text = vibe_desc if vibe_desc else vibe_str
         
         try:
             embedding = get_embedding(embedding_text, client)
             total_tokens += len(embedding_text.split()) * 1.3  # Rough token estimate
             
-            venues.append({
+            # Get rating if available
+            rating = row.get('Rating')
+            rating_val = float(rating) if pd.notna(rating) else None
+            
+            # Start with base venue data
+            venue_data = {
                 'id': f"v{idx}",
                 'name': row['Name'],
                 'category': row['Category'],
@@ -255,8 +269,17 @@ def main():
                 'best_season': row['Best_Season'],
                 'vibes': [v.strip() for v in vibe_str.split(',') if v.strip()],
                 'description': desc_str,
+                'rating': rating_val,
                 'embedding': embedding
-            })
+            }
+            
+            # Merge with existing data to preserve images, place_id, etc.
+            existing = existing_venues.get(row['Name'], {})
+            for key in ['place_id', 'maps_url', 'image_url', 'image_width', 'image_height', 'image_attribution']:
+                if key in existing and existing[key]:
+                    venue_data[key] = existing[key]
+            
+            venues.append(venue_data)
             
             if (idx + 1) % 50 == 0:
                 print(f"  Progress: {idx + 1}/{len(df)}...")
@@ -267,7 +290,7 @@ def main():
     print(f"✓ Generated {len(venues)} venue embeddings")
     
     # Generate tag embeddings using enriched descriptions
-    print("\n[4/4] Generating tag embeddings with enriched descriptions...")
+    print("\n[5/5] Generating tag embeddings with enriched descriptions...")
     tag_embeddings = {}
     
     for tag in ALL_UI_TAGS:

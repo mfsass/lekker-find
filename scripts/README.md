@@ -1,139 +1,62 @@
-# Scripts
+# Lekker Find - Data & Scripts
 
-This folder contains Python scripts for data processing.
+This directory contains utility scripts for managing venue data, images, and embeddings.
 
-## Quick Start
+## 🛠️ Data Management Workflow
 
+### 1. Add New Venues (Automated)
+The easiest way to add venues is using the Admin Tool with the Automation Server.
+
+1.  **Start the Server:**
+    ```bash
+    python scripts/serve_admin.py
+    ```
+2.  **Open Browser:** Go to `http://localhost:8000/admin/add-venue.html`
+3.  **Add Venue:** Fill in the details and click **"🚀 Save & Process"**.
+    *   This will automatically append to CSV, fetch images, enrich data, and regenerate embeddings in one step.
+
+### 2. Manual Method
+If you prefer manual control:
+1. Open `admin/add-venue.html` (drag into browser or use Live Server).
+2. Generate the CSV row and paste it into `data-262-2025-12-26.csv`.
+3.  Run the scripts manually as needed (see below).
+
+### 3. Enrich Data (Optional)
+If you want to auto-generate `VibeDescription` using GPT-50-nano (or similar) instead of writing them manually:
 ```bash
-# Set API keys in .env
-OPENAI_API_KEY=sk-...
-MAPS_API_KEY=AIza...
+python scripts/enrich_venues.py
+```
+*   **Note:** The Admin tool allows you to write these manually, which is often better/cheaper.
 
-# Generate embeddings (only runs on new venues)
-python scripts/generate_embeddings.py
-
-# Fetch images (adds external URLs to JSON)
+### 4. Image Management
+To fetch and localize images for venues:
+```bash
+# Fetch new images from Google Places (External APIs)
 python scripts/fetch_images.py
 
-# Localize images (downloads to public/ and updates JSON paths)
-python scripts/localize_images.py
-
-# Test embedding quality
-python scripts/test_embeddings.py
-```
-
-## Adding New Venues
-
-**The scripts are designed to be incremental** - they only process new items:
-
-### Step 1: Update CSV
-Add new venues to `data-262-2025-12-26.csv`
-
-### Step 2: Regenerate Embeddings
-```bash
-python scripts/generate_embeddings.py --update
-```
-This will:
-- Load existing `lekker-find-data.json`
-- Find venues in CSV that aren't in JSON
-- Generate embeddings ONLY for new venues
-- Merge with existing data
-
-### Step 3: Fetch Meta-data for New Venues
-```bash
-python scripts/fetch_images.py
-```
-This automatically skips venues that already have an `image_url` property in the JSON.
-
-### Step 4: Localize New Images
-```bash
+# Download remote images to local /public/images/venues/ folder
 python scripts/localize_images.py
 ```
-**This is required for production.** It downloads the actual image files to `public/images/venues/` and replaces the Google API URLs with local paths.
-- Skips images that already exist on disk.
-- Removes the need for a runtime API key.
-- Ensures absolute reliability in production.
 
 ---
 
-## Files
+## 📂 Key Files
 
-### `generate_embeddings.py`
-Generates semantic embeddings for venues using OpenAI.
+-   `generate_embeddings.py`: **Main script** for building the app's data file (`public/lekker-find-data.json`).
+-   `ab_test_embeddings.py`: Benchmark script to scientifically test embedding quality and scoring logic.
+-   `enrich_venues.py`: AI script to generate rich descriptions for venues.
+-   `fetch_images.py`: Fetches image URLs from Google connection.
+-   `localize_images.py`: Downloads images locally to avoid external dependencies.
 
-**Configuration (from benchmarks):**
-- Model: `text-embedding-3-small`
-- Dimensions: `256`
-- Strategy: Vibes only (best signal clarity)
-
-**Flags:**
-- `--update` - Incremental mode (only new venues)
-- `--force` - Regenerate all (costs money!)
-- `--dry-run` - Preview what would be processed
-
-**Output:** `public/lekker-find-data.json`
-
----
-
-### `fetch_images.py`
-Fetches venue photos from Google Places API.
-
-**Flags:**
-- `--test` - Test with one venue
-- `--dry-run` - Preview venues needing images
-- `--verify` - Check all image URLs work
-- `--report` - Generate review report for missing images
-
-**What it adds to each venue:**
-```json
-{
-  "place_id": "ChIJ...",
-  "maps_url": "https://maps.google.com/...",
-  "image_url": "https://places.googleapis.com/...",
-  "image_width": 4032,
-  "image_height": 3024,
-  "image_attribution": "Photographer Name"
-}
+## 🧪 Benchmarking
+To test if the search logic is improving:
+```bash
+python scripts/ab_test_embeddings.py
 ```
+This runs a suite of test cases (e.g., "Romantic Coastal") and measures precision/ranking quality.
 
 ---
 
-### `localize_images.py`
-Downloads images to local storage and strips API keys from JSON.
-
-**Workflow:**
-1. Looks for `image_url` starting with `http` in JSON.
-2. Downloads the binary file to `public/images/venues/[id].jpg`.
-3. Skips if the file already exists on disk (incremental).
-4. Updates JSON `image_url` to the local relative path.
-
-**Flags:**
-- `--force` - Redownload all images even if they exist.
-
----
-
-### `test_embeddings.py`
-Validates embedding quality.
-
----
-
-## Cost Summary
-
-| Script | Cost |
-|--------|------|
-| generate_embeddings.py | ~$0.0001 per 261 venues |
-| fetch_images.py | ~$0.00 (Text Search is free tier) |
-
-## Manual Review Required
-
-Venues without photos (need name fix or removal):
-- Check `scripts/missing_images.txt` after running fetch
-
----
-
-## Best Practices
-
-1. **Never delete `lekker-find-data.json`** - it contains all generated embeddings
-2. **Use `--update` flag** for incremental processing
-3. **Check `missing_images.txt`** for venues that need manual attention
-4. **Backup before major changes** - embeddings cost API calls to regenerate
+## 💡 Best Practices
+-   **Always run `generate_embeddings.py`** after changing the CSV.
+-   **Local Images:** The app prefers local images (`/images/venues/v{id}.jpg`). Ensure `localize_images.py` is run if you've fetched new URLs.

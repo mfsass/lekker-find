@@ -36,7 +36,7 @@ const VIBES_BY_CONTEXT = {
     food: ['Handmade', 'Tasty', 'Comfort', 'Healthy', 'Treat', 'Street-food', 'Fresh', 'Trendy', 'Traditional', 'Simple'], // Artisanal->Handmade, Indulgent->Treat
     drink: ['Craft', 'Cocktails', 'Hidden-bar', 'Rooftop', 'Sunset', 'Tasting', 'Dive-bar', 'Classy', 'Social', 'Wine'],
     activity: ['Adventure', 'Exciting', 'Active', 'Learning', 'Wellness', 'Workshop', 'Outdoor', 'Culture', 'Fun'],
-    nature: ['Mountain', 'Beach', 'Forest', 'Garden', 'Wild', 'Hiking', 'Picnic', 'Sunset', 'Sea-life', 'Open-air'],
+    nature: ['Peaceful', 'Scenic', 'Mountain', 'Beach', 'Forest', 'Garden', 'Quiet', 'Chill', 'Hiking', 'Sunset', 'Sea-life', 'Open-air'],
     culture: ['History', 'Museum', 'Art', 'Music', 'Theatre', 'Heritage', 'Soul', 'Design', 'Stories'],
 
     // Tourist level specific vibes

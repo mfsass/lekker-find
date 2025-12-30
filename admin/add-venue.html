@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lekker Find - Add Venue</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #ffd93d;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #a0a0a0;
+            font-size: 0.9rem;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background: #1a1a2e;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #ffd93d;
+        }
+
+        textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .vibes-input {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            background: #1a1a2e;
+            border: 1px solid #333;
+            border-radius: 8px;
+            min-height: 60px;
+        }
+
+        .vibe-tag {
+            background: #ffd93d;
+            color: #1a1a2e;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .vibe-tag:hover {
+            background: #ffeb8a;
+        }
+
+        .vibe-suggestions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .vibe-suggestion {
+            background: #333;
+            color: #a0a0a0;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+
+        .vibe-suggestion:hover {
+            background: #444;
+            color: #fff;
+        }
+
+        button {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #ffd93d 0%, #ffb347 100%);
+            color: #1a1a2e;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        .output {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #0d0d1a;
+            border-radius: 8px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            width: auto;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .instructions {
+            background: #16213e;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #ffd93d;
+        }
+
+        .instructions h3 {
+            color: #ffd93d;
+            margin-bottom: 0.5rem;
+        }
+
+        .instructions ol {
+            margin-left: 1.5rem;
+        }
+
+        .instructions li {
+            margin-bottom: 0.5rem;
+        }
+
+        code {
+            background: #0d0d1a;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🏖️ Add New Venue</h1>
+
+        <div class="instructions">
+            <h3>How to Add a New Venue</h3>
+            <p><strong>Option A: Auto-Magic (Recommended)</strong></p>
+            <ol>
+                <li>Start the server: <code>python scripts/serve_admin.py</code></li>
+                <li>Fill in the form (Name is required).</li>
+                <li>Click <strong>"🚀 Save & Process"</strong>.</li>
+                <li>The system will automatically:
+                    <ul>
+                        <li>Add to CSV</li>
+                        <li>Fetch images & descriptions</li>
+                        <li>Update the app</li>
+                    </ul>
+                </li>
+            </ol>
+            <p><strong>Option B: Manual</strong></p>
+            <ol>
+                <li>Fill form, click "Generate CSV Row", copy/paste manually.</li>
+            </ol>
+        </div>
+
+        <form id="venueForm">
+            <div class="form-group">
+                <label>Venue Name *</label>
+                <input type="text" id="name" required placeholder="e.g., The Test Kitchen">
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label>Category *</label>
+                    <select id="category" required>
+                        <option value="">Select...</option>
+                        <option value="Food">Food</option>
+                        <option value="Drink">Drink</option>
+                        <option value="Nature">Nature</option>
+                        <option value="Activity">Activity</option>
+                        <option value="Culture">Culture</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Tourist Level (1-10) *</label>
+                    <input type="number" id="touristLevel" min="1" max="10" required placeholder="5">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label>Price Range *</label>
+                    <select id="priceRange" required>
+                        <option value="">Select...</option>
+                        <option value="Free">Free</option>
+                        <option value="R">R (Budget)</option>
+                        <option value="RR">RR (Mid-range)</option>
+                        <option value="RRR">RRR (Premium)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Numerical Price</label>
+                    <input type="text" id="numericalPrice" placeholder="e.g., R150-R300">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Best Season</label>
+                <select id="bestSeason">
+                    <option value="All Year">All Year</option>
+                    <option value="Summer">Summer</option>
+                    <option value="Winter">Winter</option>
+                    <option value="Summer/Spring">Summer/Spring</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Vibes (click to add, 3-5 recommended)</label>
+                <div class="vibes-input" id="vibesInput"></div>
+                <div class="vibe-suggestions" id="vibeSuggestions"></div>
+            </div>
+
+            <div class="form-group">
+                <label>Short Description (1-2 sentences)</label>
+                <textarea id="shortDesc" placeholder="A brief description for the data..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Google Rating (optional)</label>
+                <input type="number" id="rating" min="1" max="5" step="0.1" placeholder="4.5">
+            </div>
+
+            <div class="form-group">
+                <label>Vibe Description (2-3 sentences, emotional/atmospheric)</label>
+                <textarea id="vibeDesc"
+                    placeholder="Describe the atmosphere, energy, and who would love this place..."></textarea>
+            </div>
+
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                <button type="button" id="autoSaveBtn" style="background: linear-gradient(135deg, #00b09b, #96c93d);">🚀
+                    Save & Process</button>
+                <button type="submit" style="background: #333;">Generate CSV Only</button>
+            </div>
+        </form>
+
+        <div class="output" id="output" style="display:none;"></div>
+        <button class="copy-btn" id="copyBtn" style="display:none;" onclick="copyOutput()">📋 Copy to Clipboard</button>
+    </div>
+
+    <script>
+        const VIBES = [
+            'Peaceful', 'Scenic', 'Romantic', 'Hidden', 'Local', 'Family', 'Adventure',
+            'Trendy', 'Cool', 'Cozy', 'Lively', 'Chill', 'Quiet', 'Fun', 'Authentic',
+            'Historic', 'Coastal', 'Urban', 'Rustic', 'Modern', 'Quirky', 'Bohemian',
+            'Elegant', 'Casual', 'Social', 'Wellness', 'Active', 'Relaxed', 'Festive',
+            'Cultural', 'Artsy', 'Natural', 'Wild', 'Intimate', 'Buzzy', 'Unique'
+        ];
+
+        let selectedVibes = [];
+
+        // Render vibe suggestions
+        const suggestionsEl = document.getElementById('vibeSuggestions');
+        VIBES.forEach(vibe => {
+            const el = document.createElement('span');
+            el.className = 'vibe-suggestion';
+            el.textContent = vibe;
+            el.onclick = () => addVibe(vibe);
+            suggestionsEl.appendChild(el);
+        });
+
+        function addVibe(vibe) {
+            if (selectedVibes.includes(vibe)) return;
+            selectedVibes.push(vibe);
+            renderVibes();
+        }
+
+        function removeVibe(vibe) {
+            selectedVibes = selectedVibes.filter(v => v !== vibe);
+            renderVibes();
+        }
+
+        function renderVibes() {
+            const container = document.getElementById('vibesInput');
+            container.innerHTML = selectedVibes.map(v =>
+                `<span class="vibe-tag" onclick="removeVibe('${v}')">${v} ✕</span>`
+            ).join('');
+        }
+
+        // AUTO SAVE HANDLER
+        document.getElementById('autoSaveBtn').onclick = async function () {
+            const btn = document.getElementById('autoSaveBtn');
+            const originalText = btn.textContent;
+
+            // Basic validation
+            if (!document.getElementById('name').value) {
+                alert('Please enter a Venue Name');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = '⏳ Processing (this may take 10-20s)...';
+
+            const payload = {
+                name: document.getElementById('name').value,
+                category: document.getElementById('category').value,
+                touristLevel: document.getElementById('touristLevel').value,
+                priceRange: document.getElementById('priceRange').value,
+                numericalPrice: document.getElementById('numericalPrice').value,
+                bestSeason: document.getElementById('bestSeason').value,
+                vibes: selectedVibes.join(', '),
+                shortDesc: document.getElementById('shortDesc').value,
+                rating: document.getElementById('rating').value,
+                vibeDesc: document.getElementById('vibeDesc').value
+            };
+
+            try {
+                const res = await fetch('/api/add-venue', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await res.json();
+
+                if (res.ok) {
+                    alert('✅ Success! ' + result.message);
+                    document.getElementById('venueForm').reset();
+                    selectedVibes = [];
+                    renderVibes();
+                } else {
+                    alert('❌ Error: ' + result.message);
+                }
+            } catch (err) {
+                alert('FAILED: Is the server running? (python scripts/serve_admin.py)');
+                console.error(err);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = originalText;
+            }
+        };
+
+        // MANUAL HANDLER
+        document.getElementById('venueForm').onsubmit = function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const category = document.getElementById('category').value;
+            const touristLevel = document.getElementById('touristLevel').value;
+            const priceRange = document.getElementById('priceRange').value;
+            const numericalPrice = document.getElementById('numericalPrice').value || '';
+            const bestSeason = document.getElementById('bestSeason').value;
+            const vibes = selectedVibes.join(', ');
+            const shortDesc = document.getElementById('shortDesc').value.replace(/"/g, '""');
+            const rating = document.getElementById('rating').value || '';
+            const vibeDesc = document.getElementById('vibeDesc').value.replace(/"/g, '""');
+
+            // Generate CSV row
+            const csvRow = `${name},${category},${touristLevel},${priceRange},${numericalPrice},${bestSeason},"${vibes}","${shortDesc}",${rating},"${vibeDesc}"`;
+
+            document.getElementById('output').style.display = 'block';
+            document.getElementById('output').textContent = csvRow;
+            document.getElementById('copyBtn').style.display = 'inline-block';
+        };
+
+        function copyOutput() {
+            const text = document.getElementById('output').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                document.getElementById('copyBtn').textContent = '✓ Copied!';
+                setTimeout(() => {
+                    document.getElementById('copyBtn').textContent = '📋 Copy to Clipboard';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+
+</html>
