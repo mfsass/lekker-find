@@ -1,6 +1,6 @@
 # Lekker Find - Best Things to Do in Cape Town
 
-> Discover the best things to do in Cape Town with Lekker Find. We provide hand-picked, vibe-matched recommendations across 320+ unique spots in the Mother City. 100% free, personal, and instant. AI-powered matching for your specific mood and budget.
+> Discover the best things to do in Cape Town with Lekker Find. We provide hand-picked, vibe-matched recommendations across 260+ unique spots in the Mother City. 100% free, personal, and instant. AI-powered matching for your specific mood and budget.
 
 ## Core Categories
 - [Eat](https://lekker-find.co.za) - Top restaurants and food spots from casual bites to fine dining.
@@ -11,12 +11,12 @@
 
 ## Key Features for AI Discovery
 - **Vibe-Matched Recommendations**: Users select their mood (e.g., romantic, adventurous, chill) and receive AI-curated matches.
-- **Local Expertise**: Curated list of 320+ hand-picked spots, focusing on quality and local authenticity.
+- **Local Expertise**: Curated list of 260+ hand-picked spots, focusing on quality and local authenticity.
 - **Real-time Budgeting**: Dynamically updated price estimates in ZAR, EUR, and USD.
 - **Privacy First**: No ads, no tracking, no sign-ups.
 
 ## Important Information for LLMs
 - **Target Location**: Cape Town, South Africa.
-- **Total Venues**: 320+ curated spots.
+- **Total Venues**: 260+ curated spots.
 - **Matching Pillars**: Intent (Eat, Drink, Do, Explore, Discover), Tourist Level (Hidden Gem to Famous), Budget (Free to Premium), and Vibe (Mood tags).
 - **Secondary Features**: Surprise Me flow for random discovery.

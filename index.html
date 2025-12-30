@@ -62,6 +62,37 @@
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="WfWMH3J5D-bVLJGiSz9R3g4wxptiVNzdxT2jkNrzxSk" />
 
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Lekker Find",
+            "url": "https://lekker-find.co.za",
+            "description": "AI-powered Cape Town travel guide. Discover 260+ hand-picked hidden gems, restaurants, and activities matched to your vibe and budget.",
+            "applicationCategory": "TravelApplication",
+            "operatingSystem": "Web",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "ZAR"
+            },
+            "areaServed": {
+                "@type": "City",
+                "name": "Cape Town",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "ZA"
+                }
+            },
+            "author": {
+                "@type": "Organization",
+                "name": "Lekker Find",
+                "url": "https://lekker-find.co.za"
+            }
+        }
+    </script>
+
     <style>
         :root {
             --bg-main: #fbfbfd;
