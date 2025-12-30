@@ -12,8 +12,11 @@ MAPS_API_KEY=AIza...
 # Generate embeddings (only runs on new venues)
 python scripts/generate_embeddings.py
 
-# Fetch images (only runs on venues without images)
+# Fetch images (adds external URLs to JSON)
 python scripts/fetch_images.py
+
+# Localize images (downloads to public/ and updates JSON paths)
+python scripts/localize_images.py
 
 # Test embedding quality
 python scripts/test_embeddings.py
@@ -36,11 +39,20 @@ This will:
 - Generate embeddings ONLY for new venues
 - Merge with existing data
 
-### Step 3: Fetch Images for New Venues
+### Step 3: Fetch Meta-data for New Venues
 ```bash
 python scripts/fetch_images.py
 ```
-This automatically skips venues that already have `image_url`.
+This automatically skips venues that already have an `image_url` property in the JSON.
+
+### Step 4: Localize New Images
+```bash
+python scripts/localize_images.py
+```
+**This is required for production.** It downloads the actual image files to `public/images/venues/` and replaces the Google API URLs with local paths.
+- Skips images that already exist on disk.
+- Removes the need for a runtime API key.
+- Ensures absolute reliability in production.
 
 ---
 
@@ -83,6 +95,20 @@ Fetches venue photos from Google Places API.
   "image_attribution": "Photographer Name"
 }
 ```
+
+---
+
+### `localize_images.py`
+Downloads images to local storage and strips API keys from JSON.
+
+**Workflow:**
+1. Looks for `image_url` starting with `http` in JSON.
+2. Downloads the binary file to `public/images/venues/[id].jpg`.
+3. Skips if the file already exists on disk (incremental).
+4. Updates JSON `image_url` to the local relative path.
+
+**Flags:**
+- `--force` - Redownload all images even if they exist.
 
 ---
 

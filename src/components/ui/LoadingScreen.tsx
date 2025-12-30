@@ -20,11 +20,14 @@ function preloadImages(venues: VenueWithMatch[]): Promise<void[]> {
         imageUrls.map(url =>
             new Promise<void>((resolve) => {
                 const img = new Image();
-                img.referrerPolicy = 'no-referrer'; // Prevents some "blocked by client" issues
+                // We use crossOrigin to help with CORS but let referrer pass through 
+                // for Google Maps API key verification
+                img.crossOrigin = 'anonymous';
                 img.onload = () => resolve();
                 img.onerror = () => {
-                    console.warn(`Failed to preload image: ${url}`);
-                    resolve(); // Don't block the app, but log it
+                    const cleanUrl = typeof url === 'string' ? url.split('?')[0] : 'Unknown URL';
+                    console.warn(`Failed to preload image: ${cleanUrl}... (Check API key restrictions)`);
+                    resolve();
                 };
                 img.src = url as string;
             })
