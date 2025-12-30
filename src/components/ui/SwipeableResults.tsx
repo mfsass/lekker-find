@@ -197,7 +197,7 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
                         <img
                             src={imageUrl}
                             alt=""
-                            crossOrigin="anonymous"
+                            // crossOrigin="anonymous" // Removed for local images
                             style={{ display: 'none' }}
                             onLoad={() => setImageLoaded(true)}
                         />

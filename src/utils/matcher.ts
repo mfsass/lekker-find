@@ -346,12 +346,15 @@ export function useRecommendations(): UseRecommendationsResult {
         async function loadData() {
             try {
                 // @ts-ignore - 'priority' is supported in modern browsers to deprioritize large data
-                const response = await fetch('/lekker-find-data.json', { priority: 'low' });
+                // Add timestamp to bust cache as we recently changed image paths to local
+                const response = await fetch(`/lekker-find-data.json?v=${Date.now()}`, { priority: 'low' });
 
                 if (!response.ok) {
                     throw new Error(`Failed to load embeddings: ${response.status}`);
                 }
 
+                // Local images don't need crossOrigin
+                // img.crossOrigin = 'anonymous';
                 const json = await response.json();
 
                 if (!json.venues || !json.tag_embeddings) {

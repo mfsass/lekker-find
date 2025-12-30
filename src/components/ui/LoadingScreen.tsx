@@ -22,7 +22,8 @@ function preloadImages(venues: VenueWithMatch[]): Promise<void[]> {
                 const img = new Image();
                 // We use crossOrigin to help with CORS but let referrer pass through 
                 // for Google Maps API key verification
-                img.crossOrigin = 'anonymous';
+                // Local images don't need crossOrigin
+                // img.crossOrigin = 'anonymous';
                 img.onload = () => resolve();
                 img.onerror = () => {
                     const cleanUrl = typeof url === 'string' ? url.split('?')[0] : 'Unknown URL';

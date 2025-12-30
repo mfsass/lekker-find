@@ -1,65 +1,74 @@
-
 // Base lists for personality levels (Tourist/Vibe/Local)
 
-// Tourist/Welcoming: Distinctly South African but easy to grasp
+// Tourist/Welcoming: Distinctly Cape Town but safe
 const WORDS_TOURIST = [
-    "Lekker Vibes", "Mzansi Magic", "The Mother City", "Cape Town Calling",
-    "Braai Time", "Sundowners", "Ubuntu Spirit", "Summer Sunsets",
-    "Rainbow Nation", "Local Flava", "Good Gees", "SA Soul",
-    "Table Mountain Magic", "Coastal Dreams", "African Beats",
-    "Garden Route Gems", "Winelands Wonder", "Bushveld Breeze"
+    "Lekker Vibes", "Mother City", "Table Mountain", "the Wind",
+    "Braai Time", "Sundowners", "Ubuntu Spirit", "Beautiful Sunsets",
+    "Rainbow Nation", "Local Flavour", "the Gees", "Summer Season",
+    "12 Official Languages", "the Cold Water", "African Beats",
+    "Wine Farm Days", "The Big Five", "Wine Farms"
 ];
 
-// Local: Authentic Slang & Relatable South Africanisms
+// Local: Authentic Cape Town Slang (The real deal)
 const WORDS_LOCAL = [
-    "Aweh My Bru", "Sho! Check this", "Hosh!", "Proper Gees", "Eish! One sec",
-    "Now Now...", "Just Now...", "Wena!", "Chommie Vibes", "Howzit!",
-    "Satafrika", "Ja Nee", "Sharp Sharp", "Yoh!",
-    "Haibo!", "Lekker Laanie", "Smaak it", "Jislaaik!", "Boet",
-    "Robot is Green", "Taxis are Flying", "Loadshedding? Never.",
-    "Bakkie is Packed", "Vellies are On"
+    "Aweh My Bru", "Duidelik!", "Hosh!", "Proper Gees", "Eish! One sec",
+    "Now Now...", "Just Now...", "Wena!", "Chommie", "Howzit!",
+    "Is Ja!", "Ja Nee", "Sharp Sharp", "Yoh!",
+    "Haibo!", "Lekker Laanie", "Stiek Uit", "Jislaaik!", "Boet",
+    "Robot is Green", "Gaatjie is shouting", "Loadshedding... again",
+    "Bakkie is Packed", "Vellies and Vibes", "Mos"
 ];
 
 // Intent-specific lists (Personalized Context)
 const INTENT_WORDS: Record<string, string[]> = {
     food: [
-        "Proper Braai Chow", "Bunny Chow Search", "Shisa Nyama Vibes", "Koesisters & Coffee",
-        "Slap Chips & Vinegar", "Snoek Braai Magic", "Biltong & Droëwors", "Ouma Rusks",
-        "Feasts", "Something Lekker", "Street Food Gems", "Milk Tart Dreams"
+        "Hunting a Gatsby", "Shisa Nyama Vibes", "Sunday Koesisters", // Koesisters (Spicy/Coconut) > Koeksisters in CPT
+        "Slap Chips & Vinegar", "Snoek Braai Magic", "Biltong Stash",
+        "Ouma Rusks", "Something Lekker", "Kalky's Fish & Chips",
+        "Melktert Mission", "Spice Route", "Boerewors Rolls"
     ],
     drink: [
-        "A Proper Dop", "Ice Cold Ones", "Brannas & Coke", "Sundowner Gin",
-        "Cheers My Bru", "Craft Brews", "Ice Cold Savanna", "Springbokkie Shots",
-        "Klipdrift on Ice", "Liquid Courage", "Stoney Ginger Beer", "Rooibos Tea"
+        "A Proper Dop", "Ice Cold Ones", "Brannas & Coke", "Gin & Tonic",
+        "Cheers My Bru", "Craft Beers", "Ice Cold Savanna", "Springbokkies",
+        "Klipdrift Premium", "Liquid Courage", "Stoney Ginger Beer", "Wine Tasting"
     ],
     activity: [
-        "A Proper Jol", "Grooving in Kasi", "The Mission", "Hiking Lion's Head",
-        "Surfing Muizenberg", "Good Times", "Making Memories",
-        "Karoo Roadtrip", "Epic Vibes", "Pure Fire"
+        "A Proper Jol", "Grooving", "The Mission", "Hiking Lion's Head",
+        "Surfing Muizenberg", "Catching a Tan", "Making Memories",
+        "Chapman's Peak Drive", "Epic Vibes", "Pure Fire", "Promenade Walk"
     ],
     nature: [
-        "The Berg is Calling", "Ocean Views", "Fynbos Magic", "Fresh Air",
-        "Vitamin Sea", "Wild Coast", "Whale Watching", "Penguins & Kelp",
-        "Golden Hour at Signal Hill", "Sea Breeze", "Mountain Magic", "Bushveld Bliss"
+        "The Mountain is Out", // CPT specific: We look to see if the mountain is clear of clouds
+        "Ocean Views", "Fynbos Smell", "Fresh Air",
+        "Vitamin Sea", "West Coast Flowers", "Whale Watching", "Penguins at Boulders",
+        "Signal Hill Sunset", "South Easter Wind", "Kloofing", "Forest Vibes"
     ],
     culture: [
-        "Kasi Spirit", "Heritage Day Every Day", "12 Official Languages", "Stories",
-        "Kaapse Klopse Beats", "Ubuntu", "Art & Soul", "Rhythm", "Deep Context",
-        "Local Legends", "Township Tales", "The Real Mzansi"
+        "District Six Stories", "Heritage", "11 Languages", "Local Legends",
+        "Minstrels Parade", "Ubuntu", "Art & Soul", "Rhythm",
+        "First Thursdays", "Township Tales", "Mzansi for sure", "Deep Roots"
     ],
     any: [
         "Hidden Gems", "Lekker Discovery", "Checking the Gogo's recipe", "Gathering the Gees",
         "The Journey", "Mzansi Secrets", "Everything Lekker", "Pure Magic",
-        "Polishing the Safari wheels", "The Real Deal"
+        "Polishing the Vellies", "The Real Deal", "No Stress"
     ]
 };
 
-// Personality Phrases
+// Personality Phrases (The logic of the app speaking to you)
+// I updated these to sound less "Tech" and more "Helpful South African"
 const SMART_PHRASES = [
-    "Finding your Vibe...", "The Perfect Spot...", "Curated For You...",
-    "Something Special...", "Local Intel...", "Trust The Process...",
-    "Chef's Kiss...", "You're Gonna Love This...", "Insider Tip...",
-    "Nearly there, my Bru...", "Finding the real Magic..."
+    "Making a plan...",       // Very SA: "Maak 'n plan"
+    "Sorting you out...",     // Very SA: "I'll sort you out"
+    "Just check this...",
+    "Finding the vibe...",
+    "Hold tight my bru...",
+    "Cooking something up...",
+    "Trust the process...",
+    "Proper things...",       // "Proper" is big in CPT
+    "Insider info...",
+    "Almost there...",
+    "Checking the map..."
 ];
 
 export const getLoadingWords = (level: number | null, intent: string | null): string[] => {
@@ -71,6 +80,7 @@ export const getLoadingWords = (level: number | null, intent: string | null): st
     } else if (level >= 4) {
         baseList = WORDS_LOCAL;
     } else {
+        // Hybrid: The "Semi-Grater" (Semi-emigrated/local)
         baseList = [...WORDS_TOURIST.slice(0, 8), ...WORDS_LOCAL.slice(0, 8)];
     }
 
@@ -94,8 +104,7 @@ export const getLoadingWords = (level: number | null, intent: string | null): st
     };
 
     // Construct a 12-word journey:
-
-    // Mix them up in a structured but diverse way
+    // We mix Base (Vibe), Intent (Topic) and Smart (Action) to create a sentence-like flow.
     for (let i = 0; i < 4; i++) {
         if (shuffledBase[i]) addWord(shuffledBase[i]);
         if (shuffledIntent[i]) addWord(shuffledIntent[i]);
@@ -108,7 +117,7 @@ export const getLoadingWords = (level: number | null, intent: string | null): st
         if (shuffledBase[i]) addWord(shuffledBase[i]);
         else if (shuffledIntent[i]) addWord(shuffledIntent[i]);
         else if (shuffledSmart[i]) addWord(shuffledSmart[i]);
-        else addWord("Sharp Sharp!"); // Fallback
+        else addWord("Sharp Sharp!"); // The ultimate fallback
         i++;
     }
 
