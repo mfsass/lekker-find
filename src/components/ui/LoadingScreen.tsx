@@ -20,8 +20,12 @@ function preloadImages(venues: VenueWithMatch[]): Promise<void[]> {
         imageUrls.map(url =>
             new Promise<void>((resolve) => {
                 const img = new Image();
+                img.referrerPolicy = 'no-referrer'; // Prevents some "blocked by client" issues
                 img.onload = () => resolve();
-                img.onerror = () => resolve(); // Don't block on errors
+                img.onerror = () => {
+                    console.warn(`Failed to preload image: ${url}`);
+                    resolve(); // Don't block the app, but log it
+                };
                 img.src = url as string;
             })
         )
