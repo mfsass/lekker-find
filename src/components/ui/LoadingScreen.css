@@ -24,43 +24,50 @@
 
 /* 
    Content Wrapper - reusing .card concept but making it transparent/integrated 
-   if user wants "full screen" but the specific loader style.
-   The user said "loading can be black same as heading".
 */
 .loader-card {
-    /* We use the app background color as the 'bg-color' for the gradient masks */
     --bg-color: var(--background);
     background-color: var(--bg-color);
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem;
     border-radius: 1.25rem;
-    /* Removed shadow/border to keep it looking "native" not popup, unless requested. 
-     User said "page white, fade into loading centre... same app look and feel". 
-  */
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
 }
 
 .loader {
     color: var(--foreground);
-    /* "loading" text color */
     font-family: var(--font-sans);
     font-weight: 500;
-    font-size: 25px;
-    -webkit-box-sizing: content-box;
-    box-sizing: content-box;
-    height: 40px;
-    padding: 10px 10px;
-    display: -webkit-box;
-    display: -ms-flexbox;
+    font-size: 20px;
+    /* Reduced base size for mobile */
+    height: 32px;
+    /* Reduced height */
+    padding: 10px 0;
     display: flex;
-    border-radius: 8px;
+    align-items: center;
+    gap: 8px;
+    /* Use gap for cleaner spacing */
+}
+
+@media (min-width: 480px) {
+    .loader {
+        font-size: 25px;
+        height: 40px;
+    }
+
+    .loader-card {
+        padding: 1rem 2rem;
+    }
 }
 
 .words {
     overflow: hidden;
     position: relative;
-    height: 40px;
-    /* Match the loader's height for a perfect fit */
+    height: 100%;
+    /* Fill loader height */
     flex: 1;
-    /* Take remaining space */
 }
 
 /* Gradient mask for smooth entry/exit */
@@ -68,24 +75,24 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(var(--bg-color) 10%,
-            transparent 30%,
-            transparent 70%,
-            var(--bg-color) 90%);
+    background: linear-gradient(var(--bg-color) 0%,
+            transparent 25%,
+            transparent 75%,
+            var(--bg-color) 100%);
     z-index: 20;
+    pointer-events: none;
 }
 
 .word {
-    display: block;
+    display: flex;
+    align-items: center;
     height: 100%;
-    padding-left: 12px;
     color: var(--primary);
     animation: spin_loading 12s infinite cubic-bezier(0.1, 0.7, 0.1, 1);
     font-weight: 700;
     letter-spacing: -0.02em;
-    text-shadow: 0 0 20px rgba(var(--primary-rgb), 0.2);
+    text-shadow: 0 0 20px rgba(var(--primary-h), var(--primary-s), var(--primary-l), 0.2);
     white-space: nowrap;
-    /* Prevent long SA phrases from wrapping */
 }
 
 /* 
@@ -163,8 +170,14 @@
 .completion-message {
     font-weight: 800;
     color: var(--primary);
-    font-size: 25px;
+    font-size: 20px;
     animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@media (min-width: 480px) {
+    .completion-message {
+        font-size: 25px;
+    }
 }
 
 @keyframes popIn {

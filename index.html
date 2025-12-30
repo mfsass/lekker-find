@@ -66,14 +66,16 @@
         :root {
             --bg-main: #fbfbfd;
             --primary: #2e9e8f;
+            --foreground: #1c1f24;
         }
 
         body {
             margin: 0;
             padding: 0;
             background: var(--bg-main);
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             overflow-x: hidden;
+            color: var(--foreground);
         }
 
         .shell-container {
@@ -85,6 +87,8 @@
             justify-content: center;
             z-index: -1;
             background: var(--bg-main);
+            padding: 2rem;
+            text-align: center;
         }
 
         .shell-orb {
@@ -114,28 +118,32 @@
         .shell-logo {
             width: 120px;
             height: 120px;
-            opacity: 0.8;
-            /* Stable, no-animation shell for better LCP */
+            margin-bottom: 2rem;
         }
 
         .shell-title {
-            margin-top: 2rem;
-            font-size: 2rem;
+            font-size: clamp(2rem, 6vw, 3.5rem);
             font-weight: 700;
-            color: #1a1a1a;
-            opacity: 0.15;
-            text-align: center;
+            color: var(--foreground);
             letter-spacing: -0.03em;
             line-height: 1.1;
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+        }
+
+        .shell-accent {
+            background: linear-gradient(135deg, var(--primary), #116b5e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .shell-text {
-            margin-top: 1.5rem;
             font-size: 1.125rem;
             color: #666;
-            opacity: 0.1;
             max-width: 440px;
-            text-align: center;
+            line-height: 1.6;
+            margin-bottom: 3rem;
         }
 
         @media (min-width: 768px) {
@@ -144,8 +152,8 @@
                 height: 160px;
             }
 
-            .shell-title {
-                font-size: 3.5rem;
+            .shell-text {
+                font-size: 1.25rem;
             }
         }
     </style>
@@ -157,8 +165,9 @@
         <div class="shell-container">
             <div class="shell-orb shell-orb-1"></div>
             <div class="shell-orb shell-orb-2"></div>
-            <img src="/logo-min.png" alt="" class="shell-logo" width="160" height="160" fetchpriority="high">
-            <h1 class="shell-title">Discover something lekker</h1>
+            <img src="/logo-min.png" alt="" class="shell-logo" width="160" height="160" fetchpriority="high"
+                decoding="async">
+            <h1 class="shell-title">Discover something <span class="shell-accent">lekker</span></h1>
             <p class="shell-text">Not sure what to do in Cape Town?<br>Let us help you. Free, personal, instant.</p>
         </div>
     </div>
