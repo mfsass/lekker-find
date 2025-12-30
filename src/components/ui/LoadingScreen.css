@@ -23,42 +23,45 @@
 }
 
 /* 
-   Content Wrapper - reusing .card concept but making it transparent/integrated 
+   Content Wrapper 
 */
 .loader-card {
     --bg-color: var(--background);
     background-color: var(--bg-color);
-    padding: 1rem 1.5rem;
+    padding: 1.5rem;
     border-radius: 1.25rem;
-    width: 100%;
-    max-width: 400px;
+    width: auto;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .loader {
     color: var(--foreground);
     font-family: var(--font-sans);
     font-weight: 500;
+
+    /* Mobile First Dimensions */
     font-size: 20px;
-    /* Reduced base size for mobile */
-    height: 32px;
-    /* Reduced height */
-    padding: 10px 0;
+    height: 40px;
+    /* Explicit height for the "window" */
+
+    padding: 0;
+    /* Remove internal padding to give full height to text */
     display: flex;
     align-items: center;
-    gap: 8px;
-    /* Use gap for cleaner spacing */
+    gap: 0.75rem;
 }
 
 @media (min-width: 480px) {
     .loader {
-        font-size: 25px;
-        height: 40px;
+        font-size: 28px;
+        height: 50px;
+        gap: 1rem;
     }
 
     .loader-card {
-        padding: 1rem 2rem;
+        padding: 2rem 3rem;
     }
 }
 
