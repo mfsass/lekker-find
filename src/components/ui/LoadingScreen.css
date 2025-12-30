@@ -57,6 +57,10 @@
 .words {
     overflow: hidden;
     position: relative;
+    height: 40px;
+    /* Match the loader's height for a perfect fit */
+    flex: 1;
+    /* Take remaining space */
 }
 
 /* Gradient mask for smooth entry/exit */
@@ -74,54 +78,85 @@
 .word {
     display: block;
     height: 100%;
-    padding-left: 10px;
-    /* Increased slightly for spacing */
+    padding-left: 12px;
     color: var(--primary);
-    /* Green theme color */
-    animation: spin_4991 4s infinite;
+    animation: spin_loading 12s infinite cubic-bezier(0.1, 0.7, 0.1, 1);
     font-weight: 700;
+    letter-spacing: -0.02em;
+    text-shadow: 0 0 20px rgba(var(--primary-rgb), 0.2);
+    white-space: nowrap;
+    /* Prevent long SA phrases from wrapping */
 }
 
-/* EXACT Keyframes provided by user */
-@keyframes spin_4991 {
-    10% {
-        -webkit-transform: translateY(-102%);
-        transform: translateY(-102%);
+/* 
+   Calm Vertical Spin for 12 words 
+   Each word gets 1/12th of the timeline (~8.33%)
+   ~5% static (0.6s), ~3.33% smooth transition (0.4s)
+*/
+@keyframes spin_loading {
+
+    0%,
+    5% {
+        transform: translateY(0%);
     }
 
-    25% {
-        -webkit-transform: translateY(-100%);
+    8.33%,
+    13.33% {
         transform: translateY(-100%);
     }
 
-    35% {
-        -webkit-transform: translateY(-202%);
-        transform: translateY(-202%);
-    }
-
-    50% {
-        -webkit-transform: translateY(-200%);
+    16.66%,
+    21.66% {
         transform: translateY(-200%);
     }
 
-    60% {
-        -webkit-transform: translateY(-302%);
-        transform: translateY(-302%);
-    }
-
-    75% {
-        -webkit-transform: translateY(-300%);
+    25%,
+    30% {
         transform: translateY(-300%);
     }
 
-    85% {
-        -webkit-transform: translateY(-402%);
-        transform: translateY(-402%);
+    33.33%,
+    38.33% {
+        transform: translateY(-400%);
+    }
+
+    41.66%,
+    46.66% {
+        transform: translateY(-500%);
+    }
+
+    50%,
+    55% {
+        transform: translateY(-600%);
+    }
+
+    58.33%,
+    63.33% {
+        transform: translateY(-700%);
+    }
+
+    66.66%,
+    71.66% {
+        transform: translateY(-800%);
+    }
+
+    75%,
+    80% {
+        transform: translateY(-900%);
+    }
+
+    83.33%,
+    88.33% {
+        transform: translateY(-1000%);
+    }
+
+    91.66%,
+    96.66% {
+        transform: translateY(-1100%);
     }
 
     100% {
-        -webkit-transform: translateY(-400%);
-        transform: translateY(-400%);
+        transform: translateY(-1200%);
     }
 }
 

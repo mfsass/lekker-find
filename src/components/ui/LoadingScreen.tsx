@@ -13,7 +13,8 @@ interface LoadingScreenProps {
 
 // Preload venue images
 function preloadImages(venues: VenueWithMatch[]): Promise<void[]> {
-    const imageUrls = venues.slice(0, 5).map(v => v.image_url).filter(Boolean);
+    // Preload more images (up to 10) to make the swipe experience smooth
+    const imageUrls = venues.slice(0, 10).map(v => v.image_url).filter(Boolean);
 
     return Promise.all(
         imageUrls.map(url =>
@@ -36,13 +37,15 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({
 }) => {
     const [isDone, setIsDone] = useState(false);
     const [imagesReady, setImagesReady] = useState(false);
-    const minDuration = useRef(4000); // Minimum 4s for animation
+    const minDuration = useRef(3000); // Minimum 3s for animation
     const startTime = useRef<number>(0);
 
     // Select curated words based on tourist level & intent
+    // We stabilize this so it doesn't change during the visible phase
     const sessionWords = useMemo(() => {
+        if (!isVisible) return [];
         return getLoadingWords(touristLevel, intent);
-    }, [isVisible, touristLevel, intent]);
+    }, [isVisible]); // Only regenerate when isVisible flips from false to true
 
     // Preload images
     useEffect(() => {
@@ -57,29 +60,29 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({
     useEffect(() => {
         if (isVisible) {
             startTime.current = Date.now();
+            setIsDone(false); // Reset done state
 
             if (document.body) {
                 document.body.style.overflow = 'hidden';
             }
 
-            // Wait for minimum duration
+            // Wait for minimum duration (3s)
             const minTimer = setTimeout(() => {
-                // Check if images are ready or wait a bit more
                 const checkAndComplete = () => {
                     const elapsed = Date.now() - startTime.current;
 
+                    // Images ready OR hit the 8s snappy cap
                     if (imagesReady || elapsed > 8000) {
-                        // Images ready or max time reached
                         setIsDone(true);
                         setTimeout(() => {
                             if (document.body) {
                                 document.body.style.overflow = '';
                             }
                             onComplete();
-                        }, 1000); // Wait a second on "lekker!"
+                        }, 800); // Shorter beat on "lekker!" to stay snappy
                     } else {
-                        // Images not ready, check again in 500ms
-                        setTimeout(checkAndComplete, 500);
+                        // Keep checking every 200ms for faster feedback
+                        setTimeout(checkAndComplete, 200);
                     }
                 };
 
@@ -92,11 +95,8 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({
                     document.body.style.overflow = '';
                 }
             };
-        } else {
-            setIsDone(false);
-            setImagesReady(false);
         }
-    }, [isVisible, imagesReady, onComplete]);
+    }, [isVisible, imagesReady]); // Simplified dependencies for better stability
 
     if (!isVisible) return null;
 
@@ -112,7 +112,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({
                         <p>Loading</p>
 
                         <div className="words">
-                            {sessionWords.map((word, i) => (
+                            {[...sessionWords, sessionWords[0]].map((word, i) => (
                                 <span key={i} className="word">{word}</span>
                             ))}
                         </div>
