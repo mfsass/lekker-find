@@ -28,6 +28,7 @@
 
 .results-close,
 .results-restart {
+    /* Base styles for icon buttons */
     width: 44px;
     height: 44px;
     display: flex;
@@ -39,6 +40,18 @@
     color: hsl(220 10% 40%);
     cursor: pointer;
     transition: all 0.15s ease;
+}
+
+/* Text Button Variant */
+.results-close.text-btn,
+.results-restart.text-btn {
+    width: auto;
+    height: auto;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    background: hsla(220, 20%, 96%, 0.8);
+    color: hsl(220, 10%, 40%);
 }
 
 .results-close:hover,

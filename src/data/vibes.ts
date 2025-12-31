@@ -32,12 +32,10 @@ Object.entries(SYNONYM_GROUPS).forEach(([group, words]) => {
 
 // 2. Refined Context Lists (Simplified English)
 const VIBES_BY_CONTEXT = {
-    // Intent-specific vibes
-    food: ['Handmade', 'Tasty', 'Comfort', 'Healthy', 'Treat', 'Street-food', 'Fresh', 'Trendy', 'Traditional', 'Simple'], // Artisanal->Handmade, Indulgent->Treat
-    drink: ['Craft', 'Cocktails', 'Hidden-bar', 'Rooftop', 'Sunset', 'Tasting', 'Dive-bar', 'Classy', 'Social', 'Wine'],
-    activity: ['Adventure', 'Exciting', 'Active', 'Learning', 'Wellness', 'Workshop', 'Outdoor', 'Culture', 'Fun'],
-    nature: ['Peaceful', 'Scenic', 'Mountain', 'Beach', 'Forest', 'Garden', 'Quiet', 'Chill', 'Hiking', 'Sunset', 'Sea-life', 'Open-air'],
-    culture: ['History', 'Museum', 'Art', 'Music', 'Theatre', 'Heritage', 'Soul', 'Design', 'Stories'],
+    // Intent-specific vibes (consolidated)
+    food_drink: ['Handmade', 'Tasty', 'Comfort', 'Healthy', 'Treat', 'Street-food', 'Fresh', 'Trendy', 'Traditional', 'Craft', 'Cocktails', 'Rooftop', 'Sunset', 'Tasting', 'Wine', 'Social'],
+    activity: ['Adventure', 'Exciting', 'Active', 'Learning', 'Wellness', 'Workshop', 'Outdoor', 'Fun', 'Peaceful', 'Scenic', 'Mountain', 'Beach', 'Forest', 'Garden', 'Hiking', 'Sea-life'],
+    attraction: ['History', 'Museum', 'Art', 'Music', 'Theatre', 'Heritage', 'Soul', 'Design', 'Stories', 'Famous', 'Landmark', 'Culture'],
 
     // Tourist level specific vibes
     famous: ['Famous', 'Must-see', 'Tourist-friendly', 'Classic', 'Landmark', 'Busy', 'Photo-ready'], // Iconic->Famous
@@ -55,9 +53,9 @@ const VIBES_BY_CONTEXT = {
 
 // 3. Negative Exclusion Rules (Same as before)
 const EXCLUSIONS: Record<string, string[]> = {
-    activity: ['Tasty', 'Tasting', 'Fine-dining', 'Wine', 'Cocktails'],
-    food: ['Hiking', 'Active', 'Extreme', 'Museum', 'Theatre'],
-    drink: ['Hiking', 'Active', 'Family', 'Playground', 'Wellness'],
+    food_drink: ['Hiking', 'Active', 'Extreme', 'Museum', 'Theatre', 'Wellness'],
+    activity: ['Fine-dining', 'Cocktails', 'Wine'],
+    attraction: ['Tasty', 'Tasting', 'Street-food', 'Hiking', 'Beach'],
     budget: ['VIP', 'Luxury', 'Fine-dining', 'Exclusive', 'Upscale', 'Treat', 'Boutique', 'Private'],
     free: ['VIP', 'Luxury', 'Fine-dining', 'Shopping', 'Paid', 'Expensive', 'Treat', 'Drinks'],
     local: ['Tourist-friendly', 'Famous', 'Must-see', 'Crowded', 'Bus-tour'],
@@ -195,4 +193,53 @@ export function shouldShowPriceDisclaimer(intent: string | null, touristLevel: n
     if (isTouristLevel(touristLevel)) return true;
     if (intent === 'activity' || intent === 'nature' || intent === 'culture') return true;
     return false;
+}
+
+/**
+ * Get vibes that are implied by the user's questionnaire selections.
+ * These vibes should NOT appear in the "avoid" step as they conflict
+ * with what the user explicitly requested.
+ * 
+ * Example: If user selected "Must-see" tourist level, offering "Famous" 
+ * or "Must-see" as an avoid option would be contradictory.
+ */
+export function getImpliedVibesFromSelections(
+    intent: string | null,
+    touristLevel: number | null,
+    budget: string | null
+): string[] {
+    const impliedVibes = new Set<string>();
+
+    // Tourist level implies certain vibes shouldn't be avoided
+    if (touristLevel !== null) {
+        if (touristLevel <= 2) {
+            // Must-see or Popular → don't allow avoiding famous/tourist vibes
+            VIBES_BY_CONTEXT.famous.forEach(v => impliedVibes.add(v));
+            if (touristLevel === 2) {
+                VIBES_BY_CONTEXT.popular.forEach(v => impliedVibes.add(v));
+            }
+        } else if (touristLevel === 3) {
+            // Mix of both → neutral, less strict
+            VIBES_BY_CONTEXT.balanced.forEach(v => impliedVibes.add(v));
+        } else if (touristLevel === 4) {
+            // Off the path → don't allow avoiding local vibes
+            VIBES_BY_CONTEXT.local.forEach(v => impliedVibes.add(v));
+        } else if (touristLevel >= 5) {
+            // Hidden gems → don't allow avoiding hidden/secret vibes
+            VIBES_BY_CONTEXT.hidden.forEach(v => impliedVibes.add(v));
+            VIBES_BY_CONTEXT.local.forEach(v => impliedVibes.add(v));
+        }
+    }
+
+    // Budget implies certain vibes shouldn't be avoided
+    if (budget && budget !== 'any' && budget in VIBES_BY_CONTEXT) {
+        VIBES_BY_CONTEXT[budget as keyof typeof VIBES_BY_CONTEXT].forEach(v => impliedVibes.add(v));
+    }
+
+    // Intent implies certain vibes shouldn't be avoided
+    if (intent && intent !== 'any' && intent in VIBES_BY_CONTEXT) {
+        VIBES_BY_CONTEXT[intent as keyof typeof VIBES_BY_CONTEXT].forEach(v => impliedVibes.add(v));
+    }
+
+    return Array.from(impliedVibes);
 }

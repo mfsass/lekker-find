@@ -66,7 +66,8 @@ export interface MatchParams {
     intent?: string | null;
     touristLevel?: number | null;
     budget?: string | null;
-    moods: string[];  // Max 5 selected
+    moods: string[];  // Max 5 selected (liked vibes)
+    negativeMoods?: string[];  // NEW: Vibes to avoid (max 5)
 }
 
 export interface MatchOptions {
@@ -125,6 +126,24 @@ function meanPool(embeddings: number[][]): number[] {
     return mean;
 }
 
+/**
+ * Subtract one vector from another.
+ * Used for preference refinement: liked - disliked vibes.
+ */
+function subtractVectors(a: number[], b: number[]): number[] {
+    if (!a || !b || a.length !== b.length) {
+        console.warn('Invalid vectors for subtraction, returning first vector');
+        return a;
+    }
+
+    const result = new Array(a.length);
+    for (let i = 0; i < a.length; i++) {
+        result[i] = a[i] - b[i];
+    }
+
+    return result;
+}
+
 // ============================================================================
 // FILTERING
 // ============================================================================
@@ -168,20 +187,15 @@ function filterByTouristLevel(venues: Venue[], touristLevel: number | null | und
     return venues;
 }
 
-/**
- * Filter venues by category/intent.
- */
 function filterByIntent(venues: Venue[], intent: string | null | undefined): Venue[] {
     if (!intent || intent === 'any') {
         return venues;
     }
 
     const categoryMap: Record<string, string[]> = {
-        food: ['Food'],
-        drink: ['Drink'],
-        activity: ['Activity'],
-        nature: ['Nature'],
-        culture: ['Culture'],
+        food_drink: ['Food', 'Drink'],
+        activity: ['Activity', 'Nature'],
+        attraction: ['Culture'],
     };
 
     const categories = categoryMap[intent];
@@ -209,23 +223,22 @@ export function findMatches(
     data: EmbeddingsData,
     options: MatchOptions = {}
 ): VenueWithMatch[] {
-    const { minScore = 0.4, maxResults = 20 } = options;
-    const startTime = performance.now();
+    const { maxResults = 20 } = options;
 
-    console.log('🔍 Finding matches...', { params, minScore, maxResults });
+
 
     let venues = [...data.venues];
 
     // Phase 1: Hard filters
     venues = filterByIntent(venues, params.intent);
-    console.log(`  After intent filter: ${venues.length}`);
+
 
     venues = filterByTouristLevel(venues, params.touristLevel);
-    console.log(`  After tourist filter: ${venues.length}`);
+
 
     const allowedTiers = getBudgetTiers(params.budget);
     venues = venues.filter(v => allowedTiers.includes(v.price_tier));
-    console.log(`  After budget filter: ${venues.length}`);
+
 
     // Phase 2: Semantic matching
     if (params.moods.length === 0) {
@@ -248,12 +261,26 @@ export function findMatches(
         return venues.slice(0, maxResults).map(v => ({ ...v, matchPercentage: 50 }));
     }
 
-    console.log(`  Using ${moodEmbeddings.length} mood embeddings`);
 
-    // Create user vibe vector
-    const userVibe = meanPool(moodEmbeddings);
 
-    // Step 1: Calculate raw scores with keyword boost
+    // Get negative mood embeddings if provided
+    const negativeMoodEmbeddings = (params.negativeMoods || [])
+        .slice(0, 5) // Max 5
+        .map(mood => data.tag_embeddings[mood])
+        .filter((emb): emb is number[] => emb !== undefined);
+
+    // Create user vibe vector with preference refinement
+    let userVibe = meanPool(moodEmbeddings);
+
+    // Apply embedding subtraction if negative moods are provided
+    // This implements: preference = liked - disliked
+    if (negativeMoodEmbeddings.length > 0) {
+        const negativeVibe = meanPool(negativeMoodEmbeddings);
+        userVibe = subtractVectors(userVibe, negativeVibe);
+
+    }
+
+    // Step 1: Calculate raw scores with keyword boost and avoid penalty
     const rawScored = venues.map(venue => {
         const rawScore = cosineSimilarity(userVibe, venue.embedding);
 
@@ -262,9 +289,16 @@ export function findMatches(
             venue.vibes.some(v => v.toLowerCase() === mood.toLowerCase())
         );
         const keywordBoost = matchingVibes.length * 0.08; // +8% per matching vibe
-        const boostedScore = rawScore + keywordBoost;
 
-        return { venue, boostedScore, matchingVibes: matchingVibes.length };
+        // KEYWORD PENALTY: Subtract when venue has avoided tag match
+        const avoidedMatches = (params.negativeMoods || []).filter(mood =>
+            venue.vibes.some(v => v.toLowerCase() === mood.toLowerCase())
+        );
+        const avoidPenalty = avoidedMatches.length * 0.10; // -10% per avoided match
+
+        const boostedScore = rawScore + keywordBoost - avoidPenalty;
+
+        return { venue, boostedScore, matchingVibes: matchingVibes.length, avoidedMatches: avoidedMatches.length };
     });
 
     // Step 2: Find min/max for RELATIVE scaling
@@ -275,7 +309,7 @@ export function findMatches(
 
     // Step 3: Relative scaling - best match gets 85-95%, others scale down
     // The top score maps to ~90%, spread based on actual score distribution
-    const scored = rawScored.map(({ venue, boostedScore, matchingVibes }) => {
+    const scored = rawScored.map(({ venue, boostedScore, matchingVibes, avoidedMatches }) => {
         // Normalize to 0-1 range within this result set
         const normalized = (boostedScore - lowestScore) / scoreRange;
 
@@ -284,6 +318,9 @@ export function findMatches(
 
         // Bonus 1: Keyword matches (up to +5%)
         const keywordBonus = Math.min(5, matchingVibes * 2);
+
+        // Penalty: Avoided matches (up to -10%)
+        const avoidPenalty = Math.min(10, avoidedMatches * 4);
 
         // Bonus 2: Rating Quality Boost
         // We boost high-rated venues so quality naturally rises to the top
@@ -296,7 +333,7 @@ export function findMatches(
             else if (venue.rating < 4.0) ratingBonus = -5;
         }
 
-        const finalPercent = Math.min(98, basePercent + keywordBonus + ratingBonus);
+        const finalPercent = Math.max(30, Math.min(98, basePercent + keywordBonus + ratingBonus - avoidPenalty));
 
         return {
             ...venue,
@@ -311,9 +348,8 @@ export function findMatches(
 
     const results = filtered.slice(0, maxResults);
 
-    const duration = performance.now() - startTime;
-    console.log(`✓ Found ${results.length} matches in ${duration.toFixed(1)}ms`);
-    console.log(`  Score range: ${Math.round(lowestScore * 100)}-${Math.round(highestScore * 100)}% → Display: ${results[results.length - 1]?.matchPercentage}-${results[0]?.matchPercentage}%`);
+
+
 
     return results;
 }
@@ -388,7 +424,6 @@ export function useRecommendations(): UseRecommendationsResult {
     useEffect(() => {
         async function loadData() {
             try {
-                // @ts-ignore - 'priority' is supported in modern browsers to deprioritize large data
                 // Add timestamp to bust cache as we recently changed image paths to local
                 const response = await fetch(`/lekker-find-data.json?v=${Date.now()}`, { priority: 'low' });
 
@@ -404,14 +439,17 @@ export function useRecommendations(): UseRecommendationsResult {
                     throw new Error('Invalid embeddings data structure');
                 }
 
-                console.log(`✓ Loaded ${json.venues.length} venues, ${Object.keys(json.tag_embeddings).length} tags`);
+
 
                 setData(json);
                 setLoading(false);
             } catch (err) {
                 console.error('Error loading recommendations:', err);
-                setError(err instanceof Error ? err : new Error(String(err)));
+                const error = err instanceof Error ? err : new Error(String(err));
+                setError(error);
                 setLoading(false);
+                // Throw error so ErrorBoundary catches it
+                throw error;
             }
         }
 
@@ -457,7 +495,7 @@ export function useRecommendations(): UseRecommendationsResult {
  * Test embedding quality by checking expected relationships.
  */
 export function testEmbeddings(data: EmbeddingsData): void {
-    console.log('🧪 Testing embedding quality...');
+
 
     const tests = [
         { pair: ['Romantic', 'Cozy'], expect: 'high' },
@@ -478,12 +516,13 @@ export function testEmbeddings(data: EmbeddingsData): void {
         }
 
         const sim = cosineSimilarity(emb1, emb2);
-        const pct = Math.round(sim * 100);
-        const pass =
+        // Test passes if similarity matches expected relationship
+        const _pass =
             (test.expect === 'high' && sim > 0.5) ||
             (test.expect === 'low' && sim < 0.5);
+        void _pass; // Suppress unused warning - function used for debugging
 
-        console.log(`${pass ? '✓' : '✗'} ${tag1} ↔ ${tag2}: ${pct}% (expected ${test.expect})`);
+
     }
 }
 

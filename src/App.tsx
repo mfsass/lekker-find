@@ -3,7 +3,7 @@ import { LazyMotion, domAnimation, m, AnimatePresence } from 'framer-motion';
 import {
     Sparkles, Gem, ChevronRight, ArrowLeft,
     Camera, Star, Heart, Scale,
-    UtensilsCrossed, Mountain, TreePine, Coffee, Landmark,
+    UtensilsCrossed, Mountain, Landmark,
     Gift, Coins, Banknote, Crown, Shuffle, RefreshCcw
 } from 'lucide-react';
 
@@ -11,8 +11,9 @@ import { RainbowButton } from './components/ui/RainbowButton';
 // Lazy load heavy components
 const LoadingScreen = lazy(() => import('./components/ui/LoadingScreen').then(module => ({ default: module.LoadingScreen })));
 const SwipeableResults = lazy(() => import('./components/ui/SwipeableResults').then(module => ({ default: module.SwipeableResults })));
-import { getContextualMoods, shouldShowPriceDisclaimer, getBudgetDisplay } from './data/vibes';
+import { getContextualMoods, shouldShowPriceDisclaimer, getBudgetDisplay, getImpliedVibesFromSelections } from './data/vibes';
 import { useRecommendations, VenueWithMatch } from './utils/matcher';
+import { selectDiverseVibes, selectOppositeVibes } from './utils/vibeDispersion';
 
 
 /**
@@ -25,25 +26,23 @@ import { useRecommendations, VenueWithMatch } from './utils/matcher';
  * Accessibility: Uses clear, simple language for diverse audiences.
  */
 
-type AppStep = 'landing' | 'question-intent' | 'question-vibe' | 'question-budget' | 'question-mood' | 'results';
+type AppStep = 'landing' | 'question-intent' | 'question-vibe' | 'question-budget' | 'question-mood' | 'question-avoid' | 'results';
 
-// Intent options - simple, action-oriented wording
+// Intent options - simple, consolidated categories
 const intentOptions = [
-    { value: 'food', label: 'Eat', sublabel: 'Food & restaurants', icon: UtensilsCrossed },
-    { value: 'drink', label: 'Drink', sublabel: 'Coffee, wine & bars', icon: Coffee },
-    { value: 'activity', label: 'Do', sublabel: 'Fun activities', icon: Mountain },
-    { value: 'nature', label: 'Explore', sublabel: 'Nature & outdoors', icon: TreePine },
-    { value: 'culture', label: 'Discover', sublabel: 'Culture & history', icon: Landmark },
+    { value: 'food_drink', label: 'Food & Drink', sublabel: 'Eat, coffee & bars', icon: UtensilsCrossed },
+    { value: 'activity', label: 'Activity', sublabel: 'Do, hike & explore', icon: Mountain },
+    { value: 'attraction', label: 'Attraction', sublabel: 'See & experience', icon: Landmark },
     { value: 'any', label: 'Surprise me', sublabel: 'Anything goes', icon: Sparkles },
 ];
 
-// Tourist level spectrum - famous spots to hidden gems
+// Tourist level - clear progression from must-see to hidden
 const touristLevelOptions = [
-    { value: 1, label: 'Famous', sublabel: 'Must-see spots', icon: Camera },
-    { value: 2, label: 'Popular', sublabel: 'Well-known picks', icon: Star },
-    { value: 3, label: 'Balanced', sublabel: 'Best of both', icon: Scale },
-    { value: 4, label: 'Local', sublabel: 'Off the path', icon: Heart },
-    { value: 5, label: 'Hidden', sublabel: 'Secret gems', icon: Gem },
+    { value: 1, label: 'Must-see', sublabel: 'Top attractions', icon: Camera },
+    { value: 2, label: 'Popular', sublabel: 'Well-known spots', icon: Star },
+    { value: 3, label: 'Mix of both', sublabel: 'Variety', icon: Scale },
+    { value: 4, label: 'Off the path', sublabel: 'Local favorites', icon: Heart },
+    { value: 5, label: 'Hidden gems', sublabel: 'Secret spots', icon: Gem },
 ];
 
 // Budget options - dynamically shows EUR for tourists
@@ -69,12 +68,15 @@ function App() {
     const [selectedTouristLevel, setSelectedTouristLevel] = useState<number | null>(null);
     const [selectedBudget, setSelectedBudget] = useState<string | null>(null);
     const [selectedMoods, setSelectedMoods] = useState<string[]>([]);
+    const [avoidedMoods, setAvoidedMoods] = useState<string[]>([]); // NEW: Vibes to avoid
     const [currency, setCurrency] = useState<'ZAR' | 'EUR' | 'USD'>('ZAR');
     const [exchangeRates, setExchangeRates] = useState<Record<string, number>>({ ZAR: 1, EUR: 0.05, USD: 0.053 });
+    const [isCuriousMode, setIsCuriousMode] = useState(false);
 
     const handleCurious = () => {
-        // Preset for "Surprise Me" flow
+        // Preset for "Surprise Me" flow - goes straight to results
         if (!recommendationsReady) return;
+        setIsCuriousMode(true);
         const results = surpriseMe(20);
         setMatchedVenues(results);
         setSelectedIntent('any');
@@ -137,19 +139,77 @@ function App() {
 
     // Get context-aware moods based on previous selections
     const [availableMoods, setAvailableMoods] = useState<string[]>([]);
+    const [availableAvoidMoods, setAvailableAvoidMoods] = useState<string[]>([]);
 
-    // Update available moods when context changes
+    // Load embedding data for dispersion calculations  
+    const [embeddingsData, setEmbeddingsData] = useState<Record<string, number[]> | null>(null);
+
+    // Fetch embeddings data when component mounts
     useEffect(() => {
-        setAvailableMoods(getContextualMoods(selectedIntent, selectedTouristLevel, selectedBudget, 12));
-    }, [selectedIntent, selectedTouristLevel, selectedBudget]);
+        async function loadEmbeddings() {
+            try {
+                const response = await fetch('/lekker-find-data.json');
+                const data = await response.json();
+                if (data.tag_embeddings) {
+                    setEmbeddingsData(data.tag_embeddings);
+                }
+            } catch (err) {
+                console.error('Failed to load embeddings:', err);
+            }
+        }
+        loadEmbeddings();
+    }, []);
 
-    // Calculate progress percentage (now 4 steps)
+    // Update available moods when context changes - use embedding dispersion
+    useEffect(() => {
+        if (!embeddingsData) {
+            // Fallback to context-based selection while embeddings load
+            setAvailableMoods(getContextualMoods(selectedIntent, selectedTouristLevel, selectedBudget, 12));
+            return;
+        }
+
+        // Get context-aware candidates
+        const candidates = getContextualMoods(selectedIntent, selectedTouristLevel, selectedBudget, 50);
+
+        // Use embedding dispersion to select diverse options
+        const diverseMoods = selectDiverseVibes(candidates, embeddingsData, 12);
+        setAvailableMoods(diverseMoods);
+    }, [selectedIntent, selectedTouristLevel, selectedBudget, embeddingsData]);
+
+    // Update available avoid moods when liked moods are selected - use opposite vibes
+    // Also filter out vibes that conflict with questionnaire selections
+    useEffect(() => {
+        if (!embeddingsData || selectedMoods.length === 0) {
+            setAvailableAvoidMoods([]);
+            return;
+        }
+
+        // Get vibes implied by questionnaire selections - these should NOT be avoidable
+        const conflictingVibes = getImpliedVibesFromSelections(
+            selectedIntent,
+            selectedTouristLevel,
+            selectedBudget
+        );
+
+        // Get candidates that are different from liked moods AND don't conflict with selections
+        const allCandidates = getContextualMoods(selectedIntent, selectedTouristLevel, selectedBudget, 50);
+        const filteredCandidates = allCandidates.filter(vibe =>
+            !conflictingVibes.includes(vibe) && !selectedMoods.includes(vibe)
+        );
+
+        // Select vibes that are semantically opposite using embeddings
+        const oppositeVibes = selectOppositeVibes(selectedMoods, filteredCandidates, embeddingsData, 12);
+        setAvailableAvoidMoods(oppositeVibes);
+    }, [selectedMoods, selectedIntent, selectedTouristLevel, selectedBudget, embeddingsData]);
+
+    // Calculate progress percentage (now 5 steps)
     const getProgress = () => {
         switch (currentStep) {
-            case 'question-intent': return 25;
-            case 'question-vibe': return 50;
-            case 'question-budget': return 75;
-            case 'question-mood': return 100;
+            case 'question-intent': return 20;
+            case 'question-vibe': return 40;
+            case 'question-budget': return 60;
+            case 'question-mood': return 80;
+            case 'question-avoid': return 100;
             default: return 0;
         }
     };
@@ -160,6 +220,7 @@ function App() {
             case 'question-vibe': return 2;
             case 'question-budget': return 3;
             case 'question-mood': return 4;
+            case 'question-avoid': return 5;
             default: return 0;
         }
     };
@@ -217,21 +278,42 @@ function App() {
         },
     };
 
-    const handleBegin = () => setCurrentStep('question-intent');
+    const handleBegin = () => {
+        // Clear everything to ensure a fresh session
+        setSelectedIntent(null);
+        setSelectedTouristLevel(null);
+        setSelectedBudget(null);
+        setSelectedMoods([]);
+        setAvoidedMoods([]);
+        setMatchedVenues([]);
+        setCurrentStep('question-intent');
+        setIsCuriousMode(false);
+    };
 
     const handleBack = () => {
+        window.scrollTo(0, 0);
         if (currentStep === 'question-intent') {
             setCurrentStep('landing');
-            setSelectedIntent(null);
         } else if (currentStep === 'question-vibe') {
             setCurrentStep('question-intent');
-            setSelectedTouristLevel(null);
         } else if (currentStep === 'question-budget') {
             setCurrentStep('question-vibe');
-            setSelectedBudget(null);
         } else if (currentStep === 'question-mood') {
             setCurrentStep('question-budget');
-            setSelectedMoods([]);
+        } else if (currentStep === 'question-avoid') {
+            setCurrentStep('question-mood');
+        }
+    };
+
+    const handleBackFromResults = () => {
+        if (isCuriousMode) {
+            // Curious flow: go back to landing page
+            setCurrentStep('landing');
+            setIsCuriousMode(false);
+            setMatchedVenues([]);
+        } else {
+            // Questionnaire flow: go back to last step to refine parameters
+            setCurrentStep('question-avoid');
         }
     };
 
@@ -257,6 +339,7 @@ function App() {
         setSelectedBudget(value);
         setTimeout(() => {
             setCurrentStep('question-mood');
+            // Load embedding data and generate diverse moods
             window.scrollTo(0, 0);
             if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
         }, 300);
@@ -266,19 +349,34 @@ function App() {
         setSelectedMoods(prev =>
             prev.includes(mood)
                 ? prev.filter(m => m !== mood)
-                : [...prev, mood]
+                : prev.length < 4 ? [...prev, mood] : prev // Max 4 selections
         );
     };
 
     const handleMoodContinue = () => {
+        // Navigate to avoid step
+        setCurrentStep('question-avoid');
+        window.scrollTo(0, 0);
+    };
+
+    const handleAvoidedMoodToggle = (mood: string) => {
+        setAvoidedMoods(prev =>
+            prev.includes(mood)
+                ? prev.filter(m => m !== mood)
+                : prev.length < 4 ? [...prev, mood] : prev // Max 4 selections
+        );
+    };
+
+    const handleAvoidContinue = () => {
         if (!recommendationsReady) return;
 
-        // Get matches from recommendation engine
+        // Get matches from recommendation engine with negative moods
         const results = findMatches({
             intent: selectedIntent,
             touristLevel: selectedTouristLevel,
             budget: selectedBudget,
             moods: selectedMoods,
+            negativeMoods: avoidedMoods,
         }, { minScore: 0.35, maxResults: 20 });
 
         setMatchedVenues(results);
@@ -291,108 +389,111 @@ function App() {
         setSelectedTouristLevel(null);
         setSelectedBudget(null);
         setSelectedMoods([]);
+        setAvoidedMoods([]);
         setMatchedVenues([]);
     };
 
     // Render a question page
-    const renderQuestionPage = (
+    function renderQuestionPage<T extends string | number>(
         title: string,
         subtitle: React.ReactNode,
-        options: Array<{ value: string | number; label: string; sublabel: string; icon: React.ComponentType<{ className?: string }> }>,
-        selectedValue: string | number | null,
-        onSelect: (value: any) => void,
+        options: Array<{ value: T; label: string; sublabel: string; icon: React.ComponentType<{ className?: string }> }>,
+        selectedValue: T | null,
+        onSelect: (value: T) => void,
         hint?: string
-    ) => (
-        <m.article
-            className="question-content"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-        >
-            {/* Back Button */}
-            <m.button
-                className="btn-back"
-                variants={itemVariants}
-                onClick={handleBack}
-                whileHover={{ x: -4 }}
-                whileTap={{ scale: 0.98 }}
-                aria-label="Go back"
+    ) {
+        return (
+            <m.article
+                className="question-content"
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
             >
-                <ArrowLeft className="icon" aria-hidden="true" />
-            </m.button>
+                {/* Back Button */}
+                <m.button
+                    className="btn-back"
+                    variants={itemVariants}
+                    onClick={handleBack}
+                    whileHover={{ x: -4 }}
+                    whileTap={{ scale: 0.98 }}
+                    aria-label="Go back"
+                >
+                    <ArrowLeft className="icon" aria-hidden="true" />
+                </m.button>
 
-            {/* Progress Indicator */}
-            <m.div className="question-progress" variants={itemVariants}>
-                <div className="progress-bar">
-                    <m.div
-                        className="progress-fill"
-                        initial={{ width: 0 }}
-                        animate={{ width: `${getProgress()}% ` }}
-                        transition={{ duration: 0.5, ease: 'easeOut' }}
-                    />
-                </div>
-                <span className="progress-text">{getStepNumber()} of 4</span>
-            </m.div>
+                {/* Progress Indicator */}
+                <m.div className="question-progress" variants={itemVariants}>
+                    <div className="progress-bar">
+                        <m.div
+                            className="progress-fill"
+                            initial={{ width: 0 }}
+                            animate={{ width: `${getProgress()}% ` }}
+                            transition={{ duration: 0.5, ease: 'easeOut' }}
+                        />
+                    </div>
+                    <span className="progress-text">{getStepNumber()} of 4</span>
+                </m.div>
 
-            {/* Question */}
-            <m.h2 className="question-title" variants={itemVariants}>
-                {title}
-            </m.h2>
-            <m.p className="question-subtitle" variants={itemVariants}>
-                {subtitle}
-            </m.p>
+                {/* Question */}
+                <m.h2 className="question-title" variants={itemVariants}>
+                    {title}
+                </m.h2>
+                <m.p className="question-subtitle" variants={itemVariants}>
+                    {subtitle}
+                </m.p>
 
-            {/* Options */}
-            <m.div
-                key={title} // Forces re-mount to clear focus/hover states
-                className="vibeOptionList"
-                variants={itemVariants}
-            >
-                {options.map((option) => {
-                    const IconComponent = option.icon;
-                    const isSelected = selectedValue === option.value;
+                {/* Options */}
+                <m.div
+                    key={title} // Forces re-mount to clear focus/hover states
+                    className="vibeOptionList"
+                    variants={itemVariants}
+                >
+                    {options.map((option) => {
+                        const IconComponent = option.icon;
+                        const isSelected = selectedValue === option.value;
 
-                    return (
-                        <m.button
-                            key={option.value}
-                            className={`vibeOptionItem ${isSelected ? 'selected' : ''}`}
-                            onClick={() => onSelect(option.value)}
-                            whileHover={{ scale: 1.02, y: -2 }}
-                            whileTap={{ scale: 0.98 }}
-                            aria-pressed={isSelected}
-                        >
-                            <div className="vibeOptionIcon">
-                                <IconComponent aria-hidden="true" />
-                            </div>
-                            <div className="vibeOptionText">
-                                <span className="vibeOptionLabel">{option.label}</span>
-                                <span className="vibeOptionSub">{option.sublabel}</span>
-                            </div>
-                            {isSelected && (
-                                <m.div
-                                    className="vibeOptionCheck"
-                                    initial={{ scale: 0 }}
-                                    animate={{ scale: 1 }}
-                                    transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                                >
-                                    <ChevronRight aria-hidden="true" />
-                                </m.div>
-                            )}
-                        </m.button>
-                    );
-                })}
-            </m.div>
+                        return (
+                            <m.button
+                                key={option.value}
+                                className={`vibeOptionItem ${isSelected ? 'selected' : ''}`}
+                                onClick={() => onSelect(option.value)}
+                                whileHover={{ scale: 1.02, y: -2 }}
+                                whileTap={{ scale: 0.98 }}
+                                aria-pressed={isSelected}
+                            >
+                                <div className="vibeOptionIcon">
+                                    <IconComponent aria-hidden="true" />
+                                </div>
+                                <div className="vibeOptionText">
+                                    <span className="vibeOptionLabel">{option.label}</span>
+                                    <span className="vibeOptionSub">{option.sublabel}</span>
+                                </div>
+                                {isSelected && (
+                                    <m.div
+                                        className="vibeOptionCheck"
+                                        initial={{ scale: 0 }}
+                                        animate={{ scale: 1 }}
+                                        transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                                    >
+                                        <ChevronRight aria-hidden="true" />
+                                    </m.div>
+                                )}
+                            </m.button>
+                        );
+                    })}
+                </m.div>
 
-            {/* Optional hint/disclaimer */}
-            {
-                hint && (
-                    <m.p className="question-hint" variants={itemVariants}>
-                        {hint}
-                    </m.p>
-                )
-            }
-        </m.article >
-    );
+                {/* Optional hint/disclaimer */}
+                {
+                    hint && (
+                        <m.p className="question-hint" variants={itemVariants}>
+                            {hint}
+                        </m.p>
+                    )
+                }
+            </m.article >
+        );
+    }
 
     const budgetSubtitle = (
         <div className="budgetSubtitleWrapper">
@@ -531,6 +632,7 @@ function App() {
                                         width="160"
                                         height="160"
                                         decoding="async"
+                                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
                                         {...{ fetchpriority: "high" } as any}
                                     />
                                 </m.header>
@@ -605,7 +707,7 @@ function App() {
                             custom={{ isFirstMount: false }}
                         >
                             {renderQuestionPage(
-                                "What are you in the mood for?",
+                                "What sounds good?",
                                 "Pick one, or let us surprise you",
                                 intentOptions,
                                 selectedIntent,
@@ -625,8 +727,8 @@ function App() {
                             custom={{ isFirstMount: false }}
                         >
                             {renderQuestionPage(
-                                "What kind of experience?",
-                                "From famous attractions to secret local spots",
+                                "What kind of place?",
+                                "From must-see spots to hidden local gems",
                                 touristLevelOptions,
                                 selectedTouristLevel,
                                 handleTouristLevelSelect
@@ -693,7 +795,7 @@ function App() {
                                             transition={{ duration: 0.5, ease: 'easeOut' }}
                                         />
                                     </div>
-                                    <span className="progress-text">{getStepNumber()} of 4</span>
+                                    <span className="progress-text">{getStepNumber()} of 5</span>
                                 </m.div>
 
                                 {/* Question */}
@@ -701,7 +803,7 @@ function App() {
                                     What's the vibe?
                                 </m.h2>
                                 <m.p className="question-subtitle" variants={itemVariants}>
-                                    Pick a few that match your mood
+                                    Select 2-4 for best results
                                 </m.p>
 
                                 {/* Mood Tags Multi-select */}
@@ -709,6 +811,7 @@ function App() {
                                     <m.div
                                         key={availableMoods.join('-')}
                                         className="moodTagsList"
+                                        data-mood-count={selectedMoods.length}
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: 1 }}
                                         exit={{ opacity: 0 }}
@@ -745,7 +848,7 @@ function App() {
                                 >
                                     <button
                                         onClick={() => {
-                                            // Keep what is selected, shuffle the rest
+                                            // Keep selected, replace the rest with diverse options
                                             const keptMoods = availableMoods.filter(m => selectedMoods.includes(m));
                                             const countNeeded = 12 - keptMoods.length;
 
@@ -762,14 +865,14 @@ function App() {
                                             }
                                         }}
                                         className="btn-shuffle"
-                                        aria-label="Shuffle options"
+                                        aria-label="Change options"
                                     >
                                         <RefreshCcw size={14} aria-hidden="true" />
-                                        <span>Shuffle options</span>
+                                        <span>Change options</span>
                                     </button>
                                 </m.div>
 
-                                {/* Generate CTA */}
+                                {/* Continue CTA */}
                                 <m.div className="generateActionContainer" variants={itemVariants}>
                                     <RainbowButton
                                         onClick={handleMoodContinue}
@@ -777,7 +880,145 @@ function App() {
                                         className={selectedMoods.length === 0 ? "inactive" : ""}
                                         data-excitement={selectedMoods.length > 0 ? selectedMoods.length : 0}
                                     >
-                                        Your Suggestions
+                                        Continue
+                                    </RainbowButton>
+                                </m.div>
+                            </m.article>
+                        </m.div>
+
+                    )}
+
+                    {currentStep === 'question-avoid' && (
+                        <m.div
+                            key="question-avoid"
+                            className="page-wrapper"
+                            variants={pageVariants}
+                            initial="initial"
+                            animate="animate"
+                            exit="exit"
+                            custom={{ isFirstMount: false }}
+                        >
+                            <m.article
+                                className="question-content"
+                                variants={containerVariants}
+                                initial="hidden"
+                                animate="visible"
+                            >
+                                {/* Back Button */}
+                                <m.button
+                                    className="btn-back"
+                                    variants={itemVariants}
+                                    onClick={handleBack}
+                                    whileHover={{ x: -4 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    aria-label="Go back"
+                                >
+                                    <ArrowLeft className="icon" aria-hidden="true" />
+                                </m.button>
+
+                                {/* Progress Indicator */}
+                                <m.div className="question-progress" variants={itemVariants}>
+                                    <div className="progress-bar">
+                                        <m.div
+                                            className="progress-fill"
+                                            initial={{ width: 0 }}
+                                            animate={{ width: `${getProgress()}%` }}
+                                            transition={{ duration: 0.5, ease: 'easeOut' }}
+                                        />
+                                    </div>
+                                    <span className="progress-text">{getStepNumber()} of 5</span>
+                                </m.div>
+
+                                {/* Question */}
+                                <m.h2 className="question-title" variants={itemVariants}>
+                                    Anything to avoid?
+                                </m.h2>
+                                <m.p className="question-subtitle" variants={itemVariants}>
+                                    Optional - select 1-3 for best accuracy
+                                </m.p>
+
+                                {/* Avoid Mood Tags */}
+                                <AnimatePresence mode="wait">
+                                    <m.div
+                                        key={availableAvoidMoods.join('-')}
+                                        className="moodTagsList avoid"
+                                        data-mood-count={avoidedMoods.length}
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        exit={{ opacity: 0 }}
+                                        transition={{ duration: 0.3 }}
+                                    >
+                                        {availableAvoidMoods.map((tag) => {
+                                            const isSelected = avoidedMoods.includes(tag);
+                                            return (
+                                                <m.button
+                                                    key={tag}
+                                                    className={`moodTagItem dislike ${isSelected ? 'selected' : ''}`}
+                                                    onClick={() => handleAvoidedMoodToggle(tag)}
+                                                    initial={{ opacity: 0 }}
+                                                    animate={{ opacity: 1 }}
+                                                    transition={{ duration: 0.2 }}
+                                                    whileHover={{ scale: 1.05 }}
+                                                    whileTap={{ scale: 0.95 }}
+                                                    aria-pressed={isSelected}
+                                                    aria-label={`Avoid ${tag} mood`}
+                                                >
+                                                    {tag}
+                                                </m.button>
+                                            );
+                                        })}
+                                    </m.div>
+                                </AnimatePresence>
+
+                                {/* Actions */}
+                                <m.div
+                                    className="moodActions"
+                                    variants={itemVariants}
+                                    initial="hidden"
+                                    animate="visible"
+                                >
+                                    <button
+                                        onClick={() => {
+                                            // Keep selected, replace rest with opposite vibes
+                                            const keptMoods = availableAvoidMoods.filter(m => avoidedMoods.includes(m));
+                                            const countNeeded = 12 - keptMoods.length;
+
+                                            if (countNeeded > 0) {
+                                                // Get conflicting vibes to exclude
+                                                const conflictingVibes = getImpliedVibesFromSelections(
+                                                    selectedIntent,
+                                                    selectedTouristLevel,
+                                                    selectedBudget
+                                                );
+
+                                                const newMoods = getContextualMoods(
+                                                    selectedIntent,
+                                                    selectedTouristLevel,
+                                                    selectedBudget,
+                                                    countNeeded + conflictingVibes.length, // Request extra to compensate for filtering
+                                                    [...availableAvoidMoods, ...selectedMoods] // Avoid current and liked
+                                                ).filter(m => !conflictingVibes.includes(m)).slice(0, countNeeded);
+
+                                                setAvailableAvoidMoods([...keptMoods, ...newMoods]);
+                                            }
+                                        }}
+                                        className="btn-shuffle"
+                                        aria-label="Change options"
+                                    >
+                                        <RefreshCcw size={14} aria-hidden="true" />
+                                        <span>Change options</span>
+                                    </button>
+                                </m.div>
+
+                                {/* Continue CTA */}
+                                <m.div className="generateActionContainer" variants={itemVariants}>
+                                    <RainbowButton
+                                        onClick={handleAvoidContinue}
+                                        disabled={!recommendationsReady}
+                                        className={`${!recommendationsReady ? "inactive" : ""} btn-rainbow-green`}
+                                        data-excitement={avoidedMoods.length > 0 ? 4 : 2}
+                                    >
+                                        Get Results
                                     </RainbowButton>
                                 </m.div>
                             </m.article>
@@ -803,6 +1044,7 @@ function App() {
                         <SwipeableResults
                             venues={matchedVenues}
                             onClose={handleStartOver}
+                            onBack={handleBackFromResults}
                             onStartOver={handleStartOver}
                             currency={currency}
                             exchangeRates={exchangeRates}
@@ -810,7 +1052,7 @@ function App() {
                     )}
                 </Suspense>
             </main >
-        </LazyMotion>
+        </LazyMotion >
     );
 }
 

@@ -13,7 +13,7 @@
 
 import React, { useState, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence, PanInfo } from 'framer-motion';
-import { MapPin, ChevronLeft, ChevronRight, X, RotateCcw, Star } from 'lucide-react';
+import { MapPin, ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import { VenueWithMatch } from '../../utils/matcher';
 import { convertPriceString } from '../../utils/currency';
 import './SwipeableResults.css';
@@ -66,6 +66,7 @@ function getVenueImage(venue: VenueWithMatch): string {
 interface SwipeableResultsProps {
     venues: VenueWithMatch[];
     onClose: () => void;
+    onBack?: () => void;
     onStartOver: () => void;
     currency: 'ZAR' | 'EUR' | 'USD' | 'GBP';
     exchangeRates: Record<string, number>;
@@ -73,7 +74,8 @@ interface SwipeableResultsProps {
 
 export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
     venues,
-    onClose,
+    onClose: _onClose, // Deprecated, keeping for safety but not using in UI
+    onBack,
     onStartOver,
     currency = 'ZAR',
     exchangeRates = { ZAR: 1 }
@@ -82,9 +84,7 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
     const [direction, setDirection] = useState<'left' | 'right' | null>(null);
     const [imageLoaded, setImageLoaded] = useState(false);
     const [showSwipeGuide, setShowSwipeGuide] = useState(true);
-
-    // Detect if mobile (use screen width - more reliable than touch detection)
-    // Touchscreen laptops should still show arrows
+    const [dragOffset, setDragOffset] = useState(0);
     const [isMobile, setIsMobile] = useState(false);
 
     React.useEffect(() => {
@@ -116,8 +116,6 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
             return convertPriceString(currentVenue.numerical_price, currency, exchangeRates);
         }
 
-        // If only tier is available (R, RR, RRR), maybe imply range?
-        // For now just return tier if no numerical price
         return currentVenue.price_tier;
     }, [currentVenue, currency, exchangeRates]);
 
@@ -144,11 +142,20 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
         }
     }, [hasPrev, dismissGuide]);
 
+    const handleDrag = useCallback((_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+        setDragOffset(info.offset.x);
+    }, []);
+
     const handleDragEnd = useCallback((_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-        const threshold = 100;
-        if (info.offset.x < -threshold && hasNext) {
+        setDragOffset(0);
+        const threshold = 60;
+        const velocityThreshold = 500;
+        const shouldSwipeLeft = (info.velocity.x < -velocityThreshold || info.offset.x < -threshold) && hasNext;
+        const shouldSwipeRight = (info.velocity.x > velocityThreshold || info.offset.x > threshold) && hasPrev;
+
+        if (shouldSwipeLeft) {
             goNext();
-        } else if (info.offset.x > threshold && hasPrev) {
+        } else if (shouldSwipeRight) {
             goPrev();
         }
     }, [hasNext, hasPrev, goNext, goPrev]);
@@ -157,21 +164,19 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
         if (currentVenue?.maps_url) {
             window.open(currentVenue.maps_url, '_blank', 'noopener,noreferrer');
         } else if (currentVenue) {
-            // Fallback: Google search
             const query = encodeURIComponent(`${currentVenue.name} Cape Town`);
             window.open(`https://www.google.com/maps/search/?api=1&query=${query}`, '_blank', 'noopener,noreferrer');
         }
     }, [currentVenue]);
 
-    // Empty state
     if (!currentVenue) {
         return (
             <div className="results-empty" role="alert">
                 <div className="results-empty-icon" aria-hidden="true">🏔️</div>
                 <h2>No matches found</h2>
                 <p>Try adjusting your preferences</p>
-                <button onClick={onStartOver} className="btn-primary">
-                    Start Over
+                <button onClick={onBack} className="btn-primary">
+                    Adjust Preferences
                 </button>
             </div>
         );
@@ -181,14 +186,14 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
         <div className="results-container">
             {/* Header */}
             <header className="results-header">
-                <button onClick={onClose} className="results-close" aria-label="Close">
-                    <X size={24} />
+                <button onClick={onBack} className="results-close text-btn" aria-label="Back">
+                    Back
                 </button>
                 <span className="results-counter">
                     {currentIndex + 1} / {venues.length}
                 </span>
-                <button onClick={onStartOver} className="results-restart" aria-label="Start over">
-                    <RotateCcw size={20} />
+                <button onClick={onStartOver} className="results-restart text-btn" aria-label="Start over">
+                    Restart
                 </button>
             </header>
 
@@ -205,10 +210,15 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
                         exit="exit"
                         drag="x"
                         dragConstraints={{ left: 0, right: 0 }}
-                        dragElastic={0.7}
+                        dragElastic={0.85}
+                        onDrag={handleDrag}
                         onDragEnd={handleDragEnd}
+                        whileDrag={{
+                            scale: 1.02,
+                        }}
                         style={{
                             backgroundImage: `url(${imageUrl})`,
+                            rotate: dragOffset / 25, // Subtle rotation: max ~±10 degrees
                         }}
                     >
                         {/* Loading state */}

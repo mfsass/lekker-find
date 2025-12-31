@@ -38,8 +38,6 @@ function preloadImages(venues: VenueWithMatch[]): Promise<void[]> {
 
 export const LoadingScreen: React.FC<LoadingScreenProps> = ({
     isVisible,
-    touristLevel,
-    intent,
     venues = [],
     onComplete
 }) => {
@@ -48,11 +46,11 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({
     const minDuration = useRef(3000); // Minimum 3s for animation
     const startTime = useRef<number>(0);
 
-    // Select curated words based on tourist level & intent
+    // Select curated words
     // We stabilize this so it doesn't change during the visible phase
     const sessionWords = useMemo(() => {
         if (!isVisible) return [];
-        return getLoadingWords(touristLevel, intent);
+        return getLoadingWords();
     }, [isVisible]); // Only regenerate when isVisible flips from false to true
 
     // Preload images
@@ -104,7 +102,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({
                 }
             };
         }
-    }, [isVisible, imagesReady]); // Simplified dependencies for better stability
+    }, [isVisible, imagesReady, onComplete]); // Simplified dependencies for better stability
 
     if (!isVisible) return null;
 
