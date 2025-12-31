@@ -577,12 +577,14 @@ h6 {
 /* Question pages: anchor content at fixed top position for consistent layout */
 .page-wrapper:has(.question-content) {
     justify-content: flex-start;
-    padding-top: 15vh; /* Fixed top spacing for consistent header position */
+    padding-top: 15vh;
+    /* Fixed top spacing for consistent header position */
 }
 
 @media (max-width: 767px) {
     .page-wrapper:has(.question-content) {
-        padding-top: 12vh; /* Slightly less on mobile */
+        padding-top: 12vh;
+        /* Slightly less on mobile */
     }
 }
 
@@ -960,6 +962,35 @@ button.moodTagItem.dislike.selected {
         border-color: var(--foreground);
         color: var(--foreground);
         background: hsla(0, 0%, 100%, 0.5);
+    }
+}
+
+/* Attention-drawing animation for Change Options button */
+/* Activates after 2.5s delay to nudge users who haven't noticed it */
+.btn-shuffle.attention {
+    animation: shuffle-attention 1.5s ease-in-out 2.5s 3;
+}
+
+/* Once clicked, stop the attention animation */
+.btn-shuffle.attention.clicked {
+    animation: none;
+}
+
+@keyframes shuffle-attention {
+
+    0%,
+    100% {
+        border-color: var(--border);
+        color: var(--muted-foreground);
+        transform: scale(1);
+        box-shadow: none;
+    }
+
+    50% {
+        border-color: var(--primary);
+        color: var(--primary);
+        transform: scale(1.03);
+        box-shadow: 0 0 12px hsla(174, 72%, 40%, 0.25);
     }
 }
 

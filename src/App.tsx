@@ -73,6 +73,10 @@ function App() {
     const [exchangeRates, setExchangeRates] = useState<Record<string, number>>({ ZAR: 1, EUR: 0.05, USD: 0.053 });
     const [isCuriousMode, setIsCuriousMode] = useState(false);
 
+    // Track if shuffle buttons have been clicked (to disable attention animation)
+    const [moodShuffleClicked, setMoodShuffleClicked] = useState(false);
+    const [avoidShuffleClicked, setAvoidShuffleClicked] = useState(false);
+
     const handleCurious = () => {
         // Preset for "Surprise Me" flow - goes straight to results
         if (!recommendationsReady) return;
@@ -288,6 +292,9 @@ function App() {
         setMatchedVenues([]);
         setCurrentStep('question-intent');
         setIsCuriousMode(false);
+        // Reset shuffle button attention animations
+        setMoodShuffleClicked(false);
+        setAvoidShuffleClicked(false);
     };
 
     const handleBack = () => {
@@ -391,6 +398,9 @@ function App() {
         setSelectedMoods([]);
         setAvoidedMoods([]);
         setMatchedVenues([]);
+        // Reset shuffle button attention animations
+        setMoodShuffleClicked(false);
+        setAvoidShuffleClicked(false);
     };
 
     // Render a question page
@@ -863,8 +873,9 @@ function App() {
 
                                                 setAvailableMoods([...keptMoods, ...newMoods]);
                                             }
+                                            setMoodShuffleClicked(true);
                                         }}
-                                        className="btn-shuffle"
+                                        className={`btn-shuffle attention ${moodShuffleClicked ? 'clicked' : ''}`}
                                         aria-label="Change options"
                                     >
                                         <RefreshCcw size={14} aria-hidden="true" />
@@ -1001,8 +1012,9 @@ function App() {
 
                                                 setAvailableAvoidMoods([...keptMoods, ...newMoods]);
                                             }
+                                            setAvoidShuffleClicked(true);
                                         }}
-                                        className="btn-shuffle"
+                                        className={`btn-shuffle attention ${avoidShuffleClicked ? 'clicked' : ''}`}
                                         aria-label="Change options"
                                     >
                                         <RefreshCcw size={14} aria-hidden="true" />

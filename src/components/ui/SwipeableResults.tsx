@@ -86,6 +86,7 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
     const [showSwipeGuide, setShowSwipeGuide] = useState(true);
     const [dragOffset, setDragOffset] = useState(0);
     const [isMobile, setIsMobile] = useState(false);
+    const [tutorialTouchStart, setTutorialTouchStart] = useState<{ x: number; y: number } | null>(null);
 
     React.useEffect(() => {
         const checkMobile = () => {
@@ -119,9 +120,32 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
         return currentVenue.price_tier;
     }, [currentVenue, currency, exchangeRates]);
 
-    // Hide swipe guide after first swipe
+    // Hide swipe guide after first swipe or any interaction
     const dismissGuide = useCallback(() => {
         setShowSwipeGuide(false);
+        setTutorialTouchStart(null);
+    }, []);
+
+    // Touch handlers for the tutorial overlay - dismiss on any swipe movement
+    const handleTutorialTouchStart = useCallback((e: React.TouchEvent) => {
+        const touch = e.touches[0];
+        setTutorialTouchStart({ x: touch.clientX, y: touch.clientY });
+    }, []);
+
+    const handleTutorialTouchMove = useCallback((e: React.TouchEvent) => {
+        if (!tutorialTouchStart) return;
+        const touch = e.touches[0];
+        const deltaX = Math.abs(touch.clientX - tutorialTouchStart.x);
+        const deltaY = Math.abs(touch.clientY - tutorialTouchStart.y);
+        // Dismiss if user moves finger more than 20px in any direction
+        if (deltaX > 20 || deltaY > 20) {
+            dismissGuide();
+        }
+    }, [tutorialTouchStart, dismissGuide]);
+
+    const handleTutorialTouchEnd = useCallback(() => {
+        // Still dismiss on tap (touch end without significant movement)
+        setTutorialTouchStart(null);
     }, []);
 
     const goNext = useCallback(() => {
@@ -305,11 +329,17 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
 
             {/* Swipe tutorial - mobile only, first card */}
             {isMobile && showSwipeGuide && currentIndex === 0 && (
-                <div className="results-swipe-tutorial" onClick={dismissGuide}>
+                <div
+                    className="results-swipe-tutorial"
+                    onClick={dismissGuide}
+                    onTouchStart={handleTutorialTouchStart}
+                    onTouchMove={handleTutorialTouchMove}
+                    onTouchEnd={handleTutorialTouchEnd}
+                >
                     <div className="swipe-tutorial-content">
                         <div className="swipe-hand">👆</div>
                         <p className="swipe-instruction">Swipe left or right to explore</p>
-                        <span className="swipe-dismiss">Tap to dismiss</span>
+                        <span className="swipe-dismiss">Swipe or tap anywhere to start</span>
                     </div>
                 </div>
             )}
