@@ -10,8 +10,11 @@ export const FALLBACK_IMAGES: Record<string, string> = {
 };
 
 // Cache-busting for local images to stay in sync with refreshed data
-const LOCAL_IMAGE_VERSION = '2025-01-05';
+const LOCAL_IMAGE_VERSION = import.meta.env.VITE_IMAGE_VERSION ?? '2025-01-05';
 
+/**
+ * Append a cache-busting query parameter to a URL.
+ */
 function withCacheBust(url: string): string {
     const separator = url.includes('?') ? '&' : '?';
     return `${url}${separator}v=${LOCAL_IMAGE_VERSION}`;
