@@ -16,16 +16,20 @@ const CACHE_PARAM = 'img_v';
 
 /**
  * Append a cache-busting query parameter to a URL.
+ * @param url Base URL to decorate.
+ * @returns URL with cache-busting parameter added.
  */
 function withCacheBust(url: string): string {
-    const [base, query = ''] = url.split('?', 2);
-    const params = new URLSearchParams(query);
-    if (params.has(CACHE_PARAM)) {
+    const isAbsolute = /^https?:\/\//i.test(url);
+    const parsed = new URL(url, typeof window !== 'undefined' ? window.location.origin : 'http://localhost');
+    if (parsed.searchParams.has(CACHE_PARAM)) {
         return url;
     }
-    params.append(CACHE_PARAM, LOCAL_IMAGE_VERSION);
-    const queryString = params.toString();
-    return `${base}?${queryString}`;
+    parsed.searchParams.append(CACHE_PARAM, LOCAL_IMAGE_VERSION);
+    if (isAbsolute) {
+        return parsed.toString();
+    }
+    return `${parsed.pathname}${parsed.search}${parsed.hash}`;
 }
 
 /**
