@@ -10,14 +10,19 @@ export const FALLBACK_IMAGES: Record<string, string> = {
 };
 
 // Cache-busting for local images to stay in sync with refreshed data
-const LOCAL_IMAGE_VERSION = import.meta.env.VITE_IMAGE_VERSION ?? '2025-01-05';
+const env = import.meta.env as Record<string, string | boolean | undefined>;
+const LOCAL_IMAGE_VERSION =
+    (env.VITE_IMAGE_VERSION as string | undefined) ??
+    (env.VITE_APP_VERSION as string | undefined) ??
+    String(Date.now());
+const CACHE_PARAM = 'img_v';
 
 /**
  * Append a cache-busting query parameter to a URL.
  */
 function withCacheBust(url: string): string {
     const separator = url.includes('?') ? '&' : '?';
-    return `${url}${separator}v=${LOCAL_IMAGE_VERSION}`;
+    return `${url}${separator}${CACHE_PARAM}=${LOCAL_IMAGE_VERSION}`;
 }
 
 /**
