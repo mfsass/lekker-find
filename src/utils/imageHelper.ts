@@ -10,11 +10,9 @@ export const FALLBACK_IMAGES: Record<string, string> = {
 };
 
 // Cache-busting for local images to stay in sync with refreshed data
-const env = import.meta.env as Record<string, string | boolean | undefined>;
-const LOCAL_IMAGE_VERSION =
-    (env.VITE_IMAGE_VERSION as string | undefined) ??
-    (env.VITE_APP_VERSION as string | undefined) ??
-    String(Date.now());
+const { VITE_IMAGE_VERSION, MODE } = import.meta.env;
+const appVersion = import.meta.env['VITE_APP_VERSION'] as string | undefined;
+const LOCAL_IMAGE_VERSION = VITE_IMAGE_VERSION ?? appVersion ?? MODE ?? '1';
 const CACHE_PARAM = 'img_v';
 
 /**
