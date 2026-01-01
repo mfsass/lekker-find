@@ -280,25 +280,20 @@ export function findMatches(
 
     }
 
-    // Step 1: Calculate raw scores with keyword boost and avoid penalty
+    // Step 1: Calculate raw scores with keyword boost (no avoid penalty - embeddings handle that)
     const rawScored = venues.map(venue => {
         const rawScore = cosineSimilarity(userVibe, venue.embedding);
 
-        // KEYWORD BOOST: Add bonus when venue has exact mood tag match
+        // KEYWORD BOOST: Add bonus when venue has exact positive mood tag match
+        // Negative vibes are handled by vector subtraction in embedding space
         const matchingVibes = params.moods.filter(mood =>
             venue.vibes.some(v => v.toLowerCase() === mood.toLowerCase())
         );
         const keywordBoost = matchingVibes.length * 0.08; // +8% per matching vibe
 
-        // KEYWORD PENALTY: Subtract when venue has avoided tag match
-        const avoidedMatches = (params.negativeMoods || []).filter(mood =>
-            venue.vibes.some(v => v.toLowerCase() === mood.toLowerCase())
-        );
-        const avoidPenalty = avoidedMatches.length * 0.10; // -10% per avoided match
+        const boostedScore = rawScore + keywordBoost;
 
-        const boostedScore = rawScore + keywordBoost - avoidPenalty;
-
-        return { venue, boostedScore, matchingVibes: matchingVibes.length, avoidedMatches: avoidedMatches.length };
+        return { venue, boostedScore, matchingVibes: matchingVibes.length };
     });
 
     // Step 2: Find min/max for RELATIVE scaling
@@ -309,18 +304,15 @@ export function findMatches(
 
     // Step 3: Relative scaling - best match gets 85-95%, others scale down
     // The top score maps to ~90%, spread based on actual score distribution
-    const scored = rawScored.map(({ venue, boostedScore, matchingVibes, avoidedMatches }) => {
+    const scored = rawScored.map(({ venue, boostedScore, matchingVibes }) => {
         // Normalize to 0-1 range within this result set
         const normalized = (boostedScore - lowestScore) / scoreRange;
 
         // Map to display range: 55% (worst in set) to 90% (best in set)
         const basePercent = 55 + (normalized * 35); // 55-90%
 
-        // Bonus 1: Keyword matches (up to +5%)
+        // Bonus: Keyword matches (up to +5%)
         const keywordBonus = Math.min(5, matchingVibes * 2);
-
-        // Penalty: Avoided matches (up to -10%)
-        const avoidPenalty = Math.min(10, avoidedMatches * 4);
 
         // Bonus 2: Rating Quality Boost
         // We boost high-rated venues so quality naturally rises to the top
@@ -333,7 +325,7 @@ export function findMatches(
             else if (venue.rating < 4.0) ratingBonus = -5;
         }
 
-        const finalPercent = Math.max(30, Math.min(98, basePercent + keywordBonus + ratingBonus - avoidPenalty));
+        const finalPercent = Math.max(30, Math.min(98, basePercent + keywordBonus + ratingBonus));
 
         return {
             ...venue,
