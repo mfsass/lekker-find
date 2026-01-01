@@ -43,3 +43,11 @@ pnpm-debug.log*
 # Vite
 .vite/
 dist/
+
+# Image backups
+public/images/venues_backup/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo

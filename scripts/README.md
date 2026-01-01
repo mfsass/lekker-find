@@ -46,10 +46,27 @@ npx tsx scripts/test-vibe-logic.ts
 *   Checks if the correct venues appear in Top 3.
 
 ### 2. Image Management
+
+**Important**: Images now use **stable name-based IDs** to prevent sync issues.
+
 ```bash
-python scripts/fetch_images.py   # Get Google URLs
-python scripts/localize_images.py # Download to local folder
+# Fetch images from Google Places API
+python scripts/fetch_images.py
+
+# Download images locally (for offline use)
+python scripts/localize_images.py
+
+# Validate image-venue sync (run after any data changes!)
+python scripts/validate_image_sync.py
 ```
+
+**See [IMAGE_MANAGEMENT.md](../docs/IMAGE_MANAGEMENT.md) for complete guide.**
+
+Key points:
+- ✅ Images are named based on venue names, not CSV order
+- ✅ Reordering CSV won't break image links
+- ✅ Always validate after data changes
+
 
 ---
 
@@ -57,10 +74,14 @@ python scripts/localize_images.py # Download to local folder
 
 | Script | Purpose |
 |--------|---------|
-| `generate_embeddings.py` | **Vital**. Converts CSV data → JSON with embeddings. |
+| `generate_embeddings.py` | **Vital**. Converts CSV data → JSON with embeddings. Uses stable IDs. |
 | `generate_vibe_embeddings.py` | **Vital**. Generates the semantic definitions for the 44 curated vibes. |
 | `test-vibe-logic.ts` | **Vital**. Validates that user choices lead to correct venues. |
+| `validate_image_sync.py` | **Important**. Checks image-venue sync. Run after data changes! |
 | `enrich_venues.py` | AI-generates rich descriptions for venues. |
 | `serve_admin.py` | Local automation server for the admin interface. |
-| `localize_images.py` | Downloads images to remove external dependencies. |
+| `localize_images.py` | Downloads images locally with stable naming. |
+| `fetch_images.py` | Fetches image URLs from Google Places API. |
+| `venue_id_utils.py` | Utility for generating stable venue IDs from names. |
+| `migrate_images_to_stable_ids.py` | One-time migration script (already run). |
 
