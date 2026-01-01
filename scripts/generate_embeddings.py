@@ -21,6 +21,7 @@ import sys
 import os
 from typing import List, Dict, Any
 from dotenv import load_dotenv
+from venue_id_utils import generate_stable_venue_id
 
 # Load .env file
 load_dotenv()
@@ -258,9 +259,12 @@ def main():
             rating = row.get('Rating')
             rating_val = float(rating) if pd.notna(rating) else None
             
+            # Generate stable ID from venue name
+            venue_id = generate_stable_venue_id(row['Name'])
+            
             # Start with base venue data
             venue_data = {
-                'id': f"v{idx}",
+                'id': venue_id,
                 'name': row['Name'],
                 'category': row['Category'],
                 'tourist_level': int(row['Tourist_Level']),

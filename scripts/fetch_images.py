@@ -24,6 +24,7 @@ import pandas as pd
 import requests
 from dotenv import load_dotenv
 from typing import Optional, Dict, List
+from venue_id_utils import generate_stable_venue_id, get_image_filename
 
 load_dotenv()
 
