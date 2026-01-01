@@ -391,11 +391,15 @@ def incremental_update():
     
     for idx, row in new_df.iterrows():
         name = row['Name']
+        vibe_desc = str(row.get('VibeDescription', '')) if pd.notna(row.get('VibeDescription')) else ''
         vibe_str = str(row['Vibe']) if pd.notna(row['Vibe']) else ''
         desc_str = str(row['Description']) if pd.notna(row['Description']) else ''
         
+        # Prefer enriched VibeDescription for better semantic matching
+        embedding_text = vibe_desc if vibe_desc else vibe_str
+        
         try:
-            embedding = get_embedding(vibe_str, client)
+            embedding = get_embedding(embedding_text, client)
             
             new_venues.append({
                 'id': f"v{len(existing_venues) + len(new_venues)}",

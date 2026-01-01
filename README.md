@@ -58,6 +58,9 @@ graph LR
 ### 🎯 Semantic Vibe Matching
 Unlike traditional filters, our engine understands nuance. A search for "quiet nature spot" matches venues tagged with `Peaceful`, `Secret`, and `Scenic` via vector proximity, even if the exact words don't match.
 
+### 🧠 Smart "Avoid" Logic (Refinement)
+Instead of just blocking keywords, our "Avoid" system acts as a smart refinement tool. It uses semantic embedding subtraction to mathematically push away specific characteristics (e.g., "I want Water activities but **not** Beach") to uncover hidden gems like aquariums or harbor tours that would otherwise be buried.
+
 ### 💰 Real-Time Currency Logic
 A built-in currency engine converts ZAR prices to **USD**, **EUR**, or **GBP** using live exchange rates, making the app accessible to international tourists immediately.
 
@@ -71,7 +74,7 @@ The engine adjusts rankings based on user persona:
 The algorithm implements a "Satisfaction Boost" logic:
 - **Base Score**: Semantic match (0-100%)
 - **Quality Boost**: Venues with exceptionally high ratings (4.8+) get a **+5% probability boost**.
-- **Penalty Box**: Venues with ratings < 4.0 are automatically filtered out of the dataset.
+- **Avoid Penalty**: Explicitly avoided vibes incur a massive **100% penalty**, functionally banning them from top results to respect user preference.
 
 ---
 
@@ -113,6 +116,9 @@ If you want to add venues or regenerate embeddings:
 # Install Python dependencies
 pip install openai pandas python-dotenv
 
+# Generate Vibe Definitions (if changing curated list)
+python scripts/generate_vibe_embeddings.py
+
 # Run the Admin Server
 python scripts/serve_admin.py
 
@@ -133,9 +139,10 @@ src/
 │   └── currency.ts     # 💱 Exchange rate logic
 ├── styles/             # Global CSS & Design Tokens
 └── scripts/            # 🐍 Python ETL Pipeline
-    ├── enrich_venues.py       # GPT-4o description generator
-    ├── generate_embeddings.py # Vector creation
-    └── serve_admin.py         # Automation server
+    ├── enrich_venues.py           # GPT-4o description generator
+    ├── generate_vibe_embeddings.py # Generates 44 curated vibe definitions
+    ├── generate_embeddings.py     # Vector creation
+    └── serve_admin.py             # Automation server
 ```
 
 ---

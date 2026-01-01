@@ -11,9 +11,9 @@ import { RainbowButton } from './components/ui/RainbowButton';
 // Lazy load heavy components
 const LoadingScreen = lazy(() => import('./components/ui/LoadingScreen').then(module => ({ default: module.LoadingScreen })));
 const SwipeableResults = lazy(() => import('./components/ui/SwipeableResults').then(module => ({ default: module.SwipeableResults })));
-import { getContextualMoods, shouldShowPriceDisclaimer, getBudgetDisplay, getImpliedVibesFromSelections } from './data/vibes';
+import { getContextualMoods, shouldShowPriceDisclaimer, getBudgetDisplay, getContextualAvoidOptions } from './data/vibes';
 import { useRecommendations, VenueWithMatch } from './utils/matcher';
-import { selectDiverseVibes, selectOppositeVibes } from './utils/vibeDispersion';
+import { selectDiverseVibes } from './utils/vibeDispersion';
 
 
 /**
@@ -180,31 +180,27 @@ function App() {
         setAvailableMoods(diverseMoods);
     }, [selectedIntent, selectedTouristLevel, selectedBudget, embeddingsData]);
 
-    // Update available avoid moods when liked moods are selected - use opposite vibes
-    // Also filter out vibes that conflict with questionnaire selections
+    // Update available avoid moods when liked moods are selected
+    // NEW: Uses smart contextual options that help REFINE selections, not oppose them
     useEffect(() => {
-        if (!embeddingsData || selectedMoods.length === 0) {
+        if (selectedMoods.length === 0) {
             setAvailableAvoidMoods([]);
             return;
         }
 
-        // Get vibes implied by questionnaire selections - these should NOT be avoidable
-        const conflictingVibes = getImpliedVibesFromSelections(
+        // Get smart avoid options that:
+        // 1. Never include already-selected vibes
+        // 2. Never include synonyms of selected vibes
+        // 3. Prioritize RELATED vibes that help narrow down (e.g., Water → Beach, Outdoor)
+        // 4. Include some universal refinement options
+        const smartAvoidOptions = getContextualAvoidOptions(
+            selectedMoods,
             selectedIntent,
-            selectedTouristLevel,
-            selectedBudget
+            12 // Return 12 options
         );
 
-        // Get candidates that are different from liked moods AND don't conflict with selections
-        const allCandidates = getContextualMoods(selectedIntent, selectedTouristLevel, selectedBudget, 50);
-        const filteredCandidates = allCandidates.filter(vibe =>
-            !conflictingVibes.includes(vibe) && !selectedMoods.includes(vibe)
-        );
-
-        // Select vibes that are semantically opposite using embeddings
-        const oppositeVibes = selectOppositeVibes(selectedMoods, filteredCandidates, embeddingsData, 12);
-        setAvailableAvoidMoods(oppositeVibes);
-    }, [selectedMoods, selectedIntent, selectedTouristLevel, selectedBudget, embeddingsData]);
+        setAvailableAvoidMoods(smartAvoidOptions);
+    }, [selectedMoods, selectedIntent]);
 
     // Calculate progress percentage (now 5 steps)
     const getProgress = () => {
@@ -218,16 +214,7 @@ function App() {
         }
     };
 
-    const getStepNumber = () => {
-        switch (currentStep) {
-            case 'question-intent': return 1;
-            case 'question-vibe': return 2;
-            case 'question-budget': return 3;
-            case 'question-mood': return 4;
-            case 'question-avoid': return 5;
-            default: return 0;
-        }
-    };
+
 
     // Page transition variants
     const pageVariants = {
@@ -258,6 +245,35 @@ function App() {
             },
         },
     };
+
+    // Generate context pills for the header
+    const contextPills = useMemo(() => {
+        const pills: string[] = [];
+
+        // 1. Intent
+        if (selectedIntent && selectedIntent !== 'any') {
+            const label = intentOptions.find(i => i.value === selectedIntent)?.label;
+            if (label) pills.push(label);
+        } else if (selectedIntent === 'any') {
+            pills.push("Surprise Me");
+        }
+
+        // 2. Tourist Level
+        if (selectedTouristLevel) {
+            const label = touristLevelOptions.find(l => l.value === selectedTouristLevel)?.label;
+            if (label) pills.push(label);
+        }
+
+        // 3. Budget (as symbols to match "Activity R,RR,RRR")
+        if (selectedBudget && selectedBudget !== 'any') {
+            if (selectedBudget === 'free') pills.push('Free');
+            else if (selectedBudget === 'budget') pills.push(currency === 'EUR' ? '€' : currency === 'USD' ? '$' : 'R');
+            else if (selectedBudget === 'moderate') pills.push(currency === 'EUR' ? '€€' : currency === 'USD' ? '$$' : 'RR');
+            else if (selectedBudget === 'premium') pills.push(currency === 'EUR' ? '€€€' : currency === 'USD' ? '$$$' : 'RRR');
+        }
+
+        return pills;
+    }, [selectedIntent, selectedTouristLevel, selectedBudget, currency]);
 
     const itemVariants = {
         hidden: { opacity: 0 },
@@ -419,30 +435,42 @@ function App() {
                 initial="hidden"
                 animate="visible"
             >
-                {/* Back Button */}
-                <m.button
-                    className="btn-back"
-                    variants={itemVariants}
-                    onClick={handleBack}
-                    whileHover={{ x: -4 }}
-                    whileTap={{ scale: 0.98 }}
-                    aria-label="Go back"
-                >
-                    <ArrowLeft className="icon" aria-hidden="true" />
-                </m.button>
+                <div className="question-nav-header">
+                    {/* Back Button */}
+                    <m.button
+                        className="btn-back"
+                        variants={itemVariants}
+                        onClick={handleBack}
+                        whileHover={{ x: -4 }}
+                        whileTap={{ scale: 0.98 }}
+                        aria-label="Go back"
+                    >
+                        <ArrowLeft className="icon" aria-hidden="true" />
+                    </m.button>
 
-                {/* Progress Indicator */}
-                <m.div className="question-progress" variants={itemVariants}>
-                    <div className="progress-bar">
-                        <m.div
-                            className="progress-fill"
-                            initial={{ width: 0 }}
-                            animate={{ width: `${getProgress()}% ` }}
-                            transition={{ duration: 0.5, ease: 'easeOut' }}
-                        />
-                    </div>
-                    <span className="progress-text">{getStepNumber()} of 4</span>
-                </m.div>
+                    {/* Progress Indicator */}
+                    <m.div className="question-progress" variants={itemVariants}>
+                        <div className="progress-bar">
+                            <m.div
+                                className="progress-fill"
+                                initial={{ width: 0 }}
+                                animate={{ width: `${getProgress()}% ` }}
+                                transition={{ duration: 0.5, ease: 'easeOut' }}
+                            />
+                        </div>
+                    </m.div>
+                </div>
+
+                {/* Context Header */}
+                {contextPills.length > 0 && currentStep !== 'question-intent' && (
+                    <m.div className="context-header" variants={itemVariants}>
+                        {contextPills.map((pill, i) => (
+                            <span key={i} className="context-pill">
+                                {pill}
+                            </span>
+                        ))}
+                    </m.div>
+                )}
 
                 {/* Question */}
                 <m.h2 className="question-title" variants={itemVariants}>
@@ -783,30 +811,42 @@ function App() {
                                 initial="hidden"
                                 animate="visible"
                             >
-                                {/* Back Button */}
-                                <m.button
-                                    className="btn-back"
-                                    variants={itemVariants}
-                                    onClick={handleBack}
-                                    whileHover={{ x: -4 }}
-                                    whileTap={{ scale: 0.98 }}
-                                    aria-label="Go back"
-                                >
-                                    <ArrowLeft className="icon" aria-hidden="true" />
-                                </m.button>
+                                <div className="question-nav-header">
+                                    {/* Back Button */}
+                                    <m.button
+                                        className="btn-back"
+                                        variants={itemVariants}
+                                        onClick={handleBack}
+                                        whileHover={{ x: -4 }}
+                                        whileTap={{ scale: 0.98 }}
+                                        aria-label="Go back"
+                                    >
+                                        <ArrowLeft className="icon" aria-hidden="true" />
+                                    </m.button>
 
-                                {/* Progress Indicator */}
-                                <m.div className="question-progress" variants={itemVariants}>
-                                    <div className="progress-bar">
-                                        <m.div
-                                            className="progress-fill"
-                                            initial={{ width: 0 }}
-                                            animate={{ width: `${getProgress()}% ` }}
-                                            transition={{ duration: 0.5, ease: 'easeOut' }}
-                                        />
-                                    </div>
-                                    <span className="progress-text">{getStepNumber()} of 5</span>
-                                </m.div>
+                                    {/* Progress Indicator */}
+                                    <m.div className="question-progress" variants={itemVariants}>
+                                        <div className="progress-bar">
+                                            <m.div
+                                                className="progress-fill"
+                                                initial={{ width: 0 }}
+                                                animate={{ width: `${getProgress()}% ` }}
+                                                transition={{ duration: 0.5, ease: 'easeOut' }}
+                                            />
+                                        </div>
+                                    </m.div>
+                                </div>
+
+                                {/* Context Header */}
+                                {contextPills.length > 0 && (
+                                    <m.div className="context-header" variants={itemVariants}>
+                                        {contextPills.map((pill, i) => (
+                                            <span key={i} className="context-pill">
+                                                {pill}
+                                            </span>
+                                        ))}
+                                    </m.div>
+                                )}
 
                                 {/* Question */}
                                 <m.h2 className="question-title" variants={itemVariants}>
@@ -915,30 +955,42 @@ function App() {
                                 initial="hidden"
                                 animate="visible"
                             >
-                                {/* Back Button */}
-                                <m.button
-                                    className="btn-back"
-                                    variants={itemVariants}
-                                    onClick={handleBack}
-                                    whileHover={{ x: -4 }}
-                                    whileTap={{ scale: 0.98 }}
-                                    aria-label="Go back"
-                                >
-                                    <ArrowLeft className="icon" aria-hidden="true" />
-                                </m.button>
+                                <div className="question-nav-header">
+                                    {/* Back Button */}
+                                    <m.button
+                                        className="btn-back"
+                                        variants={itemVariants}
+                                        onClick={handleBack}
+                                        whileHover={{ x: -4 }}
+                                        whileTap={{ scale: 0.98 }}
+                                        aria-label="Go back"
+                                    >
+                                        <ArrowLeft className="icon" aria-hidden="true" />
+                                    </m.button>
 
-                                {/* Progress Indicator */}
-                                <m.div className="question-progress" variants={itemVariants}>
-                                    <div className="progress-bar">
-                                        <m.div
-                                            className="progress-fill"
-                                            initial={{ width: 0 }}
-                                            animate={{ width: `${getProgress()}%` }}
-                                            transition={{ duration: 0.5, ease: 'easeOut' }}
-                                        />
-                                    </div>
-                                    <span className="progress-text">{getStepNumber()} of 5</span>
-                                </m.div>
+                                    {/* Progress Indicator */}
+                                    <m.div className="question-progress" variants={itemVariants}>
+                                        <div className="progress-bar">
+                                            <m.div
+                                                className="progress-fill"
+                                                initial={{ width: 0 }}
+                                                animate={{ width: `${getProgress()}%` }}
+                                                transition={{ duration: 0.5, ease: 'easeOut' }}
+                                            />
+                                        </div>
+                                    </m.div>
+                                </div>
+
+                                {/* Context Header */}
+                                {contextPills.length > 0 && (
+                                    <m.div className="context-header" variants={itemVariants}>
+                                        {contextPills.map((pill, i) => (
+                                            <span key={i} className="context-pill">
+                                                {pill}
+                                            </span>
+                                        ))}
+                                    </m.div>
+                                )}
 
                                 {/* Question */}
                                 <m.h2 className="question-title" variants={itemVariants}>
@@ -990,27 +1042,32 @@ function App() {
                                 >
                                     <button
                                         onClick={() => {
-                                            // Keep selected, replace rest with opposite vibes
-                                            const keptMoods = availableAvoidMoods.filter(m => avoidedMoods.includes(m));
-                                            const countNeeded = 12 - keptMoods.length;
+                                            // Get fresh avoid options based on selected vibes
+                                            // This uses the smart contextual avoid function
+                                            const freshOptions = getContextualAvoidOptions(
+                                                selectedMoods,
+                                                selectedIntent,
+                                                12 // Request 12 options
+                                            );
 
-                                            if (countNeeded > 0) {
-                                                // Get conflicting vibes to exclude
-                                                const conflictingVibes = getImpliedVibesFromSelections(
-                                                    selectedIntent,
-                                                    selectedTouristLevel,
-                                                    selectedBudget
-                                                );
+                                            // Keep any that the user has already selected as avoided
+                                            const keptMoods = avoidedMoods.filter(m => freshOptions.includes(m));
 
-                                                const newMoods = getContextualMoods(
-                                                    selectedIntent,
-                                                    selectedTouristLevel,
-                                                    selectedBudget,
-                                                    countNeeded + conflictingVibes.length, // Request extra to compensate for filtering
-                                                    [...availableAvoidMoods, ...selectedMoods] // Avoid current and liked
-                                                ).filter(m => !conflictingVibes.includes(m)).slice(0, countNeeded);
+                                            // Get new options that aren't already visible
+                                            const notCurrentlyShown = freshOptions.filter(m =>
+                                                !availableAvoidMoods.includes(m) && !keptMoods.includes(m)
+                                            );
 
+                                            // If we have new options, shuffle them in
+                                            if (notCurrentlyShown.length > 0) {
+                                                // Take as many new options as we can fit (up to 12 total)
+                                                const countNeeded = 12 - keptMoods.length;
+                                                const newMoods = notCurrentlyShown.slice(0, countNeeded);
                                                 setAvailableAvoidMoods([...keptMoods, ...newMoods]);
+                                            } else {
+                                                // No new options available - just reshuffle the order
+                                                const shuffled = [...availableAvoidMoods].sort(() => Math.random() - 0.5);
+                                                setAvailableAvoidMoods(shuffled);
                                             }
                                             setAvoidShuffleClicked(true);
                                         }}

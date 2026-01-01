@@ -30,82 +30,153 @@ Object.entries(SYNONYM_GROUPS).forEach(([group, words]) => {
 });
 
 
-// 2. Refined Context Lists (Simplified English)
+// 2. New Curated Vibes by Category (44 total)
+// These have embeddings generated from rich descriptions for optimal matching
+
+// Universal vibes (shown for ALL intents)
+const UNIVERSAL_VIBES = [
+    'Hidden', 'Famous', 'Romantic', 'Family', 'Views',
+    'Chill', 'Lively', 'Local', 'Unique', 'Cozy'
+] as const;
+
+// Food & Drink vibes
+const FOOD_VIBES = [
+    'Brunch', 'Fine Dining', 'Street Food', 'International', 'Traditional',
+    'Wine', 'Craft Beer', 'Coffee', 'Sweet Tooth', 'Evening', 'Halaal', 'Outdoor Dining'
+] as const;
+
+// Activity vibes
+const ACTIVITY_VIBES = [
+    'Beach', 'Mountain', 'Water', 'Forest', 'Outdoor',
+    'Urban', 'Sport', 'Wellness', 'Adventure', 'Wildlife', 'Learning', 'Sunset'
+] as const;
+
+// Attraction vibes
+const ATTRACTION_VIBES = [
+    'History', 'Art', 'Music', 'Theatre', 'Museum',
+    'Interactive', 'Heritage', 'Photo-Ready', 'Markets', 'Architecture'
+] as const;
+
+// Related vibes - used for smart avoid suggestions
+// When user picks a vibe, these related vibes become relevant avoid candidates
+const RELATED_VIBES: Record<string, string[]> = {
+    // Water-related - helps distinguish water TYPE
+    'Water': ['Beach', 'Outdoor', 'Wildlife'],
+    'Beach': ['Water', 'Outdoor', 'Sunset'],
+
+    // Nature-related - helps distinguish nature TYPE
+    'Mountain': ['Beach', 'Water', 'Urban', 'Forest'],
+    'Forest': ['Beach', 'Mountain', 'Urban'],
+    'Outdoor': ['Urban', 'Beach', 'Water'],
+
+    // Adventure-related - helps distinguish adventure TYPE
+    'Adventure': ['Wellness', 'Chill', 'Water', 'Mountain'],
+    'Sport': ['Wellness', 'Chill', 'Adventure'],
+    'Wellness': ['Adventure', 'Sport', 'Lively'],
+
+    // Food-related - helps distinguish food TYPE
+    'Fine Dining': ['Street Food', 'Brunch', 'Lively'],
+    'Street Food': ['Fine Dining', 'Romantic'],
+    'Traditional': ['International', 'Fine Dining'],
+    'International': ['Traditional'],
+    'Wine': ['Craft Beer', 'Lively', 'Urban'],
+    'Brunch': ['Evening', 'Fine Dining'],
+    'Evening': ['Brunch'],
+
+    // Atmosphere-related - helps distinguish vibe TYPE
+    'Romantic': ['Family', 'Lively'],
+    'Family': ['Romantic', 'Evening'],
+    'Lively': ['Chill', 'Romantic', 'Hidden'],
+    'Chill': ['Lively', 'Adventure'],
+    'Hidden': ['Famous', 'Lively'],
+    'Famous': ['Hidden', 'Local'],
+    'Local': ['Famous'],
+
+    // Culture-related - helps distinguish culture TYPE
+    'History': ['Art', 'Interactive'],
+    'Art': ['History', 'Music'],
+    'Music': ['Art', 'Theatre'],
+};
+
+// Legacy VIBES_BY_CONTEXT for backward compatibility (updated with new vibes)
 const VIBES_BY_CONTEXT = {
-    // Intent-specific vibes (consolidated)
-    food_drink: ['Handmade', 'Tasty', 'Comfort', 'Healthy', 'Treat', 'Street-food', 'Fresh', 'Trendy', 'Traditional', 'Craft', 'Cocktails', 'Rooftop', 'Sunset', 'Tasting', 'Wine', 'Social'],
-    activity: ['Adventure', 'Exciting', 'Active', 'Learning', 'Wellness', 'Workshop', 'Outdoor', 'Fun', 'Peaceful', 'Scenic', 'Mountain', 'Beach', 'Forest', 'Garden', 'Hiking', 'Sea-life'],
-    attraction: ['History', 'Museum', 'Art', 'Music', 'Theatre', 'Heritage', 'Soul', 'Design', 'Stories', 'Famous', 'Landmark', 'Culture'],
+    // Intent-specific vibes (NEW curated lists)
+    food_drink: [...FOOD_VIBES, 'Romantic', 'Views', 'Lively', 'Chill'],
+    activity: [...ACTIVITY_VIBES, 'Views', 'Family', 'Romantic'],
+    attraction: [...ATTRACTION_VIBES, 'Famous', 'Hidden', 'Family'],
 
     // Tourist level specific vibes
-    famous: ['Famous', 'Must-see', 'Tourist-friendly', 'Classic', 'Landmark', 'Busy', 'Photo-ready'], // Iconic->Famous
-    popular: ['Popular', 'Modern', 'Stylish', 'Crowded', 'Well-known'],
-    balanced: ['Mix', 'Easy', 'Diverse', 'Reliable', 'Good-value'],
-    local: ['Neighborhood', 'Raw', 'Kasi-vibe', 'Roots', 'Home-grown', 'Real'],
-    hidden: ['Secret-spot', 'Alleyway', 'No-signage', 'Locals-only', 'Hard-to-find'],
+    famous: ['Famous', 'Views', 'Photo-Ready', 'Lively'],
+    popular: ['Lively', 'Views', 'Outdoor'],
+    balanced: ['Unique', 'Local', 'Views'],
+    local: ['Local', 'Hidden', 'Traditional', 'Unique'],
+    hidden: ['Hidden', 'Local', 'Unique', 'Chill'],
 
     // Budget specific vibes
-    free: ['Public', 'Walking', 'Free', 'Nature', 'Park'],
-    budget: ['Cheap', 'Good-value', 'Simple', 'Student', 'Canteen'], // Value->Good-value
-    moderate: ['Casual', 'Cafe', 'Nice', 'Standard'],
-    premium: ['Fine-dining', 'VIP', 'Luxury', 'Boutique', 'Private']
+    free: ['Outdoor', 'Beach', 'Views', 'Sunset', 'Mountain'],
+    budget: ['Street Food', 'Local', 'Outdoor'],
+    moderate: ['Coffee', 'Brunch', 'Craft Beer', 'Outdoor Dining'],
+    premium: ['Fine Dining', 'Wine', 'Romantic', 'Views']
 } as const;
 
-// 3. Negative Exclusion Rules (Same as before)
+// 3. Negative Exclusion Rules (prevent conflicting vibes)
 const EXCLUSIONS: Record<string, string[]> = {
-    food_drink: ['Hiking', 'Active', 'Extreme', 'Museum', 'Theatre', 'Wellness'],
-    activity: ['Fine-dining', 'Cocktails', 'Wine'],
-    attraction: ['Tasty', 'Tasting', 'Street-food', 'Hiking', 'Beach'],
-    budget: ['VIP', 'Luxury', 'Fine-dining', 'Exclusive', 'Upscale', 'Treat', 'Boutique', 'Private'],
-    free: ['VIP', 'Luxury', 'Fine-dining', 'Shopping', 'Paid', 'Expensive', 'Treat', 'Drinks'],
-    local: ['Tourist-friendly', 'Famous', 'Must-see', 'Crowded', 'Bus-tour'],
-    famous: ['Hidden', 'Secret', 'Locals-only', 'No-signage', 'Rough-diamond']
+    food_drink: ['Mountain', 'Beach', 'Wildlife', 'Adventure', 'Sport'],
+    activity: ['Fine Dining', 'Wine', 'Brunch', 'Coffee'],
+    attraction: ['Brunch', 'Street Food', 'Beach', 'Sport'],
+    budget: ['Fine Dining', 'Wine'],
+    free: ['Fine Dining', 'Wine', 'Sweet Tooth'],
+    local: ['Famous'],
+    famous: ['Hidden', 'Local']
 };
 
 
-// Simplified ALL_VIBES
+// ALL_VIBES - Now ONLY the 44 curated vibes
+// These are the ONLY vibes available for selection - clear, simple, and effective
 export const ALL_VIBES = [
-    // Simple Atmosphere
-    'Chill', 'Lively', 'Peaceful', 'Fun', 'Romantic', 'Cozy', 'Happy', 'Relaxed',
-    'Buzzy', 'Quiet', 'Warm', 'Festive', 'Moody',
-    // Simple Style  
-    'Trendy', 'Cool', 'Funky', 'Old-school', 'Modern', 'Rustic', 'Boho', 'Classy',
-    'Handmade', 'Simple', 'Mixed', 'Retro', 'Stylish',
-    // Simple Experience
-    'Adventure', 'Exciting', 'Secret', 'Hidden', 'Famous', 'Real', 'Local', 'Unique',
-    'VIP', 'Deep', 'Interactive', 'Inspiring', 'Soulful', 'Genuine',
-    // Simple Setting
-    'Scenic', 'Big-views', 'Coastal', 'City', 'Nature', 'Forest', 'Sunset', 'Vineyard',
-    'Waterfront', 'Mountain', 'Garden', 'Rooftop', 'Beach', 'Country',
-    // Simple Social
-    'Social', 'Family', 'Casual', 'Friendly', 'Welcoming', 'Community',
-    // Simple Food & Drink
-    'Tasty', 'Healthy', 'Treat', 'Craft-Beer', 'Wine', 'Foodie', 'Street-food', 'Fresh',
-    // Simple Cultural
-    'Artsy', 'Music', 'History', 'Culture', 'Learning', 'Heritage',
-    // Simple Activity
-    'Active', 'Playful', 'Creative', 'Wellness', 'Extreme',
-    // Specifics
-    'Comfort', 'Tasting', 'Dive-bar', 'Sea-life', 'Picnic', 'Must-see', 'Landmark', 'Photo-ready',
-    'Minimal', 'Good-value', 'Private', 'Boutique', 'Neighborhood', 'Kasi-vibe', 'Roots',
-    'Home-grown', 'Secret-spot', 'No-signage', 'Locals-only'
+    // Universal (10) - shown for ALL intents
+    ...UNIVERSAL_VIBES,
+    // Food & Drink (12)
+    ...FOOD_VIBES,
+    // Activity (12)
+    ...ACTIVITY_VIBES,
+    // Attraction (10)
+    ...ATTRACTION_VIBES,
 ] as const;
 
 
 /**
  * Get context-aware mood suggestions based on user selections.
+ * 
+ * Key principle: Only show vibes relevant to the intent!
+ * - Food intent → Food vibes + Universal vibes
+ * - Activity intent → Activity vibes + Universal vibes
+ * - Attraction intent → Attraction vibes + Universal vibes
  */
 export function getContextualMoods(
     intent: string | null,
     touristLevel: number | null,
     budget: string | null,
     count: number = 12,
-    avoidList: string[] = [] // New Param: List of vibes to explicitly avoid (for Refresh)
+    avoidList: string[] = []
 ): string[] {
-    const candidateWeights: Record<string, number> = {};
-    const bannedVibes = new Set<string>([...avoidList]); // Init with avoid list
+    const bannedVibes = new Set<string>([...avoidList]);
 
-    // 0. Build Exclusion Set
+    // Build allowed vibes based on intent (CRITICAL: context filtering)
+    const allowedVibes: string[] = [...UNIVERSAL_VIBES];
+
+    if (intent === 'food_drink') {
+        allowedVibes.push(...FOOD_VIBES);
+    } else if (intent === 'activity') {
+        allowedVibes.push(...ACTIVITY_VIBES);
+    } else if (intent === 'attraction') {
+        allowedVibes.push(...ATTRACTION_VIBES);
+    } else {
+        // 'any' or null - show a mix of all
+        allowedVibes.push(...FOOD_VIBES, ...ACTIVITY_VIBES, ...ATTRACTION_VIBES);
+    }
+
+    // Apply exclusions
     if (intent && EXCLUSIONS[intent]) EXCLUSIONS[intent].forEach(v => bannedVibes.add(v));
     if (budget && EXCLUSIONS[budget]) EXCLUSIONS[budget].forEach(v => bannedVibes.add(v));
     if (touristLevel) {
@@ -113,32 +184,42 @@ export function getContextualMoods(
         if (levelKey && EXCLUSIONS[levelKey]) EXCLUSIONS[levelKey].forEach(v => bannedVibes.add(v));
     }
 
-    const addWeight = (list: readonly string[], weight: number) => {
-        list.forEach(v => {
-            if (bannedVibes.has(v)) return;
-            candidateWeights[v] = (candidateWeights[v] || 0) + weight;
+    // Filter to only allowed vibes that aren't banned
+    const candidates = allowedVibes.filter(v => !bannedVibes.has(v));
+
+    // Weight vibes by context
+    const candidateWeights: Record<string, number> = {};
+    const addWeight = (vibes: readonly string[], weight: number) => {
+        vibes.forEach(v => {
+            if (candidates.includes(v)) {
+                candidateWeights[v] = (candidateWeights[v] || 0) + weight;
+            }
         });
     };
 
-    // 1. Context Weights
+    // Intent-specific vibes get higher weight
     if (intent && intent !== 'any' && intent in VIBES_BY_CONTEXT) {
         addWeight(VIBES_BY_CONTEXT[intent as keyof typeof VIBES_BY_CONTEXT], 4);
     }
+    // Tourist level specific vibes
     if (touristLevel !== null) {
         const levelKey = touristLevel <= 2 ? 'famous' : touristLevel === 3 ? 'balanced' : touristLevel === 4 ? 'local' : 'hidden';
         if (levelKey in VIBES_BY_CONTEXT) addWeight(VIBES_BY_CONTEXT[levelKey as keyof typeof VIBES_BY_CONTEXT], 3);
     }
+    // Budget specific vibes
     if (budget && budget !== 'any' && budget in VIBES_BY_CONTEXT) {
         addWeight(VIBES_BY_CONTEXT[budget as keyof typeof VIBES_BY_CONTEXT], 2);
     }
+    // Universal vibes always get base weight
+    addWeight(UNIVERSAL_VIBES, 2);
+    // Add some randomness
+    candidates.forEach(v => {
+        candidateWeights[v] = (candidateWeights[v] || 0) + Math.random();
+    });
 
-    // 2. Diversity
-    const randomFresh = [...ALL_VIBES].sort(() => Math.random() - 0.5).slice(0, 20);
-    addWeight(randomFresh, 1);
-
-    // 3. Select with Group Deduplication
+    // Sort by weight and select with group deduplication
     const sortedCandidates = Object.entries(candidateWeights)
-        .sort(([, weightA], [, weightB]) => weightB - weightA)
+        .sort(([, a], [, b]) => b - a)
         .map(([vibe]) => vibe);
 
     const selectedVibes: string[] = [];
@@ -152,7 +233,7 @@ export function getContextualMoods(
         if (group) usedGroups.add(group);
     }
 
-    // 4. Fallback
+    // Fallback if not enough vibes
     if (selectedVibes.length < count) {
         const remaining = sortedCandidates.filter(v => !selectedVibes.includes(v));
         selectedVibes.push(...remaining.slice(0, count - selectedVibes.length));
@@ -243,3 +324,110 @@ export function getImpliedVibesFromSelections(
 
     return Array.from(impliedVibes);
 }
+
+/**
+ * Get smart avoid options based on what the user already selected.
+ * 
+ * Key principles:
+ * 1. Never show vibes they already selected (no conflicts)
+ * 2. Never show synonyms of selected vibes (no contradictions)
+ * 3. ONLY show vibes relevant to their intent (no food vibes for activity!)
+ * 4. Show RELATED vibes that help refine their selection
+ *    - e.g., picked "Water" → show "Beach", "Outdoor" to narrow down water TYPE
+ * 5. Add some context-appropriate universal options
+ * 
+ * @param selectedVibes - Vibes the user has already selected as "good vibes"
+ * @param intent - The user's intent (food_drink, activity, attraction)
+ * @param count - Number of avoid options to return
+ */
+export function getContextualAvoidOptions(
+    selectedVibes: string[],
+    intent: string | null,
+    count: number = 8
+): string[] {
+    const avoidCandidates = new Set<string>();
+    const excludeFromAvoid = new Set<string>(selectedVibes);
+
+    // Determine which vibes are ALLOWED based on intent
+    // This prevents showing food vibes for activity intent, etc.
+    const allowedVibes = new Set<string>([...UNIVERSAL_VIBES]);
+
+    if (intent === 'food_drink' || intent === 'any' || !intent) {
+        FOOD_VIBES.forEach(v => allowedVibes.add(v));
+    }
+    if (intent === 'activity' || intent === 'any' || !intent) {
+        ACTIVITY_VIBES.forEach(v => allowedVibes.add(v));
+    }
+    if (intent === 'attraction' || intent === 'any' || !intent) {
+        ATTRACTION_VIBES.forEach(v => allowedVibes.add(v));
+    }
+
+    // Also exclude synonyms of selected vibes
+    selectedVibes.forEach(vibe => {
+        const group = VIBE_TO_GROUP[vibe];
+        if (group && SYNONYM_GROUPS[group]) {
+            SYNONYM_GROUPS[group].forEach(synonym => excludeFromAvoid.add(synonym));
+        }
+    });
+
+    // Helper to add vibe only if allowed by intent context
+    const addIfAllowed = (vibe: string) => {
+        if (allowedVibes.has(vibe) && !excludeFromAvoid.has(vibe)) {
+            avoidCandidates.add(vibe);
+        }
+    };
+
+    // 1. Add RELATED vibes based on what they selected (highest priority)
+    // These are contextually relevant refinements
+    selectedVibes.forEach(vibe => {
+        const related = RELATED_VIBES[vibe];
+        if (related) {
+            related.forEach(r => addIfAllowed(r));
+        }
+    });
+
+    // 2. Add universal vibes that make sense as refinements (always allowed)
+    UNIVERSAL_VIBES.forEach(vibe => {
+        if (!excludeFromAvoid.has(vibe)) {
+            avoidCandidates.add(vibe);
+        }
+    });
+
+    // 3. Add intent-specific vibes they didn't select
+    if (intent === 'food_drink') {
+        FOOD_VIBES.forEach(vibe => addIfAllowed(vibe));
+    } else if (intent === 'activity') {
+        ACTIVITY_VIBES.forEach(vibe => addIfAllowed(vibe));
+    } else if (intent === 'attraction') {
+        ATTRACTION_VIBES.forEach(vibe => addIfAllowed(vibe));
+    }
+
+    // Convert to array and prioritize related vibes
+    const relatedSet = new Set<string>();
+    selectedVibes.forEach(vibe => {
+        const related = RELATED_VIBES[vibe];
+        if (related) {
+            related.forEach(r => {
+                if (allowedVibes.has(r)) relatedSet.add(r);
+            });
+        }
+    });
+
+    // Sort: related vibes first, then universal, then rest
+    const universalSet = new Set<string>(UNIVERSAL_VIBES);
+    const sortedCandidates = Array.from(avoidCandidates)
+        .filter(v => !excludeFromAvoid.has(v))
+        .sort((a, b) => {
+            // Priority: related (0) > universal (1) > other (2)
+            const aPriority = relatedSet.has(a) ? 0 : universalSet.has(a) ? 1 : 2;
+            const bPriority = relatedSet.has(b) ? 0 : universalSet.has(b) ? 1 : 2;
+            return aPriority - bPriority;
+        });
+
+    // Take top N, then light shuffle for variety
+    const result = sortedCandidates.slice(0, count);
+    return result.sort(() => Math.random() - 0.5);
+}
+
+// Export the new curated vibe lists for use elsewhere
+export { UNIVERSAL_VIBES, FOOD_VIBES, ACTIVITY_VIBES, ATTRACTION_VIBES };
