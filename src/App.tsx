@@ -214,16 +214,7 @@ function App() {
         }
     };
 
-    const getStepNumber = () => {
-        switch (currentStep) {
-            case 'question-intent': return 1;
-            case 'question-vibe': return 2;
-            case 'question-budget': return 3;
-            case 'question-mood': return 4;
-            case 'question-avoid': return 5;
-            default: return 0;
-        }
-    };
+
 
     // Page transition variants
     const pageVariants = {
