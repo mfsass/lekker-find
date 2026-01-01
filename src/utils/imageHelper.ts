@@ -9,6 +9,14 @@ export const FALLBACK_IMAGES: Record<string, string> = {
     culture: 'https://images.unsplash.com/photo-1576485290814-1c72aa4bbb8e?auto=format&fit=crop&w=1200&q=80',
 };
 
+// Cache-busting for local images to stay in sync with refreshed data
+const LOCAL_IMAGE_VERSION = '2025-01-05';
+
+function withCacheBust(url: string): string {
+    const separator = url.includes('?') ? '&' : '?';
+    return `${url}${separator}v=${LOCAL_IMAGE_VERSION}`;
+}
+
 /**
  * Get the best available image URL for a venue.
  * Priority:
@@ -18,6 +26,10 @@ export const FALLBACK_IMAGES: Record<string, string> = {
  */
 export function getVenueImage(venue: Venue): string {
     if (venue.image_url && (venue.image_url.startsWith('http') || venue.image_url.startsWith('/'))) {
+        // Bust cache for local assets so updated data matches images
+        if (venue.image_url.startsWith('/images/venues/')) {
+            return withCacheBust(venue.image_url);
+        }
         return venue.image_url;
     }
 
@@ -25,7 +37,7 @@ export function getVenueImage(venue: Venue): string {
     // The id format is "v{idx}" so we extract the number
     const idMatch = venue.id?.match(/v(\d+)/);
     if (idMatch) {
-        return `/images/venues/v${idMatch[1]}.jpg`;
+        return withCacheBust(`/images/venues/v${idMatch[1]}.jpg`);
     }
 
     const category = venue.category?.toLowerCase() || 'nature';
