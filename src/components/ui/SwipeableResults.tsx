@@ -16,16 +16,8 @@ import { motion, AnimatePresence, PanInfo } from 'framer-motion';
 import { MapPin, ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import { VenueWithMatch } from '../../utils/matcher';
 import { convertPriceString } from '../../utils/currency';
+import { getVenueImage } from '../../utils/imageHelper';
 import './SwipeableResults.css';
-
-// Fallback images by category (Unsplash URLs)
-const FALLBACK_IMAGES: Record<string, string> = {
-    food: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80',
-    drink: 'https://images.unsplash.com/photo-1514362545857-3bc16549766b?auto=format&fit=crop&w=1200&q=80',
-    nature: 'https://images.unsplash.com/photo-1580060839134-75a5edca2e99?auto=format&fit=crop&w=1200&q=80',
-    activity: 'https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=1200&q=80',
-    culture: 'https://images.unsplash.com/photo-1576485290814-1c72aa4bbb8e?auto=format&fit=crop&w=1200&q=80',
-};
 
 // Card animation variants (static, no need to recreate)
 const CARD_VARIANTS = {
@@ -47,21 +39,6 @@ const CARD_VARIANTS = {
         transition: { duration: 0.2 },
     }),
 };
-
-function getVenueImage(venue: VenueWithMatch): string {
-    // Priority: 1. External image_url, 2. Local venue image, 3. Category fallback
-    if (venue.image_url) return venue.image_url;
-
-    // Use local image based on venue id (e.g., v0.jpg, v1.jpg)
-    // The id format is "v{idx}" so we extract the number
-    const idMatch = venue.id?.match(/v(\d+)/);
-    if (idMatch) {
-        return `/images/venues/v${idMatch[1]}.jpg`;
-    }
-
-    const category = venue.category?.toLowerCase() || 'nature';
-    return FALLBACK_IMAGES[category] || FALLBACK_IMAGES.nature;
-}
 
 interface SwipeableResultsProps {
     venues: VenueWithMatch[];
@@ -102,6 +79,25 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
     const hasNext = currentIndex < venues.length - 1;
     const hasPrev = currentIndex > 0;
     const imageUrl = useMemo(() => currentVenue ? getVenueImage(currentVenue) : '', [currentVenue]);
+
+    // Preload next image to keep swipe smooth
+    React.useEffect(() => {
+        if (currentIndex < venues.length - 1) {
+            const nextVenue = venues[currentIndex + 1];
+            if (nextVenue) {
+                const img = new Image();
+                img.src = getVenueImage(nextVenue);
+            }
+        }
+        // Also keep previous image warm if going back
+        if (currentIndex > 0) {
+            const prevVenue = venues[currentIndex - 1];
+            if (prevVenue) {
+                const img = new Image();
+                img.src = getVenueImage(prevVenue);
+            }
+        }
+    }, [currentIndex, venues]);
 
     // Format price display with currency conversion
     const priceDisplay = useMemo(() => {
