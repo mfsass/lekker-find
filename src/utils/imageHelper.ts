@@ -9,6 +9,33 @@ export const FALLBACK_IMAGES: Record<string, string> = {
     culture: 'https://images.unsplash.com/photo-1576485290814-1c72aa4bbb8e?auto=format&fit=crop&w=1200&q=80',
 };
 
+// Cache-busting for local images to stay in sync with refreshed data
+const { VITE_IMAGE_VERSION, VITE_APP_VERSION } = import.meta.env;
+const LOCAL_IMAGE_VERSION = VITE_IMAGE_VERSION ?? VITE_APP_VERSION ?? '1';
+const CACHE_PARAM = 'img_v';
+const BASE_URL =
+    (typeof window !== 'undefined' && window.location ? window.location.origin : undefined) ??
+    import.meta.env.VITE_APP_BASE_URL ??
+    'http://localhost';
+
+/**
+ * Append a cache-busting query parameter to a URL.
+ * @param url Base URL to decorate.
+ * @returns URL with cache-busting parameter added.
+ */
+function withCacheBust(url: string): string {
+    const isAbsolute = /^https?:\/\//i.test(url);
+    const parsed = new URL(url, BASE_URL);
+    if (parsed.searchParams.has(CACHE_PARAM)) {
+        return isAbsolute ? parsed.toString() : `${parsed.pathname}${parsed.search}${parsed.hash}`;
+    }
+    parsed.searchParams.append(CACHE_PARAM, LOCAL_IMAGE_VERSION);
+    if (isAbsolute) {
+        return parsed.toString();
+    }
+    return `${parsed.pathname}${parsed.search}${parsed.hash}`;
+}
+
 /**
  * Get the best available image URL for a venue.
  * Priority:
@@ -18,6 +45,10 @@ export const FALLBACK_IMAGES: Record<string, string> = {
  */
 export function getVenueImage(venue: Venue): string {
     if (venue.image_url && (venue.image_url.startsWith('http') || venue.image_url.startsWith('/'))) {
+        // Bust cache for local assets so updated data matches images
+        if (venue.image_url.startsWith('/images/venues/')) {
+            return withCacheBust(venue.image_url);
+        }
         return venue.image_url;
     }
 
@@ -25,7 +56,7 @@ export function getVenueImage(venue: Venue): string {
     // The id format is "v{idx}" so we extract the number
     const idMatch = venue.id?.match(/v(\d+)/);
     if (idMatch) {
-        return `/images/venues/v${idMatch[1]}.jpg`;
+        return withCacheBust(`/images/venues/v${idMatch[1]}.jpg`);
     }
 
     const category = venue.category?.toLowerCase() || 'nature';
