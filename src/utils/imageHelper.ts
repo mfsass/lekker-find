@@ -13,6 +13,10 @@ export const FALLBACK_IMAGES: Record<string, string> = {
 const { VITE_IMAGE_VERSION, VITE_APP_VERSION } = import.meta.env;
 const LOCAL_IMAGE_VERSION = VITE_IMAGE_VERSION ?? VITE_APP_VERSION ?? '1';
 const CACHE_PARAM = 'img_v';
+const BASE_URL =
+    (typeof window !== 'undefined' && window.location ? window.location.origin : undefined) ??
+    import.meta.env.VITE_APP_BASE_URL ??
+    'http://localhost';
 
 /**
  * Append a cache-busting query parameter to a URL.
@@ -21,9 +25,9 @@ const CACHE_PARAM = 'img_v';
  */
 function withCacheBust(url: string): string {
     const isAbsolute = /^https?:\/\//i.test(url);
-    const parsed = new URL(url, typeof window !== 'undefined' ? window.location.origin : 'http://localhost');
+    const parsed = new URL(url, BASE_URL);
     if (parsed.searchParams.has(CACHE_PARAM)) {
-        return url;
+        return isAbsolute ? parsed.toString() : `${parsed.pathname}${parsed.search}${parsed.hash}`;
     }
     parsed.searchParams.append(CACHE_PARAM, LOCAL_IMAGE_VERSION);
     if (isAbsolute) {
