@@ -594,7 +594,7 @@ function App() {
                             author: {
                                 '@type': 'Organization',
                                 name: 'Lekker Find',
-                                logo: 'https://lekker-find.co.za/logo-min.png'
+                                logo: 'https://lekker-find.co.za/android-chrome-512x512.png'
                             },
                             areaServed: {
                                 '@type': 'City',
