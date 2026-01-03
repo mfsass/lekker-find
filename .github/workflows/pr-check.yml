@@ -1,0 +1,66 @@
+# 🛡️ PR Quality Gate
+# Runs on every PR to main - quick checks with self-healing lint
+
+name: PR Check
+
+on:
+  pull_request:
+    branches: [main]
+
+# Allow the workflow to push auto-fixes back to the PR
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  quality-check:
+    name: 🔍 Quality Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          # Need fetch-depth 0 for pushing commits back
+          fetch-depth: 0
+
+      - name: 📦 Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: 📚 Install Dependencies
+        run: npm ci
+
+      - name: 🔧 Auto-fix Lint Issues
+        id: lint-fix
+        run: |
+          # Run ESLint with auto-fix
+          npm run lint -- --fix || true
+          
+          # Check if there are changes to commit
+          if [[ -n $(git status --porcelain) ]]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: 💾 Commit Auto-fixes
+        if: steps.lint-fix.outputs.has_changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          git commit -m "🤖 Auto-fix: lint corrections"
+          git push
+
+      - name: 🔍 Lint Check (Verify)
+        run: npm run lint
+
+      - name: 🏗️ Type Check & Build
+        run: npm run build
+
+      - name: ✅ All Checks Passed
+        run: echo "🎉 PR is ready for review!"

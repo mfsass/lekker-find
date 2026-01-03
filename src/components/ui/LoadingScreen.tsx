@@ -3,6 +3,8 @@ import './LoadingScreen.css';
 import { getLoadingWords } from '../../data/loadingWords';
 import { VenueWithMatch } from '../../utils/matcher';
 
+import { getVenueImage } from '../../utils/imageHelper';
+
 interface LoadingScreenProps {
     isVisible: boolean;
     touristLevel: number | null;
@@ -13,22 +15,27 @@ interface LoadingScreenProps {
 
 // Preload venue images
 function preloadImages(venues: VenueWithMatch[]): Promise<void[]> {
-    // Preload more images (up to 10) to make the swipe experience smooth
-    const imageUrls = venues.slice(0, 10).map(v => v.image_url).filter(Boolean);
+    // Preload more images (up to 15) to make the swipe experience smooth
+    // We prioritize the first few images to ensure immediate availability
+    const targetVenues = venues.slice(0, 15);
+    const imageUrls = targetVenues.map(getVenueImage).filter(Boolean);
+
+    // Dedup URLs
+    const uniqueUrls = [...new Set(imageUrls)];
 
     return Promise.all(
-        imageUrls.map(url =>
+        uniqueUrls.map(url =>
             new Promise<void>((resolve) => {
                 const img = new Image();
                 // We use crossOrigin to help with CORS but let referrer pass through 
                 // for Google Maps API key verification
-                // Local images don't need crossOrigin
-                // img.crossOrigin = 'anonymous';
+                // Local images don't need crossOrigin usually, but safe to omit if local
+                // img.crossOrigin = 'anonymous'; 
                 img.onload = () => resolve();
                 img.onerror = () => {
                     const cleanUrl = typeof url === 'string' ? url.split('?')[0] : 'Unknown URL';
-                    console.warn(`Failed to preload image: ${cleanUrl}... (Check API key restrictions)`);
-                    resolve();
+                    console.warn(`Failed to preload image: ${cleanUrl}`);
+                    resolve(); // Resolve anyway to not block
                 };
                 img.src = url as string;
             })

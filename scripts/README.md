@@ -2,61 +2,65 @@
 
 This directory contains utility scripts for managing venue data, images, and embeddings.
 
-## 🛠️ Data Management Workflow
+## 🛠️ Data Pipeline
 
-### 1. Add New Venues (Automated)
-The easiest way to add venues is using the Admin Tool with the Automation Server.
+The data flows from CSV → AI Enrichment → Embeddings → App.
 
-1.  **Start the Server:**
-    ```bash
-    python scripts/serve_admin.py
-    ```
-2.  **Open Browser:** Go to `http://localhost:8000/admin/add-venue.html`
-3.  **Add Venue:** Fill in the details and click **"🚀 Save & Process"**.
-    *   This will automatically append to CSV, fetch images, enrich data, and regenerate embeddings in one step.
+### 1. Vibe System (The Core)
+We use a **Curated Vibe System** (44 specific vibes) defined in `src/data/vibes.ts`.
+*   **Script:** `scripts/generate_vibe_embeddings.py`
+*   **Purpose:** Generates rich, atmospheric descriptions for each of the 44 vibes (saved to `curated_vibe_embeddings.json`).
+*   **Usage:** Run this only if you change the definition of what a "Beach" or "Cozy" vibe feels like.
 
-### 2. Manual Method
-If you prefer manual control:
-1. Open `admin/add-venue.html` (drag into browser or use Live Server).
-2. Generate the CSV row and paste it into `data-262-2025-12-26.csv`.
-3.  Run the scripts manually as needed (see below).
+### 2. Add New Venues
+1.  **Start Server:** `python scripts/serve_admin.py`
+2.  **Go to:** `http://localhost:8000/admin/add-venue.html`
+3.  **Add & Save:** Automatically updates CSV, fetches images, and regnerates embeddings.
 
-### 3. Enrich Data (Optional)
-If you want to auto-generate `VibeDescription` using GPT-50-nano (or similar) instead of writing them manually:
+### 3. Generate Embeddings (Main Build)
+Builds the `public/lekker-find-data.json` file used by the app.
+```bash
+python scripts/generate_embeddings.py
+```
+*   **Logic:** Prioritizes the `VibeDescription` (rich text) column from CSV for embedding generation.
+*   **Consistency:** Ensures venue embeddings are in the same semantic space as the curated vibe embeddings.
+
+### 4. Enrich Data
+If you added raw rows to CSV directly:
 ```bash
 python scripts/enrich_venues.py
 ```
-*   **Note:** The Admin tool allows you to write these manually, which is often better/cheaper.
+*   Generates rich `VibeDescription` strings using AI (gpt-5-nano).
+*   Uses "warm, evocative" language to align with our embedding strategy.
 
-### 4. Image Management
-To fetch and localize images for venues:
+---
+
+## 🧪 Testing & Verification
+
+### 1. Verify Recommendation Logic
+The primary test suite for the matching engine:
 ```bash
-# Fetch new images from Google Places (External APIs)
-python scripts/fetch_images.py
+npx tsx scripts/test-vibe-logic.ts
+```
+*   Runs 8+ real-world user scenarios (e.g., "Water + Wildlife + Avoid Beach").
+*   Checks if the correct venues appear in Top 3.
 
-# Download remote images to local /public/images/venues/ folder
-python scripts/localize_images.py
+### 2. Image Management
+```bash
+python scripts/fetch_images.py   # Get Google URLs
+python scripts/localize_images.py # Download to local folder
 ```
 
 ---
 
-## 📂 Key Files
+## 📂 Key Files Overview
 
--   `generate_embeddings.py`: **Main script** for building the app's data file (`public/lekker-find-data.json`).
--   `ab_test_embeddings.py`: Benchmark script to scientifically test embedding quality and scoring logic.
--   `enrich_venues.py`: AI script to generate rich descriptions for venues.
--   `fetch_images.py`: Fetches image URLs from Google connection.
--   `localize_images.py`: Downloads images locally to avoid external dependencies.
+| Script | Purpose |
+|--------|---------|
+| `generate_embeddings.py` | **Vital**. Converts CSV data → JSON with embeddings. |
+| `generate_vibe_embeddings.py` | **Vital**. Generates the semantic definitions for the 44 curated vibes. |
+| `test-vibe-logic.ts` | **Vital**. Validates that user choices lead to correct venues. |
+| `enrich_venues.py` | AI-generates rich descriptions for venues. |
+| `serve_admin.py` | Local automation server for the admin interface. |
+| `localize_images.py` | Downloads images to remove external dependencies. |
 
-## 🧪 Benchmarking
-To test if the search logic is improving:
-```bash
-python scripts/ab_test_embeddings.py
-```
-This runs a suite of test cases (e.g., "Romantic Coastal") and measures precision/ranking quality.
-
----
-
-## 💡 Best Practices
--   **Always run `generate_embeddings.py`** after changing the CSV.
--   **Local Images:** The app prefers local images (`/images/venues/v{id}.jpg`). Ensure `localize_images.py` is run if you've fetched new URLs.
