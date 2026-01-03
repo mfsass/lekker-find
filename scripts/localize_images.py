@@ -5,6 +5,7 @@ import time
 import re
 from pathlib import Path
 from dotenv import load_dotenv
+from venue_id_utils import generate_stable_venue_id, get_image_filename
 
 # Load New API Key
 load_dotenv()
@@ -46,8 +47,15 @@ def localize_images(force_redownload=False):
 
     for i, venue in enumerate(venues):
         url = venue.get('image_url', '')
-        venue_id = venue.get('id', f'v{i}')
-        filename = f"{venue_id}.jpg"
+        venue_name = venue.get('name', '')
+        venue_id = venue.get('id', '')
+        
+        # Use stable ID for filename
+        if not venue_id and venue_name:
+            venue_id = generate_stable_venue_id(venue_name)
+            venue['id'] = venue_id
+        
+        filename = get_image_filename(venue_id) if venue_id else f"venue_{i}.jpg"
         filepath = os.path.join(IMAGE_DIR, filename)
 
         # 1. Check if it's already localized in JSON

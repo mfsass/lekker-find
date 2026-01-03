@@ -21,6 +21,7 @@ import sys
 import os
 from typing import List, Dict, Any
 from dotenv import load_dotenv
+from venue_id_utils import generate_stable_venue_id
 
 # Load .env file
 load_dotenv()
@@ -258,9 +259,12 @@ def main():
             rating = row.get('Rating')
             rating_val = float(rating) if pd.notna(rating) else None
             
+            # Generate stable ID from venue name
+            venue_id = generate_stable_venue_id(row['Name'])
+            
             # Start with base venue data
             venue_data = {
-                'id': f"v{idx}",
+                'id': venue_id,
                 'name': row['Name'],
                 'category': row['Category'],
                 'tourist_level': int(row['Tourist_Level']),
@@ -401,8 +405,16 @@ def incremental_update():
         try:
             embedding = get_embedding(embedding_text, client)
             
+            # Get rating and suburb if available
+            rating = row.get('Rating')
+            rating_val = float(rating) if pd.notna(rating) else None
+            suburb = str(row.get('Suburb', '')) if pd.notna(row.get('Suburb')) else None
+            
+            # Generate stable ID from venue name (not index-based)
+            venue_id = generate_stable_venue_id(name)
+            
             new_venues.append({
-                'id': f"v{len(existing_venues) + len(new_venues)}",
+                'id': venue_id,
                 'name': name,
                 'category': row['Category'],
                 'tourist_level': int(row['Tourist_Level']),
@@ -411,6 +423,8 @@ def incremental_update():
                 'best_season': row['Best_Season'],
                 'vibes': [v.strip() for v in vibe_str.split(',') if v.strip()],
                 'description': desc_str,
+                'rating': rating_val,
+                'suburb': suburb,
                 'embedding': embedding
             })
             

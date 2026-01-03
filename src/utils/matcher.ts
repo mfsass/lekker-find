@@ -43,6 +43,7 @@ export interface Venue {
     image_height?: number;
     image_attribution?: string;
     rating?: number;  // Google Maps rating (1-5)
+    suburb?: string;  // Extracted from address (e.g. "Sea Point")
 }
 
 export interface VenueWithMatch extends Venue {

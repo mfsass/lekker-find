@@ -13,7 +13,7 @@ export const FALLBACK_IMAGES: Record<string, string> = {
  * Get the best available image URL for a venue.
  * Priority:
  * 1. External image_url (if valid URL)
- * 2. Local venue image based on ID (v123.jpg)
+ * 2. Local venue image based on stable ID (venue-name-hash.jpg)
  * 3. Category fallback
  */
 export function getVenueImage(venue: Venue): string {
@@ -21,11 +21,10 @@ export function getVenueImage(venue: Venue): string {
         return venue.image_url;
     }
 
-    // Use local image based on venue id (e.g., v0.jpg, v1.jpg)
-    // The id format is "v{idx}" so we extract the number
-    const idMatch = venue.id?.match(/v(\d+)/);
-    if (idMatch) {
-        return `/images/venues/v${idMatch[1]}.jpg`;
+    // Use local image based on venue id (stable name-based ID)
+    // The new format is: venue-name-hash.jpg (e.g., "woolleys-tidal-pool-5561.jpg")
+    if (venue.id) {
+        return `/images/venues/${venue.id}.jpg`;
     }
 
     const category = venue.category?.toLowerCase() || 'nature';
