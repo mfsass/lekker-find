@@ -291,11 +291,20 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
                                 {currentVenue.description}
                             </p>
 
-                            {/* Open in Maps */}
-                            <button onClick={openInMaps} className="results-maps-btn">
-                                <MapPin size={18} />
-                                Open in Maps
-                            </button>
+                            {/* Footer Actions */}
+                            <div className="results-card-footer">
+                                <button onClick={openInMaps} className="results-maps-btn">
+                                    <MapPin size={18} />
+                                    Open in Maps
+                                </button>
+
+                                {currentVenue.suburb && (
+                                    <div className="results-suburb-tag">
+                                        <MapPin size={13} strokeWidth={2.5} />
+                                        {currentVenue.suburb}
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </motion.div>
                 </AnimatePresence>
