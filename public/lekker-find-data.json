@@ -4,7 +4,7 @@
   "dimensions": 256,
   "venues": [
     {
-      "id": "v0",
+      "id": "woolley-s-tidal-pool-7f32",
       "name": "Woolley\u2019s Tidal Pool",
       "category": "Nature",
       "tourist_level": 1,
@@ -278,7 +278,7 @@
       ]
     },
     {
-      "id": "v1",
+      "id": "super-fisheries-3082",
       "name": "Super Fisheries",
       "category": "Food",
       "tourist_level": 1,
@@ -552,7 +552,7 @@
       ]
     },
     {
-      "id": "v2",
+      "id": "majik-forest-7c2d",
       "name": "Majik Forest",
       "category": "Nature",
       "tourist_level": 2,
@@ -826,7 +826,7 @@
       ]
     },
     {
-      "id": "v3",
+      "id": "bali-beach-d081",
       "name": "Bali Beach",
       "category": "Nature",
       "tourist_level": 2,
@@ -1100,7 +1100,7 @@
       ]
     },
     {
-      "id": "v4",
+      "id": "water-s-edge-beach-133a",
       "name": "Water\u2019s Edge Beach",
       "category": "Nature",
       "tourist_level": 2,
@@ -1374,7 +1374,7 @@
       ]
     },
     {
-      "id": "v5",
+      "id": "smitswinkel-bay-b059",
       "name": "Smitswinkel Bay",
       "category": "Nature",
       "tourist_level": 2,
@@ -1648,7 +1648,7 @@
       ]
     },
     {
-      "id": "v6",
+      "id": "ganesh-e6d5",
       "name": "Ganesh",
       "category": "Food",
       "tourist_level": 2,
@@ -1922,7 +1922,7 @@
       ]
     },
     {
-      "id": "v7",
+      "id": "ghetto-sessions-8de3",
       "name": "Ghetto Sessions",
       "category": "Culture",
       "tourist_level": 2,
@@ -2196,7 +2196,7 @@
       ]
     },
     {
-      "id": "v8",
+      "id": "papa-ron-s-shisa-nyama-bc60",
       "name": "Papa Ron\u2019s Shisa Nyama",
       "category": "Food",
       "tourist_level": 2,
@@ -2470,7 +2470,7 @@
       ]
     },
     {
-      "id": "v9",
+      "id": "platboom-beach-1330",
       "name": "Platboom Beach",
       "category": "Nature",
       "tourist_level": 2,
@@ -2744,7 +2744,7 @@
       ]
     },
     {
-      "id": "v10",
+      "id": "pahari-african-restaurant-e2a9",
       "name": "Pahari African Restaurant",
       "category": "Food",
       "tourist_level": 2,
@@ -3018,7 +3018,7 @@
       ]
     },
     {
-      "id": "v11",
+      "id": "pixie-garden-ffa9",
       "name": "Pixie Garden",
       "category": "Nature",
       "tourist_level": 2,
@@ -3292,7 +3292,7 @@
       ]
     },
     {
-      "id": "v12",
+      "id": "continental-take-aways-dfa8",
       "name": "Continental Take-Aways",
       "category": "Food",
       "tourist_level": 2,
@@ -3566,7 +3566,7 @@
       ]
     },
     {
-      "id": "v13",
+      "id": "newlands-forest-c39c",
       "name": "Newlands Forest",
       "category": "Nature",
       "tourist_level": 3,
@@ -3840,7 +3840,7 @@
       ]
     },
     {
-      "id": "v14",
+      "id": "saaf-museum-03bb",
       "name": "SAAF Museum",
       "category": "Culture",
       "tourist_level": 3,
@@ -4114,7 +4114,7 @@
       ]
     },
     {
-      "id": "v15",
+      "id": "newlands-ravine-5446",
       "name": "Newlands Ravine",
       "category": "Nature",
       "tourist_level": 3,
@@ -4388,7 +4388,7 @@
       ]
     },
     {
-      "id": "v16",
+      "id": "windmill-beach-893f",
       "name": "Windmill Beach",
       "category": "Nature",
       "tourist_level": 3,
@@ -4662,7 +4662,7 @@
       ]
     },
     {
-      "id": "v17",
+      "id": "cape-town-meadery-81f6",
       "name": "Cape Town Meadery",
       "category": "Drink",
       "tourist_level": 3,
@@ -4936,7 +4936,7 @@
       ]
     },
     {
-      "id": "v18",
+      "id": "borruso-s-31d7",
       "name": "Borruso\u2019s",
       "category": "Food",
       "tourist_level": 3,
@@ -5210,7 +5210,7 @@
       ]
     },
     {
-      "id": "v19",
+      "id": "groot-phesantekraal-96fe",
       "name": "Groot Phesantekraal",
       "category": "Food",
       "tourist_level": 3,
@@ -5484,7 +5484,7 @@
       ]
     },
     {
-      "id": "v20",
+      "id": "teez-lounge-c1ec",
       "name": "Teez Lounge",
       "category": "Food",
       "tourist_level": 3,
@@ -5758,7 +5758,7 @@
       ]
     },
     {
-      "id": "v21",
+      "id": "soeul-pocha-f779",
       "name": "Soeul Pocha",
       "category": "Food",
       "tourist_level": 3,
@@ -6032,7 +6032,7 @@
       ]
     },
     {
-      "id": "v22",
+      "id": "cape-town-tunnels-6b95",
       "name": "Cape Town Tunnels",
       "category": "Activity",
       "tourist_level": 3,
@@ -6306,7 +6306,7 @@
       ]
     },
     {
-      "id": "v23",
+      "id": "khwa-ttu-san-tour-3c87",
       "name": "!Khwa ttu San Tour",
       "category": "Culture",
       "tourist_level": 3,
@@ -6580,7 +6580,7 @@
       ]
     },
     {
-      "id": "v24",
+      "id": "heaven-coffee-shop-cf76",
       "name": "Heaven Coffee Shop",
       "category": "Drink",
       "tourist_level": 3,
@@ -6854,7 +6854,7 @@
       ]
     },
     {
-      "id": "v25",
+      "id": "darling-toffee-b5c6",
       "name": "Darling Toffee",
       "category": "Food",
       "tourist_level": 3,
@@ -7128,7 +7128,7 @@
       ]
     },
     {
-      "id": "v26",
+      "id": "golden-dish-5fd0",
       "name": "Golden Dish",
       "category": "Food",
       "tourist_level": 3,
@@ -7402,7 +7402,7 @@
       ]
     },
     {
-      "id": "v27",
+      "id": "seebamboes-12e9",
       "name": "Seebamboes",
       "category": "Food",
       "tourist_level": 3,
@@ -7676,7 +7676,7 @@
       ]
     },
     {
-      "id": "v28",
+      "id": "cosy-corner-bf67",
       "name": "Cosy Corner",
       "category": "Food",
       "tourist_level": 3,
@@ -7950,7 +7950,7 @@
       ]
     },
     {
-      "id": "v29",
+      "id": "st-james-tidal-pool-7ad1",
       "name": "St James Tidal Pool",
       "category": "Nature",
       "tourist_level": 4,
@@ -8224,7 +8224,7 @@
       ]
     },
     {
-      "id": "v30",
+      "id": "india-venster-trail-b681",
       "name": "India Venster Trail",
       "category": "Nature",
       "tourist_level": 4,
@@ -8498,7 +8498,7 @@
       ]
     },
     {
-      "id": "v31",
+      "id": "vergenoegd-ducks-0654",
       "name": "Vergenoegd Ducks",
       "category": "Nature",
       "tourist_level": 4,
@@ -8772,7 +8772,7 @@
       ]
     },
     {
-      "id": "v32",
+      "id": "beta-beach-da9a",
       "name": "Beta Beach",
       "category": "Nature",
       "tourist_level": 4,
@@ -9046,7 +9046,7 @@
       ]
     },
     {
-      "id": "v33",
+      "id": "barcadia-d7df",
       "name": "Barcadia",
       "category": "Activity",
       "tourist_level": 4,
@@ -9320,7 +9320,7 @@
       ]
     },
     {
-      "id": "v34",
+      "id": "reverie-social-table-845e",
       "name": "Reverie Social Table",
       "category": "Food",
       "tourist_level": 4,
@@ -9594,7 +9594,7 @@
       ]
     },
     {
-      "id": "v35",
+      "id": "africa-padel-74cc",
       "name": "Africa Padel",
       "category": "Activity",
       "tourist_level": 4,
@@ -9868,7 +9868,7 @@
       ]
     },
     {
-      "id": "v36",
+      "id": "starlings-caf-efe3",
       "name": "Starlings Caf\u00e9",
       "category": "Food",
       "tourist_level": 4,
@@ -10142,7 +10142,7 @@
       ]
     },
     {
-      "id": "v37",
+      "id": "18-gangster-museum-6d59",
       "name": "18 Gangster Museum",
       "category": "Culture",
       "tourist_level": 4,
@@ -10416,7 +10416,7 @@
       ]
     },
     {
-      "id": "v38",
+      "id": "dust-dynamite-e2bd",
       "name": "Dust & Dynamite",
       "category": "Drink",
       "tourist_level": 4,
@@ -10690,7 +10690,7 @@
       ]
     },
     {
-      "id": "v39",
+      "id": "armchair-theatre-6e69",
       "name": "Armchair Theatre",
       "category": "Culture",
       "tourist_level": 4,
@@ -10964,7 +10964,7 @@
       ]
     },
     {
-      "id": "v40",
+      "id": "blue-rock-resort-a4c9",
       "name": "Blue Rock Resort",
       "category": "Activity",
       "tourist_level": 4,
@@ -11238,7 +11238,7 @@
       ]
     },
     {
-      "id": "v41",
+      "id": "truck-norris-4129",
       "name": "Truck Norris",
       "category": "Food",
       "tourist_level": 4,
@@ -11512,7 +11512,7 @@
       ]
     },
     {
-      "id": "v42",
+      "id": "mariam-s-kitchen-f31c",
       "name": "Mariam\u2019s Kitchen",
       "category": "Food",
       "tourist_level": 4,
@@ -11786,7 +11786,7 @@
       ]
     },
     {
-      "id": "v43",
+      "id": "the-secret-gin-bar-0ade",
       "name": "The Secret Gin Bar",
       "category": "Drink",
       "tourist_level": 4,
@@ -12060,7 +12060,7 @@
       ]
     },
     {
-      "id": "v44",
+      "id": "the-nob-3bbb",
       "name": "The NOB",
       "category": "Food",
       "tourist_level": 4,
@@ -12334,7 +12334,7 @@
       ]
     },
     {
-      "id": "v45",
+      "id": "shimansky-diamond-exp-e6d2",
       "name": "Shimansky Diamond Exp.",
       "category": "Activity",
       "tourist_level": 4,
@@ -12608,7 +12608,7 @@
       ]
     },
     {
-      "id": "v46",
+      "id": "miller-s-point-tidal-pool-b3e0",
       "name": "Miller\u2019s Point Tidal Pool",
       "category": "Nature",
       "tourist_level": 4,
@@ -12882,7 +12882,7 @@
       ]
     },
     {
-      "id": "v47",
+      "id": "warrior-toy-museum-ae92",
       "name": "Warrior Toy Museum",
       "category": "Culture",
       "tourist_level": 4,
@@ -13156,7 +13156,7 @@
       ]
     },
     {
-      "id": "v48",
+      "id": "faeeza-s-home-kitchen-12c3",
       "name": "Faeeza\u2019s Home Kitchen",
       "category": "Culture",
       "tourist_level": 4,
@@ -13430,7 +13430,7 @@
       ]
     },
     {
-      "id": "v49",
+      "id": "south-yeaster-bakery-a1b5",
       "name": "South Yeaster Bakery",
       "category": "Food",
       "tourist_level": 4,
@@ -13704,7 +13704,7 @@
       ]
     },
     {
-      "id": "v50",
+      "id": "mabu-vinyl-9cad",
       "name": "Mabu Vinyl",
       "category": "Culture",
       "tourist_level": 4,
@@ -13978,7 +13978,7 @@
       ]
     },
     {
-      "id": "v51",
+      "id": "palmiet-rapids-4018",
       "name": "Palmiet Rapids",
       "category": "Activity",
       "tourist_level": 4,
@@ -14252,7 +14252,7 @@
       ]
     },
     {
-      "id": "v52",
+      "id": "spier-segway-tour-71e4",
       "name": "Spier Segway Tour",
       "category": "Activity",
       "tourist_level": 4,
@@ -14526,7 +14526,7 @@
       ]
     },
     {
-      "id": "v53",
+      "id": "tapi-tapi-ice-cream-422f",
       "name": "Tapi Tapi Ice-Cream",
       "category": "Food",
       "tourist_level": 4,
@@ -14800,7 +14800,7 @@
       ]
     },
     {
-      "id": "v54",
+      "id": "the-blue-caf-c922",
       "name": "The Blue Caf\u00e9",
       "category": "Food",
       "tourist_level": 4,
@@ -15074,7 +15074,7 @@
       ]
     },
     {
-      "id": "v55",
+      "id": "saunders-rocks-beach-82e4",
       "name": "Saunders' Rocks Beach",
       "category": "Nature",
       "tourist_level": 5,
@@ -15348,7 +15348,7 @@
       ]
     },
     {
-      "id": "v56",
+      "id": "shimansky-diamonds-897f",
       "name": "Shimansky Diamonds",
       "category": "Culture",
       "tourist_level": 5,
@@ -15622,7 +15622,7 @@
       ]
     },
     {
-      "id": "v57",
+      "id": "saunders-rock-4799",
       "name": "Saunders Rock",
       "category": "Nature",
       "tourist_level": 5,
@@ -15896,7 +15896,7 @@
       ]
     },
     {
-      "id": "v58",
+      "id": "dalebrook-tidal-pool-6466",
       "name": "Dalebrook Tidal Pool",
       "category": "Nature",
       "tourist_level": 5,
@@ -16170,7 +16170,7 @@
       ]
     },
     {
-      "id": "v59",
+      "id": "sea-point-promenade-493f",
       "name": "Sea Point Promenade",
       "category": "Activity",
       "tourist_level": 5,
@@ -16444,7 +16444,7 @@
       ]
     },
     {
-      "id": "v60",
+      "id": "milnerton-flea-market-46e5",
       "name": "Milnerton Flea Market",
       "category": "Activity",
       "tourist_level": 5,
@@ -16718,7 +16718,7 @@
       ]
     },
     {
-      "id": "v61",
+      "id": "battery-park-f8ac",
       "name": "Battery Park",
       "category": "Activity",
       "tourist_level": 5,
@@ -16992,7 +16992,7 @@
       ]
     },
     {
-      "id": "v62",
+      "id": "the-crypt-b721",
       "name": "The Crypt",
       "category": "Activity",
       "tourist_level": 5,
@@ -17266,7 +17266,7 @@
       ]
     },
     {
-      "id": "v63",
+      "id": "woodstock-brewery-353b",
       "name": "Woodstock Brewery",
       "category": "Drink",
       "tourist_level": 5,
@@ -17540,7 +17540,7 @@
       ]
     },
     {
-      "id": "v64",
+      "id": "jazz-safari-837f",
       "name": "Jazz Safari",
       "category": "Culture",
       "tourist_level": 5,
@@ -17814,7 +17814,7 @@
       ]
     },
     {
-      "id": "v65",
+      "id": "buffelsfontein-safari-a3d4",
       "name": "Buffelsfontein Safari",
       "category": "Nature",
       "tourist_level": 5,
@@ -18088,7 +18088,7 @@
       ]
     },
     {
-      "id": "v66",
+      "id": "chart-farm-9da6",
       "name": "Chart Farm",
       "category": "Nature",
       "tourist_level": 5,
@@ -18362,7 +18362,7 @@
       ]
     },
     {
-      "id": "v67",
+      "id": "pizza-shed-48a6",
       "name": "Pizza Shed",
       "category": "Food",
       "tourist_level": 5,
@@ -18636,7 +18636,7 @@
       ]
     },
     {
-      "id": "v68",
+      "id": "massimo-s-b203",
       "name": "Massimo\u2019s",
       "category": "Food",
       "tourist_level": 5,
@@ -18910,7 +18910,7 @@
       ]
     },
     {
-      "id": "v69",
+      "id": "secret-sunrise-24ca",
       "name": "Secret Sunrise",
       "category": "Activity",
       "tourist_level": 5,
@@ -19184,7 +19184,7 @@
       ]
     },
     {
-      "id": "v70",
+      "id": "chardonnay-deli-548c",
       "name": "Chardonnay Deli",
       "category": "Food",
       "tourist_level": 5,
@@ -19458,7 +19458,7 @@
       ]
     },
     {
-      "id": "v71",
+      "id": "aegir-project-ad6a",
       "name": "Aegir Project",
       "category": "Drink",
       "tourist_level": 5,
@@ -19732,7 +19732,7 @@
       ]
     },
     {
-      "id": "v72",
+      "id": "dias-tavern-6405",
       "name": "Dias Tavern",
       "category": "Food",
       "tourist_level": 5,
@@ -20006,7 +20006,7 @@
       ]
     },
     {
-      "id": "v73",
+      "id": "seven-colours-eatery-4ced",
       "name": "Seven Colours Eatery",
       "category": "Food",
       "tourist_level": 5,
@@ -20280,7 +20280,7 @@
       ]
     },
     {
-      "id": "v74",
+      "id": "biesmiellah-556e",
       "name": "Biesmiellah",
       "category": "Food",
       "tourist_level": 5,
@@ -20554,7 +20554,7 @@
       ]
     },
     {
-      "id": "v75",
+      "id": "una-m-s-mezcaleria-9abb",
       "name": "Una M\u00e1s Mezcaleria",
       "category": "Drink",
       "tourist_level": 5,
@@ -20828,7 +20828,7 @@
       ]
     },
     {
-      "id": "v76",
+      "id": "rands-cape-town-c568",
       "name": "Rands Cape Town",
       "category": "Food",
       "tourist_level": 5,
@@ -21102,7 +21102,7 @@
       ]
     },
     {
-      "id": "v77",
+      "id": "rollercade-v-a-58af",
       "name": "Rollercade (V&A)",
       "category": "Activity",
       "tourist_level": 5,
@@ -21376,7 +21376,7 @@
       ]
     },
     {
-      "id": "v78",
+      "id": "bodega-ramen-35e8",
       "name": "Bodega Ramen",
       "category": "Food",
       "tourist_level": 5,
@@ -21650,7 +21650,7 @@
       ]
     },
     {
-      "id": "v79",
+      "id": "intaka-island-bfd4",
       "name": "Intaka Island",
       "category": "Nature",
       "tourist_level": 5,
@@ -21924,7 +21924,7 @@
       ]
     },
     {
-      "id": "v80",
+      "id": "ramenhead-1b65",
       "name": "Ramenhead",
       "category": "Food",
       "tourist_level": 5,
@@ -22198,7 +22198,7 @@
       ]
     },
     {
-      "id": "v81",
+      "id": "art-of-duplicity-9786",
       "name": "Art of Duplicity",
       "category": "Drink",
       "tourist_level": 5,
@@ -22472,7 +22472,7 @@
       ]
     },
     {
-      "id": "v82",
+      "id": "sup-v-a-canals-c2e1",
       "name": "SUP (V&A Canals)",
       "category": "Activity",
       "tourist_level": 5,
@@ -22746,7 +22746,7 @@
       ]
     },
     {
-      "id": "v83",
+      "id": "scala-pasta-bar-a99f",
       "name": "Scala Pasta Bar",
       "category": "Food",
       "tourist_level": 5,
@@ -23020,7 +23020,7 @@
       ]
     },
     {
-      "id": "v84",
+      "id": "hinthunt-escape-room-21a3",
       "name": "HintHunt Escape Room",
       "category": "Activity",
       "tourist_level": 5,
@@ -23294,7 +23294,7 @@
       ]
     },
     {
-      "id": "v85",
+      "id": "ground-art-caff-415e",
       "name": "Ground Art Caff\u00e9",
       "category": "Drink",
       "tourist_level": 5,
@@ -23568,7 +23568,7 @@
       ]
     },
     {
-      "id": "v86",
+      "id": "surfarosa-4e98",
       "name": "SurfaRosa",
       "category": "Drink",
       "tourist_level": 5,
@@ -23842,7 +23842,7 @@
       ]
     },
     {
-      "id": "v87",
+      "id": "arthur-s-mini-super-da90",
       "name": "Arthur\u2019s Mini Super",
       "category": "Food",
       "tourist_level": 5,
@@ -24116,7 +24116,7 @@
       ]
     },
     {
-      "id": "v88",
+      "id": "cape-canopy-tour-a8d5",
       "name": "Cape Canopy Tour",
       "category": "Activity",
       "tourist_level": 5,
@@ -24390,7 +24390,7 @@
       ]
     },
     {
-      "id": "v89",
+      "id": "kloof-corner-1b5b",
       "name": "Kloof Corner",
       "category": "Nature",
       "tourist_level": 6,
@@ -24664,7 +24664,7 @@
       ]
     },
     {
-      "id": "v90",
+      "id": "holocaust-centre-f7d5",
       "name": "Holocaust Centre",
       "category": "Culture",
       "tourist_level": 6,
@@ -24938,7 +24938,7 @@
       ]
     },
     {
-      "id": "v91",
+      "id": "woodstock-street-art-a9b2",
       "name": "Woodstock Street Art",
       "category": "Culture",
       "tourist_level": 6,
@@ -25212,7 +25212,7 @@
       ]
     },
     {
-      "id": "v92",
+      "id": "muizenberg-surfing-f5b1",
       "name": "Muizenberg Surfing",
       "category": "Activity",
       "tourist_level": 6,
@@ -25486,7 +25486,7 @@
       ]
     },
     {
-      "id": "v93",
+      "id": "maidens-cove-fb20",
       "name": "Maiden's Cove",
       "category": "Nature",
       "tourist_level": 6,
@@ -25760,7 +25760,7 @@
       ]
     },
     {
-      "id": "v94",
+      "id": "bakoven-beach-7400",
       "name": "Bakoven Beach",
       "category": "Nature",
       "tourist_level": 6,
@@ -26034,7 +26034,7 @@
       ]
     },
     {
-      "id": "v95",
+      "id": "constantia-nek-a9f8",
       "name": "Constantia Nek",
       "category": "Nature",
       "tourist_level": 6,
@@ -26308,7 +26308,7 @@
       ]
     },
     {
-      "id": "v96",
+      "id": "cecilia-forest-48b2",
       "name": "Cecilia Forest",
       "category": "Nature",
       "tourist_level": 6,
@@ -26582,7 +26582,7 @@
       ]
     },
     {
-      "id": "v97",
+      "id": "saunders-rocks-a6ef",
       "name": "Saunders Rocks",
       "category": "Nature",
       "tourist_level": 6,
@@ -26856,7 +26856,7 @@
       ]
     },
     {
-      "id": "v98",
+      "id": "blue-bird-garage-market-a2aa",
       "name": "Blue Bird Garage Market",
       "category": "Food",
       "tourist_level": 6,
@@ -27130,7 +27130,7 @@
       ]
     },
     {
-      "id": "v99",
+      "id": "montebello-centre-78c3",
       "name": "Montebello Centre",
       "category": "Culture",
       "tourist_level": 6,
@@ -27404,7 +27404,7 @@
       ]
     },
     {
-      "id": "v100",
+      "id": "up-cycles-2957",
       "name": "Up Cycles",
       "category": "Activity",
       "tourist_level": 6,
@@ -27678,7 +27678,7 @@
       ]
     },
     {
-      "id": "v101",
+      "id": "chinchilla-rooftop-a793",
       "name": "Chinchilla Rooftop",
       "category": "Drink",
       "tourist_level": 6,
@@ -27952,7 +27952,7 @@
       ]
     },
     {
-      "id": "v102",
+      "id": "sa-jewish-museum-e17e",
       "name": "SA Jewish Museum",
       "category": "Culture",
       "tourist_level": 6,
@@ -28226,7 +28226,7 @@
       ]
     },
     {
-      "id": "v103",
+      "id": "norval-foundation-9bbd",
       "name": "Norval Foundation",
       "category": "Culture",
       "tourist_level": 6,
@@ -28500,7 +28500,7 @@
       ]
     },
     {
-      "id": "v104",
+      "id": "cafeen-f1c3",
       "name": "Cafeen",
       "category": "Food",
       "tourist_level": 6,
@@ -28774,7 +28774,7 @@
       ]
     },
     {
-      "id": "v105",
+      "id": "the-commons-ad2a",
       "name": "The Commons",
       "category": "Culture",
       "tourist_level": 6,
@@ -29048,7 +29048,7 @@
       ]
     },
     {
-      "id": "v106",
+      "id": "magnet-theatre-ba1b",
       "name": "Magnet Theatre",
       "category": "Culture",
       "tourist_level": 6,
@@ -29322,7 +29322,7 @@
       ]
     },
     {
-      "id": "v107",
+      "id": "i-love-coffee-a12a",
       "name": "I Love Coffee",
       "category": "Food",
       "tourist_level": 6,
@@ -29596,7 +29596,7 @@
       ]
     },
     {
-      "id": "v108",
+      "id": "ground-art-caffe-4e54",
       "name": "Ground Art Caffe",
       "category": "Food",
       "tourist_level": 6,
@@ -29870,7 +29870,7 @@
       ]
     },
     {
-      "id": "v109",
+      "id": "house-of-machines-c89a",
       "name": "House of Machines",
       "category": "Drink",
       "tourist_level": 6,
@@ -30144,7 +30144,7 @@
       ]
     },
     {
-      "id": "v110",
+      "id": "eastern-food-bazaar-80f6",
       "name": "Eastern Food Bazaar",
       "category": "Food",
       "tourist_level": 6,
@@ -30418,7 +30418,7 @@
       ]
     },
     {
-      "id": "v111",
+      "id": "empire-cafe-43fe",
       "name": "Empire Cafe",
       "category": "Food",
       "tourist_level": 6,
@@ -30692,7 +30692,7 @@
       ]
     },
     {
-      "id": "v112",
+      "id": "hello-sailor-bistro-0697",
       "name": "Hello Sailor Bistro",
       "category": "Drink",
       "tourist_level": 6,
@@ -30966,7 +30966,7 @@
       ]
     },
     {
-      "id": "v113",
+      "id": "the-dog-s-bollocks-9005",
       "name": "The Dog\u2019s Bollocks",
       "category": "Food",
       "tourist_level": 6,
@@ -31240,7 +31240,7 @@
       ]
     },
     {
-      "id": "v114",
+      "id": "the-pok-co-f795",
       "name": "The Pok\u00e9 Co",
       "category": "Food",
       "tourist_level": 6,
@@ -31514,7 +31514,7 @@
       ]
     },
     {
-      "id": "v115",
+      "id": "lievita-80e4",
       "name": "Lievita",
       "category": "Food",
       "tourist_level": 6,
@@ -31788,7 +31788,7 @@
       ]
     },
     {
-      "id": "v116",
+      "id": "aperitif-63a8",
       "name": "Aperitif",
       "category": "Drink",
       "tourist_level": 6,
@@ -32062,7 +32062,7 @@
       ]
     },
     {
-      "id": "v117",
+      "id": "m-dular-98ae",
       "name": "M\u00f8dular.",
       "category": "Drink",
       "tourist_level": 6,
@@ -32336,7 +32336,7 @@
       ]
     },
     {
-      "id": "v118",
+      "id": "the-taproom-8d6b",
       "name": "The Taproom",
       "category": "Drink",
       "tourist_level": 6,
@@ -32610,7 +32610,7 @@
       ]
     },
     {
-      "id": "v119",
+      "id": "banana-jam-cafe-621a",
       "name": "Banana Jam Cafe",
       "category": "Drink",
       "tourist_level": 6,
@@ -32884,7 +32884,7 @@
       ]
     },
     {
-      "id": "v120",
+      "id": "curry-club-1d88",
       "name": "Curry Club",
       "category": "Food",
       "tourist_level": 6,
@@ -33158,7 +33158,7 @@
       ]
     },
     {
-      "id": "v121",
+      "id": "tjing-tjing-torii-5a29",
       "name": "Tjing Tjing Torii",
       "category": "Food",
       "tourist_level": 6,
@@ -33432,7 +33432,7 @@
       ]
     },
     {
-      "id": "v122",
+      "id": "the-blue-room-7456",
       "name": "The Blue Room",
       "category": "Drink",
       "tourist_level": 6,
@@ -33706,7 +33706,7 @@
       ]
     },
     {
-      "id": "v123",
+      "id": "rush-trampoline-51cc",
       "name": "Rush Trampoline",
       "category": "Activity",
       "tourist_level": 6,
@@ -33980,7 +33980,7 @@
       ]
     },
     {
-      "id": "v124",
+      "id": "ferdinandos-pizza-77be",
       "name": "Ferdinando's Pizza",
       "category": "Food",
       "tourist_level": 6,
@@ -34254,7 +34254,7 @@
       ]
     },
     {
-      "id": "v125",
+      "id": "maria-s-greek-caf-ac20",
       "name": "Maria\u2019s Greek Caf\u00e9",
       "category": "Food",
       "tourist_level": 6,
@@ -34528,7 +34528,7 @@
       ]
     },
     {
-      "id": "v126",
+      "id": "sidecar-adventures-fe1a",
       "name": "Sidecar Adventures",
       "category": "Activity",
       "tourist_level": 6,
@@ -34802,7 +34802,7 @@
       ]
     },
     {
-      "id": "v127",
+      "id": "afrikaans-monument-cc89",
       "name": "Afrikaans Monument",
       "category": "Culture",
       "tourist_level": 6,
@@ -35076,7 +35076,7 @@
       ]
     },
     {
-      "id": "v128",
+      "id": "jarryds-sea-point-8b65",
       "name": "Jarryds Sea Point",
       "category": "Food",
       "tourist_level": 6,
@@ -35350,7 +35350,7 @@
       ]
     },
     {
-      "id": "v129",
+      "id": "skyhi-ride-6431",
       "name": "SkyHi Ride",
       "category": "Activity",
       "tourist_level": 6,
@@ -35624,7 +35624,7 @@
       ]
     },
     {
-      "id": "v130",
+      "id": "bo-kaap-kombuis-7f54",
       "name": "Bo-Kaap Kombuis",
       "category": "Food",
       "tourist_level": 6,
@@ -35898,7 +35898,7 @@
       ]
     },
     {
-      "id": "v131",
+      "id": "tagine-98b4",
       "name": "Tagine",
       "category": "Food",
       "tourist_level": 6,
@@ -36172,7 +36172,7 @@
       ]
     },
     {
-      "id": "v132",
+      "id": "cloud-9-rooftop-e079",
       "name": "Cloud 9 Rooftop",
       "category": "Drink",
       "tourist_level": 6,
@@ -36446,7 +36446,7 @@
       ]
     },
     {
-      "id": "v133",
+      "id": "active-sushi-dad3",
       "name": "Active Sushi",
       "category": "Food",
       "tourist_level": 6,
@@ -36720,7 +36720,7 @@
       ]
     },
     {
-      "id": "v134",
+      "id": "cabo-beach-club-a6e1",
       "name": "Cabo Beach Club",
       "category": "Drink",
       "tourist_level": 6,
@@ -36994,7 +36994,7 @@
       ]
     },
     {
-      "id": "v135",
+      "id": "three-wise-monkeys-c63a",
       "name": "Three Wise Monkeys",
       "category": "Food",
       "tourist_level": 6,
@@ -37268,7 +37268,7 @@
       ]
     },
     {
-      "id": "v136",
+      "id": "salt-river-street-art-6c1a",
       "name": "Salt River Street Art",
       "category": "Culture",
       "tourist_level": 6,
@@ -37542,7 +37542,7 @@
       ]
     },
     {
-      "id": "v137",
+      "id": "chavonnes-battery-74b3",
       "name": "Chavonnes Battery",
       "category": "Culture",
       "tourist_level": 6,
@@ -37816,7 +37816,7 @@
       ]
     },
     {
-      "id": "v138",
+      "id": "heart-of-cape-town-museum-6e25",
       "name": "Heart of Cape Town Museum",
       "category": "Culture",
       "tourist_level": 6,
@@ -38090,7 +38090,7 @@
       ]
     },
     {
-      "id": "v139",
+      "id": "oudekraal-reserve-15b9",
       "name": "Oudekraal Reserve",
       "category": "Nature",
       "tourist_level": 6,
@@ -38364,7 +38364,7 @@
       ]
     },
     {
-      "id": "v140",
+      "id": "pauline-s-b94a",
       "name": "Pauline\u2019s",
       "category": "Drink",
       "tourist_level": 6,
@@ -38638,7 +38638,7 @@
       ]
     },
     {
-      "id": "v141",
+      "id": "silvermine-34fc",
       "name": "Silvermine",
       "category": "Nature",
       "tourist_level": 6,
@@ -38910,13 +38910,13 @@
         0.08566126972436905,
         -0.03928283974528313
       ],
-      "image_url": "/images/venues/v141.jpg",
+      "image_url": "/images/venues/silvermine-34fc.jpg",
       "image_width": 3072,
       "image_height": 2304,
       "image_attribution": "Omar Hamdi"
     },
     {
-      "id": "v142",
+      "id": "labia-cinema-f883",
       "name": "Labia Cinema",
       "category": "Culture",
       "tourist_level": 6,
@@ -39190,7 +39190,7 @@
       ]
     },
     {
-      "id": "v143",
+      "id": "culture-wine-bar-42dc",
       "name": "Culture Wine Bar",
       "category": "Drink",
       "tourist_level": 6,
@@ -39464,7 +39464,7 @@
       ]
     },
     {
-      "id": "v144",
+      "id": "honest-chocolate-ee5f",
       "name": "Honest Chocolate",
       "category": "Food",
       "tourist_level": 6,
@@ -39738,7 +39738,7 @@
       ]
     },
     {
-      "id": "v145",
+      "id": "buns-bakery-dd1d",
       "name": "Buns Bakery",
       "category": "Food",
       "tourist_level": 6,
@@ -40012,7 +40012,7 @@
       ]
     },
     {
-      "id": "v146",
+      "id": "rosetta-roastery-4f08",
       "name": "Rosetta Roastery",
       "category": "Drink",
       "tourist_level": 6,
@@ -40286,7 +40286,7 @@
       ]
     },
     {
-      "id": "v147",
+      "id": "sandboarding-atlantis-fc7b",
       "name": "Sandboarding (Atlantis)",
       "category": "Activity",
       "tourist_level": 6,
@@ -40560,7 +40560,7 @@
       ]
     },
     {
-      "id": "v148",
+      "id": "fish-on-the-rocks-6826",
       "name": "Fish on the Rocks",
       "category": "Food",
       "tourist_level": 6,
@@ -40834,7 +40834,7 @@
       ]
     },
     {
-      "id": "v149",
+      "id": "green-point-park-fe53",
       "name": "Green Point Park",
       "category": "Nature",
       "tourist_level": 7,
@@ -41108,7 +41108,7 @@
       ]
     },
     {
-      "id": "v150",
+      "id": "the-book-lounge-563f",
       "name": "The Book Lounge",
       "category": "Culture",
       "tourist_level": 7,
@@ -41382,7 +41382,7 @@
       ]
     },
     {
-      "id": "v151",
+      "id": "dorp-street-6685",
       "name": "Dorp Street",
       "category": "Culture",
       "tourist_level": 7,
@@ -41656,7 +41656,7 @@
       ]
     },
     {
-      "id": "v152",
+      "id": "st-james-walk-51c0",
       "name": "St James Walk",
       "category": "Activity",
       "tourist_level": 7,
@@ -41930,7 +41930,7 @@
       ]
     },
     {
-      "id": "v153",
+      "id": "camps-bay-tidal-pool-c1ab",
       "name": "Camps Bay Tidal Pool",
       "category": "Nature",
       "tourist_level": 7,
@@ -42204,7 +42204,7 @@
       ]
     },
     {
-      "id": "v154",
+      "id": "acrobranch-6f2a",
       "name": "Acrobranch",
       "category": "Activity",
       "tourist_level": 7,
@@ -42478,7 +42478,7 @@
       ]
     },
     {
-      "id": "v155",
+      "id": "the-waiting-room-0d2d",
       "name": "The Waiting Room",
       "category": "Drink",
       "tourist_level": 7,
@@ -42752,7 +42752,7 @@
       ]
     },
     {
-      "id": "v156",
+      "id": "our-local-df1e",
       "name": "Our Local",
       "category": "Food",
       "tourist_level": 7,
@@ -43026,7 +43026,7 @@
       ]
     },
     {
-      "id": "v157",
+      "id": "aubergine-restaurant-87be",
       "name": "Aubergine Restaurant",
       "category": "Food",
       "tourist_level": 7,
@@ -43300,7 +43300,7 @@
       ]
     },
     {
-      "id": "v158",
+      "id": "zuney-ffec",
       "name": "Zuney",
       "category": "Food",
       "tourist_level": 7,
@@ -43574,7 +43574,7 @@
       ]
     },
     {
-      "id": "v159",
+      "id": "clarke-s-bar-dining-room-6818",
       "name": "Clarke\u2019s Bar & Dining Room",
       "category": "Food",
       "tourist_level": 7,
@@ -43848,7 +43848,7 @@
       ]
     },
     {
-      "id": "v160",
+      "id": "world-of-birds-1a23",
       "name": "World of Birds",
       "category": "Nature",
       "tourist_level": 7,
@@ -44122,7 +44122,7 @@
       ]
     },
     {
-      "id": "v161",
+      "id": "beerhouse-on-long-aea0",
       "name": "Beerhouse on Long",
       "category": "Drink",
       "tourist_level": 7,
@@ -44396,7 +44396,7 @@
       ]
     },
     {
-      "id": "v162",
+      "id": "jerry-s-burger-bar-599b",
       "name": "Jerry\u2019s Burger Bar",
       "category": "Food",
       "tourist_level": 7,
@@ -44670,7 +44670,7 @@
       ]
     },
     {
-      "id": "v163",
+      "id": "cape-point-vineyards-2452",
       "name": "Cape Point Vineyards",
       "category": "Food",
       "tourist_level": 7,
@@ -44944,7 +44944,7 @@
       ]
     },
     {
-      "id": "v164",
+      "id": "asoka-2b5b",
       "name": "Asoka",
       "category": "Drink",
       "tourist_level": 7,
@@ -45218,7 +45218,7 @@
       ]
     },
     {
-      "id": "v165",
+      "id": "the-house-of-machines-0d66",
       "name": "The House of Machines",
       "category": "Drink",
       "tourist_level": 7,
@@ -45492,7 +45492,7 @@
       ]
     },
     {
-      "id": "v166",
+      "id": "lourensford-market-0a74",
       "name": "Lourensford Market",
       "category": "Food",
       "tourist_level": 7,
@@ -45766,7 +45766,7 @@
       ]
     },
     {
-      "id": "v167",
+      "id": "leopard-bar-4175",
       "name": "Leopard Bar",
       "category": "Drink",
       "tourist_level": 7,
@@ -46040,7 +46040,7 @@
       ]
     },
     {
-      "id": "v168",
+      "id": "giovanni-s-deliworld-ff21",
       "name": "Giovanni\u2019s Deliworld",
       "category": "Food",
       "tourist_level": 7,
@@ -46314,7 +46314,7 @@
       ]
     },
     {
-      "id": "v169",
+      "id": "between-us-7df2",
       "name": "Between Us",
       "category": "Food",
       "tourist_level": 7,
@@ -46588,7 +46588,7 @@
       ]
     },
     {
-      "id": "v170",
+      "id": "kelp-forest-scuba-1367",
       "name": "Kelp Forest Scuba",
       "category": "Activity",
       "tourist_level": 7,
@@ -46862,7 +46862,7 @@
       ]
     },
     {
-      "id": "v171",
+      "id": "el-burro-4bf7",
       "name": "El Burro",
       "category": "Food",
       "tourist_level": 7,
@@ -47136,7 +47136,7 @@
       ]
     },
     {
-      "id": "v172",
+      "id": "gigi-rooftop-1a2e",
       "name": "Gigi Rooftop",
       "category": "Drink",
       "tourist_level": 7,
@@ -47410,7 +47410,7 @@
       ]
     },
     {
-      "id": "v173",
+      "id": "sunsquare-rooftop-bar-e7b9",
       "name": "SunSquare Rooftop Bar",
       "category": "Drink",
       "tourist_level": 7,
@@ -47684,7 +47684,7 @@
       ]
     },
     {
-      "id": "v174",
+      "id": "zeitz-mocaa-d0b1",
       "name": "Zeitz MOCAA",
       "category": "Culture",
       "tourist_level": 7,
@@ -47958,7 +47958,7 @@
       ]
     },
     {
-      "id": "v175",
+      "id": "gigi-rooftop-bar-5102",
       "name": "Gigi Rooftop Bar",
       "category": "Drink",
       "tourist_level": 7,
@@ -48232,7 +48232,7 @@
       ]
     },
     {
-      "id": "v176",
+      "id": "franschhoek-wine-tram-4439",
       "name": "Franschhoek Wine Tram",
       "category": "Activity",
       "tourist_level": 7,
@@ -48506,7 +48506,7 @@
       ]
     },
     {
-      "id": "v177",
+      "id": "scratch-patch-771a",
       "name": "Scratch Patch",
       "category": "Activity",
       "tourist_level": 7,
@@ -48780,7 +48780,7 @@
       ]
     },
     {
-      "id": "v178",
+      "id": "stardust-theatrical-dining-c3de",
       "name": "Stardust Theatrical Dining",
       "category": "Culture",
       "tourist_level": 7,
@@ -49054,7 +49054,7 @@
       ]
     },
     {
-      "id": "v179",
+      "id": "clay-caf-1cf6",
       "name": "Clay Caf\u00e9",
       "category": "Activity",
       "tourist_level": 7,
@@ -49328,7 +49328,7 @@
       ]
     },
     {
-      "id": "v180",
+      "id": "origin-coffee-roasting-74d9",
       "name": "Origin Coffee Roasting",
       "category": "Drink",
       "tourist_level": 7,
@@ -49602,7 +49602,7 @@
       ]
     },
     {
-      "id": "v181",
+      "id": "gold-restaurant-81e5",
       "name": "Gold Restaurant",
       "category": "Food",
       "tourist_level": 7,
@@ -49876,7 +49876,7 @@
       ]
     },
     {
-      "id": "v182",
+      "id": "castle-of-good-hope-842c",
       "name": "Castle of Good Hope",
       "category": "Culture",
       "tourist_level": 7,
@@ -50150,7 +50150,7 @@
       ]
     },
     {
-      "id": "v183",
+      "id": "kalky-s-fish-chips-9f0f",
       "name": "Kalky\u2019s Fish & Chips",
       "category": "Food",
       "tourist_level": 7,
@@ -50424,7 +50424,7 @@
       ]
     },
     {
-      "id": "v184",
+      "id": "slave-lodge-0021",
       "name": "Slave Lodge",
       "category": "Culture",
       "tourist_level": 7,
@@ -50698,7 +50698,7 @@
       ]
     },
     {
-      "id": "v185",
+      "id": "south-african-museum-a6f2",
       "name": "South African Museum",
       "category": "Culture",
       "tourist_level": 7,
@@ -50972,7 +50972,7 @@
       ]
     },
     {
-      "id": "v186",
+      "id": "sa-national-gallery-b61d",
       "name": "SA National Gallery",
       "category": "Culture",
       "tourist_level": 7,
@@ -51246,7 +51246,7 @@
       ]
     },
     {
-      "id": "v187",
+      "id": "district-six-museum-74b4",
       "name": "District Six Museum",
       "category": "Culture",
       "tourist_level": 7,
@@ -51520,7 +51520,7 @@
       ]
     },
     {
-      "id": "v188",
+      "id": "polkadraai-farm-93dc",
       "name": "Polkadraai Farm",
       "category": "Nature",
       "tourist_level": 7,
@@ -51794,7 +51794,7 @@
       ]
     },
     {
-      "id": "v189",
+      "id": "nikkei-9e96",
       "name": "Nikkei",
       "category": "Food",
       "tourist_level": 7,
@@ -52068,7 +52068,7 @@
       ]
     },
     {
-      "id": "v190",
+      "id": "pot-luck-club-9b61",
       "name": "Pot Luck Club",
       "category": "Food",
       "tourist_level": 7,
@@ -52342,7 +52342,7 @@
       ]
     },
     {
-      "id": "v191",
+      "id": "constantia-glen-ca61",
       "name": "Constantia Glen",
       "category": "Drink",
       "tourist_level": 7,
@@ -52616,7 +52616,7 @@
       ]
     },
     {
-      "id": "v192",
+      "id": "constantia-zipline-05b9",
       "name": "Constantia Zipline",
       "category": "Activity",
       "tourist_level": 7,
@@ -52890,7 +52890,7 @@
       ]
     },
     {
-      "id": "v193",
+      "id": "the-labia-theatre-aad8",
       "name": "The Labia Theatre",
       "category": "Activity",
       "tourist_level": 7,
@@ -53164,7 +53164,7 @@
       ]
     },
     {
-      "id": "v194",
+      "id": "bo-kaap-cooking-class-1b87",
       "name": "Bo-Kaap Cooking Class",
       "category": "Culture",
       "tourist_level": 7,
@@ -53438,7 +53438,7 @@
       ]
     },
     {
-      "id": "v195",
+      "id": "nice-to-matcha-ebd6",
       "name": "Nice to Matcha",
       "category": "Drink",
       "tourist_level": 7,
@@ -53712,7 +53712,7 @@
       ]
     },
     {
-      "id": "v196",
+      "id": "de-grendel-cb41",
       "name": "De Grendel",
       "category": "Food",
       "tourist_level": 7,
@@ -53986,7 +53986,7 @@
       ]
     },
     {
-      "id": "v197",
+      "id": "cool-runnings-5924",
       "name": "Cool Runnings",
       "category": "Activity",
       "tourist_level": 7,
@@ -54260,7 +54260,7 @@
       ]
     },
     {
-      "id": "v198",
+      "id": "lions-head-hike-4c30",
       "name": "Lion's Head Hike",
       "category": "Nature",
       "tourist_level": 8,
@@ -54534,7 +54534,7 @@
       ]
     },
     {
-      "id": "v199",
+      "id": "skeleton-gorge-32c8",
       "name": "Skeleton Gorge",
       "category": "Nature",
       "tourist_level": 8,
@@ -54808,7 +54808,7 @@
       ]
     },
     {
-      "id": "v200",
+      "id": "signal-hill-9cca",
       "name": "Signal Hill",
       "category": "Nature",
       "tourist_level": 8,
@@ -55082,7 +55082,7 @@
       ]
     },
     {
-      "id": "v201",
+      "id": "muizenberg-6b9c",
       "name": "Muizenberg",
       "category": "Nature",
       "tourist_level": 8,
@@ -55356,7 +55356,7 @@
       ]
     },
     {
-      "id": "v202",
+      "id": "the-company-s-garden-7e3d",
       "name": "The Company\u2019s Garden",
       "category": "Nature",
       "tourist_level": 8,
@@ -55630,7 +55630,7 @@
       ]
     },
     {
-      "id": "v203",
+      "id": "oranjezicht-market-1fc0",
       "name": "Oranjezicht Market",
       "category": "Food",
       "tourist_level": 8,
@@ -55904,7 +55904,7 @@
       ]
     },
     {
-      "id": "v204",
+      "id": "neighbourgoods-market-bd38",
       "name": "Neighbourgoods Market",
       "category": "Food",
       "tourist_level": 8,
@@ -56178,7 +56178,7 @@
       ]
     },
     {
-      "id": "v205",
+      "id": "old-biscuit-mill-df61",
       "name": "Old Biscuit Mill",
       "category": "Food",
       "tourist_level": 8,
@@ -56452,7 +56452,7 @@
       ]
     },
     {
-      "id": "v206",
+      "id": "helicopter-tour-231d",
       "name": "Helicopter Tour",
       "category": "Activity",
       "tourist_level": 8,
@@ -56726,7 +56726,7 @@
       ]
     },
     {
-      "id": "v207",
+      "id": "tandem-paragliding-9468",
       "name": "Tandem Paragliding",
       "category": "Activity",
       "tourist_level": 8,
@@ -57000,7 +57000,7 @@
       ]
     },
     {
-      "id": "v208",
+      "id": "mojo-market-e3c0",
       "name": "MOJO Market",
       "category": "Food",
       "tourist_level": 8,
@@ -57274,7 +57274,7 @@
       ]
     },
     {
-      "id": "v209",
+      "id": "bay-harbour-market-cdc1",
       "name": "Bay Harbour Market",
       "category": "Culture",
       "tourist_level": 8,
@@ -57548,7 +57548,7 @@
       ]
     },
     {
-      "id": "v210",
+      "id": "belly-of-the-beast-4ca0",
       "name": "Belly of the Beast",
       "category": "Food",
       "tourist_level": 8,
@@ -57822,7 +57822,7 @@
       ]
     },
     {
-      "id": "v211",
+      "id": "salon-5fdc",
       "name": "Salon",
       "category": "Food",
       "tourist_level": 8,
@@ -58096,7 +58096,7 @@
       ]
     },
     {
-      "id": "v212",
+      "id": "groot-constantia-ebe2",
       "name": "Groot Constantia",
       "category": "Drink",
       "tourist_level": 8,
@@ -58370,7 +58370,7 @@
       ]
     },
     {
-      "id": "v213",
+      "id": "jarryds-brunch-and-bistro-97b2",
       "name": "Jarryds Brunch and Bistro",
       "category": "Food",
       "tourist_level": 8,
@@ -58644,7 +58644,7 @@
       ]
     },
     {
-      "id": "v214",
+      "id": "galileo-open-air-cinema-25fc",
       "name": "Galileo Open Air Cinema",
       "category": "Culture",
       "tourist_level": 8,
@@ -58918,7 +58918,7 @@
       ]
     },
     {
-      "id": "v215",
+      "id": "the-cape-wheel-db5d",
       "name": "The Cape Wheel",
       "category": "Activity",
       "tourist_level": 8,
@@ -59192,7 +59192,7 @@
       ]
     },
     {
-      "id": "v216",
+      "id": "primi-waterfront-b1ca",
       "name": "PRIMI Waterfront",
       "category": "Food",
       "tourist_level": 8,
@@ -59466,7 +59466,7 @@
       ]
     },
     {
-      "id": "v217",
+      "id": "chinchilla-9829",
       "name": "Chinchilla",
       "category": "Drink",
       "tourist_level": 8,
@@ -59740,7 +59740,7 @@
       ]
     },
     {
-      "id": "v218",
+      "id": "truth-coffee-88f5",
       "name": "Truth Coffee",
       "category": "Drink",
       "tourist_level": 8,
@@ -60014,7 +60014,7 @@
       ]
     },
     {
-      "id": "v219",
+      "id": "bo-kaap-museum-cb70",
       "name": "Bo-Kaap Museum",
       "category": "Culture",
       "tourist_level": 8,
@@ -60288,7 +60288,7 @@
       ]
     },
     {
-      "id": "v220",
+      "id": "mount-nelson-tea-0cce",
       "name": "Mount Nelson Tea",
       "category": "Food",
       "tourist_level": 8,
@@ -60562,7 +60562,7 @@
       ]
     },
     {
-      "id": "v221",
+      "id": "chapman-s-peak-drive-8a9a",
       "name": "Chapman\u2019s Peak Drive",
       "category": "Activity",
       "tourist_level": 8,
@@ -60836,7 +60836,7 @@
       ]
     },
     {
-      "id": "v222",
+      "id": "jason-bakery-b94b",
       "name": "Jason Bakery",
       "category": "Food",
       "tourist_level": 8,
@@ -61110,7 +61110,7 @@
       ]
     },
     {
-      "id": "v223",
+      "id": "kleinsky-s-deli-a568",
       "name": "Kleinsky\u2019s Deli",
       "category": "Food",
       "tourist_level": 8,
@@ -61384,7 +61384,7 @@
       ]
     },
     {
-      "id": "v224",
+      "id": "bombay-brasserie-8a9d",
       "name": "Bombay Brasserie",
       "category": "Food",
       "tourist_level": 8,
@@ -61658,7 +61658,7 @@
       ]
     },
     {
-      "id": "v225",
+      "id": "west-coast-national-park-2906",
       "name": "West Coast National Park",
       "category": "Nature",
       "tourist_level": 8,
@@ -61932,7 +61932,7 @@
       ]
     },
     {
-      "id": "v226",
+      "id": "bo-kaap-3c3b",
       "name": "Bo-Kaap",
       "category": "Culture",
       "tourist_level": 9,
@@ -62206,7 +62206,7 @@
       ]
     },
     {
-      "id": "v227",
+      "id": "clifton-4th-beach-e931",
       "name": "Clifton 4th Beach",
       "category": "Nature",
       "tourist_level": 9,
@@ -62480,7 +62480,7 @@
       ]
     },
     {
-      "id": "v228",
+      "id": "first-thursdays-cb79",
       "name": "First Thursdays",
       "category": "Activity",
       "tourist_level": 9,
@@ -62754,7 +62754,7 @@
       ]
     },
     {
-      "id": "v229",
+      "id": "cape-point-52fe",
       "name": "Cape Point",
       "category": "Nature",
       "tourist_level": 9,
@@ -63028,7 +63028,7 @@
       ]
     },
     {
-      "id": "v230",
+      "id": "salsify-at-the-roundhouse-5321",
       "name": "Salsify at The Roundhouse",
       "category": "Food",
       "tourist_level": 9,
@@ -63302,7 +63302,7 @@
       ]
     },
     {
-      "id": "v231",
+      "id": "pier-0c76",
       "name": "Pier",
       "category": "Food",
       "tourist_level": 9,
@@ -63576,7 +63576,7 @@
       ]
     },
     {
-      "id": "v232",
+      "id": "two-oceans-aquarium-adda",
       "name": "Two Oceans Aquarium",
       "category": "Activity",
       "tourist_level": 9,
@@ -63850,7 +63850,7 @@
       ]
     },
     {
-      "id": "v233",
+      "id": "fyn-b26b",
       "name": "FYN",
       "category": "Food",
       "tourist_level": 9,
@@ -64124,7 +64124,7 @@
       ]
     },
     {
-      "id": "v234",
+      "id": "kloof-street-house-9e49",
       "name": "Kloof Street House",
       "category": "Food",
       "tourist_level": 9,
@@ -64398,7 +64398,7 @@
       ]
     },
     {
-      "id": "v235",
+      "id": "boulders-beach-cf21",
       "name": "Boulders Beach",
       "category": "Nature",
       "tourist_level": 9,
@@ -64672,7 +64672,7 @@
       ]
     },
     {
-      "id": "v236",
+      "id": "shark-cage-diving-25d5",
       "name": "Shark Cage Diving",
       "category": "Activity",
       "tourist_level": 9,
@@ -64946,7 +64946,7 @@
       ]
     },
     {
-      "id": "v237",
+      "id": "skydiving-2246",
       "name": "Skydiving",
       "category": "Activity",
       "tourist_level": 9,
@@ -65220,7 +65220,7 @@
       ]
     },
     {
-      "id": "v238",
+      "id": "kirstenbosch-concerts-f9f3",
       "name": "Kirstenbosch Concerts",
       "category": "Culture",
       "tourist_level": 9,
@@ -65494,7 +65494,7 @@
       ]
     },
     {
-      "id": "v239",
+      "id": "robben-island-museum-bc39",
       "name": "Robben Island Museum",
       "category": "Culture",
       "tourist_level": 9,
@@ -65768,7 +65768,7 @@
       ]
     },
     {
-      "id": "v240",
+      "id": "harbour-house-96a0",
       "name": "Harbour House",
       "category": "Food",
       "tourist_level": 9,
@@ -66042,7 +66042,7 @@
       ]
     },
     {
-      "id": "v241",
+      "id": "truth-coffee-roasting-5881",
       "name": "Truth Coffee Roasting",
       "category": "Drink",
       "tourist_level": 9,
@@ -66316,7 +66316,7 @@
       ]
     },
     {
-      "id": "v242",
+      "id": "chapman-s-peak-930a",
       "name": "Chapman\u2019s Peak",
       "category": "Nature",
       "tourist_level": 9,
@@ -66590,7 +66590,7 @@
       ]
     },
     {
-      "id": "v243",
+      "id": "v-a-waterfront-ade4",
       "name": "V&A Waterfront",
       "category": "Activity",
       "tourist_level": 10,
@@ -66864,7 +66864,7 @@
       ]
     },
     {
-      "id": "v244",
+      "id": "la-colombe-c051",
       "name": "La Colombe",
       "category": "Food",
       "tourist_level": 10,
@@ -67138,7 +67138,7 @@
       ]
     },
     {
-      "id": "v245",
+      "id": "table-mountain-cableway-7c2f",
       "name": "Table Mountain Cableway",
       "category": "Activity",
       "tourist_level": 10,
@@ -67412,7 +67412,7 @@
       ]
     },
     {
-      "id": "v246",
+      "id": "kirstenbosch-botanical-garden-bec6",
       "name": "Kirstenbosch Botanical Garden",
       "category": "Nature",
       "tourist_level": 10,
@@ -67686,7 +67686,7 @@
       ]
     },
     {
-      "id": "v247",
+      "id": "robben-island-21b2",
       "name": "Robben Island",
       "category": "Culture",
       "tourist_level": 10,
@@ -67960,7 +67960,7 @@
       ]
     },
     {
-      "id": "v248",
+      "id": "table-mountain-abseiling-0cb3",
       "name": "Table Mountain Abseiling",
       "category": "Activity",
       "tourist_level": 10,
