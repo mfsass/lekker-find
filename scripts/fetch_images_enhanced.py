@@ -273,7 +273,7 @@ def regenerate_all_images(force: bool = False):
         formatted_address = place.get('formattedAddress', '')
         if formatted_address:
             suburb = extract_suburb(formatted_address)
-            if suburb and not venue.get('suburb'):
+            if suburb:
                 venue['suburb'] = suburb
                 suburbs_added += 1
         

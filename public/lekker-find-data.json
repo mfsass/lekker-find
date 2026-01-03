@@ -275,7 +275,13 @@
         -0.036979544907808304,
         0.013202276080846786,
         0.029156947508454323
-      ]
+      ],
+      "place_id": "ChIJhej3_xNAzB0ROesPBGWzQGk",
+      "maps_url": "https://maps.google.com/?cid=7584259018933136185&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/woolley-s-tidal-pool-7f32.jpg",
+      "image_width": 3840,
+      "image_height": 2160,
+      "image_attribution": "Georges Younes"
     },
     {
       "id": "super-fisheries-3082",
@@ -549,7 +555,14 @@
         -0.026837682351469994,
         -0.008671539835631847,
         -0.03165847063064575
-      ]
+      ],
+      "suburb": "Athlone",
+      "place_id": "ChIJH4ejvLZczB0RhgIZTVuNM10",
+      "maps_url": "https://maps.google.com/?cid=6715866892614566534&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/super-fisheries-3082.jpg",
+      "image_width": 4000,
+      "image_height": 3000,
+      "image_attribution": "Calvin Adriaans"
     },
     {
       "id": "majik-forest-7c2d",
@@ -823,7 +836,14 @@
         -0.03996922820806503,
         0.018161600455641747,
         0.02968907728791237
-      ]
+      ],
+      "suburb": "Van Riebeeckshof",
+      "place_id": "ChIJr_59q1NXzB0RT7DmLNBJnNw",
+      "maps_url": "https://maps.google.com/?cid=15896661943166349391&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/majik-forest-7c2d.jpg",
+      "image_width": 4000,
+      "image_height": 2250,
+      "image_attribution": "ilse baatjes"
     },
     {
       "id": "bali-beach-d081",
@@ -1097,7 +1117,13 @@
         -0.026674887165427208,
         0.06266245245933533,
         -0.04681108146905899
-      ]
+      ],
+      "place_id": "ChIJvzLOAq9nzB0RqcxyYMvvKYM",
+      "maps_url": "https://maps.google.com/?cid=9451348949789232297&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/bali-beach-d081.jpg",
+      "image_width": 4800,
+      "image_height": 3599,
+      "image_attribution": "Werner Botha"
     },
     {
       "id": "water-s-edge-beach-133a",
@@ -1371,7 +1397,13 @@
         -0.03121335431933403,
         0.06968087702989578,
         -0.07203081995248795
-      ]
+      ],
+      "place_id": "ChIJJ9E_6lM_zB0RV8DE4YQjlA4",
+      "maps_url": "https://maps.google.com/?cid=1050503666714591319&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/water-s-edge-beach-133a.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "Marguerite Meiring"
     },
     {
       "id": "smitswinkel-bay-b059",
@@ -1645,7 +1677,13 @@
         -0.039819058030843735,
         0.08093009889125824,
         -0.03010331094264984
-      ]
+      ],
+      "place_id": "ChIJfViwLK49zB0RyiV4SYzVmr4",
+      "maps_url": "https://maps.google.com/?cid=13734524812124497354&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/smitswinkel-bay-b059.jpg",
+      "image_width": 4800,
+      "image_height": 3600,
+      "image_attribution": "Michael Lighton"
     },
     {
       "id": "ganesh-e6d5",
@@ -1919,7 +1957,14 @@
         -0.022042876109480858,
         0.04543359577655792,
         -0.07564777880907059
-      ]
+      ],
+      "suburb": "Observatory",
+      "place_id": "ChIJI3tRnwRdzB0R0QzFa2AbM5g",
+      "maps_url": "https://maps.google.com/?cid=10967139618516176081&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/ganesh-e6d5.jpg",
+      "image_width": 2400,
+      "image_height": 3600,
+      "image_attribution": "Ganesh"
     },
     {
       "id": "ghetto-sessions-8de3",
@@ -2193,7 +2238,14 @@
         0.02341773360967636,
         0.05025603622198105,
         -0.09706226736307144
-      ]
+      ],
+      "suburb": "District Six",
+      "place_id": "ChIJDYOfO0hnzB0R5GIK8LGFsnU",
+      "maps_url": "https://maps.google.com/?cid=8480988047574983396&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/ghetto-sessions-8de3.jpg",
+      "image_width": 4800,
+      "image_height": 3193,
+      "image_attribution": "Club Paradise"
     },
     {
       "id": "papa-ron-s-shisa-nyama-bc60",
@@ -2467,7 +2519,14 @@
         -0.09194605052471161,
         -0.02498714067041874,
         -0.10022450983524323
-      ]
+      ],
+      "suburb": "Rondebosch",
+      "place_id": "ChIJl6aDLaBdzB0R8w_LoKmGdHU",
+      "maps_url": "https://maps.google.com/?cid=8463537662841262067&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/papa-ron-s-shisa-nyama-bc60.jpg",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_attribution": "PAPA RONS SHISA NYAMA"
     },
     {
       "id": "platboom-beach-1330",
@@ -2741,7 +2800,13 @@
         -0.08171716332435608,
         0.028786135837435722,
         0.002424919046461582
-      ]
+      ],
+      "place_id": "ChIJOY2vjcAizB0RIw2p8qzxnOI",
+      "maps_url": "https://maps.google.com/?cid=16329192074046410019&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/platboom-beach-1330.jpg",
+      "image_width": 1620,
+      "image_height": 1080,
+      "image_attribution": "Mikhail Burkov"
     },
     {
       "id": "pahari-african-restaurant-e2a9",
@@ -3015,281 +3080,14 @@
         -0.052746787667274475,
         -0.015821270644664764,
         -0.0056460085324943066
-      ]
-    },
-    {
-      "id": "pixie-garden-ffa9",
-      "name": "Pixie Garden",
-      "category": "Nature",
-      "tourist_level": 2,
-      "price_tier": "R",
-      "numerical_price": "R30",
-      "best_season": "All Year",
-      "vibes": [
-        "Enchanted",
-        "Whimsical",
-        "Family"
       ],
-      "description": "A Jacobs Bay garden filled with fairies, pixies, and life-sized mushroom stools.",
-      "rating": null,
-      "embedding": [
-        0.014486219733953476,
-        -0.04333269223570824,
-        0.005879515781998634,
-        0.03340648114681244,
-        -0.02234656922519207,
-        -0.16355572640895844,
-        0.00467338040471077,
-        0.1712145209312439,
-        -0.007576922886073589,
-        0.004884375259280205,
-        -0.041241638362407684,
-        -0.0778980702161789,
-        0.00869803037494421,
-        -0.082130566239357,
-        -0.06127041205763817,
-        0.008855489082634449,
-        -0.05985958129167557,
-        -0.03849555552005768,
-        0.037991687655448914,
-        0.12435474991798401,
-        -0.05134420096874237,
-        0.011160687543451786,
-        -0.06253008544445038,
-        -0.02771276794373989,
-        0.05930532515048981,
-        0.014309866353869438,
-        0.00728090014308691,
-        -0.048043861985206604,
-        0.13342438638210297,
-        0.0849018469452858,
-        0.03927655145525932,
-        -0.03849555552005768,
-        -0.05532476305961609,
-        0.0021823805291205645,
-        0.016514290124177933,
-        -0.012338479980826378,
-        -0.011318146251142025,
-        -0.037840526551008224,
-        -0.010612730868160725,
-        -0.03947809711098671,
-        -0.04204782843589783,
-        0.004695424810051918,
-        0.028644924983382225,
-        0.00048457979573868215,
-        0.06353782117366791,
-        0.0608169287443161,
-        0.010215934365987778,
-        0.0679214745759964,
-        0.024009335786104202,
-        0.03705953061580658,
-        -0.01883208565413952,
-        0.02869531139731407,
-        -0.08041741698980331,
-        0.0368075966835022,
-        -0.06207660213112831,
-        -0.044063303619623184,
-        0.019575292244553566,
-        -0.024072319269180298,
-        -0.05406509339809418,
-        0.1102464348077774,
-        0.09815359115600586,
-        -0.003605809062719345,
-        0.014990088529884815,
-        0.11155649274587631,
-        -0.00402464997023344,
-        0.13241665065288544,
-        -0.0849018469452858,
-        0.008408306166529655,
-        0.018781699240207672,
-        -0.00019702046120073646,
-        0.04413888230919838,
-        0.07170049101114273,
-        -0.12254082411527634,
-        -0.04340827465057373,
-        -0.015670310705900192,
-        0.010316708125174046,
-        0.030761172994971275,
-        -0.01995319314301014,
-        0.02166634611785412,
-        -0.15650156140327454,
-        -0.035447150468826294,
-        0.027939509600400925,
-        -0.08399488031864166,
-        0.021603362634778023,
-        -0.011488202027976513,
-        -0.002701994962990284,
-        0.005681117530912161,
-        -0.007677696645259857,
-        -0.07542911916971207,
-        0.03098791465163231,
-        0.14652496576309204,
-        -0.043055564165115356,
-        -0.0962388888001442,
-        0.0017178767593577504,
-        -0.04920276254415512,
-        -0.03192007169127464,
-        0.04033467546105385,
-        -0.02771276794373989,
-        0.012414060533046722,
-        0.05036165937781334,
-        0.14178860187530518,
-        -0.12133154273033142,
-        -0.03441422060132027,
-        -0.007728083524852991,
-        0.14199015498161316,
-        0.0029413325246423483,
-        0.003098791465163231,
-        0.04303037002682686,
-        -0.012426657602190971,
-        0.0016785119660198689,
-        -0.31340622901916504,
-        0.008924771100282669,
-        0.06338665634393692,
-        0.0750260204076767,
-        -0.04585203528404236,
-        0.06273163110017776,
-        0.05330928787589073,
-        -0.03199565038084984,
-        0.11427737772464752,
-        0.09744817018508911,
-        -0.10510697215795517,
-        -0.006550290621817112,
-        0.03942771255970001,
-        -0.0254453606903553,
-        -0.0033475763630121946,
-        -0.1131688728928566,
-        -0.0438617542386055,
-        -0.051848068833351135,
-        -0.05351083725690842,
-        0.01004587858915329,
-        -0.011639363132417202,
-        0.010001789778470993,
-        -0.02473994344472885,
-        0.02771276794373989,
-        0.06353782117366791,
-        -0.04262727499008179,
-        -0.04401291534304619,
-        -0.03151697665452957,
-        -0.03383477032184601,
-        0.025281602516770363,
-        0.05628211423754692,
-        0.058347973972558975,
-        0.0075454311445355415,
-        -0.018580151721835136,
-        0.006027527153491974,
-        0.003341278061270714,
-        -0.002498873043805361,
-        0.07124701142311096,
-        -0.034741733223199844,
-        0.12808337807655334,
-        0.025949228554964066,
-        -0.0410400927066803,
-        -0.001360445050522685,
-        -0.09714584797620773,
-        -0.046305518597364426,
-        -0.002339839469641447,
-        0.014964895322918892,
-        0.040233902633190155,
-        -0.08228173106908798,
-        -0.009787646122276783,
-        -0.13957157731056213,
-        -0.02841818518936634,
-        -3.5797300370177254e-05,
-        -0.016060808673501015,
-        0.06021228805184364,
-        -5.274873547023162e-05,
-        -0.0438617542386055,
-        0.04005754739046097,
-        -0.12637022137641907,
-        -0.04509623348712921,
-        0.00029917192296124995,
-        -0.014637380838394165,
-        0.01506566908210516,
-        0.1415870487689972,
-        0.0018674626480787992,
-        -0.03297819569706917,
-        -0.08167708665132523,
-        -0.10072331875562668,
-        0.02773796208202839,
-        0.022837840020656586,
-        0.02276225946843624,
-        0.010480465367436409,
-        0.04932872951030731,
-        0.061572734266519547,
-        0.03028249740600586,
-        0.0026736522559076548,
-        -0.02572248876094818,
-        -0.06691373884677887,
-        0.05668520927429199,
-        -0.0031964159570634365,
-        -0.09412264078855515,
-        -0.0007373013650067151,
-        -0.024576187133789062,
-        0.048295795917510986,
-        0.03423786535859108,
-        -0.0551232174038887,
-        0.05527437478303909,
-        0.08863047510385513,
-        0.008603555150330067,
-        0.08666538447141647,
-        -0.1047038808465004,
-        0.012344778515398502,
-        0.08147554099559784,
-        0.00594249926507473,
-        -0.04020870849490166,
-        0.019575292244553566,
-        -0.05557669699192047,
-        -0.05875106900930405,
-        0.07059197872877121,
-        -0.03010614402592182,
-        0.10853327810764313,
-        0.06247969716787338,
-        0.022585906088352203,
-        -0.0665610283613205,
-        -0.012470745481550694,
-        0.05698752775788307,
-        -0.01286124438047409,
-        0.0706423670053482,
-        -0.050437238067388535,
-        0.11064952611923218,
-        -0.1187114268541336,
-        0.05275503545999527,
-        0.07462292909622192,
-        0.03207123279571533,
-        0.04368539899587631,
-        0.02887166664004326,
-        -0.039805613458156586,
-        -0.06177427992224693,
-        -0.01004587858915329,
-        0.04842176288366318,
-        -0.027687575668096542,
-        0.03451499342918396,
-        -0.1894545704126358,
-        -0.11518434435129166,
-        -0.07084391266107559,
-        0.06404168903827667,
-        -0.1274787336587906,
-        -0.049278341233730316,
-        -0.015619924291968346,
-        0.005293768830597401,
-        0.03511963412165642,
-        -0.018454184755682945,
-        -0.0692819207906723,
-        -0.0032373552676290274,
-        -0.03892384469509125,
-        -0.04509623348712921,
-        -0.015166442841291428,
-        -0.04202263429760933,
-        0.05250310152769089,
-        -0.006777031812816858,
-        0.0190714243799448,
-        0.02660425752401352,
-        0.061623118817806244,
-        0.03781533241271973,
-        0.04897601902484894,
-        -0.04542374610900879
-      ]
+      "suburb": "Salt River",
+      "place_id": "ChIJ_RfGQghdzB0R7yy2cBLheaM",
+      "maps_url": "https://maps.google.com/?cid=11779693769680891119&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/pahari-african-restaurant-e2a9.jpg",
+      "image_width": 4800,
+      "image_height": 3200,
+      "image_attribution": "Pahari African Restaurant"
     },
     {
       "id": "continental-take-aways-dfa8",
@@ -3563,7 +3361,14 @@
         -0.05719185993075371,
         0.07348209619522095,
         0.001909262384288013
-      ]
+      ],
+      "suburb": "350 Victoria Rd",
+      "place_id": "ChIJ7S98HQldzB0RJ5r9UinG-Xo",
+      "maps_url": "https://maps.google.com/?cid=8861331622616472103&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/continental-take-aways-dfa8.jpg",
+      "image_width": 828,
+      "image_height": 622,
+      "image_attribution": "Continental Take-Away"
     },
     {
       "id": "newlands-forest-c39c",
@@ -3837,7 +3642,14 @@
         -0.023119479417800903,
         -0.0012889854842796922,
         0.039161566644907
-      ]
+      ],
+      "suburb": "Table Mountain (Nature Reserve)",
+      "place_id": "ChIJbaERfk5dzB0R5TM_LwwtRvI",
+      "maps_url": "https://maps.google.com/?cid=17457690535903835109&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/newlands-forest-c39c.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "K. Alvarez"
     },
     {
       "id": "saaf-museum-03bb",
@@ -4111,7 +3923,14 @@
         0.0036419981624931097,
         0.045607276260852814,
         -0.03567183017730713
-      ]
+      ],
+      "suburb": "Ysterplaat Airbase",
+      "place_id": "ChIJCdAYcUZczB0RmTVE_NvWwYM",
+      "maps_url": "https://maps.google.com/?cid=9494105729792226713&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/saaf-museum-03bb.jpg",
+      "image_width": 1600,
+      "image_height": 1066,
+      "image_attribution": "Friends of the SAAF museum, Ysterplaat"
     },
     {
       "id": "newlands-ravine-5446",
@@ -4385,7 +4204,14 @@
         -0.03714393079280853,
         0.007717404048889875,
         0.049717649817466736
-      ]
+      ],
+      "suburb": "Table Mountain (Nature Reserve)",
+      "place_id": "ChIJB-bbbFxdzB0RDdlamtlttZA",
+      "maps_url": "https://maps.google.com/?cid=10427361293611227405&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/newlands-ravine-5446.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "Michael Meyer"
     },
     {
       "id": "windmill-beach-893f",
@@ -4659,7 +4485,13 @@
         0.0223783478140831,
         0.08683429658412933,
         0.013336392119526863
-      ]
+      ],
+      "place_id": "ChIJnUT8GkY-zB0RVfPFH7ft7jE",
+      "maps_url": "https://maps.google.com/?cid=3598074523083469653&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/windmill-beach-893f.jpg",
+      "image_width": 1290,
+      "image_height": 968,
+      "image_attribution": "Tyrone Brand"
     },
     {
       "id": "cape-town-meadery-81f6",
@@ -4933,7 +4765,14 @@
         0.009726558811962605,
         0.024266261607408524,
         0.034150391817092896
-      ]
+      ],
+      "suburb": "Crystal Business Park",
+      "place_id": "ChIJUQ_Ovh1dzB0REEIUmKNVVQk",
+      "maps_url": "https://maps.google.com/?cid=672537880481251856&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/cape-town-meadery-81f6.jpg",
+      "image_width": 3199,
+      "image_height": 4800,
+      "image_attribution": "Cape Town Meadery"
     },
     {
       "id": "borruso-s-31d7",
@@ -5207,7 +5046,14 @@
         -0.05962325260043144,
         0.02640962414443493,
         0.018648017197847366
-      ]
+      ],
+      "suburb": "Kenilworth",
+      "place_id": "ChIJNernS-dCzB0RbRpc_jm6ZbQ",
+      "maps_url": "https://maps.google.com/?cid=12999000657718155885&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/borruso-s-31d7.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "Tim Short"
     },
     {
       "id": "groot-phesantekraal-96fe",
@@ -5481,7 +5327,14 @@
         0.026784436777234077,
         0.028570065274834633,
         0.058539677411317825
-      ]
+      ],
+      "suburb": "Okavango Rd",
+      "place_id": "ChIJOTUhcgBXzB0RwheovNHACho",
+      "maps_url": "https://maps.google.com/?cid=1876524201799063490&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/groot-phesantekraal-96fe.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "Dianne Le Grange"
     },
     {
       "id": "teez-lounge-c1ec",
@@ -5755,7 +5608,14 @@
         -0.01748025231063366,
         -0.005327487830072641,
         -0.042271748185157776
-      ]
+      ],
+      "suburb": "5 Washington St",
+      "place_id": "ChIJUcz-wTxbzB0RXAVKrzKOpww",
+      "maps_url": "https://maps.google.com/?cid=911853797906187612&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/teez-lounge-c1ec.jpg",
+      "image_width": 1079,
+      "image_height": 607,
+      "image_attribution": "Teezlounge"
     },
     {
       "id": "soeul-pocha-f779",
@@ -6029,7 +5889,14 @@
         -0.08657906949520111,
         0.033049844205379486,
         -0.016917748376727104
-      ]
+      ],
+      "suburb": "Rondebosch",
+      "place_id": "ChIJz_o4AjBdzB0Rpm81VBCfc3E",
+      "maps_url": "https://maps.google.com/?cid=8175052641088663462&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/soeul-pocha-f779.jpg",
+      "image_width": 2550,
+      "image_height": 2550,
+      "image_attribution": "Seoul Pocha Korean Restaurant"
     },
     {
       "id": "cape-town-tunnels-6b95",
@@ -6303,7 +6170,14 @@
         0.02308676205575466,
         0.015293546952307224,
         -0.014860590919852257
-      ]
+      ],
+      "suburb": "Foreshore",
+      "place_id": "ChIJy9ecW31nzB0R7NlX6jn0oe4",
+      "maps_url": "https://maps.google.com/?cid=17195293381859203564&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/cape-town-tunnels-6b95.jpg",
+      "image_width": 1080,
+      "image_height": 1080,
+      "image_attribution": "Matt Weisse"
     },
     {
       "id": "khwa-ttu-san-tour-3c87",
@@ -6577,7 +6451,14 @@
         -0.02404480241239071,
         0.08513864874839783,
         0.01569572277367115
-      ]
+      ],
+      "suburb": "R27",
+      "place_id": "ChIJLcSzNU2lzB0RpnZ2MctO-DI",
+      "maps_url": "https://maps.google.com/?cid=3672772130735814310&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/khwa-ttu-san-tour-3c87.jpg",
+      "image_width": 4709,
+      "image_height": 3109,
+      "image_attribution": "!Khwa ttu San Culture & Education Centre"
     },
     {
       "id": "heaven-coffee-shop-cf76",
@@ -6851,11 +6732,17 @@
         -0.005583757534623146,
         0.03839930519461632,
         -0.07631438225507736
-      ]
+      ],
+      "place_id": "ChIJHTdMRmRnzB0Rkao5jL0QasQ",
+      "maps_url": "https://maps.google.com/?cid=14153143185252657809&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/heaven-coffee-shop-cf76.jpg",
+      "image_width": 3600,
+      "image_height": 4800,
+      "image_attribution": "Yannik Behrends"
     },
     {
-      "id": "darling-toffee-b5c6",
-      "name": "Darling Toffee",
+      "id": "darling-sweet-789b",
+      "name": "Darling Sweet",
       "category": "Food",
       "tourist_level": 3,
       "price_tier": "R",
@@ -7125,7 +7012,14 @@
         0.005984960123896599,
         0.10788609087467194,
         -0.06366533786058426
-      ]
+      ],
+      "suburb": "8 Arcadia St",
+      "place_id": "ChIJ-y2Mdta4zB0RabHVBhsL794",
+      "maps_url": "https://maps.google.com/?cid=16064070606560538985&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/darling-sweet-789b.jpg",
+      "image_width": 3024,
+      "image_height": 4032,
+      "image_attribution": "Sivuyile Tangana"
     },
     {
       "id": "golden-dish-5fd0",
@@ -7399,7 +7293,14 @@
         0.0011139041744172573,
         0.03975216671824455,
         -0.0921780914068222
-      ]
+      ],
+      "suburb": "Corner of 1 Klipfontein and",
+      "place_id": "ChIJU3jYdaxEzB0R6nmVm2gfcPA",
+      "maps_url": "https://maps.google.com/?cid=17325382300641622506&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/golden-dish-5fd0.jpg",
+      "image_width": 3792,
+      "image_height": 3792,
+      "image_attribution": "Jace Naidoo"
     },
     {
       "id": "seebamboes-12e9",
@@ -7673,7 +7574,14 @@
         0.004800198599696159,
         0.025504551827907562,
         -0.025859877467155457
-      ]
+      ],
+      "suburb": "District Six",
+      "place_id": "ChIJubqmwqBnzB0RR85zUnXVZIw",
+      "maps_url": "https://maps.google.com/?cid=10116445362852187719&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/seebamboes-12e9.jpg",
+      "image_width": 3000,
+      "image_height": 2003,
+      "image_attribution": "Seebamboes"
     },
     {
       "id": "cosy-corner-bf67",
@@ -7947,7 +7855,14 @@
         -0.01582418568432331,
         -0.03407294303178787,
         -0.09203047305345535
-      ]
+      ],
+      "suburb": "Wynberg",
+      "place_id": "ChIJudISlYFDzB0RyVexyJJOU0Q",
+      "maps_url": "https://maps.google.com/?cid=4923365209985341385&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/cosy-corner-bf67.jpg",
+      "image_width": 4000,
+      "image_height": 2250,
+      "image_attribution": "Desme F"
     },
     {
       "id": "st-james-tidal-pool-7ad1",
@@ -8221,7 +8136,13 @@
         -0.028767254203557968,
         -0.013837412931025028,
         0.075637586414814
-      ]
+      ],
+      "place_id": "ChIJOVeUZURAzB0RIvpYPJiUV-g",
+      "maps_url": "https://maps.google.com/?cid=16742013521341512226&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/st-james-tidal-pool-7ad1.jpg",
+      "image_width": 3264,
+      "image_height": 2448,
+      "image_attribution": "Rozana Kamish"
     },
     {
       "id": "india-venster-trail-b681",
@@ -8495,7 +8416,14 @@
         -0.05436303839087486,
         0.07967239618301392,
         -0.015315118245780468
-      ]
+      ],
+      "suburb": "Table Mountain (Nature Reserve)",
+      "place_id": "ChIJuYvzTr1nzB0RHxSIuhrPO10",
+      "maps_url": "https://maps.google.com/?cid=6718190982858806303&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/india-venster-trail-b681.jpg",
+      "image_width": 768,
+      "image_height": 1024,
+      "image_attribution": "Mirriam Morwe"
     },
     {
       "id": "vergenoegd-ducks-0654",
@@ -8769,7 +8697,14 @@
         0.005942794494330883,
         0.05512835085391998,
         -0.008566716685891151
-      ]
+      ],
+      "suburb": "Stellenbosch Farms",
+      "place_id": "ChIJOdGXRjqozR0RI8Qd4Ez0dTs",
+      "maps_url": "https://maps.google.com/?cid=4284599231527633955&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/vergenoegd-ducks-0654.jpg",
+      "image_width": 454,
+      "image_height": 320,
+      "image_attribution": "Vergenoegd L\u00f6w Wine Estate"
     },
     {
       "id": "beta-beach-da9a",
@@ -9043,7 +8978,14 @@
         -0.04127602279186249,
         0.03301529213786125,
         0.0011690037790685892
-      ]
+      ],
+      "suburb": "Bakoven",
+      "place_id": "ChIJ-WBU9vhnzB0Rn8kpa79z5uc",
+      "maps_url": "https://maps.google.com/?cid=16710170733378652575&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/beta-beach-da9a.jpg",
+      "image_width": 1280,
+      "image_height": 576,
+      "image_attribution": "Kevin Takawira"
     },
     {
       "id": "barcadia-d7df",
@@ -9317,7 +9259,13 @@
         0.01629050262272358,
         0.07162311673164368,
         -0.037138838320970535
-      ]
+      ],
+      "place_id": "ChIJ2_9UnmZnzB0RvpH3kGzY4Ew",
+      "maps_url": "https://maps.google.com/?cid=5539665502465921470&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/barcadia-d7df.jpg",
+      "image_width": 3838,
+      "image_height": 2720,
+      "image_attribution": "Barcadia"
     },
     {
       "id": "reverie-social-table-845e",
@@ -9591,7 +9539,14 @@
         -0.04177594929933548,
         0.03919685259461403,
         -0.02912226878106594
-      ]
+      ],
+      "suburb": "Observatory",
+      "place_id": "ChIJewRWnAddzB0RRRs-qXskh-Y",
+      "maps_url": "https://maps.google.com/?cid=16611285864118360901&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/reverie-social-table-845e.jpg",
+      "image_width": 750,
+      "image_height": 400,
+      "image_attribution": "Reverie Social Table"
     },
     {
       "id": "africa-padel-74cc",
@@ -9865,7 +9820,14 @@
         -0.035948365926742554,
         0.03951280936598778,
         0.02747936174273491
-      ]
+      ],
+      "suburb": "1 Marina Rd",
+      "place_id": "ChIJqdUoNdVnzB0RIIsH6ZotBhc",
+      "maps_url": "https://maps.google.com/?cid=1659063656090405664&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/africa-padel-74cc.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "Arran Graham"
     },
     {
       "id": "starlings-caf-efe3",
@@ -10139,7 +10101,14 @@
         0.00546391261741519,
         0.07483946532011032,
         0.08951063454151154
-      ]
+      ],
+      "suburb": "Claremont",
+      "place_id": "ChIJpYr0Oy9DzB0R5fGKwr4E0H0",
+      "maps_url": "https://maps.google.com/?cid=9065751267250991589&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/starlings-caf-efe3.jpg",
+      "image_width": 3024,
+      "image_height": 4032,
+      "image_attribution": "Starlings"
     },
     {
       "id": "18-gangster-museum-6d59",
@@ -10413,7 +10382,14 @@
         -0.020589342340826988,
         0.07220906764268875,
         -0.06351052224636078
-      ]
+      ],
+      "suburb": "Khayelitsha",
+      "place_id": "ChIJ7ckUIGtJzB0RFpGavZnDuQA",
+      "maps_url": "https://maps.google.com/?cid=52287935769907478&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/18-gangster-museum-6d59.jpg",
+      "image_width": 4800,
+      "image_height": 2820,
+      "image_attribution": "18 Gangster Museum"
     },
     {
       "id": "dust-dynamite-e2bd",
@@ -10687,7 +10663,14 @@
         0.04035191237926483,
         0.08012548834085464,
         -0.07534109801054001
-      ]
+      ],
+      "suburb": "District Six",
+      "place_id": "ChIJwRGMGX1nzB0Rya9lxyUidwA",
+      "maps_url": "https://maps.google.com/?cid=33533067883032521&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/dust-dynamite-e2bd.jpg",
+      "image_width": 3935,
+      "image_height": 2213,
+      "image_attribution": "Travelbug Rose Bilbrough"
     },
     {
       "id": "armchair-theatre-6e69",
@@ -10961,7 +10944,14 @@
         -0.014588141813874245,
         -0.000587058428209275,
         -0.035826150327920914
-      ]
+      ],
+      "suburb": "Observatory",
+      "place_id": "ChIJHZWGeDRdzB0Rfja84XXFWd8",
+      "maps_url": "https://maps.google.com/?cid=16094111853474231934&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/armchair-theatre-6e69.jpg",
+      "image_width": 4640,
+      "image_height": 2088,
+      "image_attribution": "Fernando Moreno"
     },
     {
       "id": "blue-rock-resort-a4c9",
@@ -11235,7 +11225,14 @@
         -0.029047902673482895,
         0.08968134969472885,
         -0.039576418697834015
-      ]
+      ],
+      "suburb": "Somerset West",
+      "place_id": "ChIJi55dQNbLzR0RQvKZcBg0PN8",
+      "maps_url": "https://maps.google.com/?cid=16085789248633565762&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/blue-rock-resort-a4c9.jpg",
+      "image_width": 571,
+      "image_height": 491,
+      "image_attribution": "Blue Rock Waterski Resort"
     },
     {
       "id": "truck-norris-4129",
@@ -11509,7 +11506,14 @@
         0.037087421864271164,
         0.04131694138050079,
         -0.01569525897502899
-      ]
+      ],
+      "suburb": "Paarden Eiland",
+      "place_id": "ChIJ581RGJNnzB0RuCQ6beUgaHg",
+      "maps_url": "https://maps.google.com/?cid=8676220851881387192&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/truck-norris-4129.jpg",
+      "image_width": 4800,
+      "image_height": 3599,
+      "image_attribution": "Truck Norris"
     },
     {
       "id": "mariam-s-kitchen-f31c",
@@ -11783,7 +11787,14 @@
         -0.04438440129160881,
         0.056616730988025665,
         0.001770896022208035
-      ]
+      ],
+      "suburb": "Foreshore",
+      "place_id": "ChIJuU2dzmFnzB0Rpc8BKuSlbCM",
+      "maps_url": "https://maps.google.com/?cid=2552597488188116901&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/mariam-s-kitchen-f31c.jpg",
+      "image_width": 4000,
+      "image_height": 3000,
+      "image_attribution": "Lime 909"
     },
     {
       "id": "the-secret-gin-bar-0ade",
@@ -12057,7 +12068,13 @@
         -0.105973020195961,
         0.031641844660043716,
         -0.04362073168158531
-      ]
+      ],
+      "place_id": "ChIJSXxE6GVnzB0RtsJEWII0esg",
+      "maps_url": "https://maps.google.com/?cid=14445916489175581366&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/the-secret-gin-bar-0ade.jpg",
+      "image_width": 3024,
+      "image_height": 3780,
+      "image_attribution": "The Gin Bar"
     },
     {
       "id": "the-nob-3bbb",
@@ -12331,7 +12348,14 @@
         -0.08487061411142349,
         0.00033240116317756474,
         0.0066734072752296925
-      ]
+      ],
+      "suburb": "2 Niagara Rd",
+      "place_id": "ChIJRz6wJAJRzB0RHa0r0cZYPPE",
+      "maps_url": "https://maps.google.com/?cid=17382866272679341341&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/the-nob-3bbb.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "The NOB - No Ordinary Burger!"
     },
     {
       "id": "shimansky-diamond-exp-e6d2",
@@ -12605,7 +12629,14 @@
         -0.038405198603868484,
         0.05857762694358826,
         -0.06988305598497391
-      ]
+      ],
+      "suburb": "The Clock Tower",
+      "place_id": "ChIJ-_oGWF1nzB0RV362pOm6hVU",
+      "maps_url": "https://maps.google.com/?cid=6162537177779961431&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/shimansky-diamond-exp-e6d2.jpg",
+      "image_width": 1503,
+      "image_height": 1013,
+      "image_attribution": "Shimansky Jewellery Store Clock Tower"
     },
     {
       "id": "miller-s-point-tidal-pool-b3e0",
@@ -12879,7 +12910,14 @@
         0.013020758517086506,
         0.04991912469267845,
         0.04959578439593315
-      ]
+      ],
+      "suburb": "Cape Peninsula",
+      "place_id": "ChIJH17G4dE_zB0RuTCMJin_PkU",
+      "maps_url": "https://maps.google.com/?cid=4989705989378551993&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/miller-s-point-tidal-pool-b3e0.jpg",
+      "image_width": 4160,
+      "image_height": 3120,
+      "image_attribution": "Duncan Alfreds"
     },
     {
       "id": "warrior-toy-museum-ae92",
@@ -13153,7 +13191,14 @@
         0.042405858635902405,
         0.024334700778126717,
         -0.037806954234838486
-      ]
+      ],
+      "suburb": "Simon's Town",
+      "place_id": "ChIJtV7dK1o_zB0Rdfk71n2YaFE",
+      "maps_url": "https://maps.google.com/?cid=5866106180882659701&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/warrior-toy-museum-ae92.jpg",
+      "image_width": 3024,
+      "image_height": 4032,
+      "image_attribution": "Tim Short"
     },
     {
       "id": "faeeza-s-home-kitchen-12c3",
@@ -13427,7 +13472,14 @@
         -0.029091674834489822,
         0.03240489214658737,
         -0.014559305272996426
-      ]
+      ],
+      "suburb": "Schotsche Kloof",
+      "place_id": "ChIJj-mFzdlnzB0RzpiePwqElwA",
+      "maps_url": "https://maps.google.com/?cid=42647901035206862&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/faeeza-s-home-kitchen-12c3.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "David Molnar"
     },
     {
       "id": "south-yeaster-bakery-a1b5",
@@ -13701,7 +13753,14 @@
         0.043715763837099075,
         0.08503614366054535,
         -0.04618925601243973
-      ]
+      ],
+      "suburb": "Hout Bay",
+      "place_id": "ChIJn2ZoGvBpzB0RvP9ZoQJjtsE",
+      "maps_url": "https://maps.google.com/?cid=13958452958029545404&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/south-yeaster-bakery-a1b5.jpg",
+      "image_width": 4800,
+      "image_height": 3600,
+      "image_attribution": "John Finch Travel"
     },
     {
       "id": "mabu-vinyl-9cad",
@@ -13975,7 +14034,14 @@
         0.04523684084415436,
         0.061596889048814774,
         -0.03832926228642464
-      ]
+      ],
+      "suburb": "Gardens",
+      "place_id": "ChIJBTgntXFnzB0RgiBhc-ERcDI",
+      "maps_url": "https://maps.google.com/?cid=3634424559289049218&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/mabu-vinyl-9cad.jpg",
+      "image_width": 3024,
+      "image_height": 4032,
+      "image_attribution": "Xavier SCHMITT"
     },
     {
       "id": "palmiet-rapids-4018",
@@ -14249,7 +14315,14 @@
         -0.026281852275133133,
         0.04781688004732132,
         -0.053690072149038315
-      ]
+      ],
+      "suburb": "150 Valley Rd",
+      "place_id": "ChIJ49LNVfZozB0RH0wHNgfXE-w",
+      "maps_url": "https://maps.google.com/?cid=17011176643479686175&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/palmiet-rapids-4018.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "Palmiet"
     },
     {
       "id": "spier-segway-tour-71e4",
@@ -14523,7 +14596,14 @@
         -0.004330235533416271,
         0.02836092934012413,
         0.019495118409395218
-      ]
+      ],
+      "suburb": "Baden Powell Dr",
+      "place_id": "ChIJnQuXRedMzB0RAbXHET6jAPQ",
+      "maps_url": "https://maps.google.com/?cid=17582232432236016897&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/spier-segway-tour-71e4.jpg",
+      "image_width": 1600,
+      "image_height": 909,
+      "image_attribution": "Segway Vineyard Tours at Spier Wine Farm"
     },
     {
       "id": "tapi-tapi-ice-cream-422f",
@@ -14797,7 +14877,14 @@
         -0.008307320065796375,
         0.019397059455513954,
         -0.04920489713549614
-      ]
+      ],
+      "suburb": "Observatory",
+      "place_id": "ChIJu5V5wfRdzB0RTEmiLyVJ26o",
+      "maps_url": "https://maps.google.com/?cid=12311514430409165132&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/tapi-tapi-ice-cream-422f.jpg",
+      "image_width": 4608,
+      "image_height": 3456,
+      "image_attribution": "Tapi Tapi"
     },
     {
       "id": "the-blue-caf-c922",
@@ -15071,7 +15158,14 @@
         0.030324596911668777,
         0.020172027871012688,
         0.04946805536746979
-      ]
+      ],
+      "suburb": "Tamboerskloof",
+      "place_id": "ChIJsZupSG1nzB0RrgSH8WXX9lI",
+      "maps_url": "https://maps.google.com/?cid=5978202388224738478&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/the-blue-caf-c922.jpg",
+      "image_width": 1000,
+      "image_height": 667,
+      "image_attribution": "The Blue Cafe"
     },
     {
       "id": "saunders-rocks-beach-82e4",
@@ -15345,7 +15439,13 @@
         -0.049292951822280884,
         0.034978561103343964,
         0.020322052761912346
-      ]
+      ],
+      "place_id": "ChIJL0UPiuBmzB0RicEyB8Id_LI",
+      "maps_url": "https://maps.google.com/?cid=12897216152063885705&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/saunders-rocks-beach-82e4.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "J S"
     },
     {
       "id": "shimansky-diamonds-897f",
@@ -15619,7 +15719,14 @@
         -0.02648831158876419,
         0.0845813900232315,
         -0.0527367927134037
-      ]
+      ],
+      "suburb": "V&A Waterfront",
+      "place_id": "ChIJYXr9dFpnzB0RyaVrk2emp84",
+      "maps_url": "https://maps.google.com/?cid=14891053656708982217&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/shimansky-diamonds-897f.jpg",
+      "image_width": 3199,
+      "image_height": 4800,
+      "image_attribution": "Shimansky Jewellery Store V&A Waterfront"
     },
     {
       "id": "saunders-rock-4799",
@@ -15893,7 +16000,13 @@
         -0.03835008293390274,
         0.013139295391738415,
         0.033957693725824356
-      ]
+      ],
+      "place_id": "ChIJL0UPiuBmzB0RicEyB8Id_LI",
+      "maps_url": "https://maps.google.com/?cid=12897216152063885705&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/saunders-rock-4799.jpg",
+      "image_width": 4608,
+      "image_height": 3456,
+      "image_attribution": "Sylwester Baku\u0142a"
     },
     {
       "id": "dalebrook-tidal-pool-6466",
@@ -16167,7 +16280,14 @@
         -0.05068129673600197,
         -0.016805583611130714,
         0.09529197961091995
-      ]
+      ],
+      "suburb": "Dalebrook Rd",
+      "place_id": "ChIJ82QIaUBAzB0RsU8EreWpGNQ",
+      "maps_url": "https://maps.google.com/?cid=15283152139397124017&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/dalebrook-tidal-pool-6466.jpg",
+      "image_width": 4000,
+      "image_height": 2250,
+      "image_attribution": "Tamzin Glass"
     },
     {
       "id": "sea-point-promenade-493f",
@@ -16441,7 +16561,13 @@
         -0.04524803161621094,
         0.08251818269491196,
         0.02532736398279667
-      ]
+      ],
+      "place_id": "ChIJPbtn3yRnzB0RlkvEzyY2FMs",
+      "maps_url": "https://maps.google.com/?cid=14633380629555989398&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/sea-point-promenade-493f.jpg",
+      "image_width": 3264,
+      "image_height": 1836,
+      "image_attribution": "Bruce Lowe"
     },
     {
       "id": "milnerton-flea-market-46e5",
@@ -16715,7 +16841,14 @@
         -0.054178934544324875,
         0.06626272201538086,
         0.027510419487953186
-      ]
+      ],
+      "suburb": "Paarden Eiland",
+      "place_id": "ChIJz0t6pDNczB0RVcCMRRk_pQc",
+      "maps_url": "https://maps.google.com/?cid=550915907196338261&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/milnerton-flea-market-46e5.jpg",
+      "image_width": 3000,
+      "image_height": 4000,
+      "image_attribution": "Juan Brunette"
     },
     {
       "id": "battery-park-f8ac",
@@ -16989,7 +17122,14 @@
         0.07769975811243057,
         0.017116893082857132,
         0.015555961057543755
-      ]
+      ],
+      "suburb": "Victoria & Alfred Waterfront",
+      "place_id": "ChIJI6FTSUlnzB0R2A8z2iBM1zg",
+      "maps_url": "https://maps.google.com/?cid=4095826090100199384&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/battery-park-f8ac.jpg",
+      "image_width": 4000,
+      "image_height": 3000,
+      "image_attribution": "Raphael"
     },
     {
       "id": "the-crypt-b721",
@@ -17263,7 +17403,13 @@
         0.03269003704190254,
         0.03277553617954254,
         0.002556135645136237
-      ]
+      ],
+      "place_id": "ChIJP6mj-2RnzB0Ruwi6tU44GPc",
+      "maps_url": "https://maps.google.com/?cid=17805043037516728507&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/the-crypt-b721.jpg",
+      "image_width": 3024,
+      "image_height": 4032,
+      "image_attribution": "Thomas Meyer"
     },
     {
       "id": "woodstock-brewery-353b",
@@ -17537,7 +17683,14 @@
         -0.04414673149585724,
         0.07109479606151581,
         0.0050249905325472355
-      ]
+      ],
+      "suburb": "Woodstock",
+      "place_id": "ChIJ3cjIhKFdzB0R9fOwD5YZej0",
+      "maps_url": "https://maps.google.com/?cid=4429881315771347957&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/woodstock-brewery-353b.jpg",
+      "image_width": 960,
+      "image_height": 540,
+      "image_attribution": "Woodstock Brewery"
     },
     {
       "id": "jazz-safari-837f",
@@ -17811,7 +17964,14 @@
         -0.008523358963429928,
         0.009287392720580101,
         0.046869080513715744
-      ]
+      ],
+      "suburb": "Foreshore",
+      "place_id": "ChIJJV76FXxnzB0RGm7ONC7VZ6I",
+      "maps_url": "https://maps.google.com/?cid=11702556551176678938&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/jazz-safari-837f.jpg",
+      "image_width": 4800,
+      "image_height": 3601,
+      "image_attribution": "Timeless Africa Safaris"
     },
     {
       "id": "buffelsfontein-safari-a3d4",
@@ -18085,7 +18245,14 @@
         -0.06130349636077881,
         -0.011470649391412735,
         0.021285181865096092
-      ]
+      ],
+      "suburb": "West Coast",
+      "place_id": "ChIJ62iH4y-uzB0RiliqAAoWplg",
+      "maps_url": "https://maps.google.com/?cid=6387817353688275082&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/buffelsfontein-safari-a3d4.jpg",
+      "image_width": 3968,
+      "image_height": 2976,
+      "image_attribution": "Donna Woodruff"
     },
     {
       "id": "chart-farm-9da6",
@@ -18359,7 +18526,14 @@
         -0.06784220784902573,
         0.01767575554549694,
         0.03570181503891945
-      ]
+      ],
+      "suburb": "Wynberg",
+      "place_id": "ChIJ9SGOJL5CzB0RXHXRtR0BbYg",
+      "maps_url": "https://maps.google.com/?cid=9830514788735743324&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/chart-farm-9da6.jpg",
+      "image_width": 4800,
+      "image_height": 3599,
+      "image_attribution": "Chris de Brouwer"
     },
     {
       "id": "pizza-shed-48a6",
@@ -18633,7 +18807,14 @@
         -0.11322560161352158,
         0.05194224417209625,
         -0.09374136477708817
-      ]
+      ],
+      "suburb": "231 Bree St",
+      "place_id": "ChIJZcE_wvFnzB0RJNLBvjtCkzY",
+      "maps_url": "https://maps.google.com/?cid=3932559723995451940&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/pizza-shed-48a6.jpg",
+      "image_width": 4752,
+      "image_height": 3184,
+      "image_attribution": "Mathili Zwane"
     },
     {
       "id": "massimo-s-b203",
@@ -18907,7 +19088,14 @@
         -0.05710659176111221,
         0.011895043775439262,
         -0.010194824077188969
-      ]
+      ],
+      "suburb": "Hout Bay Main Rd",
+      "place_id": "ChIJR3diW_dozB0Rhpd8PDwaThc",
+      "maps_url": "https://maps.google.com/?cid=1679308557070931846&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/massimo-s-b203.jpg",
+      "image_width": 1024,
+      "image_height": 683,
+      "image_attribution": "Massimo's"
     },
     {
       "id": "secret-sunrise-24ca",
@@ -19181,7 +19369,13 @@
         0.03632515296339989,
         0.06627025455236435,
         0.052429646253585815
-      ]
+      ],
+      "place_id": "ChIJOVeUZURAzB0RIvpYPJiUV-g",
+      "maps_url": "https://maps.google.com/?cid=16742013521341512226&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/secret-sunrise-24ca.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "Fabian M\u00fcller"
     },
     {
       "id": "chardonnay-deli-548c",
@@ -19455,7 +19649,14 @@
         -0.036949168890714645,
         0.047710809856653214,
         0.045391716063022614
-      ]
+      ],
+      "suburb": "Constantia",
+      "place_id": "ChIJR5YR8H5CzB0RyPIz8Kb0ZkI",
+      "maps_url": "https://maps.google.com/?cid=4784780651959415496&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/chardonnay-deli-548c.jpg",
+      "image_width": 4800,
+      "image_height": 3199,
+      "image_attribution": "Chardonnay Deli Constantia"
     },
     {
       "id": "aegir-project-ad6a",
@@ -19729,7 +19930,14 @@
         -0.003529987996444106,
         0.07292641699314117,
         -0.09981217980384827
-      ]
+      ],
+      "suburb": "Noordhoek",
+      "place_id": "ChIJd8eg6rhrzB0RzzUqwHWY28w",
+      "maps_url": "https://maps.google.com/?cid=14761559835139519951&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/aegir-project-ad6a.jpg",
+      "image_width": 2355,
+      "image_height": 1570,
+      "image_attribution": "Aegir Project Brewery Noordhoek"
     },
     {
       "id": "dias-tavern-6405",
@@ -20003,7 +20211,14 @@
         -0.0010016917949542403,
         -0.02257440611720085,
         0.0129682756960392
-      ]
+      ],
+      "suburb": "District Six",
+      "place_id": "ChIJPfVrGX1nzB0RzET5eJ-gdiE",
+      "maps_url": "https://maps.google.com/?cid=2411291257293325516&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/dias-tavern-6405.jpg",
+      "image_width": 3000,
+      "image_height": 2000,
+      "image_attribution": "Dias Tavern Portuguese Restaurant"
     },
     {
       "id": "seven-colours-eatery-4ced",
@@ -20277,7 +20492,14 @@
         -0.06248992308974266,
         0.03209806606173515,
         -0.034604061394929886
-      ]
+      ],
+      "suburb": "3 Dock Rd",
+      "place_id": "ChIJp7zBbcBnzB0R-Q0q8fDVUWw",
+      "maps_url": "https://maps.google.com/?cid=7805254860024712697&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/seven-colours-eatery-4ced.jpg",
+      "image_width": 495,
+      "image_height": 619,
+      "image_attribution": "Seven Colours Eatery"
     },
     {
       "id": "biesmiellah-556e",
@@ -20551,7 +20773,14 @@
         -0.018532929942011833,
         -0.011941993609070778,
         -0.02468011900782585
-      ]
+      ],
+      "suburb": "Schotsche Kloof",
+      "place_id": "ChIJHzEevGhnzB0RXrMsWSryv-M",
+      "maps_url": "https://maps.google.com/?cid=16411101830860026718&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/biesmiellah-556e.jpg",
+      "image_width": 4000,
+      "image_height": 3000,
+      "image_attribution": "Mohamed El Bechir Diyana"
     },
     {
       "id": "una-m-s-mezcaleria-9abb",
@@ -20825,7 +21054,14 @@
         0.0788969174027443,
         0.0609065406024456,
         0.011974028311669827
-      ]
+      ],
+      "suburb": "77 Regent Rd",
+      "place_id": "ChIJ5dWRLK1nzB0R2Z8ER-g7kQY",
+      "maps_url": "https://maps.google.com/?cid=473225304660549593&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/una-m-s-mezcaleria-9abb.jpg",
+      "image_width": 4000,
+      "image_height": 2252,
+      "image_attribution": "Una M\u00e1s - Mezcaleria"
     },
     {
       "id": "rands-cape-town-c568",
@@ -21099,7 +21335,14 @@
         0.04364832863211632,
         0.009030688554048538,
         -0.015562886372208595
-      ]
+      ],
+      "suburb": "Khaya Bazzar",
+      "place_id": "ChIJzVzpOG5JzB0Rn8b8PvCFRBE",
+      "maps_url": "https://maps.google.com/?cid=1244266663956498079&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/rands-cape-town-c568.jpg",
+      "image_width": 3744,
+      "image_height": 3744,
+      "image_attribution": "Rands Cape Town"
     },
     {
       "id": "rollercade-v-a-58af",
@@ -21373,7 +21616,14 @@
         0.0558871366083622,
         0.06539000570774078,
         -0.058404114097356796
-      ]
+      ],
+      "suburb": "Corner or",
+      "place_id": "ChIJy-LI0yZnzB0RmO2ehX0H6cc",
+      "maps_url": "https://maps.google.com/?cid=14405053118815333784&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/rollercade-v-a-58af.jpg",
+      "image_width": 1053,
+      "image_height": 593,
+      "image_attribution": "Rollercade @ Table Bay Mall"
     },
     {
       "id": "bodega-ramen-35e8",
@@ -21647,7 +21897,14 @@
         -0.06833517551422119,
         0.006491705309599638,
         -0.06664317101240158
-      ]
+      ],
+      "suburb": "CBD",
+      "place_id": "ChIJkW3B22JdzB0RL4lFwlvVYsk",
+      "maps_url": "https://maps.google.com/?cid=14511395539419236655&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/bodega-ramen-35e8.jpg",
+      "image_width": 3999,
+      "image_height": 2666,
+      "image_attribution": "Bodega Ramen"
     },
     {
       "id": "intaka-island-bfd4",
@@ -21921,7 +22178,14 @@
         -0.11354490369558334,
         -0.034777119755744934,
         0.0029807533137500286
-      ]
+      ],
+      "suburb": "2 Park Ln",
+      "place_id": "ChIJA5rgAAVczB0RxY9hxxv-SWg",
+      "maps_url": "https://maps.google.com/?cid=7514816848507015109&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/intaka-island-bfd4.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "Donovan Jacobs"
     },
     {
       "id": "ramenhead-1b65",
@@ -22195,7 +22459,13 @@
         -0.09195780009031296,
         0.011186436749994755,
         0.029169883579015732
-      ]
+      ],
+      "place_id": "ChIJkzxK0GJnzB0R4O_aUdBgD2A",
+      "maps_url": "https://maps.google.com/?cid=6921857600134508512&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/ramenhead-1b65.jpg",
+      "image_width": 1200,
+      "image_height": 800,
+      "image_attribution": "Ramenhead"
     },
     {
       "id": "art-of-duplicity-9786",
@@ -22469,7 +22739,13 @@
         -0.0296342670917511,
         0.031505048274993896,
         -0.0865439921617508
-      ]
+      ],
+      "place_id": "ChIJzS3nZZxdzB0RzoZ78Dk44NE",
+      "maps_url": "https://maps.google.com/?cid=15123149370209044174&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/art-of-duplicity-9786.jpg",
+      "image_width": 3024,
+      "image_height": 4032,
+      "image_attribution": "John-William Cloete"
     },
     {
       "id": "sup-v-a-canals-c2e1",
@@ -22743,7 +23019,14 @@
         -0.016929537057876587,
         0.02177024632692337,
         0.036111168563365936
-      ]
+      ],
+      "suburb": "Alfred St",
+      "place_id": "ChIJgRvOBVxnzB0RtfY32ZuvMDY",
+      "maps_url": "https://maps.google.com/?cid=3904813960829335221&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/sup-v-a-canals-c2e1.jpg",
+      "image_width": 644,
+      "image_height": 465,
+      "image_attribution": "SUP Cape Town"
     },
     {
       "id": "scala-pasta-bar-a99f",
@@ -23017,7 +23300,13 @@
         -0.030238274484872818,
         -0.043339867144823074,
         -0.04881962016224861
-      ]
+      ],
+      "place_id": "ChIJsYsRafRnzB0RSwQ80TCCPAA",
+      "maps_url": "https://maps.google.com/?cid=17031644783051851&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/scala-pasta-bar-a99f.jpg",
+      "image_width": 4800,
+      "image_height": 3600,
+      "image_attribution": "Dillan Prince"
     },
     {
       "id": "hinthunt-escape-room-21a3",
@@ -23291,7 +23580,14 @@
         0.007181714754551649,
         0.10051427036523819,
         -0.026392430067062378
-      ]
+      ],
+      "suburb": "17 Dock Rd",
+      "place_id": "ChIJFx2nS6FdzB0RWr9GNWrCGI8",
+      "maps_url": "https://maps.google.com/?cid=10311205108280901466&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/hinthunt-escape-room-21a3.jpg",
+      "image_width": 1020,
+      "image_height": 1016,
+      "image_attribution": "HintHunt Cape Town"
     },
     {
       "id": "ground-art-caff-415e",
@@ -23565,7 +23861,14 @@
         0.003372102277353406,
         0.04382430762052536,
         0.05038623884320259
-      ]
+      ],
+      "suburb": "De Waterkant",
+      "place_id": "ChIJI3jz7WdnzB0RQPQb_RNbUoU",
+      "maps_url": "https://maps.google.com/?cid=9606841096543663168&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/ground-art-caff-415e.jpg",
+      "image_width": 866,
+      "image_height": 578,
+      "image_attribution": "Ground Art Caffe"
     },
     {
       "id": "surfarosa-4e98",
@@ -23839,7 +24142,14 @@
         -0.036055758595466614,
         0.03602714091539383,
         0.02496718056499958
-      ]
+      ],
+      "suburb": "District Six",
+      "place_id": "ChIJ41Bm-XxnzB0RY7oWK6XqjsY",
+      "maps_url": "https://maps.google.com/?cid=14307631061316057699&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/surfarosa-4e98.jpg",
+      "image_width": 4284,
+      "image_height": 3083,
+      "image_attribution": "SurfaRosa"
     },
     {
       "id": "arthur-s-mini-super-da90",
@@ -24113,7 +24423,14 @@
         0.08343498408794403,
         0.03778035193681717,
         -0.008845079690217972
-      ]
+      ],
+      "suburb": "Sea Point",
+      "place_id": "ChIJMTOWk15nzB0ROUdHNj4AWOU",
+      "maps_url": "https://maps.google.com/?cid=16525959099834648377&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/arthur-s-mini-super-da90.jpg",
+      "image_width": 4000,
+      "image_height": 2252,
+      "image_attribution": "Piccolo Montessori School"
     },
     {
       "id": "cape-canopy-tour-a8d5",
@@ -24387,7 +24704,14 @@
         0.01041367370635271,
         0.08814893662929535,
         -0.05763014778494835
-      ]
+      ],
+      "suburb": "Grabouw",
+      "place_id": "ChIJfWMCP3THzR0R_8QVpSATqYM",
+      "maps_url": "https://maps.google.com/?cid=9487135120962209023&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/cape-canopy-tour-a8d5.jpg",
+      "image_width": 4800,
+      "image_height": 3200,
+      "image_attribution": "Cape Canopy Tour"
     },
     {
       "id": "kloof-corner-1b5b",
@@ -24661,7 +24985,14 @@
         -0.049632877111434937,
         0.04689415544271469,
         0.08309179544448853
-      ]
+      ],
+      "suburb": "Table Mountain (Nature Reserve)",
+      "place_id": "ChIJh3bwdqNnzB0RpBDzZyjRCqA",
+      "maps_url": "https://maps.google.com/?cid=11532259767308456100&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/kloof-corner-1b5b.jpg",
+      "image_width": 3248,
+      "image_height": 3248,
+      "image_attribution": "Yassie ZA"
     },
     {
       "id": "holocaust-centre-f7d5",
@@ -24935,7 +25266,13 @@
         -0.0726899728178978,
         0.04816050827503204,
         0.023862456902861595
-      ]
+      ],
+      "place_id": "ChIJDb99o3BnzB0RGDakjkK3Wrk",
+      "maps_url": "https://maps.google.com/?cid=13356189141409478168&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/holocaust-centre-f7d5.jpg",
+      "image_width": 4800,
+      "image_height": 3408,
+      "image_attribution": "Cape Town Holocaust & Genocide Centre"
     },
     {
       "id": "woodstock-street-art-a9b2",
@@ -25209,7 +25546,14 @@
         -0.004095898475497961,
         0.049640998244285583,
         0.05629764124751091
-      ]
+      ],
+      "suburb": "Albert Rd",
+      "place_id": "ChIJxXYe1HtdzB0R50FVtNxOwJU",
+      "maps_url": "https://maps.google.com/?cid=10790711417004966375&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/woodstock-street-art-a9b2.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "Lena Heine"
     },
     {
       "id": "muizenberg-surfing-f5b1",
@@ -25483,7 +25827,14 @@
         -0.0015586515655741096,
         0.024404915049672127,
         0.03925630450248718
-      ]
+      ],
+      "suburb": "72 Beach Rd",
+      "place_id": "ChIJAym3sVZAzB0Rkrtalkql8Z0",
+      "maps_url": "https://maps.google.com/?cid=11381059473110645650&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/muizenberg-surfing-f5b1.jpg",
+      "image_width": 4800,
+      "image_height": 3200,
+      "image_attribution": "Surf Emporium - Muizenberg Surf School & Muizenberg Surf Shop"
     },
     {
       "id": "maidens-cove-fb20",
@@ -25757,7 +26108,14 @@
         -0.12808965146541595,
         0.013770177960395813,
         -0.008140604943037033
-      ]
+      ],
+      "suburb": "Clifton",
+      "place_id": "ChIJURD0q_hmzB0RRl0mXYK0SPM",
+      "maps_url": "https://maps.google.com/?cid=17530460021541199174&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/maidens-cove-fb20.jpg",
+      "image_width": 2112,
+      "image_height": 1600,
+      "image_attribution": "Deborah Kern"
     },
     {
       "id": "bakoven-beach-7400",
@@ -26031,7 +26389,14 @@
         -0.029988368973135948,
         0.07079585641622543,
         -0.013960820622742176
-      ]
+      ],
+      "suburb": "Bakoven",
+      "place_id": "ChIJZ0nesE5mzB0RqC4n7lurQEI",
+      "maps_url": "https://maps.google.com/?cid=4774004016338644648&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/bakoven-beach-7400.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "Judith (CapeTownWithKids.com)"
     },
     {
       "id": "constantia-nek-a9f8",
@@ -26305,7 +26670,14 @@
         -0.08000751584768295,
         0.07881113886833191,
         0.07362685352563858
-      ]
+      ],
+      "suburb": "Table Mountain (Nature Reserve)",
+      "place_id": "ChIJp1ap8zhozB0R2HToJmfbGT0",
+      "maps_url": "https://maps.google.com/?cid=4402791346812253400&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/constantia-nek-a9f8.jpg",
+      "image_width": 4032,
+      "image_height": 2268,
+      "image_attribution": "Nico Smith"
     },
     {
       "id": "cecilia-forest-48b2",
@@ -26579,7 +26951,14 @@
         -0.04340691491961479,
         0.007921954616904259,
         0.03459189087152481
-      ]
+      ],
+      "suburb": "Wynberg NU (2)",
+      "place_id": "ChIJCaOcwDxozB0Ru3x085xlQ7Q",
+      "maps_url": "https://maps.google.com/?cid=12989337475040443579&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/cecilia-forest-48b2.jpg",
+      "image_width": 2736,
+      "image_height": 3648,
+      "image_attribution": "Reggie Pfeiffer"
     },
     {
       "id": "saunders-rocks-a6ef",
@@ -26853,7 +27232,13 @@
         -0.03008156083524227,
         0.02204718627035618,
         0.013282415457069874
-      ]
+      ],
+      "place_id": "ChIJL0UPiuBmzB0RicEyB8Id_LI",
+      "maps_url": "https://maps.google.com/?cid=12897216152063885705&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/saunders-rocks-a6ef.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "Yolanda Kritz"
     },
     {
       "id": "blue-bird-garage-market-a2aa",
@@ -27127,7 +27512,14 @@
         0.08918973803520203,
         0.14844246208667755,
         -0.005118948873132467
-      ]
+      ],
+      "suburb": "Muizenberg",
+      "place_id": "ChIJP7nmnlRAzB0RUDOqP1opjOE",
+      "maps_url": "https://maps.google.com/?cid=16252410622865191760&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/blue-bird-garage-market-a2aa.jpg",
+      "image_width": 4000,
+      "image_height": 2252,
+      "image_attribution": "Werner Nel"
     },
     {
       "id": "montebello-centre-78c3",
@@ -27401,7 +27793,14 @@
         0.024771682918071747,
         0.08541429787874222,
         0.06856699287891388
-      ]
+      ],
+      "suburb": "Newlands",
+      "place_id": "ChIJcQCt9zNdzB0Rh8F0Akp6pK0",
+      "maps_url": "https://maps.google.com/?cid=12512260123029455239&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/montebello-centre-78c3.jpg",
+      "image_width": 3464,
+      "image_height": 4618,
+      "image_attribution": "Penny Penny"
     },
     {
       "id": "up-cycles-2957",
@@ -27675,7 +28074,14 @@
         -0.01631244085729122,
         0.07745907455682755,
         0.08146212995052338
-      ]
+      ],
+      "suburb": "Victoria & Alfred Waterfront",
+      "place_id": "ChIJLzFejFlnzB0RbDxWPoI6Kww",
+      "maps_url": "https://maps.google.com/?cid=876858883519691884&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/up-cycles-2957.jpg",
+      "image_width": 750,
+      "image_height": 558,
+      "image_attribution": "Up Cycles V&A Waterfront"
     },
     {
       "id": "chinchilla-rooftop-a793",
@@ -27949,7 +28355,14 @@
         -0.062395721673965454,
         0.07558297365903854,
         -0.005692454986274242
-      ]
+      ],
+      "suburb": "Second Floor",
+      "place_id": "ChIJ9yvW9VJmzB0Rapxiq556WjU",
+      "maps_url": "https://maps.google.com/?cid=3844520053812927594&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/chinchilla-rooftop-a793.jpg",
+      "image_width": 4800,
+      "image_height": 3204,
+      "image_attribution": "Chinchilla by Kove Collection"
     },
     {
       "id": "sa-jewish-museum-e17e",
@@ -28223,7 +28636,14 @@
         -0.09214413166046143,
         0.012959334999322891,
         0.013936924748122692
-      ]
+      ],
+      "suburb": "Gardens",
+      "place_id": "ChIJDb99o3BnzB0Rclz4MmRZ2Bg",
+      "maps_url": "https://maps.google.com/?cid=1790279138766511218&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/sa-jewish-museum-e17e.jpg",
+      "image_width": 940,
+      "image_height": 650,
+      "image_attribution": "Kandukuri Pavan Kumar"
     },
     {
       "id": "norval-foundation-9bbd",
@@ -28497,7 +28917,14 @@
         -0.0082034757360816,
         0.015440278686583042,
         0.0010601949179545045
-      ]
+      ],
+      "suburb": "Tokai",
+      "place_id": "ChIJWd7KtuJBzB0Rsa7pgH8eAH0",
+      "maps_url": "https://maps.google.com/?cid=9007232787713470129&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/norval-foundation-9bbd.jpg",
+      "image_width": 4800,
+      "image_height": 3203,
+      "image_attribution": "Norval Foundation"
     },
     {
       "id": "cafeen-f1c3",
@@ -28771,7 +29198,14 @@
         0.08705969154834747,
         0.03429543226957321,
         0.025728246197104454
-      ]
+      ],
+      "suburb": "Claremont",
+      "place_id": "ChIJC4ypIidDzB0R3k406n7GvKg",
+      "maps_url": "https://maps.google.com/?cid=12158811342390972126&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/cafeen-f1c3.jpg",
+      "image_width": 4000,
+      "image_height": 2992,
+      "image_attribution": "Hritik Mitha"
     },
     {
       "id": "the-commons-ad2a",
@@ -29045,7 +29479,14 @@
         0.009927568957209587,
         0.07388337701559067,
         0.004777176305651665
-      ]
+      ],
+      "suburb": "Beach Rd",
+      "place_id": "ChIJuU96Xy9BzB0R2cyqh2E2oIw",
+      "maps_url": "https://maps.google.com/?cid=10133158954099461337&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/the-commons-ad2a.jpg",
+      "image_width": 1425,
+      "image_height": 950,
+      "image_attribution": "The Commons"
     },
     {
       "id": "magnet-theatre-ba1b",
@@ -29319,7 +29760,14 @@
         -0.015953494235873222,
         0.046034395694732666,
         0.034228526055812836
-      ]
+      ],
+      "suburb": "Observatory",
+      "place_id": "ChIJkbTCBQNdzB0RZvoYlOM39nI",
+      "maps_url": "https://maps.google.com/?cid=8283870015176374886&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/magnet-theatre-ba1b.jpg",
+      "image_width": 3968,
+      "image_height": 2976,
+      "image_attribution": "Luvuyo Mabuto"
     },
     {
       "id": "i-love-coffee-a12a",
@@ -29593,7 +30041,14 @@
         -0.008221890777349472,
         0.05278395116329193,
         0.030927183106541634
-      ]
+      ],
+      "suburb": "Claremont",
+      "place_id": "ChIJQ0Gn4XBDzB0R4qH-TMdzsco",
+      "maps_url": "https://maps.google.com/?cid=14605582366366671330&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/i-love-coffee-a12a.jpg",
+      "image_width": 2048,
+      "image_height": 1365,
+      "image_attribution": "I Love Coffee Roastery and Deli Claremont"
     },
     {
       "id": "ground-art-caffe-4e54",
@@ -29867,7 +30322,14 @@
         0.021790919825434685,
         0.020711416378617287,
         0.01758587546646595
-      ]
+      ],
+      "suburb": "De Waterkant",
+      "place_id": "ChIJI3jz7WdnzB0RQPQb_RNbUoU",
+      "maps_url": "https://maps.google.com/?cid=9606841096543663168&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/ground-art-caffe-4e54.jpg",
+      "image_width": 1986,
+      "image_height": 1324,
+      "image_attribution": "Ground Art Caffe"
     },
     {
       "id": "house-of-machines-c89a",
@@ -30141,7 +30603,13 @@
         0.04596827179193497,
         0.02407045103609562,
         -0.034476205706596375
-      ]
+      ],
+      "place_id": "ChIJw4PxgGZnzB0RYeCBVQAgNbY",
+      "maps_url": "https://maps.google.com/?cid=13129435474475212897&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/house-of-machines-c89a.jpg",
+      "image_width": 1536,
+      "image_height": 1536,
+      "image_attribution": "The House of Machines"
     },
     {
       "id": "eastern-food-bazaar-80f6",
@@ -30415,7 +30883,13 @@
         -0.08356344699859619,
         0.0319829136133194,
         -0.08714473992586136
-      ]
+      ],
+      "place_id": "ChIJNa_uZWNnzB0RVv-g5Wj6Xo4",
+      "maps_url": "https://maps.google.com/?cid=10258912329632644950&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/eastern-food-bazaar-80f6.jpg",
+      "image_width": 4000,
+      "image_height": 3000,
+      "image_attribution": "Marcel Meyer"
     },
     {
       "id": "empire-cafe-43fe",
@@ -30689,7 +31163,14 @@
         0.007195872720330954,
         0.046482305973768234,
         0.01886933483183384
-      ]
+      ],
+      "suburb": "Muizenberg",
+      "place_id": "ChIJmZjtWVFAzB0RdBA31qxEELg",
+      "maps_url": "https://maps.google.com/?cid=13263176411725107316&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/empire-cafe-43fe.jpg",
+      "image_width": 612,
+      "image_height": 612,
+      "image_attribution": "Empire Cafe"
     },
     {
       "id": "hello-sailor-bistro-0697",
@@ -30963,7 +31444,14 @@
         0.013768044300377369,
         -0.020405078306794167,
         -0.004863779991865158
-      ]
+      ],
+      "suburb": "Observatory",
+      "place_id": "ChIJGV_cggRdzB0ROaAz2ObTt2Y",
+      "maps_url": "https://maps.google.com/?cid=7401617501029900345&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/hello-sailor-bistro-0697.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "Nelson Perez"
     },
     {
       "id": "the-dog-s-bollocks-9005",
@@ -31237,7 +31725,14 @@
         -0.03452560678124428,
         0.07123354822397232,
         0.008456535637378693
-      ]
+      ],
+      "suburb": "Gardens",
+      "place_id": "ChIJZdIh1ntnzB0RAjkMOWET5X8",
+      "maps_url": "https://maps.google.com/?cid=9215793520773445890&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/the-dog-s-bollocks-9005.jpg",
+      "image_width": 1179,
+      "image_height": 1460,
+      "image_attribution": "The Dog's Bollocks at YARD"
     },
     {
       "id": "the-pok-co-f795",
@@ -31511,7 +32006,13 @@
         -0.08400292694568634,
         0.01647641323506832,
         0.020239632576704025
-      ]
+      ],
+      "place_id": "ChIJCVsE1WVnzB0R_4ezqFSH02g",
+      "maps_url": "https://maps.google.com/?cid=7553529797707794431&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/the-pok-co-f795.jpg",
+      "image_width": 4800,
+      "image_height": 3204,
+      "image_attribution": "The Poke Co."
     },
     {
       "id": "lievita-80e4",
@@ -31785,281 +32286,14 @@
         -0.07274237275123596,
         0.030715489760041237,
         0.014851951040327549
-      ]
-    },
-    {
-      "id": "aperitif-63a8",
-      "name": "Aperitif",
-      "category": "Drink",
-      "tourist_level": 6,
-      "price_tier": "RR",
-      "numerical_price": "R150-R250",
-      "best_season": "Summer",
-      "vibes": [
-        "European",
-        "Roadside",
-        "Bustling"
       ],
-      "description": "A European-style bar on Bree Street offering Aperol spritz, negronis, and snacks in a bustling roadside setting.",
-      "rating": 4.6,
-      "embedding": [
-        -0.047003261744976044,
-        -0.02243679016828537,
-        -0.06358969956636429,
-        0.03352364897727966,
-        -0.01072982233017683,
-        -0.06333915144205093,
-        -0.03620453551411629,
-        0.0800258070230484,
-        -0.006777388975024223,
-        -0.03823399543762207,
-        -0.03455090522766113,
-        -0.020018979907035828,
-        -0.050185251981019974,
-        -0.012878292240202427,
-        -0.015158301219344139,
-        0.058979570865631104,
-        0.03272188454866409,
-        0.06033254414796829,
-        0.0524151511490345,
-        0.07701919972896576,
-        0.04013817757368088,
-        0.05822791904211044,
-        -0.059831440448760986,
-        0.04577556252479553,
-        -0.07742008566856384,
-        0.004700952209532261,
-        -0.1015230342745781,
-        -0.045550066977739334,
-        0.047003261744976044,
-        -0.010422897525131702,
-        0.06840026378631592,
-        -0.024466250091791153,
-        0.06148507446050644,
-        0.03359881415963173,
-        0.0030661108903586864,
-        -0.04547490179538727,
-        0.035778600722551346,
-        -0.08623945713043213,
-        0.09686279296875,
-        0.012126640416681767,
-        -0.0842350572347641,
-        0.07075544446706772,
-        0.0837840661406517,
-        -0.004337654449045658,
-        -0.01899172179400921,
-        -0.023576796054840088,
-        0.026758786290884018,
-        0.17087538540363312,
-        0.11585451662540436,
-        0.10462985932826996,
-        -0.09140079468488693,
-        -0.0025415208656340837,
-        -0.061885956674814224,
-        -0.028387364000082016,
-        -0.03695618733763695,
-        -0.04129071161150932,
-        -0.04357071965932846,
-        -0.10332699865102768,
-        0.20084121823310852,
-        0.10257534682750702,
-        0.14141066372394562,
-        0.00828069169074297,
-        0.07706931233406067,
-        -0.01951787807047367,
-        -0.11595473438501358,
-        -0.005142547655850649,
-        -0.02475438266992569,
-        0.11685671657323837,
-        0.1118457093834877,
-        0.02130931429564953,
-        0.06173562631011009,
-        -0.017814135178923607,
-        0.009671246632933617,
-        -0.06093386560678482,
-        -0.11545363813638687,
-        -0.07596688717603683,
-        -0.005640516523271799,
-        -0.07411281764507294,
-        -0.0025587461423128843,
-        -0.07932426780462265,
-        0.0156844574958086,
-        0.016636548563838005,
-        -0.08739198744297028,
-        0.004287544172257185,
-        0.03487661853432655,
-        -0.1483258605003357,
-        -0.11585451662540436,
-        0.05221470817923546,
-        0.03264671936631203,
-        0.06303849071264267,
-        0.050886791199445724,
-        -0.08664033561944962,
-        -0.010316413827240467,
-        -0.05602307617664337,
-        0.006708487868309021,
-        -0.005452603567391634,
-        -0.07240907102823257,
-        -0.05073646083474159,
-        -0.017551057040691376,
-        0.07381215691566467,
-        0.07792118191719055,
-        -0.028111757710576057,
-        -0.005014140624552965,
-        0.010441688820719719,
-        0.07576645165681839,
-        0.019705791026353836,
-        0.06093386560678482,
-        -0.03803355619311333,
-        -0.043771158903837204,
-        0.016436107456684113,
-        -0.08508692681789398,
-        0.023990202695131302,
-        0.0005124539020471275,
-        -0.000638120633084327,
-        -0.007084313314408064,
-        0.08493659645318985,
-        0.1464216709136963,
-        -7.120134341676021e-06,
-        -0.03307265788316727,
-        -0.01887897402048111,
-        -0.005161338951438665,
-        0.11094372719526291,
-        -0.01181345246732235,
-        0.031569354236125946,
-        -0.0024522622115910053,
-        0.012439828366041183,
-        -0.011393780820071697,
-        -0.11124438792467117,
-        0.03627970069646835,
-        -0.11665628105401993,
-        0.09576037526130676,
-        -0.08072734624147415,
-        0.004412819631397724,
-        -0.022825144231319427,
-        0.08919595181941986,
-        0.016461163759231567,
-        -0.10102193057537079,
-        -0.044798415154218674,
-        0.041441041976213455,
-        -0.08498670160770416,
-        0.022148657590150833,
-        0.0014672859106212854,
-        0.017075011506676674,
-        -0.09230277687311172,
-        -0.037883225828409195,
-        -0.021234149113297462,
-        -0.024942295625805855,
-        0.011205867864191532,
-        -0.05436944216489792,
-        0.01218927837908268,
-        -0.035728491842746735,
-        0.0069778296165168285,
-        -0.050987012684345245,
-        -0.05086173862218857,
-        -0.007986295036971569,
-        0.0003122093330603093,
-        0.06013210117816925,
-        0.06629564613103867,
-        0.00021355508943088353,
-        0.009207728318870068,
-        -0.06213650479912758,
-        -0.02449130453169346,
-        -0.046026114374399185,
-        -0.026082299649715424,
-        -0.08478626608848572,
-        0.14261330664157867,
-        -0.21647557616233826,
-        -0.03941158205270767,
-        -0.06353958696126938,
-        0.0683000460267067,
-        -0.06093386560678482,
-        0.0320453979074955,
-        0.00268402136862278,
-        0.06288816034793854,
-        0.048556674271821976,
-        -0.06298837810754776,
-        0.07225874066352844,
-        0.08208031952381134,
-        0.04745425283908844,
-        -0.034225188195705414,
-        0.04194214195013046,
-        0.0400129035115242,
-        0.16065293550491333,
-        -0.06258749961853027,
-        -0.006658377591520548,
-        0.011099384166300297,
-        -0.12798115611076355,
-        -0.009727620519697666,
-        0.012521257624030113,
-        0.03347353637218475,
-        -0.04028850793838501,
-        0.030441876500844955,
-        -0.012821918353438377,
-        0.007021675817668438,
-        -0.008355856873095036,
-        -0.0514630563557148,
-        -0.015671929344534874,
-        0.013893021270632744,
-        -0.006952774245291948,
-        0.12527520954608917,
-        -0.06058309227228165,
-        -0.06003188341856003,
-        0.07085566222667694,
-        -0.05083668231964111,
-        0.08553791791200638,
-        -0.00022021033510100096,
-        0.06379014253616333,
-        -0.0008667478687129915,
-        0.05326702073216438,
-        0.014506869949400425,
-        0.0865401178598404,
-        -0.025756584480404854,
-        0.007416292559355497,
-        0.06509300321340561,
-        -0.08954672515392303,
-        -0.050611186772584915,
-        0.009702565148472786,
-        0.12667830288410187,
-        0.028437472879886627,
-        0.15514083206653595,
-        -0.09686279296875,
-        -0.05752637982368469,
-        0.09791510552167892,
-        -0.013792800717055798,
-        -0.008719154633581638,
-        0.08072734624147415,
-        -0.0013302661245688796,
-        -0.08162932842969894,
-        -0.01963062584400177,
-        -0.03369903191924095,
-        0.032220784574747086,
-        -0.0013341810554265976,
-        -0.12417279183864594,
-        -0.02658339962363243,
-        -0.03129374980926514,
-        0.07000379264354706,
-        0.010535645298659801,
-        -0.034225188195705414,
-        0.003795838914811611,
-        -0.03074253723025322,
-        -0.052114490419626236,
-        -0.014807530678808689,
-        0.05076151713728905,
-        -0.06679674237966537,
-        0.04637688398361206,
-        0.018240071833133698,
-        0.01866600662469864,
-        0.006464201025664806,
-        -0.01876622624695301,
-        0.04612633213400841,
-        0.02276250720024109,
-        -0.06679674237966537,
-        0.09906763583421707,
-        -0.010234984569251537,
-        0.0037018826697021723,
-        -0.013742690905928612
-      ]
+      "suburb": "Green Point",
+      "place_id": "ChIJn9vi9g9nzB0RWFB9i3UqkSs",
+      "maps_url": "https://maps.google.com/?cid=3139337099593732184&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/lievita-80e4.jpg",
+      "image_width": 4000,
+      "image_height": 3000,
+      "image_attribution": "Clemente Signorello"
     },
     {
       "id": "m-dular-98ae",
@@ -32333,7 +32567,13 @@
         -0.020514506846666336,
         0.07638687640428543,
         0.09096982330083847
-      ]
+      ],
+      "place_id": "ChIJFW2YKmFnzB0RfyppqfYyUCk",
+      "maps_url": "https://maps.google.com/?cid=2976935388677483135&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/m-dular-98ae.jpg",
+      "image_width": 1280,
+      "image_height": 960,
+      "image_attribution": "Yvana Ramos"
     },
     {
       "id": "the-taproom-8d6b",
@@ -32607,7 +32847,14 @@
         0.04448968544602394,
         0.021040668711066246,
         0.006843073293566704
-      ]
+      ],
+      "suburb": "Salt River",
+      "place_id": "ChIJd4-GVQhdzB0RGtWuWoqQn_Q",
+      "maps_url": "https://maps.google.com/?cid=17626966390452704538&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/the-taproom-8d6b.jpg",
+      "image_width": 1000,
+      "image_height": 647,
+      "image_attribution": "Taproom Salt River"
     },
     {
       "id": "banana-jam-cafe-621a",
@@ -32881,7 +33128,14 @@
         0.013157572597265244,
         -0.018349479883909225,
         0.022707320749759674
-      ]
+      ],
+      "suburb": "Kenilworth",
+      "place_id": "ChIJLctmDeBCzB0RGnnNQe8a96A",
+      "maps_url": "https://maps.google.com/?cid=11598768980219492634&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/banana-jam-cafe-621a.jpg",
+      "image_width": 3200,
+      "image_height": 4800,
+      "image_attribution": "Banana Jam Cafe"
     },
     {
       "id": "curry-club-1d88",
@@ -33155,7 +33409,14 @@
         -0.07018301635980606,
         0.006871771067380905,
         -0.00595911405980587
-      ]
+      ],
+      "suburb": "and",
+      "place_id": "ChIJUWGkBINnzB0Rjb6oo_xifjQ",
+      "maps_url": "https://maps.google.com/?cid=3782569574254821005&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/curry-club-1d88.jpg",
+      "image_width": 4032,
+      "image_height": 2268,
+      "image_attribution": "Emma Follett-Botha"
     },
     {
       "id": "tjing-tjing-torii-5a29",
@@ -33429,7 +33690,13 @@
         0.017417868599295616,
         0.09559328109025955,
         -0.08559487015008926
-      ]
+      ],
+      "place_id": "ChIJX03wMmRnzB0RHDQQi12W6nc",
+      "maps_url": "https://maps.google.com/?cid=8640884163572937756&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/tjing-tjing-torii-5a29.jpg",
+      "image_width": 4800,
+      "image_height": 3204,
+      "image_attribution": "Tjing Tjing House"
     },
     {
       "id": "the-blue-room-7456",
@@ -33703,7 +33970,13 @@
         -0.041283220052719116,
         0.032018985599279404,
         -0.02808658592402935
-      ]
+      ],
+      "place_id": "ChIJU1arrMpnzB0RWPJY2jPiR9Q",
+      "maps_url": "https://maps.google.com/?cid=15296443371721650776&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/the-blue-room-7456.jpg",
+      "image_width": 3200,
+      "image_height": 4800,
+      "image_attribution": "The Blue Room"
     },
     {
       "id": "rush-trampoline-51cc",
@@ -33977,7 +34250,14 @@
         -0.02832973562180996,
         0.007311748340725899,
         -0.01545805111527443
-      ]
+      ],
+      "suburb": "Claremont",
+      "place_id": "ChIJ4VLbedFCzB0RudnQ6-aK5A4",
+      "maps_url": "https://maps.google.com/?cid=1073135335624464825&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/rush-trampoline-51cc.jpg",
+      "image_width": 4800,
+      "image_height": 3204,
+      "image_attribution": "Rush Extreme Sports"
     },
     {
       "id": "ferdinandos-pizza-77be",
@@ -34251,7 +34531,14 @@
         -0.010478127747774124,
         -0.003876360831782222,
         -0.05215839669108391
-      ]
+      ],
+      "suburb": "205 Lower Main Rd",
+      "place_id": "ChIJmdTtGARdzB0RQk9PyYMkK3s",
+      "maps_url": "https://maps.google.com/?cid=8875227639100428098&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/ferdinandos-pizza-77be.jpg",
+      "image_width": 4800,
+      "image_height": 3600,
+      "image_attribution": "Justin Stander"
     },
     {
       "id": "maria-s-greek-caf-ac20",
@@ -34525,7 +34812,14 @@
         -0.005790652707219124,
         0.04475409537553787,
         -0.058824945241212845
-      ]
+      ],
+      "suburb": "Gardens",
+      "place_id": "ChIJ4yj-EnpnzB0RGKY9bZACqaM",
+      "maps_url": "https://maps.google.com/?cid=11792959918577657368&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/maria-s-greek-caf-ac20.jpg",
+      "image_width": 960,
+      "image_height": 960,
+      "image_attribution": "Maria's Greek Caf\u00e9"
     },
     {
       "id": "sidecar-adventures-fe1a",
@@ -34799,7 +35093,14 @@
         0.05225607380270958,
         0.0985473021864891,
         0.06122882291674614
-      ]
+      ],
+      "suburb": "Woodstock",
+      "place_id": "ChIJW32wADpnzB0RPzXh1SP5g08",
+      "maps_url": "https://maps.google.com/?cid=5729697083252880703&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/sidecar-adventures-fe1a.jpg",
+      "image_width": 960,
+      "image_height": 1280,
+      "image_attribution": "Cape Sidecar Adventures"
     },
     {
       "id": "afrikaans-monument-cc89",
@@ -35073,7 +35374,14 @@
         0.06200455501675606,
         0.017782123759388924,
         0.04136821627616882
-      ]
+      ],
+      "suburb": "Paarl",
+      "place_id": "ChIJp-KOxiiozR0RXU5ZOoBBAf0",
+      "maps_url": "https://maps.google.com/?cid=18230924785563029085&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/afrikaans-monument-cc89.jpg",
+      "image_width": 4800,
+      "image_height": 1104,
+      "image_attribution": "Afrikaans Taalmonument"
     },
     {
       "id": "jarryds-sea-point-8b65",
@@ -35347,7 +35655,14 @@
         0.015936460345983505,
         0.06556562334299088,
         0.10131895542144775
-      ]
+      ],
+      "suburb": "Sea Point",
+      "place_id": "ChIJ880OJCBnzB0RLQv_25AQjzo",
+      "maps_url": "https://maps.google.com/?cid=4219609590221703981&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/jarryds-sea-point-8b65.jpg",
+      "image_width": 4032,
+      "image_height": 2514,
+      "image_attribution": "JARRYDS."
     },
     {
       "id": "skyhi-ride-6431",
@@ -35621,7 +35936,14 @@
         0.009504144079983234,
         0.058133095502853394,
         0.021912137046456337
-      ]
+      ],
+      "suburb": "Hotel Sky",
+      "place_id": "ChIJpV2wUjFnzB0RQ0cqCS8CswA",
+      "maps_url": "https://maps.google.com/?cid=50386421871691587&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/skyhi-ride-6431.jpg",
+      "image_width": 680,
+      "image_height": 453,
+      "image_attribution": "Sky-HI Ride"
     },
     {
       "id": "bo-kaap-kombuis-7f54",
@@ -35895,7 +36217,14 @@
         -0.023869821801781654,
         0.02337302640080452,
         -0.00012512286775745451
-      ]
+      ],
+      "suburb": "7 August St",
+      "place_id": "ChIJyc1tK2hnzB0RMRgKOyWj35Q",
+      "maps_url": "https://maps.google.com/?cid=10727472217719445553&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/bo-kaap-kombuis-7f54.jpg",
+      "image_width": 4080,
+      "image_height": 3060,
+      "image_attribution": "Anita Snyman"
     },
     {
       "id": "tagine-98b4",
@@ -36169,7 +36498,14 @@
         -0.03456766530871391,
         0.037930868566036224,
         0.028043555095791817
-      ]
+      ],
+      "suburb": "De Waterkant",
+      "place_id": "ChIJvVLh6iNnzB0RiFTs_3wezFw",
+      "maps_url": "https://maps.google.com/?cid=6686753068956800136&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/tagine-98b4.jpg",
+      "image_width": 3778,
+      "image_height": 2834,
+      "image_attribution": "Leon Taljaard"
     },
     {
       "id": "cloud-9-rooftop-e079",
@@ -36443,7 +36779,14 @@
         -0.04633574187755585,
         0.06261587142944336,
         -0.05259732902050018
-      ]
+      ],
+      "suburb": "Gardens",
+      "place_id": "ChIJv6NISvlnzB0R66xbnZTX6Xk",
+      "maps_url": "https://maps.google.com/?cid=8784789581458025707&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/cloud-9-rooftop-e079.jpg",
+      "image_width": 4781,
+      "image_height": 3528,
+      "image_attribution": "Cloud 9 Boutique Hotel & Spa"
     },
     {
       "id": "active-sushi-dad3",
@@ -36717,7 +37060,13 @@
         -0.036383580416440964,
         0.001216149772517383,
         -0.01993163302540779
-      ]
+      ],
+      "place_id": "ChIJK9JLkWdnzB0RnJzuWE0IM20",
+      "maps_url": "https://maps.google.com/?cid=7868642102243925148&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/active-sushi-dad3.jpg",
+      "image_width": 1024,
+      "image_height": 1280,
+      "image_attribution": "Active Sushi"
     },
     {
       "id": "cabo-beach-club-a6e1",
@@ -36991,7 +37340,14 @@
         -0.03251052647829056,
         0.034963205456733704,
         0.02640385366976261
-      ]
+      ],
+      "suburb": "Victoria & Alfred Waterfront",
+      "place_id": "ChIJv0rRiqNdzB0RMT3jItV7UjY",
+      "maps_url": "https://maps.google.com/?cid=3914327181481950513&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/cabo-beach-club-a6e1.jpg",
+      "image_width": 3600,
+      "image_height": 4800,
+      "image_attribution": "Harald D\u00f6rr"
     },
     {
       "id": "three-wise-monkeys-c63a",
@@ -37265,7 +37621,14 @@
         -0.05547362565994263,
         0.007794510573148727,
         -0.03687029704451561
-      ]
+      ],
+      "suburb": "77 Regent Rd",
+      "place_id": "ChIJnecEKiBnzB0RvYu7KO8_as8",
+      "maps_url": "https://maps.google.com/?cid=14945828609795525565&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/three-wise-monkeys-c63a.jpg",
+      "image_width": 1920,
+      "image_height": 1080,
+      "image_attribution": "Three Wise Monkeys"
     },
     {
       "id": "salt-river-street-art-6c1a",
@@ -37539,7 +37902,14 @@
         -0.0056071155704557896,
         0.05400484800338745,
         0.10175059735774994
-      ]
+      ],
+      "suburb": "Salt River",
+      "place_id": "ChIJG7TeGnJdzB0RzWj0kenoFYY",
+      "maps_url": "https://maps.google.com/?cid=9661884665467005133&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/salt-river-street-art-6c1a.jpg",
+      "image_width": 3024,
+      "image_height": 4032,
+      "image_attribution": "David Breton"
     },
     {
       "id": "chavonnes-battery-74b3",
@@ -37813,7 +38183,14 @@
         0.038918089121580124,
         0.08872005343437195,
         0.048097919672727585
-      ]
+      ],
+      "suburb": "Victoria & Alfred Waterfront",
+      "place_id": "ChIJyXYUKFpnzB0Ru4cif_4XGyk",
+      "maps_url": "https://maps.google.com/?cid=2961987561748334523&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/chavonnes-battery-74b3.jpg",
+      "image_width": 4526,
+      "image_height": 1453,
+      "image_attribution": "Chavonnes Battery Museum"
     },
     {
       "id": "heart-of-cape-town-museum-6e25",
@@ -38087,11 +38464,18 @@
         -0.033718470484018326,
         0.024299830198287964,
         0.08855355530977249
-      ]
+      ],
+      "suburb": "Main Rd",
+      "place_id": "ChIJu-1c6w9dzB0RksQrWHa4Brk",
+      "maps_url": "https://maps.google.com/?cid=13332546565301847186&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/heart-of-cape-town-museum-6e25.jpg",
+      "image_width": 4000,
+      "image_height": 3000,
+      "image_attribution": "Rodolfo Archbold"
     },
     {
-      "id": "oudekraal-reserve-15b9",
-      "name": "Oudekraal Reserve",
+      "id": "oudekraal-nature-reserve-f956",
+      "name": "Oudekraal Nature Reserve",
       "category": "Nature",
       "tourist_level": 6,
       "price_tier": "R",
@@ -38361,7 +38745,14 @@
         -0.0593886561691761,
         0.045348405838012695,
         -0.046128418296575546
-      ]
+      ],
+      "suburb": "Bakoven",
+      "place_id": "ChIJt07maCZmzB0Rpcpq9WMNjt0",
+      "maps_url": "https://maps.google.com/?cid=15964712452045327013&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/oudekraal-nature-reserve-f956.jpg",
+      "image_width": 3968,
+      "image_height": 2240,
+      "image_attribution": "Nicole Smit"
     },
     {
       "id": "pauline-s-b94a",
@@ -38635,7 +39026,14 @@
         0.0025340523570775986,
         -0.02367338351905346,
         0.021512771025300026
-      ]
+      ],
+      "suburb": "Sea Point",
+      "place_id": "ChIJFVVtANxnzB0RATKtZsCjFz8",
+      "maps_url": "https://maps.google.com/?cid=4546282395605479937&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/pauline-s-b94a.jpg",
+      "image_width": 3244,
+      "image_height": 3072,
+      "image_attribution": "Anthony Krut"
     },
     {
       "id": "silvermine-34fc",
@@ -38911,9 +39309,12 @@
         -0.03928283974528313
       ],
       "image_url": "/images/venues/silvermine-34fc.jpg",
-      "image_width": 3072,
-      "image_height": 2304,
-      "image_attribution": "Omar Hamdi"
+      "image_width": 4000,
+      "image_height": 3000,
+      "image_attribution": "Rossville Maxwell",
+      "suburb": "Table Mountain (Nature Reserve)",
+      "place_id": "ChIJBR0GWSFqzB0RM6NPJSJFizE",
+      "maps_url": "https://maps.google.com/?cid=3570023142578430771&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
     },
     {
       "id": "labia-cinema-f883",
@@ -39187,7 +39588,14 @@
         -0.06073597073554993,
         0.022032516077160835,
         -0.014154569245874882
-      ]
+      ],
+      "suburb": "Gardens",
+      "place_id": "ChIJ9SlUsnFnzB0RBuDJN-_3nN8",
+      "maps_url": "https://maps.google.com/?cid=16113026173630013446&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/labia-cinema-f883.jpg",
+      "image_width": 1302,
+      "image_height": 868,
+      "image_attribution": "Lime 909"
     },
     {
       "id": "culture-wine-bar-42dc",
@@ -39461,7 +39869,13 @@
         -0.032460421323776245,
         0.04003778100013733,
         -0.002540553454309702
-      ]
+      ],
+      "place_id": "ChIJGWwHBaBnzB0RMriGsulfJ3M",
+      "maps_url": "https://maps.google.com/?cid=8297706295780620338&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/culture-wine-bar-42dc.jpg",
+      "image_width": 4800,
+      "image_height": 3200,
+      "image_attribution": "Culture Wine Bar"
     },
     {
       "id": "honest-chocolate-ee5f",
@@ -39735,7 +40149,13 @@
         -0.01333143562078476,
         0.04892102628946304,
         -0.043838661164045334
-      ]
+      ],
+      "place_id": "ChIJb0-WwmVnzB0Rmw4NJmQGZdM",
+      "maps_url": "https://maps.google.com/?cid=15232588341855456923&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/honest-chocolate-ee5f.jpg",
+      "image_width": 3720,
+      "image_height": 2480,
+      "image_attribution": "Honest Chocolate Cafe - Cape Town City Centre"
     },
     {
       "id": "buns-bakery-dd1d",
@@ -40009,7 +40429,14 @@
         0.0332181416451931,
         0.11063353717327118,
         -0.012677929364144802
-      ]
+      ],
+      "suburb": "145 Sir Lowry Rd",
+      "place_id": "ChIJ6W5z8vBdzB0RhT1uR6clsiU",
+      "maps_url": "https://maps.google.com/?cid=2716274925646003589&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/buns-bakery-dd1d.jpg",
+      "image_width": 4000,
+      "image_height": 2256,
+      "image_attribution": "Ryan Turner"
     },
     {
       "id": "rosetta-roastery-4f08",
@@ -40283,7 +40710,14 @@
         0.03404313325881958,
         0.04254043102264404,
         0.005543474107980728
-      ]
+      ],
+      "suburb": "CBD",
+      "place_id": "ChIJiYmWjKlnzB0R8FHe6o6VsQ4",
+      "maps_url": "https://maps.google.com/?cid=1058791828467110384&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/rosetta-roastery-4f08.jpg",
+      "image_width": 4800,
+      "image_height": 3199,
+      "image_attribution": "Rosetta Roastery Cafe (Bree Street)"
     },
     {
       "id": "sandboarding-atlantis-fc7b",
@@ -40557,7 +40991,14 @@
         -0.022338902577757835,
         0.11209268122911453,
         -0.017190108075737953
-      ]
+      ],
+      "suburb": "Atlantis",
+      "place_id": "ChIJU2qdVtBozB0RUAR9-iYQByw",
+      "maps_url": "https://maps.google.com/?cid=3172522222103102544&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/sandboarding-atlantis-fc7b.jpg",
+      "image_width": 1281,
+      "image_height": 1051,
+      "image_attribution": "Sandboarding Cape Town"
     },
     {
       "id": "fish-on-the-rocks-6826",
@@ -40831,7 +41272,14 @@
         -0.04169106110930443,
         0.02806508168578148,
         -0.06835165619850159
-      ]
+      ],
+      "suburb": "Hout Bay",
+      "place_id": "ChIJXaa6jThpzB0RuEpxuRn3h60",
+      "maps_url": "https://maps.google.com/?cid=12504234580274924216&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/fish-on-the-rocks-6826.jpg",
+      "image_width": 4800,
+      "image_height": 3600,
+      "image_attribution": "jaya sareen"
     },
     {
       "id": "green-point-park-fe53",
@@ -41105,7 +41553,14 @@
         -0.0084219453856349,
         0.031973205506801605,
         0.018498094752430916
-      ]
+      ],
+      "suburb": "Green Point",
+      "place_id": "ChIJrfmRVzZnzB0RupuFfQj-5D0",
+      "maps_url": "https://maps.google.com/?cid=4459968843422735290&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/green-point-park-fe53.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "Jaco Peacock"
     },
     {
       "id": "the-book-lounge-563f",
@@ -41379,7 +41834,14 @@
         -0.04171076416969299,
         -0.016076520085334778,
         -0.02874467521905899
-      ]
+      ],
+      "suburb": "71 Roeland St",
+      "place_id": "ChIJHa8CgHtnzB0RL2BTH87q41c",
+      "maps_url": "https://maps.google.com/?cid=6333163672022769711&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/the-book-lounge-563f.jpg",
+      "image_width": 2322,
+      "image_height": 4128,
+      "image_attribution": "The Book Lounge"
     },
     {
       "id": "dorp-street-6685",
@@ -41653,7 +42115,13 @@
         -0.020780835300683975,
         0.03276257961988449,
         0.00022542555234394968
-      ]
+      ],
+      "place_id": "ChIJrXE3Vm9nzB0R6RzDV_1_Kuc",
+      "maps_url": "https://maps.google.com/?cid=16657266897859058921&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/dorp-street-6685.jpg",
+      "image_width": 4638,
+      "image_height": 3072,
+      "image_attribution": "Christo Boshoff"
     },
     {
       "id": "st-james-walk-51c0",
@@ -41927,7 +42395,14 @@
         -0.055639151483774185,
         -0.02569754607975483,
         0.03710053861141205
-      ]
+      ],
+      "suburb": "Muizenberg",
+      "place_id": "ChIJW3LT-plBzB0RGlL8sUcPMeM",
+      "maps_url": "https://maps.google.com/?cid=16370882921071661594&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/st-james-walk-51c0.jpg",
+      "image_width": 4000,
+      "image_height": 2250,
+      "image_attribution": "Justyna Dru\u015b"
     },
     {
       "id": "camps-bay-tidal-pool-c1ab",
@@ -42201,7 +42676,13 @@
         -0.09270962327718735,
         0.1059812381863594,
         0.06520816683769226
-      ]
+      ],
+      "place_id": "ChIJx2hw9k1mzB0RYBV9qOtqaT8",
+      "maps_url": "https://maps.google.com/?cid=4569300857320707424&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/camps-bay-tidal-pool-c1ab.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "Nina Heinemann"
     },
     {
       "id": "acrobranch-6f2a",
@@ -42475,7 +42956,14 @@
         -0.0180318932980299,
         0.07740382850170135,
         0.01211715117096901
-      ]
+      ],
+      "suburb": "Hout Bay",
+      "place_id": "ChIJtT9cizhozB0RKMCeRTj5_TU",
+      "maps_url": "https://maps.google.com/?cid=3890539673199493160&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/acrobranch-6f2a.jpg",
+      "image_width": 750,
+      "image_height": 500,
+      "image_attribution": "Acrobranch Constantia"
     },
     {
       "id": "the-waiting-room-0d2d",
@@ -42749,7 +43237,14 @@
         -0.07218882441520691,
         0.03275282680988312,
         0.012451378628611565
-      ]
+      ],
+      "suburb": "273 Long St",
+      "place_id": "ChIJHYW87W9nzB0RQhN3LobmUto",
+      "maps_url": "https://maps.google.com/?cid=15731889912338125634&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/the-waiting-room-0d2d.jpg",
+      "image_width": 3024,
+      "image_height": 1702,
+      "image_attribution": "The Waiting Room"
     },
     {
       "id": "our-local-df1e",
@@ -43023,7 +43518,14 @@
         -0.10840363055467606,
         0.02180013805627823,
         0.05810457840561867
-      ]
+      ],
+      "suburb": "Gardens",
+      "place_id": "ChIJS163JlBnzB0R5Bb6f6fSCFQ",
+      "maps_url": "https://maps.google.com/?cid=6055321315848099556&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/our-local-df1e.jpg",
+      "image_width": 1024,
+      "image_height": 683,
+      "image_attribution": "Our Local Kloof Street"
     },
     {
       "id": "aubergine-restaurant-87be",
@@ -43297,7 +43799,14 @@
         -0.09821333736181259,
         0.06375159323215485,
         0.031585536897182465
-      ]
+      ],
+      "suburb": "Gardens",
+      "place_id": "ChIJxx7CBXpnzB0RXHXjYve4xU8",
+      "maps_url": "https://maps.google.com/?cid=5748203872063812956&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/aubergine-restaurant-87be.jpg",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_attribution": "Aubergine Restaurant"
     },
     {
       "id": "zuney-ffec",
@@ -43571,7 +44080,14 @@
         -0.02320815809071064,
         0.027913259342312813,
         -0.10039391368627548
-      ]
+      ],
+      "suburb": "69A Kloof St",
+      "place_id": "ChIJD36XE6VnzB0RtrKG4zFjTc0",
+      "maps_url": "https://maps.google.com/?cid=14793589416903750326&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/zuney-ffec.jpg",
+      "image_width": 4608,
+      "image_height": 3456,
+      "image_attribution": "percy mosedie"
     },
     {
       "id": "clarke-s-bar-dining-room-6818",
@@ -43845,7 +44361,13 @@
         -0.11018464714288712,
         -0.033859338611364365,
         0.0367693193256855
-      ]
+      ],
+      "place_id": "ChIJnTuF52VnzB0RTGAL7oSEWTU",
+      "maps_url": "https://maps.google.com/?cid=3844249463401701452&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/clarke-s-bar-dining-room-6818.jpg",
+      "image_width": 1688,
+      "image_height": 1147,
+      "image_attribution": "Clarke's Bar & Dining Room"
     },
     {
       "id": "world-of-birds-1a23",
@@ -44119,7 +44641,14 @@
         0.02829890511929989,
         0.0723504051566124,
         0.08503611385822296
-      ]
+      ],
+      "suburb": "Hout Bay",
+      "place_id": "ChIJV4zwUulozB0RG775LSruLeY",
+      "maps_url": "https://maps.google.com/?cid=16586174867602783771&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/world-of-birds-1a23.jpg",
+      "image_width": 768,
+      "image_height": 1024,
+      "image_attribution": "Izelke Gebhardt"
     },
     {
       "id": "beerhouse-on-long-aea0",
@@ -44393,7 +44922,13 @@
         -0.035207830369472504,
         0.01691821962594986,
         0.04185380041599274
-      ]
+      ],
+      "place_id": "ChIJHY-CY2VnzB0RHcZbunbhzsY",
+      "maps_url": "https://maps.google.com/?cid=14325635364761093661&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/beerhouse-on-long-aea0.jpg",
+      "image_width": 786,
+      "image_height": 442,
+      "image_attribution": "BEERHOUSE on Long"
     },
     {
       "id": "jerry-s-burger-bar-599b",
@@ -44667,7 +45202,14 @@
         0.01997438445687294,
         0.053029339760541916,
         0.007573677226901054
-      ]
+      ],
+      "suburb": "98 Shortmarket St",
+      "place_id": "ChIJy8MC73FnzB0Rmq9nXrSDxIU",
+      "maps_url": "https://maps.google.com/?cid=9638973913180909466&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/jerry-s-burger-bar-599b.jpg",
+      "image_width": 4000,
+      "image_height": 2667,
+      "image_attribution": "Jerry's Burger Bar Heritage Square"
     },
     {
       "id": "cape-point-vineyards-2452",
@@ -44941,7 +45483,14 @@
         -0.009633643552660942,
         0.05182066559791565,
         -0.06299863755702972
-      ]
+      ],
+      "suburb": "Noordhoek",
+      "place_id": "ChIJ4RIv5klqzB0RK47qApYWst8",
+      "maps_url": "https://maps.google.com/?cid=16118970849862258219&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/cape-point-vineyards-2452.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "Shajila Singh"
     },
     {
       "id": "asoka-2b5b",
@@ -45215,7 +45764,14 @@
         -0.0029916497878730297,
         0.015392331406474113,
         -0.03523610532283783
-      ]
+      ],
+      "suburb": "Gardens",
+      "place_id": "ChIJl5Jcv3NnzB0RuG1OswkRez0",
+      "maps_url": "https://maps.google.com/?cid=4430153391809654200&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/asoka-2b5b.jpg",
+      "image_width": 3024,
+      "image_height": 3024,
+      "image_attribution": "Nicolene Botha"
     },
     {
       "id": "the-house-of-machines-0d66",
@@ -45489,7 +46045,13 @@
         0.0855930894613266,
         0.008930912241339684,
         -0.011686854995787144
-      ]
+      ],
+      "place_id": "ChIJw4PxgGZnzB0RYeCBVQAgNbY",
+      "maps_url": "https://maps.google.com/?cid=13129435474475212897&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/the-house-of-machines-0d66.jpg",
+      "image_width": 800,
+      "image_height": 1200,
+      "image_attribution": "The House of Machines"
     },
     {
       "id": "lourensford-market-0a74",
@@ -45763,7 +46325,14 @@
         -0.06305481493473053,
         0.10163012146949768,
         -0.025018766522407532
-      ]
+      ],
+      "suburb": "Lourensford Estate",
+      "place_id": "ChIJQwMdnua1zR0RcM1d092KRrI",
+      "maps_url": "https://maps.google.com/?cid=12846107672459464048&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/lourensford-market-0a74.jpg",
+      "image_width": 2000,
+      "image_height": 1334,
+      "image_attribution": "Lourensford Market"
     },
     {
       "id": "leopard-bar-4175",
@@ -46037,7 +46606,14 @@
         -0.07326117902994156,
         0.04954487830400467,
         0.11775264889001846
-      ]
+      ],
+      "suburb": "Victoria Rd",
+      "place_id": "ChIJxcLgNiJmzB0RYm1_wHsgjx0",
+      "maps_url": "https://maps.google.com/?cid=2129956864652176738&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/leopard-bar-4175.jpg",
+      "image_width": 549,
+      "image_height": 533,
+      "image_attribution": "The Leopard Bar"
     },
     {
       "id": "giovanni-s-deliworld-ff21",
@@ -46311,7 +46887,14 @@
         0.029047809541225433,
         0.057099394500255585,
         -0.00027998333098366857
-      ]
+      ],
+      "suburb": "Green Point",
+      "place_id": "ChIJoSQsuqxnzB0Rza9F8ZJA2eE",
+      "maps_url": "https://maps.google.com/?cid=16274109728337276877&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/giovanni-s-deliworld-ff21.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "Nigel Baker"
     },
     {
       "id": "between-us-7df2",
@@ -46585,7 +47168,13 @@
         -0.051876142621040344,
         0.08448571711778641,
         0.046879999339580536
-      ]
+      ],
+      "place_id": "ChIJa4HOVBZnzB0R9iXk9LOQTP0",
+      "maps_url": "https://maps.google.com/?cid=18252122492407916022&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/between-us-7df2.jpg",
+      "image_width": 2000,
+      "image_height": 1333,
+      "image_attribution": "Between Us"
     },
     {
       "id": "kelp-forest-scuba-1367",
@@ -46859,7 +47448,14 @@
         -0.11670076102018356,
         0.042401641607284546,
         0.009631112217903137
-      ]
+      ],
+      "suburb": "Southdale Rd",
+      "place_id": "ChIJwYgRfZtbzB0RGalrP8tfenI",
+      "maps_url": "https://maps.google.com/?cid=8249010994029504793&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/kelp-forest-scuba-1367.jpg",
+      "image_width": 3024,
+      "image_height": 3024,
+      "image_attribution": "Kelp Divers"
     },
     {
       "id": "el-burro-4bf7",
@@ -47133,7 +47729,14 @@
         0.06525038182735443,
         0.059112969785928726,
         -0.022450007498264313
-      ]
+      ],
+      "suburb": "Green Point",
+      "place_id": "ChIJY828xkVnzB0RR-G8UTvrLzI",
+      "maps_url": "https://maps.google.com/?cid=3616367665808728391&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/el-burro-4bf7.jpg",
+      "image_width": 1276,
+      "image_height": 719,
+      "image_attribution": "El Burro Greenpoint"
     },
     {
       "id": "gigi-rooftop-1a2e",
@@ -47407,7 +48010,13 @@
         -0.029702676460146904,
         0.07587791234254837,
         0.0016715150559321046
-      ]
+      ],
+      "place_id": "ChIJpVDOWVlnzB0RYnHAJitnkyw",
+      "maps_url": "https://maps.google.com/?cid=3212024394276696418&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/gigi-rooftop-1a2e.jpg",
+      "image_width": 1000,
+      "image_height": 668,
+      "image_attribution": "Gigi Rooftop Restaurant & Bar"
     },
     {
       "id": "sunsquare-rooftop-bar-e7b9",
@@ -47681,7 +48290,13 @@
         -0.02072138898074627,
         0.036195237189531326,
         -0.04290185123682022
-      ]
+      ],
+      "place_id": "ChIJma3B-2ZnzB0R2idaNxA9JNc",
+      "maps_url": "https://maps.google.com/?cid=15502582957173516250&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/sunsquare-rooftop-bar-e7b9.jpg",
+      "image_width": 1732,
+      "image_height": 1154,
+      "image_attribution": "14Stories Rooftop Bar"
     },
     {
       "id": "zeitz-mocaa-d0b1",
@@ -47955,7 +48570,14 @@
         -0.0556277297437191,
         0.05954752117395401,
         0.0005807586130686104
-      ]
+      ],
+      "suburb": "Victoria & Alfred Waterfront",
+      "place_id": "ChIJ3dD0bFlnzB0RGBEddr2FeY8",
+      "maps_url": "https://maps.google.com/?cid=10338441468382613784&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/zeitz-mocaa-d0b1.jpg",
+      "image_width": 3024,
+      "image_height": 4032,
+      "image_attribution": "Tobi S."
     },
     {
       "id": "gigi-rooftop-bar-5102",
@@ -48229,7 +48851,13 @@
         -0.08138079941272736,
         0.031014451757073402,
         -0.04837974160909653
-      ]
+      ],
+      "place_id": "ChIJpVDOWVlnzB0RYnHAJitnkyw",
+      "maps_url": "https://maps.google.com/?cid=3212024394276696418&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/gigi-rooftop-bar-5102.jpg",
+      "image_width": 3000,
+      "image_height": 2003,
+      "image_attribution": "Gigi Rooftop Restaurant & Bar"
     },
     {
       "id": "franschhoek-wine-tram-4439",
@@ -48503,7 +49131,14 @@
         0.024567600339651108,
         -0.0015092480462044477,
         0.046007029712200165
-      ]
+      ],
+      "suburb": "and",
+      "place_id": "ChIJZbjfvPS8zR0RSkk22Wwx8MQ",
+      "maps_url": "https://maps.google.com/?cid=14190896769414875466&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/franschhoek-wine-tram-4439.jpg",
+      "image_width": 1920,
+      "image_height": 963,
+      "image_attribution": "Franschhoek Wine Tram - Official Site (Franschhoek Terminal)"
     },
     {
       "id": "scratch-patch-771a",
@@ -48777,7 +49412,14 @@
         0.011512521654367447,
         0.02260126918554306,
         -0.09633790701627731
-      ]
+      ],
+      "suburb": "Victoria & Alfred Waterfront",
+      "place_id": "ChIJC4dUZlBnzB0RBoeaO4oEZmE",
+      "maps_url": "https://maps.google.com/?cid=7018302061055477510&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/scratch-patch-771a.jpg",
+      "image_width": 2736,
+      "image_height": 3648,
+      "image_attribution": "LEE-ANNE STACEY TROMP"
     },
     {
       "id": "stardust-theatrical-dining-c3de",
@@ -49051,7 +49693,14 @@
         -0.06092544272542,
         0.029117541387677193,
         -0.007510588504374027
-      ]
+      ],
+      "suburb": "Woodstock",
+      "place_id": "ChIJc6IAMYRdzB0R9yLw41HjQtM",
+      "maps_url": "https://maps.google.com/?cid=15222979631321719543&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/stardust-theatrical-dining-c3de.jpg",
+      "image_width": 4160,
+      "image_height": 3120,
+      "image_attribution": "sean erasmus"
     },
     {
       "id": "clay-caf-1cf6",
@@ -49325,7 +49974,13 @@
         -0.0037422513123601675,
         0.06284120678901672,
         -0.0575350821018219
-      ]
+      ],
+      "place_id": "ChIJ3YX9J4lnzB0R7xI_q_a2MPA",
+      "maps_url": "https://maps.google.com/?cid=17307534538536063727&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/clay-caf-1cf6.jpg",
+      "image_width": 1600,
+      "image_height": 1200,
+      "image_attribution": "Clay Cafe in the City | Pottery Caf\u00e9 and Tapa\u2019s Bar"
     },
     {
       "id": "origin-coffee-roasting-74d9",
@@ -49599,7 +50254,14 @@
         0.0688413679599762,
         0.03034588322043419,
         0.007725672330707312
-      ]
+      ],
+      "suburb": "De Waterkant",
+      "place_id": "ChIJsf7bhfhp1h0RXcxh-mAfb_0",
+      "maps_url": "https://maps.google.com/?cid=18261849515388685405&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/origin-coffee-roasting-74d9.jpg",
+      "image_width": 1200,
+      "image_height": 1600,
+      "image_attribution": "Origin Coffee Roasting"
     },
     {
       "id": "gold-restaurant-81e5",
@@ -49873,7 +50535,14 @@
         -0.030126964673399925,
         0.005700599402189255,
         0.029565593227744102
-      ]
+      ],
+      "suburb": "Green Point",
+      "place_id": "ChIJ7Rdn5mZnzB0RyOHHPQvv-1Q",
+      "maps_url": "https://maps.google.com/?cid=6123750949900509640&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/gold-restaurant-81e5.jpg",
+      "image_width": 4800,
+      "image_height": 3204,
+      "image_attribution": "GOLD Restaurant"
     },
     {
       "id": "castle-of-good-hope-842c",
@@ -50147,7 +50816,14 @@
         0.0025355324614793062,
         0.01652607135474682,
         -0.028248632326722145
-      ]
+      ],
+      "suburb": "Foreshore",
+      "place_id": "ChIJwUYG_oddzB0RZYGNwMhCuy0",
+      "maps_url": "https://maps.google.com/?cid=3295300982343041381&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/castle-of-good-hope-842c.jpg",
+      "image_width": 4608,
+      "image_height": 3456,
+      "image_attribution": "Abdrohman Ebrahim Hanur"
     },
     {
       "id": "kalky-s-fish-chips-9f0f",
@@ -50421,7 +51097,13 @@
         -0.04976367950439453,
         0.012763189151883125,
         -0.0009869483765214682
-      ]
+      ],
+      "place_id": "ChIJ8SkpLY1BzB0RMPl2PmlbuTg",
+      "maps_url": "https://maps.google.com/?cid=4087398644393113904&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/kalky-s-fish-chips-9f0f.jpg",
+      "image_width": 3840,
+      "image_height": 2160,
+      "image_attribution": "Pieter Houba"
     },
     {
       "id": "slave-lodge-0021",
@@ -50695,7 +51377,14 @@
         -0.027752218768000603,
         -0.017163239419460297,
         0.022854004055261612
-      ]
+      ],
+      "suburb": "Wale St",
+      "place_id": "ChIJv3trkmRnzB0RnqgKLSzSOEE",
+      "maps_url": "https://maps.google.com/?cid=4699737298337179806&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/slave-lodge-0021.jpg",
+      "image_width": 4080,
+      "image_height": 3072,
+      "image_attribution": "Krishnan Vaitheeswaran"
     },
     {
       "id": "south-african-museum-a6f2",
@@ -50969,7 +51658,14 @@
         -0.08190345764160156,
         0.061239052563905716,
         0.0005550260539166629
-      ]
+      ],
+      "suburb": "Gardens",
+      "place_id": "ChIJ523J8npnzB0Rfvs7MyenlN8",
+      "maps_url": "https://maps.google.com/?cid=16110685553816238974&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/south-african-museum-a6f2.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "Judith (CapeTownWithKids.com)"
     },
     {
       "id": "sa-national-gallery-b61d",
@@ -51243,7 +51939,14 @@
         0.035717256367206573,
         0.03940075635910034,
         0.05659889429807663
-      ]
+      ],
+      "suburb": "Gardens",
+      "place_id": "ChIJ1_aClHpnzB0RgC7vAuZ7a7c",
+      "maps_url": "https://maps.google.com/?cid=13216793759270776448&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/sa-national-gallery-b61d.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "Nasir Khan"
     },
     {
       "id": "district-six-museum-74b4",
@@ -51517,7 +52220,14 @@
         -0.0037902267649769783,
         0.02729732170701027,
         0.010066688060760498
-      ]
+      ],
+      "suburb": "District Six",
+      "place_id": "ChIJXdpUhHtnzB0RI8TYhHL5028",
+      "maps_url": "https://maps.google.com/?cid=8058058428546335779&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/district-six-museum-74b4.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "Steve Brockwell"
     },
     {
       "id": "polkadraai-farm-93dc",
@@ -51791,7 +52501,14 @@
         -0.06840866804122925,
         0.07037302851676941,
         0.04314215108752251
-      ]
+      ],
+      "suburb": "La Provence Rd",
+      "place_id": "ChIJv9T5mLBNzB0RvNoD00-6NVs",
+      "maps_url": "https://maps.google.com/?cid=6572364083222534844&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/polkadraai-farm-93dc.jpg",
+      "image_width": 1142,
+      "image_height": 644,
+      "image_attribution": "Polkadraai Strawberry Farm"
     },
     {
       "id": "nikkei-9e96",
@@ -52065,7 +52782,13 @@
         -0.06586164981126785,
         0.06269268691539764,
         -0.0590483732521534
-      ]
+      ],
+      "place_id": "ChIJrf6RSQBnzB0RnzFHz-szrKc",
+      "maps_url": "https://maps.google.com/?cid=12082088988216078751&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/nikkei-9e96.jpg",
+      "image_width": 1440,
+      "image_height": 1800,
+      "image_attribution": "Meheshree Pillay"
     },
     {
       "id": "pot-luck-club-9b61",
@@ -52339,7 +53062,14 @@
         -0.016805337741971016,
         0.026584245264530182,
         0.03269779309630394
-      ]
+      ],
+      "suburb": "The Silo",
+      "place_id": "ChIJYxj8tKZdzB0R2_H65PgjFV4",
+      "maps_url": "https://maps.google.com/?cid=6779364365976662491&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/pot-luck-club-9b61.jpg",
+      "image_width": 3024,
+      "image_height": 4032,
+      "image_attribution": "SleepNoMore S"
     },
     {
       "id": "constantia-glen-ca61",
@@ -52613,7 +53343,14 @@
         -0.08518140763044357,
         0.04867851361632347,
         0.01083941850811243
-      ]
+      ],
+      "suburb": "Constantia",
+      "place_id": "ChIJfwZiGDBozB0Rmg_VDy8iilk",
+      "maps_url": "https://maps.google.com/?cid=6452007001686085530&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/constantia-glen-ca61.jpg",
+      "image_width": 2048,
+      "image_height": 1536,
+      "image_attribution": "Constantia Glen"
     },
     {
       "id": "constantia-zipline-05b9",
@@ -52887,7 +53624,14 @@
         -0.07584217190742493,
         0.10279170423746109,
         0.03842705488204956
-      ]
+      ],
+      "suburb": "Hout Bay Main Rd",
+      "place_id": "ChIJIX-ackdozB0RBV5s3eh9hPc",
+      "maps_url": "https://maps.google.com/?cid=17835518863394758149&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/constantia-zipline-05b9.jpg",
+      "image_width": 4752,
+      "image_height": 3168,
+      "image_attribution": "Cape Town Ziplines SA Forest Adventures"
     },
     {
       "id": "the-labia-theatre-aad8",
@@ -53161,7 +53905,14 @@
         -0.08605445921421051,
         0.04399320110678673,
         0.0038431952707469463
-      ]
+      ],
+      "suburb": "Gardens",
+      "place_id": "ChIJ9SlUsnFnzB0RBuDJN-_3nN8",
+      "maps_url": "https://maps.google.com/?cid=16113026173630013446&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/the-labia-theatre-aad8.jpg",
+      "image_width": 3000,
+      "image_height": 4000,
+      "image_attribution": "Jonas \u201cSafariguide Southafrica\u201d Sandstrom"
     },
     {
       "id": "bo-kaap-cooking-class-1b87",
@@ -53435,7 +54186,14 @@
         0.018508052453398705,
         0.05903054401278496,
         -0.01066043321043253
-      ]
+      ],
+      "suburb": "Schotsche Kloof",
+      "place_id": "ChIJW7yML2ZnzB0RW9yUae7GC58",
+      "maps_url": "https://maps.google.com/?cid=11460472404050238555&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/bo-kaap-cooking-class-1b87.jpg",
+      "image_width": 3024,
+      "image_height": 4032,
+      "image_attribution": "Tausha C."
     },
     {
       "id": "nice-to-matcha-ebd6",
@@ -53709,7 +54467,14 @@
         -0.030305616557598114,
         0.0004615203943103552,
         -0.034887030720710754
-      ]
+      ],
+      "suburb": "Sea Point",
+      "place_id": "ChIJmbgSf2JnzB0RlD0dc3b7gnc",
+      "maps_url": "https://maps.google.com/?cid=8611721923641818516&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/nice-to-matcha-ebd6.jpg",
+      "image_width": 3200,
+      "image_height": 4800,
+      "image_attribution": "Nice To Matcha"
     },
     {
       "id": "de-grendel-cb41",
@@ -53983,7 +54748,14 @@
         -0.06673106551170349,
         0.03959376737475395,
         0.05343428626656532
-      ]
+      ],
+      "suburb": "Plattekloof Road",
+      "place_id": "ChIJwdkk5G1ZzB0R_SUVWJpSb6Y",
+      "maps_url": "https://maps.google.com/?cid=11992895155567142397&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/de-grendel-cb41.jpg",
+      "image_width": 2998,
+      "image_height": 1659,
+      "image_attribution": "De Grendel Wine Estate and Restaurant"
     },
     {
       "id": "cool-runnings-5924",
@@ -54257,7 +55029,14 @@
         0.03714236617088318,
         0.0997827872633934,
         0.020870188251137733
-      ]
+      ],
+      "suburb": "Tygervalley",
+      "place_id": "ChIJUWybPLtQzB0RnW2g9TZm59A",
+      "maps_url": "https://maps.google.com/?cid=15053112665744371101&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/cool-runnings-5924.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "Lindsay Yarrow"
     },
     {
       "id": "lions-head-hike-4c30",
@@ -54531,7 +55310,14 @@
         -0.059328529983758926,
         0.022289246320724487,
         0.09140095859766006
-      ]
+      ],
+      "suburb": "Signal Hill",
+      "place_id": "ChIJ3c0kTQRnzB0RHyTnI5OYSd4",
+      "maps_url": "https://maps.google.com/?cid=16017501307449844767&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/lions-head-hike-4c30.jpg",
+      "image_width": 4000,
+      "image_height": 3000,
+      "image_attribution": "Mini Rag"
     },
     {
       "id": "skeleton-gorge-32c8",
@@ -54805,7 +55591,14 @@
         -0.019258398562669754,
         0.012525053694844246,
         0.018471552059054375
-      ]
+      ],
+      "suburb": "Wynberg NU (2)",
+      "place_id": "ChIJY3XX1gBozB0ReoZpCNHi6lk",
+      "maps_url": "https://maps.google.com/?cid=6479240401343055482&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/skeleton-gorge-32c8.jpg",
+      "image_width": 4800,
+      "image_height": 3600,
+      "image_attribution": "Emile Fourie"
     },
     {
       "id": "signal-hill-9cca",
@@ -55079,7 +55872,13 @@
         -0.07498715817928314,
         0.06495608389377594,
         -0.017714178189635277
-      ]
+      ],
+      "place_id": "ChIJxW6bWT5nzB0R9BN9WSyJps4",
+      "maps_url": "https://maps.google.com/?cid=14890740041520059380&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/signal-hill-9cca.jpg",
+      "image_width": 537,
+      "image_height": 372,
+      "image_attribution": "Gulf Oasis"
     },
     {
       "id": "muizenberg-6b9c",
@@ -55353,7 +56152,13 @@
         0.03365258499979973,
         0.036459002643823624,
         0.05612831562757492
-      ]
+      ],
+      "place_id": "ChIJEece-AJBzB0RZeHAO7OfbaM",
+      "maps_url": "https://maps.google.com/?cid=11776244192794173797&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/muizenberg-6b9c.jpg",
+      "image_width": 4800,
+      "image_height": 2700,
+      "image_attribution": "Tasneem Paruk"
     },
     {
       "id": "the-company-s-garden-7e3d",
@@ -55627,7 +56432,13 @@
         0.02627822943031788,
         0.02085592970252037,
         0.011231045238673687
-      ]
+      ],
+      "place_id": "ChIJIxTTSGVnzB0RJpaYKQENSAQ",
+      "maps_url": "https://maps.google.com/?cid=308510873118873126&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/the-company-s-garden-7e3d.jpg",
+      "image_width": 900,
+      "image_height": 425,
+      "image_attribution": "The Company's Garden Restaurant"
     },
     {
       "id": "oranjezicht-market-1fc0",
@@ -55901,7 +56712,14 @@
         -0.007093551103025675,
         0.10243111848831177,
         -0.06291777640581131
-      ]
+      ],
+      "suburb": "Breakwater Blvd",
+      "place_id": "ChIJJda7Ik5nzB0RNkLL5Oqi17c",
+      "maps_url": "https://maps.google.com/?cid=13247235958678176310&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/oranjezicht-market-1fc0.jpg",
+      "image_width": 2736,
+      "image_height": 3648,
+      "image_attribution": "Erica Offord"
     },
     {
       "id": "neighbourgoods-market-bd38",
@@ -56175,7 +56993,14 @@
         -0.004182502627372742,
         0.06474293768405914,
         0.008779691532254219
-      ]
+      ],
+      "suburb": "Woodstock",
+      "place_id": "ChIJac4xtKZdzB0RL0YLY5wsnyE",
+      "maps_url": "https://maps.google.com/?cid=2422704174736819759&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/neighbourgoods-market-bd38.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "Andrea"
     },
     {
       "id": "old-biscuit-mill-df61",
@@ -56449,7 +57274,14 @@
         0.01940862461924553,
         0.07622689753770828,
         0.018786031752824783
-      ]
+      ],
+      "suburb": "Woodstock",
+      "place_id": "ChIJmb1qtKZdzB0RQGPrsOVHzDk",
+      "maps_url": "https://maps.google.com/?cid=4164782807252165440&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/old-biscuit-mill-df61.jpg",
+      "image_width": 2268,
+      "image_height": 4032,
+      "image_attribution": "Mohamed Mazroa"
     },
     {
       "id": "helicopter-tour-231d",
@@ -56723,7 +57555,14 @@
         0.010178993456065655,
         0.06496728211641312,
         -0.039431311190128326
-      ]
+      ],
+      "suburb": "Victoria & Alfred Waterfront",
+      "place_id": "ChIJN4QZT1ZnzB0Rq1OQmhhKoFc",
+      "maps_url": "https://maps.google.com/?cid=6314128147106255787&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/helicopter-tour-231d.jpg",
+      "image_width": 4800,
+      "image_height": 2811,
+      "image_attribution": "Cape Town Helicopters"
     },
     {
       "id": "tandem-paragliding-9468",
@@ -56997,7 +57836,14 @@
         0.0020705442875623703,
         0.15360473096370697,
         0.09426011145114899
-      ]
+      ],
+      "suburb": "Signal Hill",
+      "place_id": "ChIJzZRXw3hnzB0RQz_Flk1FFXw",
+      "maps_url": "https://maps.google.com/?cid=8941128834758295363&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/tandem-paragliding-9468.jpg",
+      "image_width": 1280,
+      "image_height": 960,
+      "image_attribution": "Cape Town Tandem Paragliding"
     },
     {
       "id": "mojo-market-e3c0",
@@ -57271,7 +58117,14 @@
         0.0031920841429382563,
         0.05946827679872513,
         0.01312022004276514
-      ]
+      ],
+      "suburb": "Sea Point",
+      "place_id": "ChIJETLciCFnzB0RH1qo-JSNf38",
+      "maps_url": "https://maps.google.com/?cid=9187217435825560095&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/mojo-market-e3c0.jpg",
+      "image_width": 2000,
+      "image_height": 2000,
+      "image_attribution": "Mojo Market"
     },
     {
       "id": "bay-harbour-market-cdc1",
@@ -57545,7 +58398,14 @@
         0.021562615409493446,
         0.064243383705616,
         0.0264997947961092
-      ]
+      ],
+      "suburb": "Hout Bay",
+      "place_id": "ChIJATyxYDhpzB0RSc_BKFnHZJQ",
+      "maps_url": "https://maps.google.com/?cid=10692890601034207049&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/bay-harbour-market-cdc1.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "charmaine van Niekerk"
     },
     {
       "id": "belly-of-the-beast-4ca0",
@@ -57819,7 +58679,13 @@
         -0.06594593822956085,
         0.03246363252401352,
         0.042328715324401855
-      ]
+      ],
+      "place_id": "ChIJVWO4oURnzB0RNaPCKWYBfZE",
+      "maps_url": "https://maps.google.com/?cid=10483537045887296309&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/belly-of-the-beast-4ca0.jpg",
+      "image_width": 3024,
+      "image_height": 4032,
+      "image_attribution": "Shannon olivier"
     },
     {
       "id": "salon-5fdc",
@@ -58093,7 +58959,14 @@
         -0.052109669893980026,
         0.029261795803904533,
         0.03487741947174072
-      ]
+      ],
+      "suburb": "silo building",
+      "place_id": "ChIJb5PvqXddzB0RI_U6Spqjbew",
+      "maps_url": "https://maps.google.com/?cid=17036452848478123299&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/salon-5fdc.jpg",
+      "image_width": 4800,
+      "image_height": 3200,
+      "image_attribution": "Martin Kruger"
     },
     {
       "id": "groot-constantia-ebe2",
@@ -58367,7 +59240,14 @@
         -0.0018874930683523417,
         -0.0025765260215848684,
         0.0199590977281332
-      ]
+      ],
+      "suburb": "Constantia",
+      "place_id": "ChIJEXoUs9ppzB0RzHENeddpBUY",
+      "maps_url": "https://maps.google.com/?cid=5045555331708318156&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/groot-constantia-ebe2.jpg",
+      "image_width": 4800,
+      "image_height": 3200,
+      "image_attribution": "B Van Zyl"
     },
     {
       "id": "jarryds-brunch-and-bistro-97b2",
@@ -58641,7 +59521,14 @@
         0.04152977839112282,
         0.06631632149219513,
         0.07474265992641449
-      ]
+      ],
+      "suburb": "Sea Point",
+      "place_id": "ChIJ880OJCBnzB0RLQv_25AQjzo",
+      "maps_url": "https://maps.google.com/?cid=4219609590221703981&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/jarryds-brunch-and-bistro-97b2.jpg",
+      "image_width": 3600,
+      "image_height": 4800,
+      "image_attribution": "Mariah Johnson"
     },
     {
       "id": "galileo-open-air-cinema-25fc",
@@ -58915,7 +59802,14 @@
         0.012760717421770096,
         0.0897611677646637,
         -0.09904680401086807
-      ]
+      ],
+      "suburb": "Wynberg NU (2)",
+      "place_id": "ChIJVSq0r6hCzB0R-hxG0ibxSj4",
+      "maps_url": "https://maps.google.com/?cid=4488665127666982138&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/galileo-open-air-cinema-25fc.jpg",
+      "image_width": 2914,
+      "image_height": 2914,
+      "image_attribution": "The Galileo Open Air Cinema, Kirstenbosch (Weekdays)"
     },
     {
       "id": "the-cape-wheel-db5d",
@@ -59189,7 +60083,14 @@
         -0.05921529233455658,
         0.06818079948425293,
         0.016038592904806137
-      ]
+      ],
+      "suburb": "Breakwater Blvd",
+      "place_id": "ChIJeWUZ4F1nzB0RFcD_RkR-5Uw",
+      "maps_url": "https://maps.google.com/?cid=5540973748263305237&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/the-cape-wheel-db5d.jpg",
+      "image_width": 4800,
+      "image_height": 3600,
+      "image_attribution": "Matteo Tomassetti"
     },
     {
       "id": "primi-waterfront-b1ca",
@@ -59463,7 +60364,14 @@
         -0.008447892963886261,
         0.03384343907237053,
         0.021511979401111603
-      ]
+      ],
+      "suburb": "Victoria Wharf Shopping Centre",
+      "place_id": "ChIJX0LahFBnzB0R4vTeumjSGzM",
+      "maps_url": "https://maps.google.com/?cid=3682768467559118050&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/primi-waterfront-b1ca.jpg",
+      "image_width": 4800,
+      "image_height": 3200,
+      "image_attribution": "PRIMI V&A Waterfront"
     },
     {
       "id": "chinchilla-9829",
@@ -59737,7 +60645,14 @@
         -0.07525012642145157,
         0.058185968548059464,
         -0.007343181408941746
-      ]
+      ],
+      "suburb": "Second Floor",
+      "place_id": "ChIJ9yvW9VJmzB0Rapxiq556WjU",
+      "maps_url": "https://maps.google.com/?cid=3844520053812927594&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/chinchilla-9829.jpg",
+      "image_width": 4800,
+      "image_height": 3204,
+      "image_attribution": "Chinchilla by Kove Collection"
     },
     {
       "id": "truth-coffee-88f5",
@@ -60011,7 +60926,13 @@
         0.03923933207988739,
         0.02103865146636963,
         0.03593801334500313
-      ]
+      ],
+      "place_id": "ChIJk0_6kHxnzB0R9hOYtdW5I_s",
+      "maps_url": "https://maps.google.com/?cid=18096512055230600182&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/truth-coffee-88f5.jpg",
+      "image_width": 2048,
+      "image_height": 632,
+      "image_attribution": "Truth Coffee Roasting"
     },
     {
       "id": "bo-kaap-museum-cb70",
@@ -60285,7 +61206,14 @@
         0.06719835102558136,
         0.05083269998431206,
         0.010612876154482365
-      ]
+      ],
+      "suburb": "Schotsche Kloof",
+      "place_id": "ChIJjSQp42VnzB0R6WYFH3MPXjk",
+      "maps_url": "https://maps.google.com/?cid=4133758495088797417&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/bo-kaap-museum-cb70.jpg",
+      "image_width": 4000,
+      "image_height": 3000,
+      "image_attribution": "Izelke Gebhardt"
     },
     {
       "id": "mount-nelson-tea-0cce",
@@ -60559,7 +61487,14 @@
         -0.053756773471832275,
         0.021291306242346764,
         0.015100217424333096
-      ]
+      ],
+      "suburb": "Gardens",
+      "place_id": "ChIJC60FHHFnzB0Ri_0XNP-SarQ",
+      "maps_url": "https://maps.google.com/?cid=13000364899146661259&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/mount-nelson-tea-0cce.jpg",
+      "image_width": 4800,
+      "image_height": 3200,
+      "image_attribution": "Afternoon Tea at Mount Nelson, A Belmond Hotel, Cape Town"
     },
     {
       "id": "chapman-s-peak-drive-8a9a",
@@ -60833,7 +61768,14 @@
         -0.04007934033870697,
         0.03674345463514328,
         0.01968660205602646
-      ]
+      ],
+      "suburb": "Hout Bay",
+      "place_id": "ChIJ-wA3HsNrzB0R6m99d4jV2rw",
+      "maps_url": "https://maps.google.com/?cid=13608424006150352874&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/chapman-s-peak-drive-8a9a.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "Matthew Passmore"
     },
     {
       "id": "jason-bakery-b94b",
@@ -61107,7 +62049,14 @@
         0.0660799965262413,
         0.055355995893478394,
         0.00433999951928854
-      ]
+      ],
+      "suburb": "Green Point",
+      "place_id": "ChIJkQCIw0VnzB0RLx7D5DZ0qSk",
+      "maps_url": "https://maps.google.com/?cid=3002058405734194735&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/jason-bakery-b94b.jpg",
+      "image_width": 3024,
+      "image_height": 3024,
+      "image_attribution": "Jason Bakery"
     },
     {
       "id": "kleinsky-s-deli-a568",
@@ -61381,7 +62330,14 @@
         -0.02572740614414215,
         0.039942219853401184,
         -0.0353822223842144
-      ]
+      ],
+      "suburb": "Sea Point",
+      "place_id": "ChIJj0uA9B9nzB0RB485uQxbZqk",
+      "maps_url": "https://maps.google.com/?cid=12206543950239600391&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/kleinsky-s-deli-a568.jpg",
+      "image_width": 1080,
+      "image_height": 1080,
+      "image_attribution": "Kleinsky's Delicatessen"
     },
     {
       "id": "bombay-brasserie-8a9d",
@@ -61655,7 +62611,14 @@
         -0.11923966556787491,
         0.0010071760043501854,
         0.019519882276654243
-      ]
+      ],
+      "suburb": "1 Wale St",
+      "place_id": "ChIJJ8P4EHBnzB0RrppwYfLHfFU",
+      "maps_url": "https://maps.google.com/?cid=6160018234166778542&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/bombay-brasserie-8a9d.jpg",
+      "image_width": 4096,
+      "image_height": 3072,
+      "image_attribution": "Ketan Gajjar"
     },
     {
       "id": "west-coast-national-park-2906",
@@ -61929,7 +62892,14 @@
         -0.05369143933057785,
         0.06573927402496338,
         0.036719705909490585
-      ]
+      ],
+      "suburb": "Langebaan",
+      "place_id": "ChIJe8wXSWOszB0RMmQjJxBHs60",
+      "maps_url": "https://maps.google.com/?cid=12516425924094420018&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/west-coast-national-park-2906.jpg",
+      "image_width": 3968,
+      "image_height": 2976,
+      "image_attribution": "Manfred K."
     },
     {
       "id": "bo-kaap-3c3b",
@@ -62203,7 +63173,14 @@
         0.007407553028315306,
         0.04761810973286629,
         0.03883393481373787
-      ]
+      ],
+      "suburb": "Schotsche Kloof",
+      "place_id": "ChIJLSz2VWhnzB0Rpm9vazg9yw4",
+      "maps_url": "https://maps.google.com/?cid=1066013049333182374&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/bo-kaap-3c3b.jpg",
+      "image_width": 768,
+      "image_height": 960,
+      "image_attribution": "Nenad Miletic"
     },
     {
       "id": "clifton-4th-beach-e931",
@@ -62477,7 +63454,13 @@
         -0.010295583866536617,
         0.018298765644431114,
         0.04196444898843765
-      ]
+      ],
+      "place_id": "ChIJNTC0x_5mzB0RcEN-wOIN0Ag",
+      "maps_url": "https://maps.google.com/?cid=635022815002510192&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/clifton-4th-beach-e931.jpg",
+      "image_width": 4032,
+      "image_height": 2268,
+      "image_attribution": "FO"
     },
     {
       "id": "first-thursdays-cb79",
@@ -62751,7 +63734,13 @@
         -0.023567823693156242,
         0.009376445785164833,
         0.049082960933446884
-      ]
+      ],
+      "place_id": "ChIJ0QUCpW9nzB0RH4j6hoSeSCY",
+      "maps_url": "https://maps.google.com/?cid=2758629063801866271&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/first-thursdays-cb79.jpg",
+      "image_width": 2048,
+      "image_height": 1367,
+      "image_attribution": "Justin Kramer"
     },
     {
       "id": "cape-point-52fe",
@@ -63025,7 +64014,13 @@
         -0.017699874937534332,
         0.10671228915452957,
         0.017011934891343117
-      ]
+      ],
+      "place_id": "ChIJ25w6pMpqzB0ReWHAOFJCzHA",
+      "maps_url": "https://maps.google.com/?cid=8127944348403786105&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/cape-point-52fe.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "mohamed eid"
     },
     {
       "id": "salsify-at-the-roundhouse-5321",
@@ -63299,7 +64294,14 @@
         -0.05969325080513954,
         -0.024445679038763046,
         0.01613549515604973
-      ]
+      ],
+      "suburb": "Round House Rd",
+      "place_id": "ChIJL5QxrbpnzB0REZTW-bJD0qA",
+      "maps_url": "https://maps.google.com/?cid=11588399227152536593&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/salsify-at-the-roundhouse-5321.jpg",
+      "image_width": 1920,
+      "image_height": 1280,
+      "image_attribution": "Salsify at the Roundhouse"
     },
     {
       "id": "pier-0c76",
@@ -63573,7 +64575,14 @@
         -0.042663056403398514,
         0.00021825253497809172,
         0.045069556683301926
-      ]
+      ],
+      "suburb": "Bowl",
+      "place_id": "ChIJtYNwJi8NlR4RyvM6ba_WU_U",
+      "maps_url": "https://maps.google.com/?cid=17677709011299529674&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/pier-0c76.jpg",
+      "image_width": 2500,
+      "image_height": 1667,
+      "image_attribution": "PIER Restaurant"
     },
     {
       "id": "two-oceans-aquarium-adda",
@@ -63847,7 +64856,14 @@
         -0.12320799380540848,
         0.044670961797237396,
         -0.038247156888246536
-      ]
+      ],
+      "suburb": "Victoria & Alfred Waterfront",
+      "place_id": "ChIJfeaqwlpnzB0Rl2i0iRvp6SI",
+      "maps_url": "https://maps.google.com/?cid=2515798171346823319&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/two-oceans-aquarium-adda.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "Waylon Emile Pienaar"
     },
     {
       "id": "fyn-b26b",
@@ -64121,7 +65137,14 @@
         -0.04613717272877693,
         0.019546665251255035,
         -0.005577504634857178
-      ]
+      ],
+      "suburb": "Speakers Corner",
+      "place_id": "ChIJJXjP9dFnzB0RKRtezQrweYM",
+      "maps_url": "https://maps.google.com/?cid=9473867220336384809&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/fyn-b26b.jpg",
+      "image_width": 4800,
+      "image_height": 2700,
+      "image_attribution": "Fyn Restaurant"
     },
     {
       "id": "kloof-street-house-9e49",
@@ -64395,7 +65418,14 @@
         -0.0662459284067154,
         -0.009366019628942013,
         -0.01717626303434372
-      ]
+      ],
+      "suburb": "Gardens",
+      "place_id": "ChIJ_Tc00XFnzB0R1TIppn46x4I",
+      "maps_url": "https://maps.google.com/?cid=9423565060924060373&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/kloof-street-house-9e49.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "Dan Kruse"
     },
     {
       "id": "boulders-beach-cf21",
@@ -64669,7 +65699,13 @@
         0.006554517894983292,
         0.062416594475507736,
         -0.02148640714585781
-      ]
+      ],
+      "place_id": "ChIJKeByCDY-zB0RECn0gAHgvHw",
+      "maps_url": "https://maps.google.com/?cid=8988305253387741456&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/boulders-beach-cf21.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "Johannes"
     },
     {
       "id": "shark-cage-diving-25d5",
@@ -64943,7 +65979,14 @@
         -0.07742883265018463,
         0.0763358548283577,
         0.000701537006534636
-      ]
+      ],
+      "suburb": "Boardwalk Centre",
+      "place_id": "ChIJI6GiudQ_zB0Rw2sqOvRokLc",
+      "maps_url": "https://maps.google.com/?cid=13227187503744314307&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/shark-cage-diving-25d5.jpg",
+      "image_width": 3600,
+      "image_height": 4800,
+      "image_attribution": "Rachel Faulkenberry"
     },
     {
       "id": "skydiving-2246",
@@ -65217,7 +66260,14 @@
         -0.08467714488506317,
         0.09641687572002411,
         -0.04210610315203667
-      ]
+      ],
+      "suburb": "N7",
+      "place_id": "ChIJW533DIvyzB0Rcj2r87YXMPk",
+      "maps_url": "https://maps.google.com/?cid=17955877788865740146&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/skydiving-2246.jpg",
+      "image_width": 4800,
+      "image_height": 3600,
+      "image_attribution": "Sutha Hasan"
     },
     {
       "id": "kirstenbosch-concerts-f9f3",
@@ -65491,7 +66541,14 @@
         -0.010120246559381485,
         0.03001132793724537,
         -0.0115051893517375
-      ]
+      ],
+      "suburb": "Rhodes Dr",
+      "place_id": "ChIJw6DpmqlCzB0RE1F49m4hhSE",
+      "maps_url": "https://maps.google.com/?cid=2415373535619338515&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/kirstenbosch-concerts-f9f3.jpg",
+      "image_width": 4000,
+      "image_height": 3000,
+      "image_attribution": "Anthony Karriem"
     },
     {
       "id": "robben-island-museum-bc39",
@@ -65765,7 +66822,13 @@
         -0.030936861410737038,
         -0.011839867569506168,
         0.006793476641178131
-      ]
+      ],
+      "place_id": "ChIJy3XfS2WKzB0RYZDeLkVkb30",
+      "maps_url": "https://maps.google.com/?cid=9038553225457733729&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/robben-island-museum-bc39.jpg",
+      "image_width": 554,
+      "image_height": 554,
+      "image_attribution": "xavier minnaar"
     },
     {
       "id": "harbour-house-96a0",
@@ -66039,7 +67102,14 @@
         -0.04067939519882202,
         0.06493872404098511,
         0.07362546771764755
-      ]
+      ],
+      "suburb": "V&A Waterfront",
+      "place_id": "ChIJywXuCFpnzB0RfUAd3IATW90",
+      "maps_url": "https://maps.google.com/?cid=15950363949432389757&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/harbour-house-96a0.jpg",
+      "image_width": 4800,
+      "image_height": 3204,
+      "image_attribution": "Harbour House V&A Waterfront"
     },
     {
       "id": "truth-coffee-roasting-5881",
@@ -66313,7 +67383,13 @@
         0.06778737902641296,
         0.07751978933811188,
         0.0004029384581372142
-      ]
+      ],
+      "place_id": "ChIJk0_6kHxnzB0R9hOYtdW5I_s",
+      "maps_url": "https://maps.google.com/?cid=18096512055230600182&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/truth-coffee-roasting-5881.jpg",
+      "image_width": 4000,
+      "image_height": 2252,
+      "image_attribution": "Qh S"
     },
     {
       "id": "chapman-s-peak-930a",
@@ -66587,7 +67663,14 @@
         -0.07023780792951584,
         0.01772262156009674,
         0.0013116245390847325
-      ]
+      ],
+      "suburb": "Hout Bay",
+      "place_id": "ChIJ-wA3HsNrzB0R6m99d4jV2rw",
+      "maps_url": "https://maps.google.com/?cid=13608424006150352874&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/chapman-s-peak-930a.jpg",
+      "image_width": 4000,
+      "image_height": 3000,
+      "image_attribution": "Chris Palatinus"
     },
     {
       "id": "v-a-waterfront-ade4",
@@ -66861,7 +67944,13 @@
         -0.03843182697892189,
         0.04143865406513214,
         -0.000695250288117677
-      ]
+      ],
+      "place_id": "ChIJzyxdn4tgzB0R1KptqzNTKUw",
+      "maps_url": "https://maps.google.com/?cid=5488009102312188628&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/v-a-waterfront-ade4.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "Monika Van Zyl"
     },
     {
       "id": "la-colombe-c051",
@@ -67135,7 +68224,14 @@
         -0.10183168947696686,
         -0.009328894317150116,
         0.01746547222137451
-      ]
+      ],
+      "suburb": "Main Road",
+      "place_id": "ChIJCWq-g2FCzB0R4RYvykSREW4",
+      "maps_url": "https://maps.google.com/?cid=7931280143412041441&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/la-colombe-c051.jpg",
+      "image_width": 4088,
+      "image_height": 2654,
+      "image_attribution": "Indoorfish"
     },
     {
       "id": "table-mountain-cableway-7c2f",
@@ -67409,7 +68505,14 @@
         0.00014076486695557833,
         0.055071163922548294,
         0.06547749787569046
-      ]
+      ],
+      "suburb": "Gardens",
+      "place_id": "ChIJTSM82_FnzB0RK5X9oWUjsgc",
+      "maps_url": "https://maps.google.com/?cid=554544623536411947&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/table-mountain-cableway-7c2f.jpg",
+      "image_width": 624,
+      "image_height": 351,
+      "image_attribution": "Table Mountain Aerial Cableway"
     },
     {
       "id": "kirstenbosch-botanical-garden-bec6",
@@ -67683,7 +68786,14 @@
         -0.025196462869644165,
         0.02250034175813198,
         0.03181421011686325
-      ]
+      ],
+      "suburb": "Newlands",
+      "place_id": "ChIJecz6YqhCzB0RZqXqcdmKfBs",
+      "maps_url": "https://maps.google.com/?cid=1980610602659915110&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/kirstenbosch-botanical-garden-bec6.jpg",
+      "image_width": 4032,
+      "image_height": 3024,
+      "image_attribution": "Peter Taai"
     },
     {
       "id": "robben-island-21b2",
@@ -67957,7 +69067,13 @@
         -0.00422882754355669,
         0.03959811478853226,
         0.01568704843521118
-      ]
+      ],
+      "place_id": "ChIJy3XfS2WKzB0RYZDeLkVkb30",
+      "maps_url": "https://maps.google.com/?cid=9038553225457733729&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/robben-island-21b2.jpg",
+      "image_width": 4608,
+      "image_height": 3456,
+      "image_attribution": "Leandro Caama\u00f1o Vitureira"
     },
     {
       "id": "table-mountain-abseiling-0cb3",
@@ -68231,7 +69347,14 @@
         -0.02968628890812397,
         0.06882839649915695,
         0.017692331224679947
-      ]
+      ],
+      "suburb": "Table Mountain (Nature Reserve)",
+      "place_id": "ChIJ8YY5NAZnzB0ROyT1VozA33s",
+      "maps_url": "https://maps.google.com/?cid=8926064695458473019&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "image_url": "/images/venues/table-mountain-abseiling-0cb3.jpg",
+      "image_width": 4800,
+      "image_height": 3200,
+      "image_attribution": "Table Mountain Abseil"
     }
   ],
   "tag_embeddings": {
