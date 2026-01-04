@@ -133,6 +133,22 @@ def search_places_batch(query: str, location: str, min_rating: float = 4.5) -> L
             
     return all_places
 
+# Targeted Locations and Categories based on Gap Analysis
+TARGETS = [
+    {
+        "locations": ["Somerset West", "Stellenbosch"],
+        "categories": ["Food & Dining", "Nature & Outdoors", "Culture & Attractions", "Activities & Sports"],
+        "min_reviews": 200,
+        "min_rating": 4.7
+    },
+    {
+        "locations": ["Cape Town"],
+        "categories": ["Nature & Outdoors", "Activities & Sports"], # Focus on gaps
+        "min_reviews": 200,
+        "min_rating": 4.7
+    }
+]
+
 def main():
     if not MAPS_API_KEY:
         print("Please set MAPS_API_KEY in .env")
@@ -145,79 +161,64 @@ def main():
     all_candidates = []
     seen_place_ids = set()
 
-    for category, queries in DISCOVERY_CATEGORIES.items():
-        print(f"\n=== Searching Category: {category} ===")
-        category_candidates = []
-        
-        # We'll use a slightly lower rating threshold for fetching, then filter strict
-        # strict_min_rating = 4.7
-        # strict_min_reviews = 500
-        
-        # But we adapt for "Activities" or "Hidden" if needed. 
-        # For now, implementing the user's robust request:
-        
-        for q in queries:
-            # Pick a random subset of locations or all?
-            # Doing all combinations is expensive (8 locations * ~8 queries = 64 requests per category).
-            # Let's optimize: General search first, then specific if needed.
-            # Actually, let's just use "Cape Town" generally, and maybe "Stellenbosch" for wine/food.
-            
-            locations_to_use = ["Cape Town"]
-            if "wine" in q or "food" in q:
-                locations_to_use.append("Stellenbosch")
-                locations_to_use.append("Franschhoek")
-            elif "surf" in q:
-                locations_to_use.append("Muizenberg")
-            
-            for loc in locations_to_use:
-                # print(f"  Querying: '{q}' in {loc}...")
-                results = search_places_batch(q, loc, min_rating=4.5)
+    for target in TARGETS:
+        for loc in target["locations"]:
+            print(f"\n=== Targeting Location: {loc} ===")
+            for cat in target["categories"]:
+                print(f"  Category: {cat}")
                 
-                for place in results:
-                    pid = place.get('id')
-                    if pid in seen_place_ids:
-                        continue
+                # Get queries for this category
+                queries = DISCOVERY_CATEGORIES.get(cat, [])
+                
+                category_candidates = []
+                for q in queries:
+                    # Search
+                    # print(f"    Searching for '{q}' in {loc}...")
+                    results = search_places_batch(q, loc, min_rating=4.5) # Fetch wide, filter strict
                     
-                    name = place.get('displayName', {}).get('text', '')
-                    rating = place.get('rating', 0)
-                    reviews = place.get('userRatingCount', 0)
-                    
-                    # 1. Filter: Legitimacy (Review Count)
-                    # Lower threshold for Activities/Nature as they often have fewer reviews than restaurants
-                    min_reviews = 400 if category == "Food & Dining" else 200
-                    if reviews < min_reviews:
-                        continue
+                    for place in results:
+                        pid = place.get('id')
+                        if pid in seen_place_ids:
+                            continue
+                        
+                        name = place.get('displayName', {}).get('text', '')
+                        rating = place.get('rating', 0)
+                        reviews = place.get('userRatingCount', 0)
+                        
+                        # 1. Filter: Reviews (User requested min 200, maybe 10s if desperate but let's start strict)
+                        if reviews < target["min_reviews"]:
+                            continue
 
-                    # 2. Filter: Quality (Rating)
-                    if rating < 4.6: # User asked for 4.7, we allow 4.6 to catch rounding/fluctuation
-                        continue
+                        # 2. Filter: Rating (User requested 4.7+)
+                        if rating < target["min_rating"]:
+                            continue
 
-                    # 3. Filter: Duplicates
-                    if normalize_name(name) in existing_names:
-                        continue
+                        # 3. Filter: Duplicates
+                        if normalize_name(name) in existing_names:
+                            continue
 
-                    # Add to candidates
-                    seen_place_ids.add(pid)
-                    cand = {
-                        "Name": name,
-                        "Category": category,
-                        "SubCategory": q,
-                        "Rating": rating,
-                        "Reviews": reviews,
-                        "Address": place.get('formattedAddress', ''),
-                        "ID": pid
-                    }
-                    category_candidates.append(cand)
-
-        # Sort by Rating desc, then Reviews desc
-        category_candidates.sort(key=lambda x: (x['Rating'], x['Reviews']), reverse=True)
-        
-        # Take top 15 unique for this category
-        top_15 = category_candidates[:15]
-        all_candidates.extend(top_15)
-        print(f"  Found {len(category_candidates)} candidates. Selected top {len(top_15)}.")
-        for c in top_15:
-            print(f"    - {c['Name']} ({c['Rating']}*, {c['Reviews']} reviews) [{c['SubCategory']}]")
+                        # Add to candidates
+                        seen_place_ids.add(pid)
+                        cand = {
+                            "Name": name,
+                            "Category": cat,
+                            "SubCategory": q,
+                            "Rating": rating,
+                            "Reviews": reviews,
+                            "Address": place.get('formattedAddress', ''),
+                            "ID": pid
+                        }
+                        category_candidates.append(cand)
+                
+                # Sort and pick top gems for this category/location
+                category_candidates.sort(key=lambda x: (x['Rating'], x['Reviews']), reverse=True)
+                
+                # Limit to top 5 per category per location to avoid overwhelming
+                top_picks = category_candidates[:7] 
+                all_candidates.extend(top_picks)
+                print(f"    Found {len(category_candidates)} candidates. Selected top {len(top_picks)}.")
+                for c in top_picks:
+                    print(f"      - {c['Name']} ({c['Rating']}*, {c['Reviews']} reviews) [{c['SubCategory']}]")
 
     # Output results
     print("\n\n=== FINAL DISCOVERY LIST ===")

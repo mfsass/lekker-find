@@ -411,6 +411,7 @@ interface UseRecommendationsResult {
     loading: boolean;
     error: Error | null;
     ready: boolean;
+    totalVenues: number;
 }
 
 /**
@@ -490,7 +491,8 @@ export function useRecommendations(): UseRecommendationsResult {
         surpriseMe: surprise,
         loading,
         error,
-        ready: !loading && !error && data !== null
+        ready: !loading && !error && data !== null,
+        totalVenues: data?.metadata?.total_venues || 0
     };
 }
 

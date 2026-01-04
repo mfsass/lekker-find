@@ -666,7 +666,7 @@ def main():
         places_to_process = DEMO_HIKES + DEMO_WINELANDS
     elif args.input:
         print(f"\n[2/4] Loading places from {args.input}...")
-        with open(args.input, 'r') as f:
+        with open(args.input, 'r', encoding='utf-8') as f:
             for line in f:
                 parts = line.strip().split('|')
                 if len(parts) >= 1:

@@ -18,7 +18,13 @@ OPENAI_API_KEY=your_openai_api_key
 
 // turbo-all
 
-### Step 1: Add Places via API
+### Step 1: Pre-Flight Check (Duplicates)
+Before adding anything, clean the existing data to ensure no duplicates exist.
+```bash
+python scripts/remove_duplicates_robust.py
+```
+
+### Step 2: Add Places via API
 ```bash
 # Demo mode (predefined hikes)
 python scripts/add_places.py --demo --dry-run
@@ -57,6 +63,28 @@ python scripts/validate_image_sync.py
 python scripts/check_new_venues.py
 ```
 
+### Step 7: Data Cleanup & Metadata Sync (CRITICAL)
+After adding new places, always run the cleanup scripts to fix "nan" values, ensure suburbs are set, and sync any manual CSV edits to the app.
+```bash
+# Remove exact duplicates that might have slipped in
+python scripts/remove_duplicates_robust.py
+
+# Fix 'nan' values and missing data
+python scripts/clean_data.py
+
+# Standardize Tourist Levels for Hidden Gems
+python scripts/fix_tourist_levels.py
+
+# Sync CSV metadata (Price, Suburb, Rating, Vibe) to JSON without re-embedding
+python scripts/sync_metadata.py
+```
+
+## Quality Assurance Checklist
+- [ ] **No Fuzzy Duplicates**: Run `scripts/check_duplicates.py`. If you see real duplicates (like "The Rock" vs "Fish on the Rocks"), run `python scripts/resolve_duplicates.py`.
+- [ ] **Complete Data**: Ensure no "Unknown" suburbs or "nan" prices using `scripts/clean_data.py`.
+- [ ] **Tourist Levels**: Manually review `Tourist_Level` in CSV for true hidden gems (1-3) vs tourist traps (8-10).
+- [ ] **Prices**: Verify `Numerical_Price` is accurate using specific known menu items where possible.
+
 ## Input Formats
 
 ### Text File Format (for --input)
@@ -85,8 +113,9 @@ The script includes 15 predefined Cape Town hikes for testing.
 | `max_tokens` error | Use `max_completion_tokens` for GPT-5 models |
 | `radius > 50000` error | Max radius is 50000 in Places API |
 | Unicode errors on Windows | Run `chcp 65001` before Python scripts |
-| Rating/Suburb missing in JSON | Fixed in `generate_embeddings.py --update` |
+| Rating/Suburb missing/nan | Run `clean_data.py` to fix dirty data |
 | Image ID mismatches | Run `migrate_images_to_stable_ids.py --apply` |
+| Tourist Levels inaccurate | Manually adjusting CSV or run `fix_tourist_levels.py` for gems |
 
 ## Cost Estimates
 
@@ -98,6 +127,20 @@ The script includes 15 predefined Cape Town hikes for testing.
 | **Total per venue** | **~$0.03** |
 
 For 10 venues: ~$0.50
+
+## Lessons Learned & Best Practices
+
+1.  **"Hidden Gems" vs Tourist Level**:
+    *   The automated `Tourist_Level` (based on review count) often misclassifies "Hidden Gems" as unpopular.
+    *   **Action**: Always review `Tourist_Level` in the CSV. For true hidden gems, manually set to 1-3.
+
+2.  **Dirty Data (NaN)**:
+    *   Google Places API sometimes returns empty suburbs.
+    *   **Action**: Run `python scripts/clean_data.py` to catch these and force defaults.
+
+3.  **Metadata Updates**:
+    *   If you only change Price, Suburb, or Vibe text in the CSV, DO NOT run `generate_embeddings.py`.
+    *   **Action**: Use `python scripts/sync_metadata.py` instead. It's instant and free.
 
 ## Future: Automated Discovery
 

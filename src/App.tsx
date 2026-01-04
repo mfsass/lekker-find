@@ -58,7 +58,7 @@ const getBudgetOptions = (currency: 'ZAR' | 'EUR' | 'USD', rates: Record<string,
 
 function App() {
     // Recommendation engine
-    const { findMatches, surpriseMe, ready: recommendationsReady } = useRecommendations();
+    const { findMatches, surpriseMe, ready: recommendationsReady, totalVenues } = useRecommendations();
 
     const [isLoading, setIsLoading] = useState(false);
     const [currentStep, setCurrentStep] = useState<AppStep>('landing');
@@ -727,7 +727,7 @@ function App() {
                             <footer className="landing-footer" role="contentinfo">
                                 <p className="landing-footer-text">
                                     <span itemProp="about">
-                                        Your local plug for Cape Town · 320+ hand-picked spots
+                                        Your local plug for Cape Town · {totalVenues > 0 ? totalVenues : '330+'} hand-picked spots
                                     </span>
                                 </p>
                             </footer>
