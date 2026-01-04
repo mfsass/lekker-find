@@ -281,7 +281,7 @@ export function findMatches(
 
     }
 
-    // Step 1: Calculate raw scores with keyword boost (no avoid penalty - embeddings handle that)
+    // Step 1: Calculate raw scores with keyword boost and explicit avoid penalty
     const rawScored = venues.map(venue => {
         const rawScore = cosineSimilarity(userVibe, venue.embedding);
 
@@ -292,7 +292,21 @@ export function findMatches(
         );
         const keywordBoost = matchingVibes.length * 0.08; // +8% per matching vibe
 
-        const boostedScore = rawScore + keywordBoost;
+        // EXPLICIT AVOID PENALTY (Hybrid Search Strategy)
+        // Vector subtraction isn't enough when the specific avoided word (e.g. "Beach")
+        // is overpowered by other positive matches (e.g. "Wildlife", "Nature").
+        // We apply a "Hard Filter" approach: penalize if the avoided word appears in the name or tags.
+        // This combines semantic search (vectors) with keyword filtering (constraints).
+        const matchesAvoid = (params.negativeMoods || []).some(neg => {
+            const lowerNeg = neg.toLowerCase();
+            return (
+                venue.vibes.some(v => v.toLowerCase() === lowerNeg) ||
+                venue.name.toLowerCase().includes(lowerNeg)
+            );
+        });
+        const avoidPenalty = matchesAvoid ? 2.0 : 0;
+
+        const boostedScore = rawScore + keywordBoost - avoidPenalty;
 
         return { venue, boostedScore, matchingVibes: matchingVibes.length };
     });

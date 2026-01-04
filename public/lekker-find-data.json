@@ -5,16 +5,16 @@
   "venues": [
     {
       "id": "woolley-s-tidal-pool-7f32",
-      "name": "Woolley\u2019s Tidal Pool",
+      "name": "Woolley’s Tidal Pool",
       "category": "Nature",
       "tourist_level": 1,
       "price_tier": "Free",
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Peaceful",
-        "Secret",
-        "Scenic"
+        "Chill",
+        "Hidden",
+        "Views"
       ],
       "description": "Hidden gem between Kalk Bay and Clovelly that remains quiet due to its unmarked road access.",
       "rating": 4.4,
@@ -293,9 +293,8 @@
       "numerical_price": "R75-R110",
       "best_season": "All Year",
       "vibes": [
-        "Original",
         "Local",
-        "Authentic"
+        "Original"
       ],
       "description": "The reputed birthplace of the Gatsby, serving authentic polony and atchar rolls to local crowds in Athlone.",
       "rating": 4.5,
@@ -323,7 +322,7 @@
         0.08148308098316193,
         -0.02467714622616768,
         -0.12604597210884094,
-        5.577595948125236e-05,
+        0.00005577595948125236,
         -0.01935664191842079,
         0.0597013495862484,
         -0.103470578789711,
@@ -855,9 +854,9 @@
       "numerical_price": "Free",
       "best_season": "Summer",
       "vibes": [
+        "Chill",
         "Hidden",
-        "Sheltered",
-        "Calm"
+        "Sheltered"
       ],
       "description": "A small pebbled beach with sheltered, calm waters that even many locals don't know exists.",
       "rating": 4.7,
@@ -1129,16 +1128,15 @@
     },
     {
       "id": "water-s-edge-beach-133a",
-      "name": "Water\u2019s Edge Beach",
+      "name": "Water’s Edge Beach",
       "category": "Nature",
       "tourist_level": 2,
       "price_tier": "Free",
       "numerical_price": "Free",
       "best_season": "Summer",
       "vibes": [
-        "Secluded",
-        "Secret",
-        "Calm"
+        "Chill",
+        "Hidden"
       ],
       "description": "Hidden beach accessed through a wooden gate, offering largely private swimming away from Boulders Beach crowds.",
       "rating": 4.6,
@@ -1417,9 +1415,9 @@
       "numerical_price": "Free",
       "best_season": "Summer",
       "vibes": [
+        "Chill",
         "Remote",
-        "Unspoilt",
-        "Peaceful"
+        "Unspoilt"
       ],
       "description": "Simple, old-fashioned beach day reached via a steep 20-minute hike, offering five shipwrecks for adventurous divers.",
       "rating": null,
@@ -1699,8 +1697,8 @@
       "best_season": "All Year",
       "vibes": [
         "Cozy",
-        "Authentic",
-        "Hidden"
+        "Hidden",
+        "Local"
       ],
       "description": "A local gem in Observatory serving high-quality Thai street food.",
       "rating": 4.3,
@@ -1779,7 +1777,7 @@
         0.027167493477463722,
         -0.030916186049580574,
         -0.08165691792964935,
-        -3.914486114808824e-06,
+        -0.000003914486114808824,
         -0.0005453681224025786,
         -0.027406172826886177,
         -0.029652580618858337,
@@ -1979,9 +1977,9 @@
       "numerical_price": "R100",
       "best_season": "All Year",
       "vibes": [
-        "Raw",
-        "Musical",
-        "Inspiring"
+        "Inspiring",
+        "Music",
+        "Raw"
       ],
       "description": "A monthly Khayelitsha musical extravaganza featuring rap, poetry, and local vendors.",
       "rating": 4.6,
@@ -2253,7 +2251,7 @@
     },
     {
       "id": "papa-ron-s-shisa-nyama-bc60",
-      "name": "Papa Ron\u2019s Shisa Nyama",
+      "name": "Papa Ron’s Shisa Nyama",
       "category": "Food",
       "tourist_level": 2,
       "price_tier": "R",
@@ -2261,7 +2259,6 @@
       "best_season": "All Year",
       "vibes": [
         "Urban",
-        "Grungy",
         "Welcoming"
       ],
       "description": "Authentic Woodstock spot where you select and weigh your meat before it's grilled to perfection.",
@@ -2541,9 +2538,9 @@
       "numerical_price": "R110-R515",
       "best_season": "Summer",
       "vibes": [
-        "Wild",
-        "Unspoilt",
-        "Deserted"
+        "Deserted",
+        "Outdoor",
+        "Unspoilt"
       ],
       "description": "The most unchartered beach in Cape Point reserve, often home to wandering ostriches and baboons.",
       "rating": 4.7,
@@ -2644,7 +2641,7 @@
         -0.017482884228229523,
         -0.1228625625371933,
         -0.0038981223478913307,
-        -2.9842962248949334e-05,
+        -0.000029842962248949334,
         0.014927593059837818,
         -0.03684312477707863,
         0.037286389619112015,
@@ -2823,7 +2820,7 @@
       "best_season": "All Year",
       "vibes": [
         "Hearty",
-        "Authentic",
+        "Local",
         "Zim"
       ],
       "description": "Savor traditional Zimbabwean dishes like pumpkin leaves and pap in Salt River.",
@@ -3103,9 +3100,9 @@
       "numerical_price": "R90-R160",
       "best_season": "All Year",
       "vibes": [
-        "Grungy",
         "Lively",
-        "Unique"
+        "Unique",
+        "Urban"
       ],
       "description": "Salt River gem with disco lighting and a giant fish tank serving massive, designer gatsbys.",
       "rating": 4.1,
@@ -3384,9 +3381,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Shady",
+        "Chill",
         "Local",
-        "Peaceful"
+        "Shady"
       ],
       "description": "A favorite local spot for forest walks and shaded ravines on the mountain slopes.",
       "rating": 4.7,
@@ -3666,8 +3663,7 @@
       "best_season": "All Year",
       "vibes": [
         "Aviation",
-        "Historical",
-        "Military"
+        "History"
       ],
       "description": "The second-largest military aviation museum in SA located at Ysterplaat Airbase.",
       "rating": 4.6,
@@ -3693,7 +3689,7 @@
         0.044984813779592514,
         -0.016172029078006744,
         0.03471419960260391,
-        -1.9662338672787882e-05,
+        -0.000019662338672787882,
         -0.07570089399814606,
         0.06684278696775436,
         0.03162583336234093,
@@ -3737,7 +3733,7 @@
         -0.0042105927132070065,
         0.05870290845632553,
         0.07474326342344284,
-        8.477483788738027e-05,
+        0.00008477483788738027,
         0.025760328397154808,
         0.16298913955688477,
         -0.0767064094543457,
@@ -3946,9 +3942,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Active",
+        "Adventure",
         "Shady",
-        "Panoramic"
+        "Views"
       ],
       "description": "Lesser-known hiking trail through shady forests offering incredible views of False Bay and the city bowl.",
       "rating": 5,
@@ -4227,9 +4223,9 @@
       "numerical_price": "Free",
       "best_season": "Summer",
       "vibes": [
-        "Serene",
-        "Sheltered",
-        "Dreamy"
+        "Chill",
+        "Dreamy",
+        "Sheltered"
       ],
       "description": "Tucked behind a golf course, this boulder-sheltered beach offers safe swimming and frequent penguin visitors.",
       "rating": 4.7,
@@ -4695,7 +4691,7 @@
         -0.04841792210936546,
         0.012963970191776752,
         0.016731400042772293,
-        1.8521557649364695e-05,
+        0.000018521557649364695,
         0.013988195918500423,
         0.018550654873251915,
         -0.029766995459794998,
@@ -4782,16 +4778,16 @@
     },
     {
       "id": "borruso-s-31d7",
-      "name": "Borruso\u2019s",
+      "name": "Borruso’s",
       "category": "Food",
       "tourist_level": 3,
       "price_tier": "R",
       "numerical_price": "R130-R200",
       "best_season": "All Year",
       "vibes": [
-        "Warm",
+        "Chill",
         "Neighborhood",
-        "Casual"
+        "Warm"
       ],
       "description": "A welcoming Kenilworth neighborhood favorite where locals flock for thin-based, wood-fired pizzas and no corkage fees.",
       "rating": 4.5,
@@ -4807,7 +4803,7 @@
         -0.07786806672811508,
         0.011982610449194908,
         0.029610026627779007,
-        -9.868368215393275e-05,
+        -0.00009868368215393275,
         -0.09888488799333572,
         -0.020172618329524994,
         0.02551502361893654,
@@ -5070,9 +5066,9 @@
       "numerical_price": "R150-R300",
       "best_season": "All Year",
       "vibes": [
-        "Historic",
         "Farm-to-table",
-        "Scenic"
+        "History",
+        "Views"
       ],
       "description": "A restored 18th-century stable in Durbanville offering thoughtful farmhouse breakfasts using seasonal produce from the local farm.",
       "rating": 4.4,
@@ -5204,7 +5200,7 @@
         0.036315836012363434,
         -0.10134651511907578,
         -0.056609269231557846,
-        -6.970400863792747e-05,
+        -0.00006970400863792747,
         -0.03262392804026604,
         -0.02318904921412468,
         0.07403121888637543,
@@ -5352,8 +5348,7 @@
       "best_season": "All Year",
       "vibes": [
         "Lively",
-        "Authentic",
-        "Social"
+        "Local"
       ],
       "description": "Vibrant Gugulethu institution that reclaimed the local shisanyama spirit with deep house music and \"secret sauce\".",
       "rating": 4.6,
@@ -5633,8 +5628,8 @@
       "best_season": "All Year",
       "vibes": [
         "Family-run",
-        "Authentic",
-        "Interactive"
+        "Interactive",
+        "Local"
       ],
       "description": "A newly opened family-run Korean barbecue spot in Rondebosch offering authentic marinated beef and pork belly sets.",
       "rating": 4.7,
@@ -5713,7 +5708,7 @@
         0.0034961600322276354,
         -0.024669533595442772,
         -0.054943401366472244,
-        8.368033013539389e-05,
+        0.00008368033013539389,
         -0.10276354104280472,
         -0.004111588932573795,
         -0.00868147611618042,
@@ -5913,9 +5908,9 @@
       "numerical_price": "R300",
       "best_season": "All Year",
       "vibes": [
-        "Spooky",
-        "Secret",
-        "Historical"
+        "Hidden",
+        "History",
+        "Spooky"
       ],
       "description": "Explore 17th-century secret tunnels running below the city with a qualified guide.",
       "rating": 4.3,
@@ -6195,8 +6190,8 @@
       "best_season": "All Year",
       "vibes": [
         "Indigenous",
-        "Educational",
-        "Nature"
+        "Learning",
+        "Outdoor"
       ],
       "description": "Experience San culture through tea tastings, tracking lessons, and field foraging.",
       "rating": 4.7,
@@ -6281,7 +6276,7 @@
         0.00535206263884902,
         -0.0344674214720726,
         -0.2003779262304306,
-        3.191626456100494e-05,
+        0.00003191626456100494,
         -0.017371030524373055,
         -0.019417105242609978,
         0.05045151710510254,
@@ -6475,9 +6470,9 @@
       "numerical_price": "R50-R150",
       "best_season": "All Year",
       "vibes": [
-        "Secret",
-        "Historic",
-        "Peaceful"
+        "Chill",
+        "Hidden",
+        "History"
       ],
       "description": "A quiet coffee shop hidden inside a church that dates back to the 1800s.",
       "rating": 4.8,
@@ -6756,9 +6751,9 @@
       "numerical_price": "R50-R150",
       "best_season": "All Year",
       "vibes": [
-        "Sweet",
         "Handmade",
-        "Nostalgic"
+        "Nostalgic",
+        "Sweet Tooth"
       ],
       "description": "Taste old-fashioned handmade toffees at the famous Darling Sweets.",
       "rating": null,
@@ -7037,9 +7032,9 @@
       "numerical_price": "R55-R150",
       "best_season": "All Year",
       "vibes": [
-        "Lively",
-        "Iconic",
-        "Fusion"
+        "Famous",
+        "Fusion",
+        "Lively"
       ],
       "description": "Legendary Gatesville institution famous for its Masala Steak Full House Gatsby and massive local fan base.",
       "rating": 4.2,
@@ -7319,8 +7314,8 @@
       "best_season": "All Year",
       "vibes": [
         "Surprise",
-        "Industrial",
-        "Sea"
+        "Urban",
+        "Water"
       ],
       "description": "A unique \"culinary conversation\" between land and sea featuring a fixed surprise menu.",
       "rating": 4.7,
@@ -8161,9 +8156,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Secluded",
-        "Technical",
-        "Dramatic"
+        "Dramatic",
+        "Hidden",
+        "Technical"
       ],
       "description": "A technical Table Mountain hike with rock scrambling and sheer drops.",
       "rating": 4.9,
@@ -8442,9 +8437,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Quirky",
-        "Vineyard",
-        "Family"
+        "Family",
+        "Unique",
+        "Wine"
       ],
       "description": "Watch 1,000 Indian Runner Ducks parade through the vineyard to manage pests.",
       "rating": 4.4,
@@ -8712,7 +8707,7 @@
       "image_url": "/images/venues/vergenoegd-ducks-0654.jpg",
       "image_width": 454,
       "image_height": 320,
-      "image_attribution": "Vergenoegd L\u00f6w Wine Estate"
+      "image_attribution": "Vergenoegd Löw Wine Estate"
     },
     {
       "id": "beta-beach-da9a",
@@ -8723,9 +8718,9 @@
       "numerical_price": "Free",
       "best_season": "Summer",
       "vibes": [
-        "Calm",
+        "Chill",
         "Protected",
-        "Scenic"
+        "Views"
       ],
       "description": "Small Bakoven beach featuring calm swimming waters and fantastic views of Lion's Head across the water.",
       "rating": 4.6,
@@ -8753,7 +8748,7 @@
         -0.0812811627984047,
         -0.06995373964309692,
         -0.07337959855794907,
-        6.075970668462105e-05,
+        0.00006075970668462105,
         0.058736830949783325,
         -0.04141416400671005,
         -0.04948149621486664,
@@ -9004,11 +8999,11 @@
       "numerical_price": "From R30",
       "best_season": "All Year",
       "vibes": [
-        "Retro",
         "Cool",
-        "Playful"
+        "Family",
+        "Unique"
       ],
-      "description": "Cape Town\u2019s first arcade bar where classic games are free with drinks.",
+      "description": "Cape Town’s first arcade bar where classic games are free with drinks.",
       "rating": 4.6,
       "embedding": [
         -0.03678823634982109,
@@ -9566,9 +9561,8 @@
       "numerical_price": "R100-R125",
       "best_season": "All Year",
       "vibes": [
-        "Social",
-        "Active",
-        "Trendy"
+        "Adventure",
+        "Lively"
       ],
       "description": "A fast-paced racket sport blend of tennis and squash available at multiple city locations.",
       "rating": 4.4,
@@ -9840,7 +9834,7 @@
     },
     {
       "id": "starlings-caf-efe3",
-      "name": "Starlings Caf\u00e9",
+      "name": "Starlings Café",
       "category": "Food",
       "tourist_level": 4,
       "price_tier": "R",
@@ -9968,7 +9962,7 @@
         -0.027501579374074936,
         -0.04222770035266876,
         0.068080835044384,
-        -7.045605161692947e-05,
+        -0.00007045605161692947,
         0.05412398651242256,
         -0.02167706936597824,
         -0.04118368402123451,
@@ -10128,11 +10122,11 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Educational",
-        "Serious",
-        "Local"
+        "Learning",
+        "Local",
+        "Serious"
       ],
-      "description": "Learn about Cape Town\u2019s history and gang culture through an impactful township tour.",
+      "description": "Learn about Cape Town’s history and gang culture through an impactful township tour.",
       "rating": 4.4,
       "embedding": [
         0.06607548147439957,
@@ -10409,9 +10403,9 @@
       "numerical_price": "R100-R250",
       "best_season": "All Year",
       "vibes": [
-        "Wild-West",
-        "Quirky",
-        "Old-School"
+        "Old-School",
+        "Unique",
+        "Wild-West"
       ],
       "description": "Hidden gem saloon featuring swinging doors and authentic western decor, entirely disconnected from the city's coastal identity.",
       "rating": 4.5,
@@ -10691,8 +10685,8 @@
       "best_season": "All Year",
       "vibes": [
         "Bohemian",
-        "Vibrant",
-        "Eclectic"
+        "Eclectic",
+        "Lively"
       ],
       "description": "Cornerstone of Observatory's live entertainment, hosting musicians, comedians, and diverse student crowds for over 26 years.",
       "rating": 4.5,
@@ -10971,9 +10965,9 @@
       "numerical_price": "R100-R300",
       "best_season": "Summer",
       "vibes": [
-        "Active",
+        "Adventure",
         "Aquatic",
-        "Fun"
+        "Lively"
       ],
       "description": "A waterski resort offering wakeboarding, rock jumping, and diving in a quarry.",
       "rating": 4.2,
@@ -11440,7 +11434,7 @@
         0.11077313870191574,
         -0.010595378465950489,
         -0.019032839685678482,
-        -3.279024167568423e-05,
+        -0.00003279024167568423,
         0.09316452592611313,
         -0.03890007361769676,
         0.02698836475610733,
@@ -11526,16 +11520,15 @@
     },
     {
       "id": "mariam-s-kitchen-f31c",
-      "name": "Mariam\u2019s Kitchen",
+      "name": "Mariam’s Kitchen",
       "category": "Food",
       "tourist_level": 4,
       "price_tier": "R",
       "numerical_price": "R135-R399",
       "best_season": "All Year",
       "vibes": [
-        "Local",
-        "Authentic",
-        "Generous"
+        "Generous",
+        "Local"
       ],
       "description": "A beloved family-run institution famous for authentic Cape Malay Gatsbys and spicy steak salomies.",
       "rating": 4.2,
@@ -12095,8 +12088,8 @@
       "numerical_price": "R150+",
       "best_season": "All Year",
       "vibes": [
+        "Chill",
         "Massive",
-        "Casual",
         "Views"
       ],
       "description": "Standing for \"No Ordinary Burger,\" this Tygerfalls spot serves huge gourmet burgers with impressive views of the water.",
@@ -12376,11 +12369,11 @@
       "numerical_price": "R200",
       "best_season": "All Year",
       "vibes": [
-        "Sparkly",
-        "Historical",
-        "Craft"
+        "Craft",
+        "History",
+        "Sparkly"
       ],
-      "description": "Learn about SA\u2019s diamond heritage and see the art of jewelry making.",
+      "description": "Learn about SA’s diamond heritage and see the art of jewelry making.",
       "rating": 4.9,
       "embedding": [
         0.018052659928798676,
@@ -12650,16 +12643,16 @@
     },
     {
       "id": "miller-s-point-tidal-pool-b3e0",
-      "name": "Miller\u2019s Point Tidal Pool",
+      "name": "Miller’s Point Tidal Pool",
       "category": "Nature",
       "tourist_level": 4,
       "price_tier": "R",
       "numerical_price": "R22",
       "best_season": "Summer",
       "vibes": [
-        "Wild",
-        "Scenic",
-        "Remote"
+        "Outdoor",
+        "Remote",
+        "Views"
       ],
       "description": "Vast pool south of Simon's Town set among boulders with a fun slide and diverse marine life.",
       "rating": 4.6,
@@ -12938,8 +12931,8 @@
       "numerical_price": "R25",
       "best_season": "All Year",
       "vibes": [
+        "Family",
         "Nostalgic",
-        "Playful",
         "Unique"
       ],
       "description": "Relive your childhood through a collection of 4,000 toys, models, and lead soldiers.",
@@ -13162,7 +13155,7 @@
         0.04440906271338463,
         -0.006249432917684317,
         -0.045142631977796555,
-        5.160653745406307e-05,
+        0.00005160653745406307,
         -0.037553027272224426,
         0.0504751056432724,
         -0.0710432156920433,
@@ -13212,15 +13205,15 @@
     },
     {
       "id": "faeeza-s-home-kitchen-12c3",
-      "name": "Faeeza\u2019s Home Kitchen",
+      "name": "Faeeza’s Home Kitchen",
       "category": "Culture",
       "tourist_level": 4,
       "price_tier": "RR",
       "numerical_price": "R250-R400",
       "best_season": "All Year",
       "vibes": [
-        "Intimate",
-        "Educational",
+        "Cozy",
+        "Learning",
         "Passionate"
       ],
       "description": "Immersion into Cape Malay culture through hands-on cooking classes hosted by a passionate local expert.",
@@ -13401,7 +13394,7 @@
         -0.01977156475186348,
         0.0999891608953476,
         -0.029037801548838615,
-        -6.346179361571558e-06,
+        -0.000006346179361571558,
         0.1632366180419922,
         -0.07720068097114563,
         -0.06518690288066864,
@@ -13465,7 +13458,7 @@
         -0.17541201412677765,
         -0.03725350648164749,
         0.03808854520320892,
-        -5.353150118025951e-05,
+        -0.00005353150118025951,
         -0.0022509009577333927,
         0.05527418106794357,
         0.06340907514095306,
@@ -13500,7 +13493,6 @@
       "numerical_price": "R50-R100",
       "best_season": "All Year",
       "vibes": [
-        "Artisanal",
         "Fresh",
         "Local"
       ],
@@ -13748,7 +13740,7 @@
         -0.044002167880535126,
         -0.04655377194285393,
         -0.07686059176921844,
-        7.119433576008305e-07,
+        7.119433576008305e-7,
         -0.03608698397874832,
         0.04975629597902298,
         0.01276453398168087,
@@ -13781,9 +13773,9 @@
       "numerical_price": "R50-R500",
       "best_season": "All Year",
       "vibes": [
-        "Vintage",
-        "Musical",
-        "Nostalgic"
+        "Music",
+        "Nostalgic",
+        "Vintage"
       ],
       "description": "A record store featured in \"Searching for Sugar Man\" selling rare books and vinyl.",
       "rating": 4.8,
@@ -14062,9 +14054,9 @@
       "numerical_price": "R600-R900",
       "best_season": "Summer",
       "vibes": [
-        "Wet",
-        "Thrilling",
-        "Natural"
+        "Adventure",
+        "Outdoor",
+        "Wet"
       ],
       "description": "Tube down white-water rapids in two-person inflatable \"crocodiles\".",
       "rating": 4.6,
@@ -14343,9 +14335,9 @@
       "numerical_price": "R700",
       "best_season": "All Year",
       "vibes": [
-        "Fun",
         "Green",
-        "Vineyard"
+        "Lively",
+        "Wine"
       ],
       "description": "Glide through lush Stellenbosch vineyards on a guided eco-friendly Segway excursion.",
       "rating": 4.9,
@@ -14625,8 +14617,8 @@
       "best_season": "All Year",
       "vibes": [
         "Afrocentric",
-        "Unique",
-        "Sweet"
+        "Sweet Tooth",
+        "Unique"
       ],
       "description": "A hole-in-the-wall featuring African flavors like hibiscus curd and sorghum porridge.",
       "rating": 4.9,
@@ -14898,14 +14890,14 @@
     },
     {
       "id": "the-blue-caf-c922",
-      "name": "The Blue Caf\u00e9",
+      "name": "The Blue Café",
       "category": "Food",
       "tourist_level": 4,
       "price_tier": "R",
       "numerical_price": "R80-R150",
       "best_season": "All Year",
       "vibes": [
-        "Historic",
+        "History",
         "Neighborhood",
         "Sidewalk"
       ],
@@ -15186,9 +15178,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
+        "Local",
         "Refreshing",
-        "Local"
+        "Views"
       ],
       "description": "An iconic rock pool and beach spot popular with Sea Point locals for sunset picnics and cold plunges.",
       "rating": 4.6,
@@ -15213,7 +15205,7 @@
         -0.060541924089193344,
         0.0027882950380444527,
         0.02546756900846958,
-        6.802349616918946e-06,
+        0.000006802349616918946,
         -0.003431484568864107,
         -0.026220237836241722,
         -0.022853756323456764,
@@ -15468,10 +15460,10 @@
       "best_season": "All Year",
       "vibes": [
         "Heritage",
-        "Sparkly",
-        "Educational"
+        "Learning",
+        "Sparkly"
       ],
-      "description": "Take a diamond tour and learn about South Africa\u2019s rich jewelry heritage.",
+      "description": "Take a diamond tour and learn about South Africa’s rich jewelry heritage.",
       "rating": 4.9,
       "embedding": [
         0.03109845146536827,
@@ -15693,7 +15685,7 @@
         0.06038482487201691,
         -0.1562650501728058,
         -0.022451110184192657,
-        -7.307436317205429e-05,
+        -0.00007307436317205429,
         -0.05207058787345886,
         0.021625015884637833,
         0.08196986466646194,
@@ -16017,7 +16009,7 @@
       "image_url": "/images/venues/saunders-rock-4799.jpg",
       "image_width": 4608,
       "image_height": 3456,
-      "image_attribution": "Sylwester Baku\u0142a",
+      "image_attribution": "Sylwester Bakuła",
       "suburb": "Sea Point"
     },
     {
@@ -16029,8 +16021,8 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Atmospheric",
         "Communal",
+        "Cozy",
         "Sunrise"
       ],
       "description": "Iconic Kalk Bay pool accessed via a rail subway, famous for its early-morning community swim rituals.",
@@ -16310,8 +16302,8 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Social",
         "Breezy",
+        "Lively",
         "Sunset"
       ],
       "description": "A 5km coastal walkway perfect for sunset chasing, cycling, and people-watching.",
@@ -16591,7 +16583,7 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Casual",
+        "Chill",
         "Local",
         "Unique"
       ],
@@ -16872,9 +16864,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Urban",
-        "Active",
-        "Family"
+        "Adventure",
+        "Family",
+        "Urban"
       ],
       "description": "Modern park featuring canals, a skatepark, and cafes, acting as a gateway to the V&A Waterfront.",
       "rating": 4.6,
@@ -17154,8 +17146,8 @@
       "best_season": "All Year",
       "vibes": [
         "Moody",
-        "Unique",
-        "Musical"
+        "Music",
+        "Unique"
       ],
       "description": "A world-class jazz club located in the basement of a stone church.",
       "rating": 4.6,
@@ -17368,7 +17360,7 @@
         0.05933797359466553,
         0.12426203489303589,
         0.07022514939308167,
-        6.618565384997055e-05,
+        0.00006618565384997055,
         0.012369202449917793,
         0.08686942607164383,
         -0.05397988483309746,
@@ -17435,8 +17427,8 @@
       "best_season": "All Year",
       "vibes": [
         "Craft",
-        "Rebellious",
-        "Social"
+        "Lively",
+        "Rebellious"
       ],
       "description": "A local favorite pouring bold craft beers in a lively industrial setting.",
       "rating": 4.3,
@@ -17715,9 +17707,9 @@
       "numerical_price": "R1,000+",
       "best_season": "All Year",
       "vibes": [
-        "Intimate",
-        "Musical",
-        "Authentic"
+        "Cozy",
+        "Local",
+        "Music"
       ],
       "description": "A 4-hour tour through the homes of local jazz artists with live performances.",
       "rating": 5,
@@ -17996,9 +17988,9 @@
       "numerical_price": "R1,200+",
       "best_season": "All Year",
       "vibes": [
-        "Coastal",
-        "Wildlife",
-        "Scenic"
+        "Views",
+        "Water",
+        "Wildlife"
       ],
       "description": "A game reserve on the West Coast home to four of the Big 5.",
       "rating": 4.4,
@@ -18277,9 +18269,9 @@
       "numerical_price": "R10 - R12",
       "best_season": "All Year",
       "vibes": [
+        "Chill",
         "Floral",
-        "Scenic",
-        "Chill"
+        "Views"
       ],
       "description": "DIY rose picking in a charming farm setting with surrounding vineyard views.",
       "rating": 4.3,
@@ -18405,7 +18397,7 @@
         -0.02002571150660515,
         -0.026404162868857384,
         -0.06930180639028549,
-        -1.7831636796472594e-05,
+        -0.000017831636796472594,
         -0.06900988519191742,
         -0.012048997916281223,
         -0.014194609597325325,
@@ -18558,9 +18550,9 @@
       "numerical_price": "R115-R225",
       "best_season": "All Year",
       "vibes": [
-        "Wood-fired",
+        "Chill",
         "Neapolitan",
-        "Relaxed"
+        "Wood-fired"
       ],
       "description": "Slings some of the best wood-fired Neapolitan pizzas in the city with a focus on simple, perfect crusts.",
       "rating": 4.6,
@@ -18832,7 +18824,7 @@
     },
     {
       "id": "massimo-s-b203",
-      "name": "Massimo\u2019s",
+      "name": "Massimo’s",
       "category": "Food",
       "tourist_level": 5,
       "price_tier": "R",
@@ -18840,7 +18832,7 @@
       "best_season": "All Year",
       "vibes": [
         "Community",
-        "Italian",
+        "International",
         "Lively"
       ],
       "description": "A Hout Bay classic known for exceptional pizza and strong community engagement through charity-linked menu items.",
@@ -18965,7 +18957,7 @@
         0.12999537587165833,
         -0.12179278582334518,
         0.009610779583454132,
-        -4.742828241433017e-05,
+        -0.00004742828241433017,
         -0.12335024029016495,
         0.04950103163719177,
         -0.05368019640445709,
@@ -19091,7 +19083,7 @@
         0.04503633454442024,
         -0.021298162639141083,
         -0.01975368894636631,
-        -4.022911889478564e-05,
+        -0.00004022911889478564,
         -0.05129210278391838,
         0.039559293538331985,
         -0.06458236277103424,
@@ -19120,9 +19112,9 @@
       "numerical_price": "R150",
       "best_season": "All Year",
       "vibes": [
-        "Wellness",
-        "Energetic",
-        "Silent"
+        "Lively",
+        "Silent",
+        "Wellness"
       ],
       "description": "A silent guided dance and meditation movement held at varying scenic outdoor locations.",
       "rating": 4.6,
@@ -19389,7 +19381,7 @@
       "image_url": "/images/venues/secret-sunrise-24ca.jpg",
       "image_width": 4032,
       "image_height": 3024,
-      "image_attribution": "Fabian M\u00fcller",
+      "image_attribution": "Fabian Müller",
       "suburb": "Various Locations"
     },
     {
@@ -19463,7 +19455,7 @@
         -0.04447971284389496,
         -0.05888936668634415,
         -0.09865272045135498,
-        5.903593773837201e-05,
+        0.00005903593773837201,
         -0.04731995239853859,
         -0.020011961460113525,
         0.10448954254388809,
@@ -19682,9 +19674,9 @@
       "numerical_price": "R150-R250",
       "best_season": "Summer",
       "vibes": [
+        "Chill",
         "Craft-beer",
-        "Sunset",
-        "Laid-back"
+        "Sunset"
       ],
       "description": "A Noordhoek favorite serving fine craft beers and pizzas with stunning sunset views over the Atlantic coast.",
       "rating": 4.7,
@@ -20024,7 +20016,7 @@
         -0.03344450145959854,
         -0.03225637227296829,
         0.008114651776850224,
-        -2.7846717784996144e-05,
+        -0.000027846717784996144,
         -0.0639566034078598,
         -0.017101438716053963,
         0.025254009291529655,
@@ -20244,9 +20236,8 @@
       "numerical_price": "R150-R250",
       "best_season": "All Year",
       "vibes": [
-        "Authentic",
-        "Local",
-        "Flavorful"
+        "Flavorful",
+        "Local"
       ],
       "description": "Traditional South African cuisine like vetkoek and tshisanyama served at Battery Park.",
       "rating": 4.8,
@@ -20525,9 +20516,9 @@
       "numerical_price": "R150-R250",
       "best_season": "All Year",
       "vibes": [
-        "Laid-back",
-        "Traditional",
-        "Halaal"
+        "Chill",
+        "Halaal",
+        "Traditional"
       ],
       "description": "Stalwart Bo-Kaap establishment celebrated for its authentic bredies and spiced koesisters in a simple setting.",
       "rating": 4,
@@ -20799,16 +20790,16 @@
     },
     {
       "id": "una-m-s-mezcaleria-9abb",
-      "name": "Una M\u00e1s Mezcaleria",
+      "name": "Una Más Mezcaleria",
       "category": "Drink",
       "tourist_level": 5,
       "price_tier": "RR",
       "numerical_price": "R150-R300",
       "best_season": "All Year",
       "vibes": [
-        "Intimate",
-        "Spicy",
-        "Mexican"
+        "Cozy",
+        "Mexican",
+        "Spicy"
       ],
       "description": "Small Sea Point bar specializing in tequila, mezcal, and some of the best spicy palomas in town.",
       "rating": 4.4,
@@ -21076,7 +21067,7 @@
       "image_url": "/images/venues/una-m-s-mezcaleria-9abb.jpg",
       "image_width": 4000,
       "image_height": 2252,
-      "image_attribution": "Una M\u00e1s - Mezcaleria"
+      "image_attribution": "Una Más - Mezcaleria"
     },
     {
       "id": "rands-cape-town-c568",
@@ -21087,9 +21078,8 @@
       "numerical_price": "R150-R300",
       "best_season": "All Year",
       "vibes": [
-        "Energetic",
-        "Secure",
-        "Social"
+        "Lively",
+        "Secure"
       ],
       "description": "Massive Khayelitsha outdoor venue hosting high-energy parties with Gqom beats and traditional braai stews.",
       "rating": 4.5,
@@ -21368,9 +21358,9 @@
       "numerical_price": "R180",
       "best_season": "All Year",
       "vibes": [
-        "Retro",
-        "Fun",
-        "Neon"
+        "Lively",
+        "Neon",
+        "Unique"
       ],
       "description": "Cape Town's first indoor roller-skating park featuring a disco atmosphere and arcade games.",
       "rating": 4.5,
@@ -21649,8 +21639,8 @@
       "numerical_price": "R180-R280",
       "best_season": "Winter",
       "vibes": [
-        "Secret",
-        "Relaxed",
+        "Chill",
+        "Hidden",
         "Tasty"
       ],
       "description": "Hidden upstairs from a bar, this unpretentious spot serves what many consider the best ramen in Cape Town.",
@@ -21930,9 +21920,9 @@
       "numerical_price": "R22 - R55",
       "best_season": "All Year",
       "vibes": [
-        "Natural",
-        "Peaceful",
-        "Educational"
+        "Chill",
+        "Learning",
+        "Outdoor"
       ],
       "description": "A 16-hectare wetland bird sanctuary providing a break from city hustle in Century City.",
       "rating": 4.5,
@@ -21981,7 +21971,7 @@
         0.10704749077558517,
         0.029717661440372467,
         -0.036161813884973526,
-        1.7332078641629778e-05,
+        0.000017332078641629778,
         0.09346684068441391,
         0.006733739748597145,
         0.09160282462835312,
@@ -22492,8 +22482,8 @@
       "numerical_price": "R250-R500",
       "best_season": "All Year",
       "vibes": [
-        "Secret",
         "Glamorous",
+        "Hidden",
         "Masterful"
       ],
       "description": "Hidden speakeasy styled after the 1920s, offering bespoke cocktails and live jazz in a mystery location.",
@@ -22773,9 +22763,9 @@
       "numerical_price": "R280",
       "best_season": "All Year",
       "vibes": [
-        "Calm",
-        "Urban",
-        "Leisurely"
+        "Chill",
+        "Leisurely",
+        "Urban"
       ],
       "description": "Paddle through the Waterfront canals like a Venetian gondolier on a stable board.",
       "rating": 4.8,
@@ -23054,8 +23044,9 @@
       "numerical_price": "R300+",
       "best_season": "All Year",
       "vibes": [
-        "Italian",
         "Dimmed",
+        "Evening",
+        "International",
         "Shared"
       ],
       "description": "Modern Italian dining specializing in shared homemade pasta dishes and negronis.",
@@ -23335,8 +23326,8 @@
       "numerical_price": "R395",
       "best_season": "All Year",
       "vibes": [
+        "Adventure",
         "Intellectual",
-        "Thrilling",
         "Mystery"
       ],
       "description": "Solve puzzles and riddles within 60 minutes to complete high-stakes missions at the Waterfront.",
@@ -23609,14 +23600,14 @@
     },
     {
       "id": "ground-art-caff-415e",
-      "name": "Ground Art Caff\u00e9",
+      "name": "Ground Art Caffé",
       "category": "Drink",
       "tourist_level": 5,
       "price_tier": "R",
       "numerical_price": "R45-R150",
       "best_season": "All Year",
       "vibes": [
-        "Artistic",
+        "Art",
         "Mountain-views",
         "Quality"
       ],
@@ -23898,8 +23889,8 @@
       "best_season": "All Year",
       "vibes": [
         "Edgy",
-        "Grungy",
-        "Punk-Rock"
+        "Punk-Rock",
+        "Urban"
       ],
       "description": "Edgy dive bar with surfer influences, loud alternative music, and a zero-pretentiousness atmosphere for good people.",
       "rating": 4.5,
@@ -23932,7 +23923,7 @@
         0.07319891452789307,
         0.01897219568490982,
         0.023679476231336594,
-        -2.10146408790024e-05,
+        -0.0000210146408790024,
         0.008055314421653748,
         -0.06873486191034317,
         -0.0580039843916893,
@@ -24171,16 +24162,16 @@
     },
     {
       "id": "arthur-s-mini-super-da90",
-      "name": "Arthur\u2019s Mini Super",
+      "name": "Arthur’s Mini Super",
       "category": "Food",
       "tourist_level": 5,
       "price_tier": "R",
       "numerical_price": "R80-R150",
       "best_season": "All Year",
       "vibes": [
-        "Retro",
-        "Cute",
-        "Relaxed"
+        "Chill",
+        "Romantic",
+        "Unique"
       ],
       "description": "A retro-style Sea Point deli and cafe famous for \"Things on Toast\" and iconic pizza toasties with anchovies.",
       "rating": 4.5,
@@ -24459,9 +24450,9 @@
       "numerical_price": "R895",
       "best_season": "All Year",
       "vibes": [
-        "Natural",
         "Extreme",
-        "Majestic"
+        "Majestic",
+        "Outdoor"
       ],
       "description": "Zipline through a hidden valley and over waterfalls in the Grabouw mountains",
       "rating": 4.9,
@@ -24680,7 +24671,7 @@
         0.03521019220352173,
         0.08128467947244644,
         0.0847415030002594,
-        -5.507379682967439e-05,
+        -0.00005507379682967439,
         0.03404968976974487,
         -0.043580636382102966,
         0.0013943025842308998,
@@ -24740,9 +24731,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Stunning",
         "Brief",
-        "Panoramic"
+        "Stunning",
+        "Views"
       ],
       "description": "A short 20-minute hike offering unparalleled panoramic views of Table Mountain, Lion's Head, and the Atlantic.",
       "rating": 4.9,
@@ -25021,9 +25012,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Reflective",
-        "Educational",
-        "History"
+        "History",
+        "Learning",
+        "Reflective"
       ],
       "description": "A permanent exhibition teaching about genocide through light stories and historical documents.",
       "rating": 4.6,
@@ -25302,9 +25293,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Urban",
-        "Artistic",
-        "Vibrant"
+        "Art",
+        "Lively",
+        "Urban"
       ],
       "description": "Guided or solo tours through side streets revealing murals addressing social justice and identity.",
       "rating": 4.3,
@@ -25583,9 +25574,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Laid-back",
-        "Coastal",
-        "Vibrant"
+        "Chill",
+        "Lively",
+        "Water"
       ],
       "description": "The premier spot for beginners to access gentle waves and a vibrant surf culture.",
       "rating": 4.7,
@@ -25841,7 +25832,7 @@
         0.06734615564346313,
         -0.05116719380021095,
         0.010273141786456108,
-        8.680176688358188e-05,
+        0.00008680176688358188,
         0.1112675592303276,
         -0.0015586515655741096,
         0.024404915049672127,
@@ -25865,8 +25856,8 @@
       "best_season": "Summer",
       "vibes": [
         "Braai",
-        "Scenic",
-        "Coastal"
+        "Views",
+        "Water"
       ],
       "description": "Idyllic coastal spot with designated braai pits and views of the Twelve Apostles.",
       "rating": 4.4,
@@ -26145,9 +26136,9 @@
       "numerical_price": "Free",
       "best_season": "Summer",
       "vibes": [
-        "Quiet",
         "Boulders",
-        "Intimate"
+        "Chill",
+        "Cozy"
       ],
       "description": "A smaller, rock-scattered beach tucked between residential homes.",
       "rating": 4.7,
@@ -26426,9 +26417,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Panoramic",
-        "Hiking",
-        "Peaceful"
+        "Chill",
+        "Mountain",
+        "Views"
       ],
       "description": "A high-vantage point between Constantia and Hout Bay for scenic valley views.",
       "rating": 4.9,
@@ -26707,9 +26698,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Shady",
-        "Lush",
-        "Peaceful"
+        "Chill",
+        "Outdoor",
+        "Shady"
       ],
       "description": "A hidden gem forest tucked within Table Mountain National Park.",
       "rating": null,
@@ -27269,9 +27260,9 @@
       "numerical_price": "Free Entry",
       "best_season": "All Year",
       "vibes": [
-        "Quirky",
+        "Lively",
         "Local",
-        "Social"
+        "Unique"
       ],
       "description": "A weekly market inside an old plane hangar featuring local brews and treats.",
       "rating": 4.5,
@@ -27550,7 +27541,7 @@
       "numerical_price": "Free to Browse",
       "best_season": "All Year",
       "vibes": [
-        "Artistic",
+        "Art",
         "Tranquil",
         "Wooded"
       ],
@@ -27831,9 +27822,9 @@
       "numerical_price": "From R100",
       "best_season": "All Year",
       "vibes": [
-        "Active",
-        "Scenic",
-        "Breezy"
+        "Adventure",
+        "Breezy",
+        "Views"
       ],
       "description": "Bicycle rentals along the promenade for a relaxing coastal ride.",
       "rating": 4.5,
@@ -27852,7 +27843,7 @@
         -0.09542278200387955,
         -0.03370070457458496,
         0.015361716039478779,
-        4.165774953435175e-05,
+        0.00004165774953435175,
         0.0787600725889206,
         -0.06765159964561462,
         -0.037678737193346024,
@@ -28026,7 +28017,7 @@
         0.004109384026378393,
         0.030723432078957558,
         0.049012381583452225,
-        -9.611823043087497e-05,
+        -0.00009611823043087497,
         -0.0009843445150181651,
         -0.1329013705253601,
         -0.05459163710474968,
@@ -28112,9 +28103,9 @@
       "numerical_price": "From R150",
       "best_season": "Summer",
       "vibes": [
-        "Chic",
-        "Coastal",
-        "Sunset"
+        "Sunset",
+        "Unique",
+        "Water"
       ],
       "description": "A stylish rooftop bar in Camps Bay perfect for sunset cocktails.",
       "rating": 4.3,
@@ -28393,9 +28384,9 @@
       "numerical_price": "R100 - R250",
       "best_season": "All Year",
       "vibes": [
+        "Heritage",
         "Hi-tech",
-        "Cultural",
-        "Educational"
+        "Learning"
       ],
       "description": "Explores Jewish history in South Africa with hi-tech displays and Nelson Mandela documentaries.",
       "rating": 4.6,
@@ -28674,9 +28665,9 @@
       "numerical_price": "R100 - R300",
       "best_season": "All Year",
       "vibes": [
-        "Modern",
-        "Nature",
-        "Artistic"
+        "Art",
+        "Outdoor",
+        "Urban"
       ],
       "description": "A premier art museum and sculpture garden set on a protected Steenberg wetland.",
       "rating": 4.6,
@@ -28865,7 +28856,7 @@
         -0.025570478290319443,
         0.08988731354475021,
         0.04240117594599724,
-        3.111374098807573e-05,
+        0.00003111374098807573,
         0.05259758606553078,
         0.01565215177834034,
         0.015864025801420212,
@@ -28955,11 +28946,11 @@
       "numerical_price": "R100-R150",
       "best_season": "All Year",
       "vibes": [
-        "Quirky",
         "Homey",
+        "Unique",
         "View"
       ],
-      "description": "Harfield Village caf\u00e9 with stunning mountain views and delicious breakfasts.",
+      "description": "Harfield Village café with stunning mountain views and delicious breakfasts.",
       "rating": 4.3,
       "embedding": [
         -0.02592841349542141,
@@ -29006,7 +28997,7 @@
         0.07723812013864517,
         0.14187900722026825,
         -0.002243548398837447,
-        -4.75398737762589e-05,
+        -0.0000475398737762589,
         -0.10664945095777512,
         0.04248896986246109,
         -0.022765761241316795,
@@ -29237,8 +29228,8 @@
       "best_season": "All Year",
       "vibes": [
         "Artsy",
-        "Panoramic",
-        "Community"
+        "Community",
+        "Views"
       ],
       "description": "Creative space in Muizenberg for live music, storytelling, and panoramic ocean views.",
       "rating": 4.6,
@@ -29518,8 +29509,8 @@
       "best_season": "All Year",
       "vibes": [
         "Inspirational",
-        "Performance",
-        "Educational"
+        "Learning",
+        "Theatre"
       ],
       "description": "Observatory theatre known for productions focusing on the human body.",
       "rating": 4.4,
@@ -29798,9 +29789,9 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Purposeful",
         "Inclusive",
-        "Social"
+        "Lively",
+        "Purposeful"
       ],
       "description": "Social enterprise in Claremont empowering deaf youth through hospitality.",
       "rating": 4.7,
@@ -30079,11 +30070,11 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Artistic",
-        "Minimalist",
+        "Art",
+        "Unique",
         "Urban"
       ],
-      "description": "De Waterkant caf\u00e9 showcasing local art with a mountain-view terrace.",
+      "description": "De Waterkant café showcasing local art with a mountain-view terrace.",
       "rating": 4.8,
       "embedding": [
         -0.0468454547226429,
@@ -30360,9 +30351,9 @@
       "numerical_price": "R100-R250",
       "best_season": "All Year",
       "vibes": [
-        "Cool",
-        "Creative",
-        "Camradery"
+        "Art",
+        "Camradery",
+        "Cool"
       ],
       "description": "Elevated dive bar and custom motorcycle workshop known for stiff local beers and excellent old fashioneds.",
       "rating": 4.5,
@@ -30641,9 +30632,9 @@
       "numerical_price": "R104-R184",
       "best_season": "All Year",
       "vibes": [
-        "Bustling",
         "Canteen",
-        "Diverse"
+        "Diverse",
+        "Lively"
       ],
       "description": "An upmarket food court corridor offering affordable Indian, Turkish, and Chinese street food.",
       "rating": 4.3,
@@ -30922,9 +30913,9 @@
       "numerical_price": "R120-R180",
       "best_season": "All Year",
       "vibes": [
+        "Chill",
         "Hidden-Gem",
-        "Coastal",
-        "Casual"
+        "Water"
       ],
       "description": "Muizenberg gem with surfboards on walls and lovely sea views.",
       "rating": 4.5,
@@ -31203,9 +31194,9 @@
       "numerical_price": "R120-R180",
       "best_season": "All Year",
       "vibes": [
+        "Lively",
         "Nautical",
-        "Quirky",
-        "Social"
+        "Unique"
       ],
       "description": "Nautically-themed bistro in Observatory with friendly staff and craft beer.",
       "rating": 4.3,
@@ -31380,7 +31371,7 @@
         -0.0033850136678665876,
         -0.0912972092628479,
         0.06799159198999405,
-        2.0953479179297574e-05,
+        0.000020953479179297574,
         0.0166179146617651,
         0.018150512129068375,
         0.061101239174604416,
@@ -31477,16 +31468,16 @@
     },
     {
       "id": "the-dog-s-bollocks-9005",
-      "name": "The Dog\u2019s Bollocks",
+      "name": "The Dog’s Bollocks",
       "category": "Food",
       "tourist_level": 6,
       "price_tier": "R",
       "numerical_price": "R130-R170",
       "best_season": "All Year",
       "vibes": [
-        "Quirky",
-        "Casual",
-        "Gourmet"
+        "Chill",
+        "Gourmet",
+        "Unique"
       ],
       "description": "A hidden gem in Gardens famous for massive gourmet burgers and a unique, unpretentious backyard vibe.",
       "rating": 4.6,
@@ -31758,7 +31749,7 @@
     },
     {
       "id": "the-pok-co-f795",
-      "name": "The Pok\u00e9 Co",
+      "name": "The Poké Co",
       "category": "Food",
       "tourist_level": 6,
       "price_tier": "R",
@@ -31811,7 +31802,7 @@
         0.01606767438352108,
         0.036532819271087646,
         0.023340411484241486,
-        -1.3309896530699916e-05,
+        -0.000013309896530699916,
         -0.020817505195736885,
         0.007984506897628307,
         0.1336154043674469,
@@ -32046,9 +32037,9 @@
       "numerical_price": "R150-R250",
       "best_season": "All Year",
       "vibes": [
+        "Local",
         "Neapolitan",
-        "Quality",
-        "Authentic"
+        "Quality"
       ],
       "description": "A highly-rated pizza spot serving authentic Napoletana-style pizzas with top-quality ingredients and a signature pistachio dessert.",
       "rating": 4.6,
@@ -32320,7 +32311,7 @@
     },
     {
       "id": "m-dular-98ae",
-      "name": "M\u00f8dular.",
+      "name": "Mødular.",
       "category": "Drink",
       "tourist_level": 6,
       "price_tier": "RR",
@@ -32370,7 +32361,7 @@
         -0.050722043961286545,
         -0.037151798605918884,
         -0.004329313058406115,
-        3.563116115401499e-05,
+        0.00003563116115401499,
         0.09328457713127136,
         -0.06811163574457169,
         -0.0005520145641639829,
@@ -32608,11 +32599,11 @@
       "numerical_price": "R150-R250",
       "best_season": "All Year",
       "vibes": [
-        "Industrial",
-        "Panoramic",
-        "Craft-Beer"
+        "Craft-Beer",
+        "Urban",
+        "Views"
       ],
-      "description": "Woodstock brewery restaurant with incredible views of Devil\u2019s Peak.",
+      "description": "Woodstock brewery restaurant with incredible views of Devil’s Peak.",
       "rating": 4.3,
       "embedding": [
         0.014942112378776073,
@@ -32626,7 +32617,7 @@
         -0.025067530572414398,
         -0.04492992162704468,
         0.006490237079560757,
-        -2.3911001335363835e-05,
+        -0.000023911001335363835,
         -0.04933227598667145,
         -0.00826089084148407,
         0.017466992139816284,
@@ -32890,8 +32881,9 @@
       "best_season": "All Year",
       "vibes": [
         "Caribbean",
-        "Festive",
-        "Craft-Beer"
+        "Coffee",
+        "Craft-Beer",
+        "Festive"
       ],
       "description": "Colourful Kenilworth spot known for thirty craft beers on tap.",
       "rating": 4.5,
@@ -33009,7 +33001,7 @@
         -0.17007213830947876,
         -0.02464701235294342,
         0.00010405635839561,
-        3.520742029650137e-05,
+        0.00003520742029650137,
         -0.05943214148283005,
         0.04409565031528473,
         0.16934798657894135,
@@ -33170,9 +33162,9 @@
       "numerical_price": "R150-R250",
       "best_season": "All Year",
       "vibes": [
-        "Atmospheric",
-        "Spiced",
-        "Social"
+        "Cozy",
+        "Lively",
+        "Spiced"
       ],
       "description": "Gardens restaurant offering modern Indian family favorites and 2-for-1 deals.",
       "rating": 4.5,
@@ -33451,9 +33443,9 @@
       "numerical_price": "R150-R300",
       "best_season": "All Year",
       "vibes": [
-        "Japanese-street-food",
+        "Chill",
         "Cool",
-        "Casual"
+        "Japanese-street-food"
       ],
       "description": "A trendy city-center spot serving Japanese street-style dishes like gyoza and baos, perfect for group sharing.",
       "rating": 4.4,
@@ -33732,9 +33724,9 @@
       "numerical_price": "R150-R300",
       "best_season": "All Year",
       "vibes": [
-        "Soulful",
-        "Sophisticated",
-        "Jazzy"
+        "Fine Dining",
+        "Jazzy",
+        "Soulful"
       ],
       "description": "Premier live jazz and blues cocktail lounge on Bree Street featuring a state-of-the-art recording studio.",
       "rating": 4.5,
@@ -33900,7 +33892,7 @@
         -0.08245448768138885,
         0.06191083788871765,
         -0.021313337609171867,
-        -5.897017217648681e-06,
+        -0.000005897017217648681,
         -0.039799824357032776,
         -0.054437875747680664,
         -0.005643206648528576,
@@ -34013,9 +34005,8 @@
       "numerical_price": "R160 - R260",
       "best_season": "All Year",
       "vibes": [
-        "Energetic",
-        "Active",
-        "Fun"
+        "Adventure",
+        "Lively"
       ],
       "description": "A massive indoor trampoline park with dodgeball courts and ninja courses.",
       "rating": 4.5,
@@ -34294,8 +34285,8 @@
       "numerical_price": "R180-R250",
       "best_season": "All Year",
       "vibes": [
-        "Quirky",
-        "Authentic",
+        "Local",
+        "Unique",
         "Warm"
       ],
       "description": "Voted top pizza in SA; a character-filled spot in Observatory.",
@@ -34568,7 +34559,7 @@
     },
     {
       "id": "maria-s-greek-caf-ac20",
-      "name": "Maria\u2019s Greek Caf\u00e9",
+      "name": "Maria’s Greek Café",
       "category": "Food",
       "tourist_level": 6,
       "price_tier": "RR",
@@ -34845,7 +34836,7 @@
       "image_url": "/images/venues/maria-s-greek-caf-ac20.jpg",
       "image_width": 960,
       "image_height": 960,
-      "image_attribution": "Maria's Greek Caf\u00e9"
+      "image_attribution": "Maria's Greek Café"
     },
     {
       "id": "sidecar-adventures-fe1a",
@@ -34856,9 +34847,9 @@
       "numerical_price": "R2,000+",
       "best_season": "Summer",
       "vibes": [
-        "Vintage",
-        "Scenic",
-        "Fun"
+        "Lively",
+        "Views",
+        "Vintage"
       ],
       "description": "See the city or winelands from the sidecar of a vintage motorcycle.",
       "rating": 4.9,
@@ -35113,7 +35104,7 @@
         0.041244059801101685,
         0.04593436047434807,
         0.008214399218559265,
-        -5.625891935778782e-05,
+        -0.00005625891935778782,
         0.017575884237885475,
         0.039281271398067474,
         0.05225607380270958,
@@ -35137,9 +35128,9 @@
       "numerical_price": "R20 - R80",
       "best_season": "All Year",
       "vibes": [
-        "Historic",
-        "Artistic",
-        "Scenic"
+        "Art",
+        "History",
+        "Views"
       ],
       "description": "A uniquely constructed monument in Paarl celebrating the Afrikaans language",
       "rating": 4.6,
@@ -35419,7 +35410,7 @@
       "best_season": "All Year",
       "vibes": [
         "Brunch",
-        "Trendy",
+        "Lively",
         "Local"
       ],
       "description": "A beloved brunch spot famous for generous portions and blueberry protein smoothies.",
@@ -35699,7 +35690,7 @@
       "numerical_price": "R200-R250",
       "best_season": "Summer",
       "vibes": [
-        "Thrilling",
+        "Adventure",
         "Aerial",
         "Brief"
       ],
@@ -35757,7 +35748,7 @@
         0.009728595614433289,
         0.11918406933546066,
         0.033639758825302124,
-        2.0686197785835247e-06,
+        0.0000020686197785835247,
         -0.023062454536557198,
         0.03588427975773811,
         -0.05456991866230965,
@@ -35854,7 +35845,7 @@
         -0.0323772169649601,
         -0.0013055045856162906,
         0.05271818861365318,
-        1.1603450730035547e-05,
+        0.000011603450730035547,
         0.011369901709258556,
         0.007073748391121626,
         0.012730643153190613,
@@ -35892,7 +35883,7 @@
         0.021617542952299118,
         -0.03821296989917755,
         0.06133153662085533,
-        -3.705706376422313e-06,
+        -0.000003705706376422313,
         0.0520448312163353,
         0.061948779970407486,
         0.08259837329387665,
@@ -35981,8 +35972,8 @@
       "best_season": "All Year",
       "vibes": [
         "Heritage",
-        "Authentic",
-        "Panoramic"
+        "Local",
+        "Views"
       ],
       "description": "Perched on Signal Hill, this family-run restaurant serves traditional Cape Malay curries with incredible city views.",
       "rating": 4.3,
@@ -36543,8 +36534,8 @@
       "best_season": "Summer",
       "vibes": [
         "360-View",
-        "Upbeat",
-        "Social"
+        "Lively",
+        "Upbeat"
       ],
       "description": "Upper CBD boutique hotel bar with a tiered deck and mountain vistas.",
       "rating": 4.7,
@@ -36824,8 +36815,8 @@
       "best_season": "All Year",
       "vibes": [
         "Budget",
-        "Stylish",
-        "Social"
+        "Lively",
+        "Unique"
       ],
       "description": "Offering a stylish experience with a wallet-friendly all-you-can-eat sushi deal across three popular city locations.",
       "rating": 4.3,
@@ -37104,9 +37095,9 @@
       "numerical_price": "R200+",
       "best_season": "Summer",
       "vibes": [
-        "Vibrant",
-        "Chic",
-        "Sunset"
+        "Lively",
+        "Sunset",
+        "Unique"
       ],
       "description": "A beach lounge by day and club by night with a pool and DJ.",
       "rating": 4.1,
@@ -37374,7 +37365,7 @@
       "image_url": "/images/venues/cabo-beach-club-a6e1.jpg",
       "image_width": 3600,
       "image_height": 4800,
-      "image_attribution": "Harald D\u00f6rr"
+      "image_attribution": "Harald Dörr"
     },
     {
       "id": "three-wise-monkeys-c63a",
@@ -37385,9 +37376,9 @@
       "numerical_price": "R250-R350",
       "best_season": "All Year",
       "vibes": [
+        "Chill",
         "Izakaya",
-        "Ramen",
-        "Casual"
+        "Ramen"
       ],
       "description": "A popular Sea Point spot specializing in authentic ramen, sushi, and Japanese street food.",
       "rating": 4.4,
@@ -37666,8 +37657,8 @@
       "numerical_price": "R300-R400",
       "best_season": "All Year",
       "vibes": [
+        "Art",
         "Immersive",
-        "Artistic",
         "Murals"
       ],
       "description": "A guided walking tour through an open-air gallery of iconic local murals.",
@@ -37947,8 +37938,7 @@
       "numerical_price": "R35 - R100",
       "best_season": "All Year",
       "vibes": [
-        "Historic",
-        "Military",
+        "History",
         "Unique"
       ],
       "description": "features excavated 18th-century VOC coastal ruins and rotating international photo exhibitions.",
@@ -38104,7 +38094,7 @@
         0.017425188794732094,
         0.0385882742702961,
         -0.02932599000632763,
-        4.193806034891168e-06,
+        0.000004193806034891168,
         0.024722330272197723,
         0.1111474260687828,
         0.042078807950019836,
@@ -38140,7 +38130,7 @@
         0.053649794310331345,
         0.018799414858222008,
         -0.010189888067543507,
-        -2.23982788156718e-05,
+        -0.0000223982788156718,
         0.13555368781089783,
         0.012690979987382889,
         0.043013282120227814,
@@ -38228,11 +38218,11 @@
       "numerical_price": "R350",
       "best_season": "All Year",
       "vibes": [
+        "History",
         "Medical",
-        "Historical",
         "Pioneering"
       ],
-      "description": "Honors the world\u2019s first successful human heart transplant at Groote Schuur Hospital.",
+      "description": "Honors the world’s first successful human heart transplant at Groote Schuur Hospital.",
       "rating": 4.7,
       "embedding": [
         0.025269202888011932,
@@ -38509,9 +38499,9 @@
       "numerical_price": "R40-R140",
       "best_season": "Summer",
       "vibes": [
-        "Relaxed",
-        "Social",
-        "Scenic"
+        "Chill",
+        "Lively",
+        "Views"
       ],
       "description": "Protected nature reserve offering braai spots, a small beach, and calm water perfect for social summer days.",
       "rating": null,
@@ -38783,16 +38773,16 @@
     },
     {
       "id": "pauline-s-b94a",
-      "name": "Pauline\u2019s",
+      "name": "Pauline’s",
       "category": "Drink",
       "tourist_level": 6,
       "price_tier": "R",
       "numerical_price": "R42-R100",
       "best_season": "All Year",
       "vibes": [
-        "Wellness",
-        "Minimalist",
-        "Healthy"
+        "Healthy",
+        "Unique",
+        "Wellness"
       ],
       "description": "A minimalist coffee staple in Sea Point and Gardens focusing on consciously-sourced coffee and organic, vegan treats.",
       "rating": 4.5,
@@ -39071,9 +39061,9 @@
       "numerical_price": "R5 - R44",
       "best_season": "All Year",
       "vibes": [
-        "Wild",
-        "Adventurous",
-        "Serene"
+        "Adventure",
+        "Chill",
+        "Outdoor"
       ],
       "description": "A nature reserve featuring over 1,000 plant species and popular waterfall hikes.",
       "rating": 4.7,
@@ -39352,9 +39342,9 @@
       "numerical_price": "R50",
       "best_season": "All Year",
       "vibes": [
-        "Retro",
+        "Cozy",
         "Independent",
-        "Cozy"
+        "Unique"
       ],
       "description": "The oldest independent art-repertory cinema in South Africa showing curated classics.",
       "rating": 4.6,
@@ -39633,11 +39623,11 @@
       "numerical_price": "R50 - R150",
       "best_season": "All Year",
       "vibes": [
-        "Elegant",
         "Candlelit",
-        "Social"
+        "Fine Dining",
+        "Lively"
       ],
-      "description": "unpolished Bree Street venue offering spontaneous tastings of SA\u2019s finest rare vintages.",
+      "description": "unpolished Bree Street venue offering spontaneous tastings of SA’s finest rare vintages.",
       "rating": 4.6,
       "embedding": [
         -0.004323371220380068,
@@ -39805,7 +39795,7 @@
         -0.012459864839911461,
         -0.03967113420367241,
         0.012808178551495075,
-        -1.385665382258594e-05,
+        -0.00001385665382258594,
         -0.11410033702850342,
         0.011720460839569569,
         -0.08511083573102951,
@@ -39914,11 +39904,11 @@
       "numerical_price": "R50 - R150",
       "best_season": "All Year",
       "vibes": [
+        "Ethical",
         "Indulgent",
-        "Sweet",
-        "Ethical"
+        "Sweet Tooth"
       ],
-      "description": "A bean-to-bar caf\u00e9 serving ethically sourced chocolate and decadent treats.",
+      "description": "A bean-to-bar café serving ethically sourced chocolate and decadent treats.",
       "rating": 4.5,
       "embedding": [
         0.04959867522120476,
@@ -40196,8 +40186,8 @@
       "best_season": "All Year",
       "vibes": [
         "Small-batch",
-        "Vegan",
-        "Sweet"
+        "Sweet Tooth",
+        "Vegan"
       ],
       "description": "Specialized bakery at the Old Biscuit Mill known for artisanal vegan cakes.",
       "rating": 4.6,
@@ -40476,9 +40466,9 @@
       "numerical_price": "R60-R100",
       "best_season": "All Year",
       "vibes": [
-        "Minimalist",
         "Specialized",
-        "Industrial"
+        "Unique",
+        "Urban"
       ],
       "description": "Woodstock espresso bar focusing purely on single-origin coffee beans.",
       "rating": 4.7,
@@ -40493,7 +40483,7 @@
         0.14253877103328705,
         0.007654310204088688,
         -0.03212787210941315,
-        2.5711064154165797e-05,
+        0.000025711064154165797,
         -0.06582032144069672,
         -0.05408596247434616,
         -0.09522366523742676,
@@ -40780,7 +40770,7 @@
         0.004953139927238226,
         0.015295351855456829,
         0.07304422557353973,
-        9.600356133887544e-05,
+        0.00009600356133887544,
         -0.020265653729438782,
         0.06947439908981323,
         0.04879684001207352,
@@ -41038,9 +41028,9 @@
       "numerical_price": "R80-R150",
       "best_season": "All Year",
       "vibes": [
+        "Famous",
         "No-frills",
-        "Seaside",
-        "Iconic"
+        "Water"
       ],
       "description": "A classic Hout Bay harbor shack serving hearty portions of traditional snoek and chips at reasonable prices.",
       "rating": 4.3,
@@ -41319,9 +41309,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Family",
+        "Adventure",
         "Chill",
-        "Active"
+        "Family"
       ],
       "description": "A lush park featuring a biodiversity garden, fitness equipment, and fun maze for kids.",
       "rating": 4.7,
@@ -41527,7 +41517,7 @@
         -0.05597726255655289,
         0.04556906595826149,
         -0.08775727450847626,
-        4.025610542157665e-05,
+        0.00004025610542157665,
         0.015056869015097618,
         -0.07544131577014923,
         -0.1061587706208229,
@@ -41604,7 +41594,7 @@
         "Cozy",
         "Independent"
       ],
-      "description": "A CBD bookstore hosting literary events and a dedicated children\u2019s storytelling section.",
+      "description": "A CBD bookstore hosting literary events and a dedicated children’s storytelling section.",
       "rating": 4.7,
       "embedding": [
         -0.01805480197072029,
@@ -41881,7 +41871,7 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Historical",
+        "History",
         "Oak-Lined",
         "Quaint"
       ],
@@ -42162,9 +42152,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Coastal",
         "Gentle",
-        "Scenic"
+        "Views",
+        "Water"
       ],
       "description": "A stunning coastal walkway connecting Muizenberg to Kalk Bay via St James.",
       "rating": 4.7,
@@ -42312,7 +42302,7 @@
         0.08562739193439484,
         0.012592263519763947,
         0.018223803490400314,
-        2.6233883545501158e-05,
+        0.000026233883545501158,
         0.08054385334253311,
         0.008546415716409683,
         0.01383983064442873,
@@ -42432,7 +42422,7 @@
       "image_url": "/images/venues/st-james-walk-51c0.jpg",
       "image_width": 4000,
       "image_height": 2250,
-      "image_attribution": "Justyna Dru\u015b"
+      "image_attribution": "Justyna Druś"
     },
     {
       "id": "camps-bay-tidal-pool-c1ab",
@@ -42445,7 +42435,7 @@
       "vibes": [
         "Refreshing",
         "Safe",
-        "Scenic"
+        "Views"
       ],
       "description": "A calm, clear tidal pool protected from large waves at the beach's southern end.",
       "rating": 4.6,
@@ -42540,7 +42530,7 @@
         0.07459890842437744,
         -0.08422920852899551,
         0.1571512073278427,
-        -1.9721570424735546e-05,
+        -0.000019721570424735546,
         -0.06535190343856812,
         -0.016038525849580765,
         0.031046943739056587,
@@ -42724,7 +42714,7 @@
       "numerical_price": "R100 - R300",
       "best_season": "All Year",
       "vibes": [
-        "Adventurous",
+        "Adventure",
         "Family",
         "Forest"
       ],
@@ -43005,9 +42995,9 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Indie",
-        "Laid-back",
-        "Alternative"
+        "Alternative",
+        "Chill",
+        "Indie"
       ],
       "description": "Rooftop bar on Long Street with a cool indie feel, hosting live bands and themed dance sessions",
       "rating": 4.1,
@@ -43286,9 +43276,9 @@
       "numerical_price": "R100-R250",
       "best_season": "All Year",
       "vibes": [
-        "Greenhouse",
         "Eclectic",
-        "Lush"
+        "Greenhouse",
+        "Outdoor"
       ],
       "description": "An eclectic former workshop turned plant-filled nursery cafe, legendary for green shakshuka and social weekend brunches.",
       "rating": 4.5,
@@ -43567,7 +43557,7 @@
       "numerical_price": "R1000",
       "best_season": "All Year",
       "vibes": [
-        "Sophisticated",
+        "Fine Dining",
         "Fine-Dining",
         "Fusion"
       ],
@@ -43654,7 +43644,7 @@
         -0.014288694597780704,
         -0.003628246486186981,
         -0.11821486800909042,
-        -8.13263250165619e-05,
+        -0.0000813263250165619,
         0.011927035637199879,
         -0.06770967692136765,
         0.14249113202095032,
@@ -43804,7 +43794,7 @@
         -0.05731310322880745,
         -0.015146280638873577,
         -0.008305386640131474,
-        3.391173595446162e-05,
+        0.00003391173595446162,
         -0.001911426312290132,
         -0.10850436240434647,
         0.005864565726369619,
@@ -43848,9 +43838,9 @@
       "numerical_price": "R120-R190",
       "best_season": "All Year",
       "vibes": [
-        "Wagyu",
-        "Modern",
-        "Sustainable"
+        "Sustainable",
+        "Urban",
+        "Wagyu"
       ],
       "description": "A sustainable farm-to-table spot on Kloof Street serving critically acclaimed wagyu smash burgers and dripping-fried chips.",
       "rating": 4.8,
@@ -44122,16 +44112,16 @@
     },
     {
       "id": "clarke-s-bar-dining-room-6818",
-      "name": "Clarke\u2019s Bar & Dining Room",
+      "name": "Clarke’s Bar & Dining Room",
       "category": "Food",
       "tourist_level": 7,
       "price_tier": "R",
       "numerical_price": "R120+",
       "best_season": "All Year",
       "vibes": [
-        "Trendy",
         "Diner",
-        "Hipster"
+        "Hipster",
+        "Lively"
       ],
       "description": "A stylish Bree Street staple serving excellent burgers and well-priced breakfast specials for the local digital nomad crowd.",
       "rating": 4.3,
@@ -44410,9 +44400,8 @@
       "numerical_price": "R130",
       "best_season": "All Year",
       "vibes": [
-        "Wild",
         "Diverse",
-        "Natural"
+        "Outdoor"
       ],
       "description": "The largest bird park in Africa, home to over 3,000 birds and monkeys.",
       "rating": 4.4,
@@ -44691,9 +44680,8 @@
       "numerical_price": "R150-R250",
       "best_season": "All Year",
       "vibes": [
-        "Vibrant",
         "Craft-Beer",
-        "Social"
+        "Lively"
       ],
       "description": "A lively Long Street venue featuring ninety-nine bottles of craft beer on the wall.",
       "rating": 4.2,
@@ -44965,16 +44953,16 @@
     },
     {
       "id": "jerry-s-burger-bar-599b",
-      "name": "Jerry\u2019s Burger Bar",
+      "name": "Jerry’s Burger Bar",
       "category": "Food",
       "tourist_level": 7,
       "price_tier": "RR",
       "numerical_price": "R150-R250",
       "best_season": "All Year",
       "vibes": [
+        "Chill",
         "New-York",
-        "Casual",
-        "Industrial"
+        "Urban"
       ],
       "description": "Sophisticated burger joint offering unique stuffed patties and craft beer.",
       "rating": 4.4,
@@ -45534,9 +45522,9 @@
       "numerical_price": "R150-R300",
       "best_season": "All Year",
       "vibes": [
-        "Moody",
-        "Energetic",
-        "Glamorous"
+        "Glamorous",
+        "Lively",
+        "Moody"
       ],
       "description": "Dimly lit cocktail lounge centered around a historic olive tree, known for tapas and live music.",
       "rating": 4.3,
@@ -45816,8 +45804,8 @@
       "best_season": "All Year",
       "vibes": [
         "Gritty",
-        "Motorbike-Culture",
-        "Social"
+        "Lively",
+        "Motorbike-Culture"
       ],
       "description": "Combines custom motorcycles with specialty coffee, cocktails, and live music.",
       "rating": 4.5,
@@ -46096,9 +46084,9 @@
       "numerical_price": "R150-R300",
       "best_season": "Summer",
       "vibes": [
+        "Family",
         "Festive",
-        "Scenic",
-        "Family"
+        "Views"
       ],
       "description": "A Friday night and weekend market on a historic Somerset West wine estate.",
       "rating": 4.5,
@@ -46651,16 +46639,16 @@
     },
     {
       "id": "giovanni-s-deliworld-ff21",
-      "name": "Giovanni\u2019s Deliworld",
+      "name": "Giovanni’s Deliworld",
       "category": "Food",
       "tourist_level": 7,
       "price_tier": "RR",
       "numerical_price": "R150+",
       "best_season": "All Year",
       "vibes": [
-        "Authentic",
-        "Italian",
-        "Bustling"
+        "International",
+        "Lively",
+        "Local"
       ],
       "description": "An iconic Green Point deli where locals gather for espresso and supplies for beach-side picnics.",
       "rating": 4.7,
@@ -46939,9 +46927,8 @@
       "numerical_price": "R180+",
       "best_season": "All Year",
       "vibes": [
-        "Minimalist",
-        "Posh",
-        "Stylish"
+        "Fine Dining",
+        "Unique"
       ],
       "description": "A stylish Bree Street sanctuary offering a posh breakfast menu including polenta pancakes and seasonal fruit porridge.",
       "rating": 4.4,
@@ -46999,7 +46986,7 @@
         -0.09172563999891281,
         -0.06390279531478882,
         -0.09848688542842865,
-        -9.296485950471833e-05,
+        -0.00009296485950471833,
         0.00871333759278059,
         -0.01836906187236309,
         -0.0547182597219944,
@@ -47501,9 +47488,9 @@
       "numerical_price": "R200-R350",
       "best_season": "All Year",
       "vibes": [
-        "Mexican",
-        "Authentic",
-        "Social"
+        "Lively",
+        "Local",
+        "Mexican"
       ],
       "description": "Trendy Green Point spot known for authentic tacos and extensive tequila.",
       "rating": 4.5,
@@ -47782,9 +47769,9 @@
       "numerical_price": "R200-R400",
       "best_season": "All Year",
       "vibes": [
-        "Trendy",
-        "Sophisticated",
-        "Panoramic"
+        "Fine Dining",
+        "Lively",
+        "Views"
       ],
       "description": "Stylish hotel rooftop bar featuring a splash pool and top-tier service with stunning city views.",
       "rating": 4.2,
@@ -47922,7 +47909,7 @@
         -0.007100241258740425,
         -0.08354616910219193,
         -0.0152063500136137,
-        1.127325049310457e-05,
+        0.00001127325049310457,
         0.11085843294858932,
         0.02866130694746971,
         0.0008631230448372662,
@@ -48063,9 +48050,9 @@
       "numerical_price": "R200-R400",
       "best_season": "Summer",
       "vibes": [
-        "Panoramic",
-        "Modern",
-        "Social"
+        "Lively",
+        "Urban",
+        "Views"
       ],
       "description": "Hotel rooftop featuring a splash pool and cocktails with expansive city views.",
       "rating": 4.2,
@@ -48344,9 +48331,9 @@
       "numerical_price": "R250",
       "best_season": "All Year",
       "vibes": [
-        "Modern",
+        "Art",
         "Grand",
-        "Artistic"
+        "Urban"
       ],
       "description": "Explore nine floors of contemporary African art in a repurposed historic grain silo.",
       "rating": 4.4,
@@ -48625,9 +48612,9 @@
       "numerical_price": "R250-R500",
       "best_season": "Summer",
       "vibes": [
-        "Chic",
-        "Urban",
-        "Social"
+        "Lively",
+        "Unique",
+        "Urban"
       ],
       "description": "A trendy CBD spot for sundowners with a pool and lush decor.",
       "rating": 4.2,
@@ -48906,9 +48893,9 @@
       "numerical_price": "R300+",
       "best_season": "Summer",
       "vibes": [
-        "Scenic",
-        "Social",
-        "Relaxed"
+        "Chill",
+        "Lively",
+        "Views"
       ],
       "description": "A hop-on hop-off tram traveling through various historic wine estates in the valley.",
       "rating": 4.6,
@@ -49001,7 +48988,7 @@
         -0.07370280474424362,
         0.046007029712200165,
         0.033494338393211365,
-        -6.104745261836797e-05,
+        -0.00006104745261836797,
         0.06383506953716278,
         0.1253303736448288,
         -0.0218972098082304,
@@ -49188,7 +49175,7 @@
       "best_season": "All Year",
       "vibes": [
         "Calming",
-        "Playful",
+        "Family",
         "Unique"
       ],
       "description": "A fun \"cave\" where you can scramble for semi-precious gemstones.",
@@ -49468,9 +49455,9 @@
       "numerical_price": "R435-R590",
       "best_season": "All Year",
       "vibes": [
-        "Energetic",
-        "Musical",
-        "Entertaining"
+        "Entertaining",
+        "Lively",
+        "Music"
       ],
       "description": "A unique \"dinner-and-a-show\" experience where the waitstaff are professionally trained performers taking the stage between courses.",
       "rating": 4.7,
@@ -49529,7 +49516,7 @@
         -0.017459316179156303,
         -0.07538612931966782,
         0.07409700006246567,
-        -9.036833216669038e-05,
+        -0.00009036833216669038,
         -0.07331231236457825,
         -0.04520365223288536,
         0.01663259044289589,
@@ -49609,7 +49596,7 @@
         -0.0791974738240242,
         0.018215978518128395,
         -0.07533007860183716,
-        -3.062452015001327e-05,
+        -0.00003062452015001327,
         0.01407534722238779,
         -0.07174292951822281,
         -0.04993980750441551,
@@ -49742,16 +49729,16 @@
     },
     {
       "id": "clay-caf-1cf6",
-      "name": "Clay Caf\u00e9",
+      "name": "Clay Café",
       "category": "Activity",
       "tourist_level": 7,
       "price_tier": "R",
       "numerical_price": "R45",
       "best_season": "All Year",
       "vibes": [
-        "Creative",
+        "Art",
         "Family",
-        "Social"
+        "Lively"
       ],
       "description": "Choose from over 180 items to paint while enjoying food and creative vibes.",
       "rating": 4.5,
@@ -50018,7 +50005,7 @@
       "image_url": "/images/venues/clay-caf-1cf6.jpg",
       "image_width": 1600,
       "image_height": 1200,
-      "image_attribution": "Clay Cafe in the City | Pottery Caf\u00e9 and Tapa\u2019s Bar",
+      "image_attribution": "Clay Cafe in the City | Pottery Café and Tapa’s Bar",
       "suburb": "Hout Bay"
     },
     {
@@ -50030,11 +50017,11 @@
       "numerical_price": "R45+",
       "best_season": "All Year",
       "vibes": [
-        "Industrial",
-        "Artisanal",
-        "Educational"
+        "Learning",
+        "Local",
+        "Urban"
       ],
-      "description": "A pioneer in Cape Town\u2019s craft coffee scene, offering diverse bean varieties and an onsite barista school.",
+      "description": "A pioneer in Cape Town’s craft coffee scene, offering diverse bean varieties and an onsite barista school.",
       "rating": 4.5,
       "embedding": [
         -0.06372888386249542,
@@ -50083,7 +50070,7 @@
         0.006143839098513126,
         -0.032168153673410416,
         0.004185529891401529,
-        3.3959975553443655e-05,
+        0.000033959975553443655,
         0.00015778784290887415,
         0.01689397543668747,
         0.05957815796136856,
@@ -50311,8 +50298,8 @@
       "numerical_price": "R450-R600",
       "best_season": "All Year",
       "vibes": [
-        "Vibrant",
-        "Cultural",
+        "Heritage",
+        "Lively",
         "Sensory"
       ],
       "description": "A 14-dish African feast accompanied by Malian puppets and traditional drumming.",
@@ -50592,11 +50579,10 @@
       "numerical_price": "R50",
       "best_season": "All Year",
       "vibes": [
-        "Historic",
-        "Military",
+        "History",
         "colonial"
       ],
-      "description": "Explore South Africa\u2019s oldest colonial building, featuring military museums and ceremonial cannon firing.",
+      "description": "Explore South Africa’s oldest colonial building, featuring military museums and ceremonial cannon firing.",
       "rating": 4.3,
       "embedding": [
         0.06381452828645706,
@@ -50866,16 +50852,16 @@
     },
     {
       "id": "kalky-s-fish-chips-9f0f",
-      "name": "Kalky\u2019s Fish & Chips",
+      "name": "Kalky’s Fish & Chips",
       "category": "Food",
       "tourist_level": 7,
       "price_tier": "R",
       "numerical_price": "R50 - R150",
       "best_season": "All Year",
       "vibes": [
+        "Chill",
         "Local",
-        "Casual",
-        "Coastal"
+        "Water"
       ],
       "description": "A local rite of passage in Kalk Bay serving fresh seafood with sea breezes.",
       "rating": 4.2,
@@ -51155,8 +51141,8 @@
       "best_season": "All Year",
       "vibes": [
         "History",
-        "Sombre",
-        "Educational"
+        "Learning",
+        "Sombre"
       ],
       "description": "Explores the legacy of slavery at the Cape within one of the city's oldest buildings.",
       "rating": 4.5,
@@ -51350,7 +51336,7 @@
         -0.09344286471605301,
         0.07421379536390305,
         0.030610593035817146,
-        -4.9001431762007996e-05,
+        -0.000049001431762007996,
         -0.050905052572488785,
         -0.011933714151382446,
         0.04121256247162819,
@@ -51435,9 +51421,9 @@
       "numerical_price": "R50 - R80",
       "best_season": "All Year",
       "vibes": [
-        "Natural",
-        "Historic",
-        "Family"
+        "Family",
+        "History",
+        "Outdoor"
       ],
       "description": "Features 1.5 million items including fossils, ancient insects, and stone tools dating back millennia.",
       "rating": 4.3,
@@ -51716,8 +51702,8 @@
       "numerical_price": "R50 - R80",
       "best_season": "All Year",
       "vibes": [
-        "Artistic",
-        "Serene",
+        "Art",
+        "Chill",
         "Reflective"
       ],
       "description": "Premier public art museum housing Dutch, European, and contemporary South African masterpieces.",
@@ -51997,9 +51983,9 @@
       "numerical_price": "R60",
       "best_season": "All Year",
       "vibes": [
-        "Sombre",
-        "Educational",
-        "History"
+        "History",
+        "Learning",
+        "Sombre"
       ],
       "description": "A personal memorial to a multi-racial community destroyed during the Apartheid regime.",
       "rating": 4.4,
@@ -52278,9 +52264,9 @@
       "numerical_price": "R60 - R175",
       "best_season": "Summer",
       "vibes": [
-        "Fruity",
         "Family",
-        "Fun"
+        "Fruity",
+        "Lively"
       ],
       "description": "Pick your own juicy strawberries from September to January in the Stellenbosch heartland.",
       "rating": 4.4,
@@ -52520,7 +52506,7 @@
         -0.13573694229125977,
         -0.020392462611198425,
         -0.06276115030050278,
-        4.4121257815277204e-05,
+        0.000044121257815277204,
         -0.07066767662763596,
         -0.019938204437494278,
         0.033492255955934525,
@@ -52559,9 +52545,9 @@
       "numerical_price": "R600-R1000",
       "best_season": "All Year",
       "vibes": [
+        "Fine Dining",
         "Fusion",
-        "Upscale",
-        "Modern"
+        "Urban"
       ],
       "description": "High-class Japanese-Peruvian fusion restaurant on Bree Street.",
       "rating": 4.6,
@@ -52840,9 +52826,9 @@
       "numerical_price": "R600+",
       "best_season": "All Year",
       "vibes": [
-        "Industrial",
         "Tapas",
-        "Chic"
+        "Unique",
+        "Urban"
       ],
       "description": "A top-tier tapas-style restaurant offering creative small plates and stunning city views.",
       "rating": 4.6,
@@ -53122,8 +53108,8 @@
       "best_season": "All Year",
       "vibes": [
         "Boutique",
-        "Scenic",
-        "Chill"
+        "Chill",
+        "Views"
       ],
       "description": "A boutique vineyard producing premium cool-climate wines with breathtaking views of the Constantia Valley.",
       "rating": 4.2,
@@ -53402,9 +53388,9 @@
       "numerical_price": "R650",
       "best_season": "All Year",
       "vibes": [
-        "Adventurous",
-        "Scenic",
-        "High-altitude"
+        "Adventure",
+        "High-altitude",
+        "Views"
       ],
       "description": "Fly across 12 platforms reaching 155 meters high above the historic Constantia winelands.",
       "rating": 4.7,
@@ -53683,11 +53669,11 @@
       "numerical_price": "R70",
       "best_season": "All Year",
       "vibes": [
-        "Vintage",
-        "Cultural",
-        "Classic"
+        "Classic",
+        "Heritage",
+        "Vintage"
       ],
-      "description": "South Africa\u2019s oldest independent art-repertory cinema with unique vintage charm and curated screenings.",
+      "description": "South Africa’s oldest independent art-repertory cinema with unique vintage charm and curated screenings.",
       "rating": 4.6,
       "embedding": [
         -0.03698299080133438,
@@ -53953,7 +53939,7 @@
       "image_url": "/images/venues/the-labia-theatre-aad8.jpg",
       "image_width": 3000,
       "image_height": 4000,
-      "image_attribution": "Jonas \u201cSafariguide Southafrica\u201d Sandstrom"
+      "image_attribution": "Jonas “Safariguide Southafrica” Sandstrom"
     },
     {
       "id": "bo-kaap-cooking-class-1b87",
@@ -53964,8 +53950,8 @@
       "numerical_price": "R700",
       "best_season": "All Year",
       "vibes": [
-        "Authentic",
         "Interactive",
+        "Local",
         "Spicy"
       ],
       "description": "Learn the secrets of traditional Cape Malay cuisine in a local family kitchen.",
@@ -54246,8 +54232,8 @@
       "best_season": "All Year",
       "vibes": [
         "Ceremonial-grade",
-        "Trendy",
-        "It-spot"
+        "It-spot",
+        "Lively"
       ],
       "description": "A specialized matcha bar in Sea Point serving ceremonial-grade drinks in flavors like sea salt and vanilla bean.",
       "rating": 4.9,
@@ -54279,7 +54265,7 @@
         0.00786096416413784,
         -0.0025183542165905237,
         -0.052672017365694046,
-        2.199502705479972e-05,
+        0.00002199502705479972,
         0.06220477074384689,
         -0.009482954628765583,
         0.04555802047252655,
@@ -54527,7 +54513,7 @@
       "best_season": "All Year",
       "vibes": [
         "Michelin-star",
-        "Panoramic",
+        "Views",
         "Winelands"
       ],
       "description": "Sophisticated estate offering fine dining with spectacular Table Mountain views.",
@@ -54809,9 +54795,9 @@
       "vibes": [
         "Adrenaline",
         "Family",
-        "Fun"
+        "Lively"
       ],
-      "description": "Africa\u2019s first downhill toboggan track featuring twists, turns, and 17 corners.",
+      "description": "Africa’s first downhill toboggan track featuring twists, turns, and 17 corners.",
       "rating": 4.6,
       "embedding": [
         0.0846153274178505,
@@ -55088,9 +55074,8 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Adventurous",
-        "Panoramic",
-        "Active"
+        "Adventure",
+        "Views"
       ],
       "description": "A 90-minute moderate climb featuring 360-degree views of the city and Table Mountain.",
       "rating": 4.8,
@@ -55341,7 +55326,7 @@
         0.048874884843826294,
         -0.024615319445729256,
         -0.043620698153972626,
-        -3.332505002617836e-05,
+        -0.00003332505002617836,
         0.04159564897418022,
         0.04367543011903763,
         0.0939733237028122,
@@ -55369,7 +55354,7 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Lush",
+        "Outdoor",
         "Strenuous",
         "Surprising"
       ],
@@ -55532,7 +55517,7 @@
         0.08771407604217529,
         0.03996150195598602,
         0.013060367666184902,
-        9.271248563891277e-05,
+        0.00009271248563891277,
         0.02886824868619442,
         -0.011931694112718105,
         -0.022818557918071747,
@@ -55931,9 +55916,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
+        "Art",
         "Chill",
-        "Surfing",
-        "Artistic"
+        "Surfing"
       ],
       "description": "A vibrant beach town known for its colorful Victorian huts and surfing culture.",
       "rating": null,
@@ -55978,7 +55963,7 @@
         -0.08917081356048584,
         -0.045683566480875015,
         0.022195087745785713,
-        -4.825910309591563e-06,
+        -0.000004825910309591563,
         0.04224265739321709,
         0.0958574041724205,
         -0.0008007436408661306,
@@ -55994,7 +55979,7 @@
         0.011237864382565022,
         -0.07174662500619888,
         -0.05197970196604729,
-        -5.17146918355138e-06,
+        -0.00000517146918355138,
         -0.0029009797144681215,
         0.09366107732057571,
         0.07452864199876785,
@@ -56205,18 +56190,18 @@
     },
     {
       "id": "the-company-s-garden-7e3d",
-      "name": "The Company\u2019s Garden",
+      "name": "The Company’s Garden",
       "category": "Nature",
       "tourist_level": 8,
       "price_tier": "Free",
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Historic",
-        "Peaceful",
-        "Central"
+        "Central",
+        "Chill",
+        "History"
       ],
-      "description": "South Africa\u2019s oldest park, featuring historic statues, a rose garden, and tame squirrels.",
+      "description": "South Africa’s oldest park, featuring historic statues, a rose garden, and tame squirrels.",
       "rating": 4.3,
       "embedding": [
         0.12375886738300323,
@@ -56324,7 +56309,7 @@
         0.016085755079984665,
         -0.005180772393941879,
         0.052942901849746704,
-        1.609792548151745e-06,
+        0.000001609792548151745,
         0.053281042724847794,
         -0.022244714200496674,
         0.0200588870793581,
@@ -56493,9 +56478,9 @@
       "numerical_price": "Free Entry",
       "best_season": "All Year",
       "vibes": [
-        "Social",
-        "Artisanal",
-        "Fresh"
+        "Fresh",
+        "Lively",
+        "Local"
       ],
       "description": "A vibrant community-run farmers' market connecting small-scale farmers with urban consumers.",
       "rating": 4.7,
@@ -56775,8 +56760,8 @@
       "best_season": "All Year",
       "vibes": [
         "Hipster",
-        "Social",
-        "Artisanal"
+        "Lively",
+        "Local"
       ],
       "description": "A weekend gathering of local artisans, designers, and foodies at the Old Biscuit Mill.",
       "rating": 4.6,
@@ -57056,8 +57041,8 @@
       "best_season": "All Year",
       "vibes": [
         "Artisan",
-        "Trendy",
-        "Culinary"
+        "Culinary",
+        "Lively"
       ],
       "description": "A creative hub in Woodstock hosting the city's most popular artisan food markets.",
       "rating": 4.4,
@@ -57336,9 +57321,9 @@
       "numerical_price": "From R2,420",
       "best_season": "All Year",
       "vibes": [
+        "Adventure",
         "Aerial",
-        "Thrilling",
-        "Posh"
+        "Fine Dining"
       ],
       "description": "Scenic flights over the Peninsula offering unparalleled views of Table Mountain.",
       "rating": 4.7,
@@ -57412,7 +57397,7 @@
         -0.10025620460510254,
         0.028341254219412804,
         -0.04810934513807297,
-        -9.355391375720501e-05,
+        -0.00009355391375720501,
         0.055057015269994736,
         -0.03568219020962715,
         -0.040794625878334045,
@@ -57617,8 +57602,8 @@
       "numerical_price": "R1,900",
       "best_season": "All Year",
       "vibes": [
-        "Thrilling",
-        "Panoramic",
+        "Adventure",
+        "Views",
         "Wind-swept"
       ],
       "description": "Soar from Signal Hill or Lion's Head for unbeatable views of the Atlantic Seaboard.",
@@ -57661,7 +57646,7 @@
         0.01712089218199253,
         0.04288278520107269,
         -0.026157326996326447,
-        -3.9818158256821334e-05,
+        -0.000039818158256821334,
         -0.03084396943449974,
         -0.008860684931278229,
         0.007981939241290092,
@@ -57898,9 +57883,7 @@
       "numerical_price": "R100-R300",
       "best_season": "All Year",
       "vibes": [
-        "Bustling",
-        "Lively",
-        "Social"
+        "Lively"
       ],
       "description": "A Sea Point indoor market open 365 days a year with food stalls, live music, and bars.",
       "rating": 4.5,
@@ -58156,7 +58139,7 @@
         0.011637283489108086,
         -0.055195409804582596,
         -0.01592271961271763,
-        6.637084152316675e-05,
+        0.00006637084152316675,
         0.06283630430698395,
         0.0031920841429382563,
         0.05946827679872513,
@@ -58179,9 +58162,8 @@
       "numerical_price": "R100+",
       "best_season": "Summer",
       "vibes": [
-        "Rustic",
         "Lively",
-        "Social"
+        "Rustic"
       ],
       "description": "A vibrant Hout Bay weekend market featuring live music, local crafts, and diverse street food stalls.",
       "rating": 4.4,
@@ -58460,7 +58442,7 @@
       "numerical_price": "R1000+",
       "best_season": "All Year",
       "vibes": [
-        "Intimate",
+        "Cozy",
         "Masterful",
         "Seasonal"
       ],
@@ -58741,9 +58723,9 @@
       "numerical_price": "R1200+",
       "best_season": "All Year",
       "vibes": [
-        "Experimental",
-        "Intimate",
-        "Creative"
+        "Art",
+        "Cozy",
+        "Experimental"
       ],
       "description": "An experimental fine-dining laboratory by Luke Dale Roberts exploring global flavors through a South African lens.",
       "rating": 4.7,
@@ -59022,11 +59004,11 @@
       "numerical_price": "R145 - R155",
       "best_season": "All Year",
       "vibes": [
-        "Historic",
-        "Scenic",
-        "Elegant"
+        "Fine Dining",
+        "History",
+        "Views"
       ],
-      "description": "South Africa\u2019s oldest wine-producing estate, famous for its historic Grand Constance dessert wine.",
+      "description": "South Africa’s oldest wine-producing estate, famous for its historic Grand Constance dessert wine.",
       "rating": 4.4,
       "embedding": [
         0.020925702527165413,
@@ -59303,9 +59285,7 @@
       "numerical_price": "R150-R250",
       "best_season": "All Year",
       "vibes": [
-        "Trendy",
-        "Social",
-        "Vibrant"
+        "Lively"
       ],
       "description": "An upbeat Sea Point institution known for high-quality Australian-style brunch and viral pancake stacks.",
       "rating": 4.5,
@@ -59517,7 +59497,7 @@
         -0.0500929020345211,
         0.000386648578569293,
         0.05014761537313461,
-        -6.839555135229602e-05,
+        -0.00006839555135229602,
         0.051460810005664825,
         -0.09323681145906448,
         0.14390423893928528,
@@ -60146,8 +60126,8 @@
       "numerical_price": "R200-R350",
       "best_season": "All Year",
       "vibes": [
-        "Italian",
         "Family",
+        "International",
         "View"
       ],
       "description": "Casual urban-themed restaurant with great views of Granger Bay.",
@@ -60428,8 +60408,8 @@
       "best_season": "Summer",
       "vibes": [
         "Beachy",
-        "Chic",
-        "Boho"
+        "Boho",
+        "Unique"
       ],
       "description": "Bougie Camps Bay rooftop bar offering world-class cocktails and panoramic views of the Atlantic sunset.",
       "rating": 4.3,
@@ -60708,8 +60688,8 @@
       "numerical_price": "R30 - R60",
       "best_season": "All Year",
       "vibes": [
+        "Lively",
         "Steampunk",
-        "Trendy",
         "Unique"
       ],
       "description": "A steampunk-inspired coffee roasting warehouse twice dubbed \"The World's Best Coffee Shop\".",
@@ -60810,7 +60790,7 @@
         0.1057000458240509,
         0.0030262067448347807,
         0.098981574177742,
-        3.928118530893698e-05,
+        0.00003928118530893698,
         0.013654128648340702,
         -0.029798723757267,
         0.029422258958220482,
@@ -60990,8 +60970,8 @@
       "best_season": "All Year",
       "vibes": [
         "Colorful",
-        "Cultural",
-        "Historic"
+        "Heritage",
+        "History"
       ],
       "description": "Discover Islamic heritage and local history inside one of Bo-Kaap's oldest 1760s homes.",
       "rating": 4.3,
@@ -61270,8 +61250,8 @@
       "numerical_price": "R595",
       "best_season": "All Year",
       "vibes": [
-        "Iconic",
-        "Fancy",
+        "Famous",
+        "Fine Dining",
         "Lavish"
       ],
       "description": "A lavish afternoon tea experience featuring finger sandwiches and bubbly in a pink hotel.",
@@ -61544,16 +61524,16 @@
     },
     {
       "id": "chapman-s-peak-drive-8a9a",
-      "name": "Chapman\u2019s Peak Drive",
+      "name": "Chapman’s Peak Drive",
       "category": "Activity",
       "tourist_level": 8,
       "price_tier": "R",
       "numerical_price": "R61 - R66",
       "best_season": "Summer/Autumn",
       "vibes": [
-        "Scenic",
         "Driving",
-        "Coastal"
+        "Views",
+        "Water"
       ],
       "description": "One of the world's most spectacular coastal drives winding between Hout Bay and Noordhoek.",
       "rating": 4.8,
@@ -61832,9 +61812,9 @@
       "numerical_price": "R68-R150",
       "best_season": "All Year",
       "vibes": [
-        "Artisanal",
         "Hipster",
-        "Bustling"
+        "Lively",
+        "Local"
       ],
       "description": "Famous for sourdough loaves, \"doughssants,\" and gourmet pies, this is a cornerstone of Bree Street culture.",
       "rating": 4.5,
@@ -62106,16 +62086,16 @@
     },
     {
       "id": "kleinsky-s-deli-a568",
-      "name": "Kleinsky\u2019s Deli",
+      "name": "Kleinsky’s Deli",
       "category": "Food",
       "tourist_level": 8,
       "price_tier": "R",
       "numerical_price": "R80-R150",
       "best_season": "All Year",
       "vibes": [
-        "Jewish-deli",
         "Bagels",
-        "Authentic"
+        "Jewish-deli",
+        "Local"
       ],
       "description": "A traditional New York-style deli famous for hand-rolled, slow-fermented bagels and unique potato latke eggs Benedict.",
       "rating": 4.6,
@@ -62305,7 +62285,7 @@
         0.11529481410980225,
         -0.0013220832915976644,
         0.025375554338097572,
-        2.8381798529153457e-06,
+        0.0000028381798529153457,
         -0.09131259471178055,
         -0.04818962886929512,
         0.1166459247469902,
@@ -62675,11 +62655,11 @@
       "numerical_price": "R82-R144",
       "best_season": "All Year",
       "vibes": [
+        "Outdoor",
         "Pristine",
-        "Wild",
         "Turquoise"
       ],
-      "description": "Stunning park featuring Kraalbaai Beach\u2019s warm, shallow waters and incredible seasonal flower displays.",
+      "description": "Stunning park featuring Kraalbaai Beach’s warm, shallow waters and incredible seasonal flower displays.",
       "rating": 4.6,
       "embedding": [
         0.038657836616039276,
@@ -62957,10 +62937,10 @@
       "best_season": "All Year",
       "vibes": [
         "Colorful",
-        "Historic",
-        "Cultural"
+        "Heritage",
+        "History"
       ],
-      "description": "Wander through the bright houses of Signal Hill to explore the city\u2019s rich Cape Malay history.",
+      "description": "Wander through the bright houses of Signal Hill to explore the city’s rich Cape Malay history.",
       "rating": null,
       "embedding": [
         0.12135276198387146,
@@ -63237,9 +63217,9 @@
       "numerical_price": "Free",
       "best_season": "Summer",
       "vibes": [
+        "Pristine",
         "Romantic",
-        "Coastal",
-        "Pristine"
+        "Water"
       ],
       "description": "World-renowned white-sand beach favored for its sheltered cove and \"seeing and being seen\".",
       "rating": 4.7,
@@ -63518,9 +63498,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Artistic",
-        "Social",
-        "Evening"
+        "Art",
+        "Evening",
+        "Lively"
       ],
       "description": "A monthly cultural event where city galleries and eateries stay open late for an urban art walk.",
       "rating": 4.7,
@@ -63799,9 +63779,9 @@
       "numerical_price": "R110 - R515",
       "best_season": "Summer/Spring",
       "vibes": [
-        "Wild",
-        "Coastal",
-        "Dramatic"
+        "Dramatic",
+        "Outdoor",
+        "Water"
       ],
       "description": "Discover rugged cliffs, lighthouses, and diverse wildlife at the southwestern-most tip of Africa.",
       "rating": null,
@@ -64080,9 +64060,9 @@
       "numerical_price": "R1785",
       "best_season": "All Year",
       "vibes": [
-        "Sophisticated",
-        "Sunset",
-        "Historical"
+        "Fine Dining",
+        "History",
+        "Sunset"
       ],
       "description": "Fine dining set in a historic 17th-century hunting lodge with breathtaking views over Camps Bay.",
       "rating": 4.6,
@@ -64361,7 +64341,7 @@
       "numerical_price": "R1800+",
       "best_season": "All Year",
       "vibes": [
-        "Elegant",
+        "Fine Dining",
         "Maritime",
         "Theatrical"
       ],
@@ -64643,8 +64623,8 @@
       "best_season": "All Year",
       "vibes": [
         "Family",
-        "Marine",
-        "Educational"
+        "Learning",
+        "Marine"
       ],
       "description": "An underwater wonderland showcasing diverse marine life from the Atlantic and Indian Oceans.",
       "rating": 4.6,
@@ -64923,9 +64903,9 @@
       "numerical_price": "R2175",
       "best_season": "All Year",
       "vibes": [
+        "Fine Dining",
         "Japanese-Fusion",
-        "Industrial",
-        "Sophisticated"
+        "Urban"
       ],
       "description": "A world-class kaiseki-style experience blending Japanese techniques with local South African ingredients.",
       "rating": 4.7,
@@ -65204,9 +65184,9 @@
       "numerical_price": "R250-R375",
       "best_season": "All Year",
       "vibes": [
-        "Romantic",
-        "Victorian",
-        "Atmospheric"
+        "Architecture",
+        "Cozy",
+        "Romantic"
       ],
       "description": "Housed in a lush Victorian building, this spot features fairy-lit gardens and a glamorous brasserie-style menu.",
       "rating": 4.4,
@@ -65485,7 +65465,7 @@
       "numerical_price": "R26-R245",
       "best_season": "Summer",
       "vibes": [
-        "Playful",
+        "Family",
         "Unique",
         "Wildlife"
       ],
@@ -65770,7 +65750,7 @@
         "Intense",
         "Marine"
       ],
-      "description": "Meet bronze whaler sharks face-to-face in the waters off Gansbaai or Simon\u2019s Town.",
+      "description": "Meet bronze whaler sharks face-to-face in the waters off Gansbaai or Simon’s Town.",
       "rating": 4.8,
       "embedding": [
         0.08375659584999084,
@@ -66328,9 +66308,9 @@
       "numerical_price": "R360",
       "best_season": "Summer",
       "vibes": [
-        "Musical",
-        "Relaxed",
-        "Scenic"
+        "Chill",
+        "Music",
+        "Views"
       ],
       "description": "Enjoy live music from top local artists on the lawns of the world-renowned botanical gardens.",
       "rating": 4.8,
@@ -66890,9 +66870,9 @@
       "numerical_price": "R400+",
       "best_season": "All Year",
       "vibes": [
-        "Coastal",
-        "Elegant",
-        "Scenic"
+        "Fine Dining",
+        "Views",
+        "Water"
       ],
       "description": "Upscale seafood dining with floor-to-ceiling windows providing panoramic views of the crashing Kalk Bay waves.",
       "rating": 4.2,
@@ -66948,7 +66928,7 @@
         0.02812599018216133,
         0.06896428763866425,
         0.017810478806495667,
-        1.0028480573964771e-05,
+        0.000010028480573964771,
         -0.017598606646060944,
         -0.01702919974923134,
         0.015930116176605225,
@@ -67171,9 +67151,9 @@
       "numerical_price": "R55",
       "best_season": "All Year",
       "vibes": [
-        "Steampunk",
-        "Iconic",
-        "Artisanal"
+        "Famous",
+        "Local",
+        "Steampunk"
       ],
       "description": "This internationally acclaimed steampunk-themed roastery serves premium single-origin coffee in a converted warehouse.",
       "rating": 4.5,
@@ -67445,16 +67425,16 @@
     },
     {
       "id": "chapman-s-peak-930a",
-      "name": "Chapman\u2019s Peak",
+      "name": "Chapman’s Peak",
       "category": "Nature",
       "tourist_level": 9,
       "price_tier": "R",
       "numerical_price": "R66 (per car)",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
         "Breathless",
-        "Coastal"
+        "Views",
+        "Water"
       ],
       "description": "A winding 9km road carved into cliffs offering world-famous oceanic vistas.",
       "rating": 4.8,
@@ -67613,7 +67593,7 @@
         0.05306745320558548,
         0.01846315525472164,
         0.011534765362739563,
-        9.52633999986574e-05,
+        0.0000952633999986574,
         0.008296496234834194,
         -0.0075371344573795795,
         -0.01335472334176302,
@@ -67651,7 +67631,7 @@
         0.032232075929641724,
         -0.12149785459041595,
         0.018802044913172722,
-        -7.45241268305108e-05,
+        -0.0000745241268305108,
         -0.10121474415063858,
         -0.04079215228557587,
         -0.11155712604522705,
@@ -67733,9 +67713,9 @@
       "numerical_price": "Free Access",
       "best_season": "All Year",
       "vibes": [
-        "Lively",
         "Hub",
-        "Coastal"
+        "Lively",
+        "Water"
       ],
       "description": "A working harbor-turned-neighborhood offering world-class shopping, dining, and family-friendly fun.",
       "rating": null,
@@ -67992,7 +67972,7 @@
         0.012065217830240726,
         0.06620077788829803,
         -0.041489191353321075,
-        4.7425863158423454e-05,
+        0.000047425863158423454,
         -0.03843182697892189,
         0.04143865406513214,
         -0.000695250288117677
@@ -68015,8 +67995,8 @@
       "best_season": "Summer",
       "vibes": [
         "Fine-Dining",
-        "Vineyard",
-        "Forest"
+        "Forest",
+        "Wine"
       ],
       "description": "Award-winning French-Asian fusion served in a theatrical forest setting high above the Constantia valley.",
       "rating": 4.8,
@@ -68295,9 +68275,8 @@
       "numerical_price": "R360 - R490",
       "best_season": "Summer/Spring",
       "vibes": [
-        "Iconic",
-        "Panoramic",
-        "Scenic"
+        "Famous",
+        "Views"
       ],
       "description": "Ride a rotating cable car for 360-degree views from the city's definitive silhouette.",
       "rating": 4.5,
@@ -68576,9 +68555,9 @@
       "numerical_price": "R40-R250",
       "best_season": "Summer/Spring",
       "vibes": [
-        "Lush",
-        "Scenic",
-        "Relaxed"
+        "Chill",
+        "Outdoor",
+        "Views"
       ],
       "description": "A world-renowned botanical garden perfect for mountain-side picnics and summer sunset concerts.",
       "rating": 4.8,
@@ -68857,8 +68836,8 @@
       "numerical_price": "R450-R600",
       "best_season": "All Year",
       "vibes": [
+        "History",
         "Powerful",
-        "Historical",
         "Somber"
       ],
       "description": "A UNESCO World Heritage site documenting South Africa's struggle for freedom and Nelson Mandela's imprisonment.",
@@ -69126,7 +69105,7 @@
       "image_url": "/images/venues/robben-island-21b2.jpg",
       "image_width": 4608,
       "image_height": 3456,
-      "image_attribution": "Leandro Caama\u00f1o Vitureira",
+      "image_attribution": "Leandro Caamaño Vitureira",
       "suburb": "Robben Island"
     },
     {
@@ -69139,7 +69118,7 @@
       "best_season": "All Year",
       "vibes": [
         "Extreme",
-        "Iconic",
+        "Famous",
         "Vertical"
       ],
       "description": "Experience the world's highest commercial abseil by dropping 112 meters off the iconic plateau.",
@@ -69420,8 +69399,8 @@
       "best_season": "All Year",
       "vibes": [
         "Famous",
-        "Scenic",
-        "Wild"
+        "Outdoor",
+        "Views"
       ],
       "description": "A hidden labyrinth of corridors and ancient yellowwood trees",
       "embedding": [
@@ -69531,7 +69510,7 @@
         -0.05371394380927086,
         0.1831648349761963,
         0.06498861312866211,
-        5.8433652156963944e-06,
+        0.0000058433652156963944,
         -0.015596158802509308,
         -0.01359469722956419,
         0.041220396757125854,
@@ -69688,21 +69667,21 @@
       "image_width": 4032,
       "image_height": 3024,
       "image_attribution": "Niamatullah Edwards",
-      "rating": 5.0,
+      "rating": 5,
       "suburb": "Oudekraal (Nature Reserve)"
     },
     {
       "id": "judas-peak-a9a0",
-      "name": "Judas\u2019 Peak",
+      "name": "Judas’ Peak",
       "category": "Nature",
       "tourist_level": 3,
       "price_tier": "Free",
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Active",
+        "Adventure",
         "Family",
-        "Nature"
+        "Outdoor"
       ],
       "description": "Last of the 12 Apostles with unparalleled Atlantic views",
       "embedding": [
@@ -69980,7 +69959,7 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Peaceful",
+        "Chill",
         "Family",
         "Famous"
       ],
@@ -70262,8 +70241,8 @@
       "best_season": "All Year",
       "vibes": [
         "Famous",
-        "Scenic",
-        "Wild"
+        "Outdoor",
+        "Views"
       ],
       "description": "Rugged wild trail seeing the Sentinel from above",
       "embedding": [
@@ -70390,7 +70369,7 @@
         0.023205075412988663,
         0.03218222036957741,
         -0.0031494114082306623,
-        6.285589915933087e-05,
+        0.00006285589915933087,
         -0.030149659141898155,
         -0.08773890137672424,
         0.02230171486735344,
@@ -70530,7 +70509,7 @@
       "image_width": 3840,
       "image_height": 2160,
       "image_attribution": "Bolelang Rakeepile",
-      "rating": 5.0,
+      "rating": 5,
       "suburb": "Hout Bay"
     },
     {
@@ -70542,9 +70521,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Active",
+        "Adventure",
         "Family",
-        "Nature"
+        "Outdoor"
       ],
       "description": "Family-friendly hike to a massive cave with Silvermine Dam swim",
       "embedding": [
@@ -70822,7 +70801,7 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Active",
+        "Adventure",
         "Family",
         "Forest"
       ],
@@ -71103,9 +71082,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Active",
+        "Adventure",
         "Family",
-        "Nature"
+        "Outdoor"
       ],
       "description": "Winter waterfalls or February rare red disa flowers",
       "embedding": [
@@ -71383,9 +71362,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
+        "Famous",
         "Hidden",
-        "Famous"
+        "Views"
       ],
       "description": "Best view in the Winelands overlooking Hellshoogte pass",
       "embedding": [
@@ -71652,7 +71631,7 @@
       "image_width": 1280,
       "image_height": 960,
       "image_attribution": "Oliver Burger",
-      "rating": 5.0,
+      "rating": 5,
       "suburb": "The Ridge"
     },
     {
@@ -71664,9 +71643,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Active",
+        "Adventure",
         "Family",
-        "Nature"
+        "Outdoor"
       ],
       "description": "Jungle hike with river crossing to spectacular waterfalls",
       "embedding": [
@@ -71945,9 +71924,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Active",
+        "Adventure",
         "Family",
-        "Nature"
+        "Outdoor"
       ],
       "description": "Serious climb with unmatched views back to Cape Town",
       "embedding": [
@@ -72226,7 +72205,6 @@
       "best_season": "All Year",
       "vibes": [
         "Famous",
-        "Tourist",
         "Forest"
       ],
       "description": "Magical pine forest and fynbos walk to secluded waterfall",
@@ -72245,7 +72223,7 @@
         0.00866546481847763,
         -0.05072932317852974,
         -0.07914537191390991,
-        -6.524287982756505e-06,
+        -0.000006524287982756505,
         -0.04743954539299011,
         -0.02004857175052166,
         0.010834811255335808,
@@ -72507,8 +72485,8 @@
       "best_season": "All Year",
       "vibes": [
         "Family",
-        "Nature",
-        "Famous"
+        "Famous",
+        "Outdoor"
       ],
       "description": "Mountain conservation area with a number of hiking trails & vistas over the Franschhoek Valley.",
       "embedding": [
@@ -72787,11 +72765,11 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "bakeries (5 stars, 573 reviews)",
-      "rating": 5.0,
+      "rating": 5,
       "suburb": "Sweet LionHeart",
       "embedding": [
         0.05944069102406502,
@@ -73067,9 +73045,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Food",
-        "Scenic",
-        "Social"
+        "Lively",
+        "Views"
       ],
       "description": "Contemporary cuisine fusing local ingredients with French flair in upmarket vineyard restaurant.",
       "rating": 4.8,
@@ -73320,7 +73297,7 @@
         0.004339482635259628,
         0.07777129113674164,
         -0.022097421810030937,
-        5.7150791690219194e-05,
+        0.000057150791690219194,
         -0.010115358047187328,
         -0.012509346939623356,
         0.022570159286260605,
@@ -73348,9 +73325,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Food",
-        "Scenic",
-        "Social"
+        "Lively",
+        "Views"
       ],
       "description": "seafood restaurants (4.8 stars, 1116 reviews)",
       "rating": 4.8,
@@ -73412,7 +73388,7 @@
         -0.021729394793510437,
         -0.09797243773937225,
         -0.020106662064790726,
-        1.2547598089440726e-05,
+        0.000012547598089440726,
         0.0008074041688814759,
         0.09741462022066116,
         0.06962534040212631,
@@ -73629,9 +73605,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Food",
-        "Scenic",
-        "Social"
+        "Lively",
+        "Views"
       ],
       "description": "seafood restaurants (4.8 stars, 591 reviews)",
       "rating": 4.8,
@@ -73828,7 +73803,7 @@
         0.03678984194993973,
         0.047031890600919724,
         -0.0772484764456749,
-        5.11296229888103e-06,
+        0.00000511296229888103,
         0.04425481706857681,
         -0.03926118090748787,
         -0.0141910957172513,
@@ -73910,9 +73885,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Food",
-        "Scenic",
-        "Social"
+        "Lively",
+        "Views"
       ],
       "description": "seafood restaurants (4.8 stars, 524 reviews)",
       "rating": 4.8,
@@ -74191,9 +74165,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Food",
         "Cozy",
-        "Social"
+        "Lively"
       ],
       "description": "breakfast spots (4.8 stars, 464 reviews)",
       "rating": 4.8,
@@ -74472,9 +74445,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Tourist",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "wine farms (4.8 stars, 453 reviews)",
       "rating": 4.8,
@@ -74549,7 +74521,7 @@
         -0.05542745068669319,
         0.026514101773500443,
         0.0187655221670866,
-        -7.77975728851743e-05,
+        -0.0000777975728851743,
         0.0905347689986229,
         0.010392647236585617,
         -0.017455728724598885,
@@ -74753,9 +74725,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Food",
-        "Scenic",
-        "Social"
+        "Lively",
+        "Views"
       ],
       "description": "seafood restaurants (4.7 stars, 3562 reviews)",
       "rating": 4.7,
@@ -75016,7 +74987,7 @@
         0.09447889029979706,
         -0.08700250834226608,
         0.013186078518629074,
-        -9.551505354465917e-05
+        -0.00009551505354465917
       ],
       "place_id": "ChIJ75RsYVyyzR0RHE2BL4cmSaw",
       "maps_url": "https://maps.google.com/?cid=12414496209882926364&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
@@ -75034,9 +75005,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Food",
-        "Scenic",
-        "Social"
+        "Lively",
+        "Views"
       ],
       "description": "bakeries (4.7 stars, 2000 reviews)",
       "rating": 4.7,
@@ -75315,9 +75285,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Food",
-        "Nature",
-        "Lively"
+        "Lively",
+        "Outdoor"
       ],
       "description": "Renowned wine estate with sunset vineyard or cellar tours, themed gardens and upscale restaurant.",
       "rating": 4.7,
@@ -75596,9 +75565,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Food",
-        "Scenic",
-        "Social"
+        "Lively",
+        "Views"
       ],
       "description": "Beachfront venue with a covered terrace, serving line-caught fish with sauces and seafood platters.",
       "rating": 4.7,
@@ -75877,9 +75845,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Food",
-        "Tourist",
-        "Scenic"
+        "Famous",
+        "Views"
       ],
       "description": "A fine-dining restaurant with wine pairings & estate views, plus tastings, farm tours & a shop.",
       "rating": 4.7,
@@ -76019,7 +75986,7 @@
         -0.061527106910943985,
         0.0503530278801918,
         -0.03357797488570213,
-        4.3322204874129966e-05,
+        0.000043322204874129966,
         0.022501422092318535,
         -0.10544319450855255,
         0.06470377743244171,
@@ -76158,9 +76125,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Food",
-        "Scenic",
-        "Social"
+        "Lively",
+        "Views"
       ],
       "description": "restaurants (4.7 stars, 1180 reviews)",
       "rating": 4.7,
@@ -76439,9 +76405,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Food",
-        "Scenic",
-        "Social"
+        "Lively",
+        "Views"
       ],
       "description": "Vineyard eatery offering creative modern cooking, plus tasting menus and wine pairings.",
       "rating": 4.7,
@@ -76720,9 +76685,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Food",
-        "Scenic",
-        "Social"
+        "Lively",
+        "Views"
       ],
       "description": "tapas bars (4.7 stars, 983 reviews)",
       "rating": 4.7,
@@ -76958,7 +76922,7 @@
         -0.07463331520557404,
         0.0897550955414772,
         -0.010079155676066875,
-        7.436083251377568e-05,
+        0.00007436083251377568,
         -0.03604837879538536,
         -0.026438729837536812,
         -0.02018270269036293,
@@ -77001,9 +76965,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Active",
-        "Nature",
-        "Peaceful"
+        "Adventure",
+        "Chill",
+        "Outdoor"
       ],
       "description": "hiking trails (4.9 stars, 249 reviews)",
       "rating": 4.9,
@@ -77271,7 +77235,7 @@
       "image_url": "/images/venues/india-venster-hiking-trail-dae1.jpg",
       "image_width": 3024,
       "image_height": 4032,
-      "image_attribution": "Bal\u00e1zs Emri"
+      "image_attribution": "Balázs Emri"
     },
     {
       "id": "lions-head-hiking-trail-1175",
@@ -77282,9 +77246,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Active",
-        "Nature",
-        "Peaceful"
+        "Adventure",
+        "Chill",
+        "Outdoor"
       ],
       "description": "Popular, screw-top hiking trail boasting panoramic views of the city alongside coastal views.",
       "rating": 4.8,
@@ -77563,8 +77527,8 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "Panoramic pullout & popular sunset spot on Chapman's Peak Drive offering epic vistas of Hout Bay.",
       "rating": 4.8,
@@ -77843,8 +77807,8 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "botanical gardens (4.8 stars, 1163 reviews)",
       "rating": 4.8,
@@ -78123,9 +78087,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Nature",
-        "Tourist",
-        "Peaceful"
+        "Chill",
+        "Famous",
+        "Outdoor"
       ],
       "description": "nature reserves (4.8 stars, 837 reviews)",
       "rating": 4.8,
@@ -78404,9 +78368,8 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Tourist",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "scenic drives (4.8 stars, 744 reviews)",
       "rating": 4.8,
@@ -78630,7 +78593,7 @@
         -0.019316919147968292,
         0.018992720171809196,
         0.023004695773124695,
-        3.8493479223689064e-05,
+        0.000038493479223689064,
         0.11174094676971436,
         -0.09385591000318527,
         0.03023165464401245,
@@ -78685,9 +78648,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Active",
-        "Nature",
-        "Peaceful"
+        "Adventure",
+        "Chill",
+        "Outdoor"
       ],
       "description": "hiking trails (4.8 stars, 728 reviews)",
       "rating": 4.8,
@@ -78966,9 +78929,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Active",
-        "Nature",
-        "Tourist"
+        "Adventure",
+        "Famous",
+        "Outdoor"
       ],
       "description": "hiking trails (4.8 stars, 501 reviews)",
       "rating": 4.8,
@@ -79247,9 +79210,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Active",
-        "Nature",
-        "Peaceful"
+        "Adventure",
+        "Chill",
+        "Outdoor"
       ],
       "description": "hiking trails (4.8 stars, 446 reviews)",
       "rating": 4.8,
@@ -79528,8 +79491,8 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "botanical gardens (4.8 stars, 440 reviews)",
       "rating": 4.8,
@@ -79808,8 +79771,8 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "scenic drives (4.8 stars, 375 reviews)",
       "rating": 4.8,
@@ -80088,9 +80051,9 @@
       "numerical_price": "Free",
       "best_season": "All Year",
       "vibes": [
-        "Waterfall",
-        "Scenic",
-        "Tourist"
+        "Famous",
+        "Views",
+        "Waterfall"
       ],
       "description": "waterfalls (4.8 stars, 304 reviews)",
       "rating": 4.8,
@@ -80369,8 +80332,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "landmarks (4.8 stars, 1799 reviews)",
       "rating": 4.8,
@@ -80649,9 +80612,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Tourist",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "This modern museum features exhibits exploring the science & history behind diamonds.",
       "rating": 4.8,
@@ -80763,7 +80725,7 @@
         -0.03655562922358513,
         0.12891985476016998,
         0.059309132397174835,
-        1.603030068508815e-05,
+        0.00001603030068508815,
         -0.02107824571430683,
         -0.06686029583215714,
         0.018965421244502068,
@@ -80781,7 +80743,7 @@
         -0.04398177191615105,
         0.018540354445576668,
         -0.036355599761009216,
-        -2.9789744075969793e-05,
+        -0.000029789744075969793,
         -0.09121404588222504,
         -0.03092976287007332,
         -0.07421142607927322,
@@ -80930,9 +80892,9 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Active",
-        "Nature",
-        "Peaceful"
+        "Adventure",
+        "Chill",
+        "Outdoor"
       ],
       "description": "Embarkation point for Table Mountain reserve hikes leading to the cable car & summit.",
       "rating": 4.8,
@@ -81211,8 +81173,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "theaters (4.8 stars, 310 reviews)",
       "rating": 4.8,
@@ -81491,9 +81453,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Tourist",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "museums (4.8 stars, 233 reviews)",
       "rating": 4.8,
@@ -81772,8 +81733,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "theaters (4.8 stars, 227 reviews)",
       "rating": 4.8,
@@ -82052,8 +82013,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "landmarks (4.8 stars, 217 reviews)",
       "rating": 4.8,
@@ -82332,8 +82293,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "Weekly farmers' market offering produce, breads, eggs & dairy products, plus artisanal foods.",
       "rating": 4.7,
@@ -82509,7 +82470,7 @@
         -0.0771072581410408,
         -0.08198625594377518,
         0.026738807559013367,
-        -6.049229341442697e-05,
+        -0.00006049229341442697,
         0.03912762925028801,
         -0.045035041868686676,
         0.09456641227006912,
@@ -82612,9 +82573,9 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Active",
-        "Nature",
-        "Tourist"
+        "Adventure",
+        "Famous",
+        "Outdoor"
       ],
       "description": "viewpoints (4.7 stars, 1670 reviews)",
       "rating": 4.7,
@@ -82893,8 +82854,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "museums (4.7 stars, 1117 reviews)",
       "rating": 4.7,
@@ -83173,9 +83134,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Tourist",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "tourist attractions (4.7 stars, 548 reviews)",
       "rating": 4.7,
@@ -83210,7 +83170,7 @@
         -0.0288546122610569,
         0.03796125948429108,
         0.05032545328140259,
-        -8.3927036030218e-05,
+        -0.000083927036030218,
         0.04910930618643761,
         -0.06816232204437256,
         0.06468760967254639,
@@ -83454,9 +83414,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Food",
         "Lively",
-        "Scenic"
+        "Views"
       ],
       "description": "theaters (4.7 stars, 543 reviews)",
       "rating": 4.7,
@@ -83735,8 +83694,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "theaters (4.7 stars, 525 reviews)",
       "rating": 4.7,
@@ -84015,8 +83974,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "Drama, music and dance hosted in a large 1970s complex including an arena and an opera house.",
       "rating": 4.6,
@@ -84117,7 +84076,7 @@
         -0.036532334983348846,
         0.031719692051410675,
         -0.02265496924519539,
-        7.642590935574844e-05,
+        0.00007642590935574844,
         -0.08547909557819366,
         -0.08323684334754944,
         0.11069077998399734,
@@ -84295,11 +84254,11 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "kayaking (5 stars, 1206 reviews)",
-      "rating": 5.0,
+      "rating": 5,
       "suburb": "Clifton",
       "embedding": [
         0.001711259945295751,
@@ -84575,12 +84534,11 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Tourist",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "paragliding (5 stars, 479 reviews)",
-      "rating": 5.0,
+      "rating": 5,
       "suburb": "Signal Hill",
       "embedding": [
         0.0456857904791832,
@@ -84764,7 +84722,7 @@
         -0.030232097953557968,
         -0.07573608309030533,
         -0.018700266256928444,
-        6.163417856441811e-05,
+        0.00006163417856441811,
         0.022336428984999657,
         0.050854336470365524,
         -0.013362898491322994,
@@ -84856,11 +84814,11 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "kayaking (5 stars, 400 reviews)",
-      "rating": 5.0,
+      "rating": 5,
       "suburb": "Dock Rd",
       "embedding": [
         0.012100138701498508,
@@ -85136,11 +85094,11 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "surfing spots (5 stars, 211 reviews)",
-      "rating": 5.0,
+      "rating": 5,
       "suburb": "Camps Bay",
       "embedding": [
         0.020321151241660118,
@@ -85294,7 +85252,7 @@
         -0.03540702536702156,
         -0.023255662992596626,
         -0.09037745743989944,
-        5.3251533245202154e-05,
+        0.000053251533245202154,
         -0.021547310054302216,
         0.005510821007192135,
         -0.023269440978765488,
@@ -85416,8 +85374,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "kayaking (4.9 stars, 696 reviews)",
       "rating": 4.9,
@@ -85631,7 +85589,7 @@
         0.022363096475601196,
         -0.06827589869499207,
         0.02241525426506996,
-        -2.610487968013331e-07,
+        -2.610487968013331e-7,
         -0.0928427055478096,
         0.12465959042310715,
         0.0322602316737175,
@@ -85696,9 +85654,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Tourist",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "paragliding (4.9 stars, 563 reviews)",
       "rating": 4.9,
@@ -85977,8 +85934,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "kayaking (4.9 stars, 444 reviews)",
       "rating": 4.9,
@@ -86257,8 +86214,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "kayaking (4.9 stars, 377 reviews)",
       "rating": 4.9,
@@ -86537,8 +86494,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "horse riding (4.9 stars, 291 reviews)",
       "rating": 4.9,
@@ -86817,9 +86774,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Tourist",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "paragliding (4.9 stars, 207 reviews)",
       "rating": 4.9,
@@ -87098,8 +87054,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "paragliding (4.9 stars, 204 reviews)",
       "rating": 4.9,
@@ -87378,9 +87334,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Tourist",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "paragliding (4.8 stars, 889 reviews)",
       "rating": 4.8,
@@ -87659,8 +87614,8 @@
       "numerical_price": "R100-R200",
       "best_season": "All Year",
       "vibes": [
-        "Scenic",
-        "Famous"
+        "Famous",
+        "Views"
       ],
       "description": "climbing gyms (4.8 stars, 785 reviews)",
       "rating": 4.8,
@@ -89033,7 +88988,7 @@
       0.030478566884994507,
       -0.12591305375099182,
       0.009759237058460712,
-      4.577737854560837e-06,
+      0.000004577737854560837,
       0.08212145417928696,
       0.07475782930850983,
       -0.007857374846935272,
@@ -89146,7 +89101,7 @@
       0.021578826010227203,
       0.09923821687698364,
       0.05174041539430618,
-      -3.483605178189464e-05,
+      -0.00003483605178189464,
       0.014324926771223545,
       -0.034014083445072174,
       0.045669086277484894,
@@ -90328,7 +90283,7 @@
       0.05113217607140541,
       0.05613616853952408,
       -0.00682016322389245,
-      6.38001220067963e-05,
+      0.0000638001220067963,
       0.02697584219276905,
       -0.03289426863193512,
       0.0044642225839197636,
@@ -91148,7 +91103,7 @@
       0.15388387441635132,
       0.05516431853175163,
       -0.04166276007890701,
-      7.982787792570889e-05,
+      0.00007982787792570889,
       -0.08439886569976807,
       0.012894270941615105,
       0.030533859506249428,
@@ -91470,7 +91425,7 @@
       0.01436281856149435,
       0.10183332115411758,
       0.04614238813519478,
-      -5.4489861213369295e-05,
+      -0.000054489861213369295,
       -0.01666993834078312,
       -0.09884606301784515,
       -0.07345441728830338,
@@ -91527,7 +91482,7 @@
       -0.04408865422010422,
       0.03803412988781929,
       -0.05107669159770012,
-      -1.9378803699510172e-05,
+      -0.000019378803699510172,
       -0.03237968683242798,
       -0.060171809047460556,
       0.014616201631724834,
@@ -92149,7 +92104,7 @@
       0.05666552856564522,
       -0.023828737437725067,
       -0.0029938083607703447,
-      1.7162924450531136e-06,
+      0.0000017162924450531136,
       0.07821181416511536,
       0.0656735822558403,
       0.07376865297555923,
@@ -92292,7 +92247,7 @@
       -0.016159718856215477,
       0.03971455991268158,
       -0.03475404530763626,
-      -4.018055915366858e-05,
+      -0.00004018055915366858,
       -0.08636775612831116,
       -0.03554529324173927,
       -0.08600256592035294,
@@ -92490,7 +92445,7 @@
       -0.08618808537721634,
       -0.012602073140442371,
       0.02232484146952629,
-      -7.19612799002789e-05,
+      -0.0000719612799002789,
       -0.003861815668642521,
       0.05835025757551193,
       0.11418965458869934,
@@ -93102,7 +93057,7 @@
       -0.056932635605335236,
       0.059433795511722565,
       -0.05024203285574913,
-      2.642521030793432e-05,
+      0.00002642521030793432,
       -0.0049085249193012714,
       0.0332028865814209,
       -0.0436452254652977,
@@ -93596,7 +93551,7 @@
       -0.022432178258895874,
       -0.029538504779338837,
       0.017086252570152283,
-      -7.225453737191856e-05,
+      -0.00007225453737191856,
       -0.036657776683568954,
       -0.005883107427507639,
       0.007604676764458418,
@@ -93894,7 +93849,7 @@
       0.007408865727484226,
       0.03974713385105133,
       -0.0899239182472229,
-      -8.775421883910894e-05,
+      -0.00008775421883910894,
       -0.03739410266280174,
       0.12382026761770248,
       0.06728395074605942,
@@ -94784,7 +94739,7 @@
       0.06386934220790863,
       0.06533971428871155,
       -0.005126203875988722,
-      -4.384017302072607e-05,
+      -0.00004384017302072607,
       0.03604712337255478,
       -0.08270850032567978,
       0.0010805233614519238,
@@ -95139,7 +95094,7 @@
       -0.02504967898130417,
       0.1354425549507141,
       0.01545029878616333,
-      -5.775923636974767e-05,
+      -0.00005775923636974767,
       0.004816980101168156,
       -0.010844256728887558,
       0.027096809819340706,
@@ -95352,7 +95307,7 @@
       -0.021201536059379578,
       0.05106756463646889,
       -0.010071426630020142,
-      -6.600449705729261e-05,
+      -0.00006600449705729261,
       0.0036322607193142176,
       0.043211016803979874,
       0.016437459737062454,
@@ -97162,7 +97117,7 @@
       0.05479612946510315,
       0.09030881524085999,
       -0.02193342335522175,
-      -7.251878560055047e-05,
+      -0.00007251878560055047,
       0.03236864134669304,
       -0.012598617933690548,
       0.0287904255092144,
@@ -97523,7 +97478,7 @@
       -0.013185782358050346,
       0.15694595873355865,
       0.09705224633216858,
-      5.305873855832033e-05,
+      0.00005305873855832033,
       -0.0693666934967041,
       -0.04106996953487396,
       -0.04094773903489113,
@@ -98280,7 +98235,7 @@
       -0.037108104676008224,
       0.013599892146885395,
       -0.08465361595153809,
-      3.464135807007551e-05,
+      0.00003464135807007551,
       0.04035476595163345,
       0.06459648162126541,
       -0.03693976253271103,
@@ -98694,7 +98649,7 @@
       -0.003958164714276791,
       0.08212046325206757,
       -0.009126677177846432,
-      -9.563178900862113e-05,
+      -0.00009563178900862113,
       0.012842771597206593,
       0.06919264048337936,
       -0.03493652492761612,
@@ -99474,7 +99429,7 @@
       -0.00921026524156332,
       0.03801629692316055,
       0.03426065295934677,
-      -5.632415195577778e-06,
+      -0.000005632415195577778,
       -0.0169387124478817,
       0.011228603310883045,
       0.010353564284741879,
@@ -99814,7 +99769,7 @@
       -0.06005080044269562,
       -0.027726920321583748,
       -0.07964836061000824,
-      -9.91408305708319e-05,
+      -0.0000991408305708319,
       0.031743209809064865,
       0.010391546413302422,
       -0.08579377084970474,
@@ -102455,7 +102410,7 @@
       0.023114727810025215,
       -0.11552737653255463,
       0.011272091418504715,
-      -9.366504673380405e-05,
+      -0.00009366504673380405,
       -0.040400657802820206,
       0.026383787393569946,
       -0.06655314564704895,
@@ -103315,7 +103270,7 @@
       0.05016263201832771,
       -0.1080382913351059,
       0.02632490172982216,
-      5.3790121455676854e-05,
+      0.000053790121455676854,
       -0.06114531308412552,
       -0.09495967626571655,
       0.034568898379802704,
@@ -103768,7 +103723,7 @@
       0.022433973848819733,
       0.025617266073822975,
       0.04448375850915909,
-      6.453198147937655e-05,
+      0.00006453198147937655,
       -0.1362229436635971,
       0.041465118527412415,
       0.010819075629115105,
@@ -104412,7 +104367,7 @@
       0.08469697833061218,
       0.09788118302822113,
       0.06043188273906708,
-      7.910482963779941e-05,
+      0.00007910482963779941,
       -0.10265211760997772,
       -0.03080589696764946,
       0.004895982798188925,
@@ -104743,7 +104698,7 @@
       0.07669682800769806,
       0.05791982635855675,
       0.08622976392507553,
-      -8.858140790835023e-05,
+      -0.00008858140790835023,
       0.11381751298904419,
       0.06726018339395523,
       0.09239247441291809,
@@ -105930,7 +105885,7 @@
       -0.11222094297409058,
       0.14316795766353607,
       0.002504931762814522,
-      -7.139254012145102e-05,
+      -0.00007139254012145102,
       -0.021675586700439453,
       0.1295715570449829,
       -0.08213640004396439,
@@ -107995,7 +107950,7 @@
       0.035349808633327484,
       0.05603933334350586,
       -0.0324227549135685,
-      7.881507917772979e-05,
+      0.00007881507917772979,
       0.08325843513011932,
       -0.07790467888116837,
       0.12698912620544434,
@@ -108664,7 +108619,7 @@
       0.012502382509410381,
       0.09791850298643112,
       0.04311537742614746,
-      5.017868534196168e-05,
+      0.00005017868534196168,
       0.01332375593483448,
       -0.0053018988110125065,
       0.0775592103600502,
@@ -108842,7 +108797,7 @@
       -0.016683492809534073,
       -0.028077421709895134,
       0.05546025559306145,
-      -3.188054688507691e-05,
+      -0.00003188054688507691,
       -0.04955625161528587,
       0.031016068533062935,
       -0.02318858541548252,
@@ -108860,7 +108815,7 @@
       0.002035345882177353,
       -0.06416933238506317,
       -0.055299967527389526,
-      4.943832755088806e-05,
+      0.00004943832755088806,
       0.01987593062222004,
       -0.0750156044960022,
       0.054872527718544006,
@@ -110165,7 +110120,7 @@
       0.015941886231303215,
       0.14531210064888,
       -0.07285579293966293,
-      6.479658622993156e-06,
+      0.000006479658622993156,
       0.03273267298936844,
       0.022633234038949013,
       -0.02418123185634613,
@@ -112333,7 +112288,7 @@
       -0.04848562180995941,
       -0.13639642298221588,
       0.002408593660220504,
-      -5.8364516917208675e-06,
+      -0.0000058364516917208675,
       0.05341377109289169,
       -0.014049811288714409,
       -0.09017591178417206,
@@ -112386,7 +112341,7 @@
       0.08766592293977737,
       0.04729184880852699,
       -0.10701119899749756,
-      6.803464202675968e-05,
+      0.00006803464202675968,
       0.023600010201334953,
       -0.04116992652416229,
       -0.0647699385881424,
@@ -112721,7 +112676,7 @@
       0.008143956772983074,
       -0.011494100093841553,
       0.0039338283240795135,
-      5.8066274505108595e-05,
+      0.000058066274505108595,
       0.01307592075318098,
       -0.03904125839471817,
       0.004959593527019024,
@@ -114142,7 +114097,7 @@
       -0.05304570496082306,
       0.07767871767282486,
       0.017151879146695137,
-      -6.384301377693191e-05,
+      -0.00006384301377693191,
       0.07616685330867767,
       -0.03745782747864723,
       -0.011228224262595177,
@@ -114342,7 +114297,7 @@
       0.08288507163524628,
       -0.00813645962625742,
       0.060467399656772614,
-      3.899865259882063e-05,
+      0.00003899865259882063,
       0.02907763235270977,
       0.048580002039670944,
       -0.03254583850502968,
@@ -116957,7 +116912,7 @@
       -0.03792201727628708,
       -0.06413213163614273,
       -0.047130975872278214,
-      8.601115405326709e-05,
+      0.00008601115405326709,
       0.04488776996731758,
       -0.056245483458042145,
       -0.07839421182870865,
@@ -118974,7 +118929,7 @@
       0.05198448523879051,
       -0.09104572236537933,
       -0.03378991410136223,
-      8.672937110532075e-05,
+      0.00008672937110532075,
       -0.041781920939683914,
       0.036729224026203156,
       -0.030947772786021233,
