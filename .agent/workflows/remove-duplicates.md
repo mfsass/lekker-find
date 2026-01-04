@@ -4,63 +4,42 @@ description: Remove duplicate venues from data files
 
 # Removing Duplicate Venues
 
-This workflow removes duplicate venues from `lekker-find-data.json` and the CSV file without re-running embeddings.
+This workflow removes duplicate venues from `lekker-find-data.json` and the CSV file.
 
 ## Method
 
-The script uses two approaches to detect duplicates:
-
-1. **Embedding Similarity**: Calculates cosine similarity between venue embeddings. Venues with >92% similarity are flagged as duplicates.
-2. **Manual List**: For duplicates that embeddings miss (e.g., same location but different categories like "Nature" vs "Activity").
+The script uses two approaches:
+1. **Exact Name Match**: Automatically removes exact duplicates (keeping the newest).
+2. **Embedding Similarity**: Flags potential semantic duplicates (e.g. "The Rock" vs "The Rock Restaurant") for manual review.
 
 ## Steps
 
-### 1. Find duplicates first (discovery mode)
+### 1. Remove Exact Duplicates (Auto)
 
 ```bash
-node scripts/remove-duplicates.cjs --find
+python scripts/remove_duplicates.py
 ```
 
-This shows all potential duplicates without modifying any files.
+This will:
+- Clean the CSV of exact name matches.
+- Clean `public/lekker-find-data.json` of exact and canonical duplicates.
 
-### 2. Review the output
+### 2. Check for Semantic Duplicates (Manual Review)
 
-Check the duplicates found:
-- Embedding-detected duplicates show similarity percentage
-- Manual duplicates are listed separately
-- First occurrence is KEPT, second is REMOVED
-
-### 3. Add any manual duplicates
-
-If you spot duplicates that embeddings miss, add them to `MANUAL_DUPLICATES` array in `scripts/remove-duplicates.cjs`:
-
-```javascript
-const MANUAL_DUPLICATES = [
-  'Venue Name To Remove', // Reason for removal
-];
-```
-
-### 4. Preview removal (dry run)
+Use the embeddings check to find venues with >92% similarity (or custom threshold).
 
 ```bash
-node scripts/remove-duplicates.cjs --dry-run
+# Check with default 0.92 threshold
+python scripts/remove_duplicates.py --check-embeddings
+
+# Check with stricter threshold
+python scripts/remove_duplicates.py --check-embeddings --threshold 0.95
 ```
 
-Confirms what will be removed from both JSON and CSV without making changes.
+### 3. Resolve Found Duplicates
 
-### 5. Execute removal
-
-```bash
-node scripts/remove-duplicates.cjs
-```
-
-This:
-- Removes duplicates from `public/lekker-find-data.json`
-- Removes duplicates from `data-262-2025-12-26.csv`
-- Re-indexes venue IDs to maintain sequential order
-
-## Notes
-
-- Embeddings are preserved - no API calls needed
-- The CSV file path is hardcoded; update `CSV_PATH` if using a different file
-- Threshold can be adjusted via `SIMILARITY_THRESHOLD` (default: 0.92)
+If the script outputs high-similarity pairs:
+1. Open `data-262-2025-12-26.csv`.
+2. Search for the duplicate names.
+3. Delete the row you don't want.
+4. Run `python scripts/remove_duplicates.py` again to sync the JSON.

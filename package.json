@@ -7,7 +7,9 @@
         "dev": "vite",
         "build": "tsc -b && vite build",
         "lint": "eslint .",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "clean": "python scripts/clean_data.py && python scripts/remove_duplicates.py",
+        "generate-embeddings": "python scripts/generate_embeddings.py --update"
     },
     "dependencies": {
         "clsx": "^2.1.1",

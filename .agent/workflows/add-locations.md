@@ -21,7 +21,7 @@ OPENAI_API_KEY=your_openai_api_key
 ### Step 1: Pre-Flight Check (Duplicates)
 Before adding anything, clean the existing data to ensure no duplicates exist.
 ```bash
-python scripts/remove_duplicates_robust.py
+python scripts/remove_duplicates.py
 ```
 
 ### Step 2: Add Places via API
@@ -60,20 +60,18 @@ python scripts/migrate_images_to_stable_ids.py --apply
 ### Step 6: Validate Everything
 ```bash
 python scripts/validate_image_sync.py
-python scripts/check_new_venues.py
+# Check for any lingering duplicates with embeddings
+python scripts/remove_duplicates.py --check-embeddings
 ```
 
 ### Step 7: Data Cleanup & Metadata Sync (CRITICAL)
 After adding new places, always run the cleanup scripts to fix "nan" values, ensure suburbs are set, and sync any manual CSV edits to the app.
 ```bash
 # Remove exact duplicates that might have slipped in
-python scripts/remove_duplicates_robust.py
+python scripts/remove_duplicates.py
 
-# Fix 'nan' values and missing data
+# Fix 'nan' values, missing data, prices, and tourist levels
 python scripts/clean_data.py
-
-# Standardize Tourist Levels for Hidden Gems
-python scripts/fix_tourist_levels.py
 
 # Sync CSV metadata (Price, Suburb, Rating, Vibe) to JSON without re-embedding
 python scripts/sync_metadata.py

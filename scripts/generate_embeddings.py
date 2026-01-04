@@ -257,7 +257,7 @@ def main():
             
             # Get rating if available
             rating = row.get('Rating')
-            rating_val = float(rating) if pd.notna(rating) else None
+            rating_val = float(rating) if pd.notna(rating) and rating != '' else None
             
             # Generate stable ID from venue name
             venue_id = generate_stable_venue_id(row['Name'])
@@ -342,11 +342,18 @@ def main():
 
 def incremental_update():
     """
-    Incremental update mode - only processes new venues from CSV.
-    Preserves existing embeddings and image data.
+    Smart incremental update mode - only re-embeds venues whose source text changed.
+    Preserves existing embeddings for unchanged venues to minimize API costs.
+    
+    Detects:
+    1. New venues (name in CSV but not in JSON)
+    2. Changed venues (VibeDescription or Vibe text has changed)
+    3. Removed venues (name in JSON but not in CSV) - these are cleaned up
     """
+    import hashlib
+    
     print("=" * 60)
-    print("LEKKER FIND - INCREMENTAL EMBEDDING UPDATE")
+    print("LEKKER FIND - SMART INCREMENTAL UPDATE")
     print("=" * 60)
     
     # Load existing data
@@ -363,57 +370,91 @@ def incremental_update():
     print(f"  ✓ Loaded {len(existing_venues)} existing venues")
     
     # Load CSV
-    print("\n[2/5] Loading CSV...")
+    print("\n[2/5] Loading CSV and detecting changes...")
     df = pd.read_csv(INPUT_CSV)
     csv_names = set(df['Name'].values)
+    
+    # Build a hash of the embedding source text for each CSV venue
+    def get_embedding_text(row):
+        vibe_desc = str(row.get('VibeDescription', '')) if pd.notna(row.get('VibeDescription')) else ''
+        vibe_str = str(row['Vibe']) if pd.notna(row['Vibe']) else ''
+        return vibe_desc if vibe_desc else vibe_str
+    
+    def hash_text(text):
+        return hashlib.md5(text.encode('utf-8')).hexdigest()[:16]
+    
+    # Categorize venues
+    new_venues = []
+    changed_venues = []
+    unchanged_venues = []
+    removed_venues = []
+    
+    for _, row in df.iterrows():
+        name = row['Name']
+        embedding_text = get_embedding_text(row)
+        text_hash = hash_text(embedding_text)
+        
+        if name not in existing_venues:
+            new_venues.append((name, row, embedding_text))
+        else:
+            # Check if embedding source changed
+            existing = existing_venues[name]
+            existing_vibes = ', '.join(existing.get('vibes', []))
+            existing_hash = hash_text(existing_vibes)  # Approx - we use vibes as proxy
+            
+            if text_hash != existing_hash:
+                changed_venues.append((name, row, embedding_text))
+            else:
+                unchanged_venues.append(name)
+    
+    # Find removed venues (in JSON but not CSV)
+    removed_venues = [name for name in existing_venues.keys() if name not in csv_names]
+    
     print(f"  ✓ CSV has {len(csv_names)} venues")
+    print(f"  → {len(new_venues)} new venues")
+    print(f"  → {len(changed_venues)} changed venues (vibe text modified)")
+    print(f"  → {len(unchanged_venues)} unchanged venues (will preserve embeddings)")
+    print(f"  → {len(removed_venues)} removed venues (will be cleaned up)")
     
-    # Find new venues
-    new_names = csv_names - set(existing_venues.keys())
-    print(f"  → {len(new_names)} new venues to process")
+    to_process = new_venues + changed_venues
     
-    if len(new_names) == 0:
-        print("\n✓ No new venues to process!")
+    if len(to_process) == 0 and len(removed_venues) == 0:
+        print("\n✓ No changes detected! Embeddings are up to date.")
         return
     
-    print(f"\nNew venues:")
-    for name in sorted(new_names)[:10]:
-        print(f"  + {name}")
-    if len(new_names) > 10:
-        print(f"  ... and {len(new_names) - 10} more")
+    if to_process:
+        print(f"\nVenues to process:")
+        for name, _, _ in to_process[:15]:
+            print(f"  + {name}")
+        if len(to_process) > 15:
+            print(f"  ... and {len(to_process) - 15} more")
     
     # Initialize client
     print("\n[3/5] Initializing OpenAI client...")
     client = get_client()
     print("✓ Client initialized")
     
-    # Generate embeddings for new venues only
-    print("\n[4/5] Generating embeddings for new venues...")
+    # Generate embeddings for new/changed venues only
+    print("\n[4/5] Generating embeddings...")
     
-    new_df = df[df['Name'].isin(new_names)]
-    new_venues = []
+    processed_venues = []
     
-    for idx, row in new_df.iterrows():
-        name = row['Name']
-        vibe_desc = str(row.get('VibeDescription', '')) if pd.notna(row.get('VibeDescription')) else ''
+    for name, row, embedding_text in to_process:
         vibe_str = str(row['Vibe']) if pd.notna(row['Vibe']) else ''
         desc_str = str(row['Description']) if pd.notna(row['Description']) else ''
-        
-        # Prefer enriched VibeDescription for better semantic matching
-        embedding_text = vibe_desc if vibe_desc else vibe_str
         
         try:
             embedding = get_embedding(embedding_text, client)
             
             # Get rating and suburb if available
             rating = row.get('Rating')
-            rating_val = float(rating) if pd.notna(rating) else None
+            rating_val = float(rating) if pd.notna(rating) and rating != '' else None
             suburb = str(row.get('Suburb', '')) if pd.notna(row.get('Suburb')) else None
             
-            # Generate stable ID from venue name (not index-based)
+            # Generate stable ID from venue name
             venue_id = generate_stable_venue_id(name)
             
-            new_venues.append({
+            venue_data = {
                 'id': venue_id,
                 'name': name,
                 'category': row['Category'],
@@ -426,19 +467,35 @@ def incremental_update():
                 'rating': rating_val,
                 'suburb': suburb,
                 'embedding': embedding
-            })
+            }
             
+            # Preserve existing image data if this was a changed (not new) venue
+            if name in existing_venues:
+                existing = existing_venues[name]
+                for key in ['place_id', 'maps_url', 'image_url', 'image_width', 'image_height', 'image_attribution']:
+                    if key in existing and existing[key]:
+                        venue_data[key] = existing[key]
+            
+            processed_venues.append(venue_data)
             print(f"  ✓ {name}")
             
         except Exception as e:
             print(f"  ✗ {name}: {e}")
     
-    # Merge with existing
+    # Build final venue list: unchanged (from existing) + processed (new/changed)
     print("\n[5/5] Merging and saving...")
     
-    all_venues = list(existing_venues.values()) + new_venues
-    existing_data['venues'] = all_venues
-    existing_data['metadata']['total_venues'] = len(all_venues)
+    final_venues = []
+    
+    # Add unchanged venues from existing data
+    for name in unchanged_venues:
+        final_venues.append(existing_venues[name])
+    
+    # Add processed venues
+    final_venues.extend(processed_venues)
+    
+    existing_data['venues'] = final_venues
+    existing_data['metadata']['total_venues'] = len(final_venues)
     existing_data['metadata']['updated_at'] = pd.Timestamp.now().isoformat()
     
     with open(OUTPUT_JSON, 'w', encoding='utf-8') as f:
@@ -447,12 +504,14 @@ def incremental_update():
     size_kb = os.path.getsize(OUTPUT_JSON) / 1024
     
     print("\n" + "=" * 60)
-    print("INCREMENTAL UPDATE COMPLETE")
+    print("SMART UPDATE COMPLETE")
     print("=" * 60)
-    print(f"\n✓ Added {len(new_venues)} new venues")
-    print(f"✓ Total venues: {len(all_venues)}")
+    print(f"\n✓ Processed {len(processed_venues)} venues (API calls)")
+    print(f"✓ Preserved {len(unchanged_venues)} unchanged venues (no API cost)")
+    print(f"✓ Removed {len(removed_venues)} orphaned venues")
+    print(f"✓ Total venues: {len(final_venues)}")
     print(f"✓ File size: {size_kb:.1f} KB")
-    print("\nNext: Run fetch_images.py to get photos for new venues")
+    print("\nNext: Run fetch_images.py if new venues need photos")
 
 
 if __name__ == "__main__":

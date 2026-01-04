@@ -51,3 +51,6 @@ public/images/venues_backup/
 __pycache__/
 *.pyc
 *.pyo
+
+# Allow .agent rules and workflows (not ignored)
+!.agent/
