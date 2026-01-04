@@ -30,19 +30,19 @@ type AppStep = 'landing' | 'question-intent' | 'question-vibe' | 'question-budge
 
 // Intent options - simple, consolidated categories
 const intentOptions = [
-    { value: 'food_drink', label: 'Food & Drink', sublabel: 'Eat, coffee & bars', icon: UtensilsCrossed },
-    { value: 'activity', label: 'Activity', sublabel: 'Do, hike & explore', icon: Mountain },
-    { value: 'attraction', label: 'Attraction', sublabel: 'See & experience', icon: Landmark },
-    { value: 'any', label: 'Surprise me', sublabel: 'Anything goes', icon: Sparkles },
+    { value: 'food_drink', label: 'Food & Drink', sublabel: 'Cafes, restaurants & bars', icon: UtensilsCrossed },
+    { value: 'activity', label: 'Nature & Adventure', sublabel: 'Hikes, beaches & outdoors', icon: Mountain },
+    { value: 'attraction', label: 'Culture & Sights', sublabel: 'History, arts & landmarks', icon: Landmark },
+    { value: 'any', label: 'Surprise me', sublabel: 'A mixed bag of everything', icon: Sparkles },
 ];
 
 // Tourist level - clear progression from must-see to hidden
 const touristLevelOptions = [
-    { value: 1, label: 'Must-see', sublabel: 'Top attractions', icon: Camera },
-    { value: 2, label: 'Popular', sublabel: 'Well-known spots', icon: Star },
-    { value: 3, label: 'Mix of both', sublabel: 'Variety', icon: Scale },
-    { value: 4, label: 'Off the path', sublabel: 'Local favorites', icon: Heart },
-    { value: 5, label: 'Hidden gems', sublabel: 'Secret spots', icon: Gem },
+    { value: 1, label: 'The Icons', sublabel: 'Absolute must-see spots', icon: Camera },
+    { value: 2, label: 'Hotspots', sublabel: 'Popular local favorites', icon: Star },
+    { value: 3, label: 'The Mix', sublabel: 'A blend of icons & secrets', icon: Scale },
+    { value: 4, label: 'Go Local', sublabel: 'Neighborhood favorites', icon: Heart },
+    { value: 5, label: 'Hidden Gems', sublabel: 'Secret & secluded spots', icon: Gem },
 ];
 
 // Budget options - dynamically shows EUR for tourists

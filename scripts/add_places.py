@@ -445,7 +445,6 @@ Write ONLY the vibe description (2-3 sentences). No intro or labels."""
             model=OPENAI_MODEL,
             messages=[{"role": "user", "content": prompt}],
             max_completion_tokens=200,  # Use max_completion_tokens for GPT-5 models
-            temperature=0.7
         )
         return response.choices[0].message.content.strip()
     except Exception as e:
@@ -675,7 +674,7 @@ def main():
                         name=parts[0].strip(),
                         location_hint=parts[1].strip() if len(parts) > 1 else "",
                         description_hint=parts[2].strip() if len(parts) > 2 else "",
-                        category=args.category
+                        category=parts[3].strip() if len(parts) > 3 else args.category
                     ))
         print(f"  ✓ Loaded {len(places_to_process)} places")
     elif args.search:

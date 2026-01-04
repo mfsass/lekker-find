@@ -438,6 +438,19 @@ Python script: CSV → embeddings → JSON
 
 ---
 
+## API Usage Rules
+
+### gpt-5-nano
+- **Unsupported Parameters**: This model does NOT support the `temperature` parameter. Do not include it in API calls.
+- **Token Limits**: Use `max_completion_tokens` instead of `max_tokens`.
+- **Cost**: This is a highly cost-effective model (~$0.0001 per call). Use it for high-volume tasks like tagging and short descriptions.
+
+### Google Places API (New)
+- **Field Masks**: Always specify a field mask to limit data and control costs.
+- **Location Bias**: Max radius is 50,000 meters.
+
+---
+
 ## Out of Scope (v1.0)
 
 - User accounts
