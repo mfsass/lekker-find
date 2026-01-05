@@ -13,10 +13,11 @@
 
 import React, { useState, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence, PanInfo } from 'framer-motion';
-import { MapPin, ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import { MapPin, ChevronLeft, ChevronRight, Star, ThumbsUp, ThumbsDown, Sparkles } from 'lucide-react';
 import { VenueWithMatch } from '../../utils/matcher';
 import { convertPriceString } from '../../utils/currency';
 import { getVenueImage } from '../../utils/imageHelper';
+import { captureFeedback } from '../../utils/analytics';
 import './SwipeableResults.css';
 
 // Card animation variants (static, no need to recreate)
@@ -59,6 +60,7 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
 }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [direction, setDirection] = useState<'left' | 'right' | null>(null);
+    const [voteState, setVoteState] = useState<'idle' | 'liked' | 'disliked'>('idle'); // Animation state
     const [imageLoaded, setImageLoaded] = useState(false);
     const [showSwipeGuide, setShowSwipeGuide] = useState(true);
     const [dragOffset, setDragOffset] = useState(0);
@@ -202,10 +204,53 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
         }
     }, [hasNext, hasPrev, goNext, goPrev]);
 
+    // Reset vote state when moving to a new card
+    React.useEffect(() => {
+        setVoteState('idle');
+        setDirection(null);
+    }, [currentIndex]);
+
+    const handleVote = useCallback((sentiment: 'positive' | 'negative') => {
+        if (!currentVenue || voteState !== 'idle') return; // Prevent double taps
+
+        // 1. Trigger Animation State
+        setVoteState(sentiment === 'positive' ? 'liked' : 'disliked');
+
+        // 2. Track the vote
+        captureFeedback({
+            venueId: currentVenue.id,
+            venueName: currentVenue.name,
+            sentiment,
+            actionType: 'vote'
+        });
+
+        // 3. Handle Navigation Logic
+        if (sentiment === 'negative') {
+            // For Dislike: Auto-advance after animation so user doesn't dwell on it
+            setTimeout(() => {
+                setDirection('left');
+                setCurrentIndex(i => i + 1);
+            }, 600);
+        }
+        // For Positive: Do NOT auto-advance. 
+        // User wants the card to remain (to Map it), but controls to disappear (handled by voteState).
+
+    }, [currentVenue, voteState]);
+
     const openInMaps = useCallback(() => {
-        if (currentVenue?.maps_url) {
+        if (!currentVenue) return;
+
+        // Track conversion
+        captureFeedback({
+            venueId: currentVenue.id,
+            venueName: currentVenue.name,
+            sentiment: 'positive',
+            actionType: 'map_click'
+        });
+
+        if (currentVenue.maps_url) {
             window.open(currentVenue.maps_url, '_blank', 'noopener,noreferrer');
-        } else if (currentVenue) {
+        } else {
             const query = encodeURIComponent(`${currentVenue.name} Cape Town`);
             window.open(`https://www.google.com/maps/search/?api=1&query=${query}`, '_blank', 'noopener,noreferrer');
         }
@@ -281,8 +326,11 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
 
                         {/* Match badge */}
                         {currentVenue.matchPercentage > 0 && (
-                            <div className="results-match-badge">
-                                {currentVenue.matchPercentage}% match
+                            <div className="results-match-badge-container" style={{ position: 'absolute', top: '12px', right: '12px', zIndex: 10 }}>
+                                <div className="results-match-badge" style={{ whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                                    <Sparkles size={14} fill="currentColor" strokeWidth={0} style={{ opacity: 0.8 }} />
+                                    {currentVenue.matchPercentage}% match
+                                </div>
                             </div>
                         )}
 
@@ -307,6 +355,14 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
                                         <span className="results-price">{priceDisplay}</span>
                                     </>
                                 )}
+                                {currentVenue.suburb && (
+                                    <>
+                                        <span className="results-divider">•</span>
+                                        <span className="results-suburb-text">
+                                            {currentVenue.suburb}
+                                        </span>
+                                    </>
+                                )}
                             </div>
 
 
@@ -315,18 +371,82 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
                             </p>
 
                             {/* Footer Actions */}
-                            <div className="results-card-footer">
-                                <button onClick={openInMaps} className="results-maps-btn">
+                            <div className="results-card-footer" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto' }}>
+                                {/* Primary Action: Map */}
+                                <button onClick={openInMaps} className="results-maps-btn" style={{ flex: 1, justifyContent: 'center', maxWidth: '60%' }}>
                                     <MapPin size={18} />
                                     Open in Maps
                                 </button>
 
-                                {currentVenue.suburb && (
-                                    <div className="results-suburb-tag">
-                                        <MapPin size={13} strokeWidth={2.5} />
-                                        {currentVenue.suburb}
-                                    </div>
-                                )}
+                                {/* Secondary Actions: Feedback */}
+                                <div className="results-feedback-actions" style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+
+                                    <AnimatePresence mode="wait">
+                                        {/* Dislike Button */}
+                                        {voteState !== 'liked' && (
+                                            <motion.button
+                                                key="dislike"
+                                                onClick={(e) => { e.stopPropagation(); handleVote('negative'); }}
+                                                className="feedback-btn dislike"
+                                                aria-label="Dislike"
+                                                // Animation: Scale Up + Color -> THEN Fade Out/Shrink
+                                                animate={{
+                                                    scale: voteState === 'disliked' ? [1, 1.1, 0] : 1,
+                                                    opacity: voteState === 'disliked' ? 0 : 1,
+                                                    backgroundColor: voteState === 'disliked' ? 'hsl(350, 80%, 60%)' : 'rgba(0,0,0,0.4)'
+                                                }}
+                                                transition={{
+                                                    duration: 0.4,
+                                                    times: [0, 0.2, 1] // Scale up quickly, then shrink/fade
+                                                }}
+                                                exit={{ scale: 0, opacity: 0 }}
+                                                whileTap={{ scale: 0.9 }}
+                                                style={{
+                                                    width: '52px', height: '52px', borderRadius: '50%',
+                                                    border: '1px solid rgba(255,255,255,0.15)',
+                                                    color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                                    cursor: 'pointer',
+                                                    background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(8px)',
+                                                }}
+                                            >
+                                                <ThumbsDown size={24} />
+                                            </motion.button>
+                                        )}
+                                    </AnimatePresence>
+
+                                    <AnimatePresence mode="wait">
+                                        {/* Like Button */}
+                                        {voteState !== 'disliked' && (
+                                            <motion.button
+                                                key="like"
+                                                onClick={(e) => { e.stopPropagation(); handleVote('positive'); }}
+                                                className="feedback-btn like"
+                                                aria-label="Like"
+                                                animate={{
+                                                    scale: voteState === 'liked' ? [1, 1.1, 0] : 1,
+                                                    opacity: voteState === 'liked' ? 0 : 1,
+                                                    backgroundColor: voteState === 'liked' ? 'hsl(174, 72%, 40%)' : 'rgba(255,255,255,0.2)'
+                                                }}
+                                                transition={{
+                                                    duration: 0.4,
+                                                    times: [0, 0.2, 1]
+                                                }}
+                                                exit={{ scale: 0, opacity: 0 }}
+                                                whileTap={{ scale: 0.9 }}
+                                                style={{
+                                                    width: '52px', height: '52px', borderRadius: '50%',
+                                                    border: '1px solid rgba(255,255,255,0.3)',
+                                                    color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                                    cursor: 'pointer',
+                                                    background: 'hsl(174, 72%, 40%, 0.4)', backdropFilter: 'blur(8px)',
+                                                }}
+                                            >
+                                                <ThumbsUp size={24} />
+                                            </motion.button>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+
                             </div>
                         </div>
                     </motion.div>

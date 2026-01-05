@@ -14,6 +14,7 @@ const SwipeableResults = lazy(() => import('./components/ui/SwipeableResults').t
 import { getContextualMoods, shouldShowPriceDisclaimer, getBudgetDisplay, getContextualAvoidOptions } from './data/vibes';
 import { useRecommendations, VenueWithMatch } from './utils/matcher';
 import { selectDiverseVibes } from './utils/vibeDispersion';
+import { setRecommendationContext } from './utils/analytics';
 
 
 /**
@@ -121,7 +122,16 @@ function App() {
         setSelectedTouristLevel(3);
         setSelectedBudget('any');
         setSelectedMoods([]);
+        setSelectedMoods([]);
         setIsLoading(true);
+
+        // Register context for analytics
+        setRecommendationContext({
+            intent: 'any',
+            moods: [],
+            budget: 'any',
+            touristLevel: 3
+        });
     };
 
     // Fetch live exchange rates on mount
@@ -438,6 +448,14 @@ function App() {
 
         setMatchedVenues(results);
         setIsLoading(true);
+
+        // Register context for analytics
+        setRecommendationContext({
+            intent: selectedIntent || 'any',
+            moods: selectedMoods,
+            budget: selectedBudget || 'any',
+            touristLevel: selectedTouristLevel || 0
+        });
     };
 
     const handleStartOver = () => {

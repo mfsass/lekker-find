@@ -3,6 +3,8 @@ import { createRoot } from 'react-dom/client'
 import { clarity } from 'react-microsoft-clarity'
 import './index.css'
 import App from './App'
+import { PostHogProvider } from 'posthog-js/react'
+import { POSTHOG_KEY, POSTHOG_HOST } from './utils/analytics'
 import { ErrorBoundary } from './components/ui/ErrorBoundary'
 
 // Microsoft Clarity Initialization
@@ -28,8 +30,19 @@ window.addEventListener('error', (event) => {
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
-        <ErrorBoundary>
-            <App />
-        </ErrorBoundary>
+        <PostHogProvider
+            apiKey={POSTHOG_KEY}
+            options={{
+                api_host: POSTHOG_HOST,
+                session_recording: {
+                    maskAllInputs: false,
+
+                }
+            }}
+        >
+            <ErrorBoundary>
+                <App />
+            </ErrorBoundary>
+        </PostHogProvider>
     </StrictMode>,
 )
