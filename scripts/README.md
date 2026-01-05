@@ -1,72 +1,61 @@
 # Lekker Find Scripts
 
-Automation pipelines for managing venue data, images, and recommendations.
+This directory contains the data pipeline scripts for Lekker Find.
 
-## Core Scripts (Keep These)
+## Core Data Pipeline
 
-| Script | Purpose | Usage |
-|--------|---------|-------|
-| `add_places.py` | Add new venues via Google Places API | `python scripts/add_places.py --demo` |
-| `remove_duplicates.py` | Remove exact + semantic duplicates | `python scripts/remove_duplicates.py --check-embeddings` |
-| `clean_data.py` | Fix data quality (NaNs, prices, vibes) | `python scripts/clean_data.py` |
-| `sync_metadata.py` | Fast CSV→JSON sync (no API cost) | `python scripts/sync_metadata.py` |
-| `generate_embeddings.py` | Generate/update AI embeddings | `python scripts/generate_embeddings.py --update` |
-| `discover_places.py` | Find new venue candidates | `python scripts/discover_places.py` |
-| `enrich_venues.py` | Generate AI vibe descriptions | `python scripts/enrich_venues.py` |
-| `validate_image_sync.py` | Verify image file integrity | `python scripts/validate_image_sync.py` |
-| `localize_images.py` | Download remote images to local | `python scripts/localize_images.py` |
-| `venue_id_utils.py` | Shared utilities for stable IDs | (imported by other scripts) |
+### 1. `add_places.py` - The Main Entry Point
+Use this to add new places (manual input or manual search).
+- **Features**: Fetches Google Data, generates AI vibes, downloads images, adds to CSV.
+- **Usage**:
+  ```bash
+  python scripts/add_places.py --input places.txt
+  python scripts/add_places.py --demo  # Add demo trails
+  ```
 
-## Recommended Workflow
+### 2. `generate_embeddings.py` - Semantic Search Engine
+Generates vector embeddings for all venues to power the "Find matching vibes" feature.
+- **Features**: Smart incremental updates (only re-beds changed venues).
+- **Usage**:
+  ```bash
+  python scripts/generate_embeddings.py --update  # Standard run
+  python scripts/generate_embeddings.py           # Force regenerate ALL
+  ```
 
-```bash
-# 1. Discover new venues
-python scripts/discover_places.py
+### 3. `localize_images.py` - Image Downloader
+Downloads images for venues that have a `place_id` but no local image yet.
+- **Features**: Checks missing images, downloads from Google Photos API.
+- **Usage**:
+  ```bash
+  python scripts/localize_images.py
+  ```
 
-# 2. Add them
-python scripts/add_places.py --input discovered_places.txt
+### 4. `sync_metadata.py` - Sync CSV to JSON
+Syncs manual edits from `data-*.csv` to the frontend `public/lekker-find-data.json`.
+- **Features**: Updates price, rating, suburb, category without re-running embeddings.
+- **Usage**:
+  ```bash
+  python scripts/sync_metadata.py
+  ```
 
-# 3. Clean and dedupe
-python scripts/remove_duplicates.py
-python scripts/clean_data.py
+## Maintenance & Audit Tools
 
-# 4. Generate embeddings (smart incremental - only changed venues)
-python scripts/generate_embeddings.py --update
+### `validate_image_sync.py`
+Audits the sync between JSON data and the `public/images/venues` folder.
+- **Checks**: Missing images, orphaned files, ID mismatches.
+- **Usage**:
+  ```bash
+  python scripts/validate_image_sync.py
+  ```
 
-# 5. Validate
-python scripts/validate_image_sync.py
-```
+### `enrich_venues.py` (Legacy/Utility)
+Used for batch enrichment of descriptions. Mostly superseded by `add_places.py` but useful for bulk fixing.
+- **Usage**:
+  ```bash
+  python scripts/enrich_venues.py --fix-malformed  # Fix "X stars" descriptions
+  ```
 
-## Smart Incremental Updates
-
-The `--update` flag in `generate_embeddings.py` is smart:
-- **New venues**: Generates embeddings (API call)
-- **Changed vibes**: Re-generates embeddings (API call)
-- **Unchanged venues**: Preserves existing embeddings (no cost)
-- **Removed venues**: Cleans up orphaned entries
-
-This minimizes API costs when making small data changes.
-
----
-
-## Lean Repository Principle
-
-**Keep this directory clean.** After solving an issue with a one-off script:
-
-### Delete These After Use
-- `fix_*.py` - One-time data fixes
-- `debug_*.py` - Debugging scripts
-- `test_*.py` - Test scripts (after verification)
-- `patch_*.py` - Specific data patches
-
-### Consolidate Similar Scripts
-If you create a script similar to an existing one, merge them:
-- All duplicate detection → `remove_duplicates.py`
-- All data cleaning → `clean_data.py`
-- All image operations → `localize_images.py` or `validate_image_sync.py`
-
-### Update Docs
-If script names change, update:
-- This README
-- `.agent/workflows/add-locations.md`
-- `.agent/workflows/remove-duplicates.md`
+## Workflow for Manual Edits
+1. Edit `data-262-2025-12-26.csv`
+2. Run `python scripts/sync_metadata.py` to update JSON
+3. (If you changed descriptions) Run `python scripts/generate_embeddings.py --update`

@@ -116,6 +116,28 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
         return currentVenue.price_tier;
     }, [currentVenue, currency, exchangeRates]);
 
+    // Determine which description to show
+    const displayDescription = useMemo(() => {
+        if (!currentVenue) return '';
+
+        const desc = currentVenue.description;
+        const vibe = currentVenue.vibeDescription;
+
+        // If we have no description, fallback to vibe
+        if (!desc) return vibe || '';
+
+        // Check for generic Google Places description: "Type (X.X stars, N reviews)"
+        // Example: "wine farms (4.8 stars, 453 reviews)"
+        const isGeneric = /\(\d+(\.\d+)? stars, \d+ reviews\)$/.test(desc);
+
+        // If description is generic and we have a vibe description, prefer vibe
+        if (isGeneric && vibe) {
+            return vibe;
+        }
+
+        // Otherwise stick with the factual description (or if vibe is missing)
+        return desc;
+    }, [currentVenue]);
     // Hide swipe guide after first swipe or any interaction
     const dismissGuide = useCallback(() => {
         setShowSwipeGuide(false);
@@ -287,8 +309,9 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
                                 )}
                             </div>
 
+
                             <p className="results-description">
-                                {currentVenue.description}
+                                {displayDescription}
                             </p>
 
                             {/* Footer Actions */}

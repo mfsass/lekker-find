@@ -1,3 +1,7 @@
+---
+description: Quick reference for available workflows
+---
+
 # Agent Workflows
 
 Quick reference for available workflows.

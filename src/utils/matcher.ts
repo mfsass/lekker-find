@@ -34,6 +34,7 @@ export interface Venue {
     best_season: string;
     vibes: string[];
     description: string;
+    vibeDescription?: string;
     embedding: number[];
     // Google Places data (optional)
     place_id?: string;
@@ -461,11 +462,10 @@ export function useRecommendations(): UseRecommendationsResult {
             }
         }
 
-        // Delay fetch to prioritize LCP/FCP, but keep it snappy
-        // User takes ~1-2s to orient, so load soon
+        // Start loading almost immediately, but after the main thread is clear
         const timer = setTimeout(() => {
             loadData();
-        }, 800);
+        }, 50);
 
         return () => clearTimeout(timer);
     }, []);

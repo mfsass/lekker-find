@@ -270,8 +270,10 @@ h6 {
     transition: transform var(--transition-normal);
 }
 
-.landing-logo-img:hover {
-    transform: scale(1.02);
+@media (hover: hover) {
+    .landing-logo-img:hover {
+        transform: scale(1.02);
+    }
 }
 
 @media (min-width: 768px) {
@@ -354,13 +356,15 @@ h6 {
     transition: opacity var(--transition-fast);
 }
 
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 40px hsla(174, 72%, 40%, 0.4);
-}
+@media (hover: hover) {
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 40px hsla(174, 72%, 40%, 0.4);
+    }
 
-.btn-primary:hover::before {
-    opacity: 1;
+    .btn-primary:hover::before {
+        opacity: 1;
+    }
 }
 
 .btn-primary:active {
@@ -374,8 +378,10 @@ h6 {
     transition: transform var(--transition-fast);
 }
 
-.btn-primary:hover .icon {
-    transform: scale(1.1);
+@media (hover: hover) {
+    .btn-primary:hover .icon {
+        transform: scale(1.1);
+    }
 }
 
 /* Secondary Button (for side CTA) */
@@ -418,8 +424,10 @@ h6 {
     transition: all var(--transition-fast);
 }
 
-.btn-secondary:hover .icon {
-    opacity: 1;
+@media (hover: hover) {
+    .btn-secondary:hover .icon {
+        opacity: 1;
+    }
 }
 
 /* Secondary Curious Button (inline) */
@@ -462,9 +470,11 @@ h6 {
     transition: all var(--transition-fast);
 }
 
-.btn-secondary-curious:hover .icon {
-    opacity: 1;
-    transform: rotate(15deg);
+@media (hover: hover) {
+    .btn-secondary-curious:hover .icon {
+        opacity: 1;
+        transform: rotate(15deg);
+    }
 }
 
 /* Change Options Button */
@@ -491,17 +501,17 @@ h6 {
     transition: all 0.2s ease;
 }
 
-.btn-shuffle:hover {
-    color: var(--primary);
-    border-color: var(--primary);
-    background-color: hsla(174, 72%, 40%, 0.05);
-    /* Slight tint of primary */
-}
+@media (hover: hover) {
+    .btn-shuffle:hover {
+        color: var(--primary);
+        border-color: var(--primary);
+        background-color: hsla(174, 72%, 40%, 0.05);
+    }
 
-/* Icon rotation on hover */
-.btn-shuffle:hover svg {
-    animation: spin 1s linear infinite;
-    /* Optional: spin icon */
+    /* Icon rotation on hover */
+    .btn-shuffle:hover svg {
+        animation: spin 1s linear infinite;
+    }
 }
 
 @keyframes spin {
@@ -551,6 +561,28 @@ h6 {
     font-size: 0.75rem;
     color: var(--muted-foreground);
     opacity: 0.7;
+}
+
+/* Mailto suggestion link */
+.landing-footer-mailto {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
+    opacity: 0.55;
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+}
+
+.landing-footer-mailto:hover {
+    opacity: 0.85;
+    color: var(--primary);
+}
+
+.landing-footer-mailto:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
 }
 
 /* ===== App Container ===== */
@@ -912,10 +944,12 @@ button.moodTagItem.dislike.selected {
 }
 
 /* Avoid section green-themed button elements */
-.moodTagsList.avoid+.moodActions .btn-shuffle:hover {
-    color: var(--primary);
-    border-color: var(--primary);
-    background-color: hsla(174, 72%, 40%, 0.05);
+@media (hover: hover) {
+    .moodTagsList.avoid+.moodActions .btn-shuffle:hover {
+        color: var(--primary);
+        border-color: var(--primary);
+        background-color: hsla(174, 72%, 40%, 0.05);
+    }
 }
 
 /* Green theme for the results button specifically in the avoid step */
@@ -1020,8 +1054,10 @@ button.moodTagItem.dislike.selected {
     box-shadow: var(--shadow-md), var(--shadow-primary);
 }
 
-.btn-generate:hover {
-    box-shadow: var(--shadow-lg), 0 6px 30px hsla(174, 72%, 40%, 0.35);
+@media (hover: hover) {
+    .btn-generate:hover {
+        box-shadow: var(--shadow-lg), 0 6px 30px hsla(174, 72%, 40%, 0.35);
+    }
 }
 
 .btn-primary:disabled {
@@ -1190,9 +1226,11 @@ button.moodTagItem.dislike.selected {
     /* Wider spacing for "clean" feel */
 }
 
-.btn-rainbow:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+@media (hover: hover) {
+    .btn-rainbow:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
 }
 
 .btn-rainbow:active {

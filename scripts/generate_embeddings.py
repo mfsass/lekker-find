@@ -255,9 +255,11 @@ def main():
             embedding = get_embedding(embedding_text, client)
             total_tokens += len(embedding_text.split()) * 1.3  # Rough token estimate
             
-            # Get rating if available
+            # Get rating if available - handle NaN for valid JSON
             rating = row.get('Rating')
-            rating_val = float(rating) if pd.notna(rating) and rating != '' else None
+            rating_val = float(rating) if pd.notna(rating) and str(rating).strip() != '' else None
+            if rating_val is not None and (pd.isna(rating_val) or rating_val == float('inf')):
+                rating_val = None
             
             # Generate stable ID from venue name
             venue_id = generate_stable_venue_id(row['Name'])
@@ -272,7 +274,8 @@ def main():
                 'numerical_price': row['Numerical_Price'],
                 'best_season': row['Best_Season'],
                 'vibes': [v.strip() for v in vibe_str.split(',') if v.strip()],
-                'description': desc_str,
+                'vibeDescription': vibe_desc if vibe_desc else None,
+                'description': desc_str if desc_str else "",
                 'rating': rating_val,
                 'embedding': embedding
             }
@@ -397,10 +400,10 @@ def incremental_update():
         if name not in existing_venues:
             new_venues.append((name, row, embedding_text))
         else:
-            # Check if embedding source changed
+            # Check if embedding source changed - compare VibeDescription to existing vibeDescription
             existing = existing_venues[name]
-            existing_vibes = ', '.join(existing.get('vibes', []))
-            existing_hash = hash_text(existing_vibes)  # Approx - we use vibes as proxy
+            existing_vibe_desc = existing.get('vibeDescription', '') or ''
+            existing_hash = hash_text(existing_vibe_desc)
             
             if text_hash != existing_hash:
                 changed_venues.append((name, row, embedding_text))
@@ -446,9 +449,11 @@ def incremental_update():
         try:
             embedding = get_embedding(embedding_text, client)
             
-            # Get rating and suburb if available
+            # Get rating and suburb if available - handle NaN for valid JSON
             rating = row.get('Rating')
-            rating_val = float(rating) if pd.notna(rating) and rating != '' else None
+            rating_val = float(rating) if pd.notna(rating) and str(rating).strip() != '' else None
+            if rating_val is not None and (pd.isna(rating_val) or rating_val == float('inf')):
+                rating_val = None
             suburb = str(row.get('Suburb', '')) if pd.notna(row.get('Suburb')) else None
             
             # Generate stable ID from venue name
@@ -463,7 +468,8 @@ def incremental_update():
                 'numerical_price': row['Numerical_Price'],
                 'best_season': row['Best_Season'],
                 'vibes': [v.strip() for v in vibe_str.split(',') if v.strip()],
-                'description': desc_str,
+                'vibeDescription': str(row.get('VibeDescription', '')) if pd.notna(row.get('VibeDescription')) and str(row.get('VibeDescription', '')).strip() else None,
+                'description': desc_str if desc_str else "",
                 'rating': rating_val,
                 'suburb': suburb,
                 'embedding': embedding

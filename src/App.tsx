@@ -77,6 +77,40 @@ function App() {
     const [moodShuffleClicked, setMoodShuffleClicked] = useState(false);
     const [avoidShuffleClicked, setAvoidShuffleClicked] = useState(false);
 
+    // Animated counter for venue count
+    const [displayedVenueCount, setDisplayedVenueCount] = useState(0);
+
+    // Animate venue count when data loads
+    useEffect(() => {
+        if (totalVenues <= 0) return;
+
+        const duration = 1200; // 1.2 seconds animation
+        const startTime = performance.now();
+        const startValue = displayedVenueCount;
+        const endValue = totalVenues;
+
+        // Skip animation if already at target
+        if (startValue === endValue) return;
+
+        const easeOutQuad = (t: number) => t * (2 - t);
+
+        const animate = (currentTime: number) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const easedProgress = easeOutQuad(progress);
+            const currentValue = Math.round(startValue + (endValue - startValue) * easedProgress);
+
+            setDisplayedVenueCount(currentValue);
+
+            if (progress < 1) {
+                requestAnimationFrame(animate);
+            }
+        };
+
+        requestAnimationFrame(animate);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [totalVenues]);
+
     const handleCurious = () => {
         // Preset for "Surprise Me" flow - goes straight to results
         if (!recommendationsReady) return;
@@ -476,9 +510,9 @@ function App() {
                 <m.h2 className="question-title" variants={itemVariants}>
                     {title}
                 </m.h2>
-                <m.p className="question-subtitle" variants={itemVariants}>
+                <m.div className="question-subtitle" variants={itemVariants}>
                     {subtitle}
-                </m.p>
+                </m.div>
 
                 {/* Options */}
                 <m.div
@@ -714,7 +748,7 @@ function App() {
                                         whileTap={{ scale: 0.98 }}
                                         onClick={handleCurious}
                                         disabled={!recommendationsReady}
-                                        style={{ opacity: recommendationsReady ? 1 : 0.8, cursor: recommendationsReady ? 'pointer' : 'wait' }}
+                                        style={{ opacity: recommendationsReady ? 1 : 0.8 }}
                                         aria-label="Feeling curious? Explore Cape Town randomly"
                                     >
                                         <Shuffle className="icon" aria-hidden="true" />
@@ -725,9 +759,16 @@ function App() {
                             </m.article>
 
                             <footer className="landing-footer" role="contentinfo">
+                                <a
+                                    href="mailto:hello@lekker-find.co.za?subject=Suggestion%20for%20Lekker%20Find"
+                                    className="landing-footer-mailto"
+                                    aria-label="Send us a suggestion via email"
+                                >
+                                    Have a suggestion?
+                                </a>
                                 <p className="landing-footer-text">
                                     <span itemProp="about">
-                                        Your local plug for Cape Town · {totalVenues > 0 ? totalVenues : '330+'} hand-picked spots
+                                        Your local plug for Cape Town · {displayedVenueCount} hand-picked spots
                                     </span>
                                 </p>
                             </footer>
@@ -852,9 +893,9 @@ function App() {
                                 <m.h2 className="question-title" variants={itemVariants}>
                                     What's the vibe?
                                 </m.h2>
-                                <m.p className="question-subtitle" variants={itemVariants}>
+                                <m.div className="question-subtitle" variants={itemVariants}>
                                     Select 2-4 for best results
-                                </m.p>
+                                </m.div>
 
                                 {/* Mood Tags Multi-select */}
                                 <AnimatePresence mode="wait">
@@ -996,9 +1037,9 @@ function App() {
                                 <m.h2 className="question-title" variants={itemVariants}>
                                     Anything to avoid?
                                 </m.h2>
-                                <m.p className="question-subtitle" variants={itemVariants}>
+                                <m.div className="question-subtitle" variants={itemVariants}>
                                     Optional - select 1-3 for best accuracy
-                                </m.p>
+                                </m.div>
 
                                 {/* Avoid Mood Tags */}
                                 <AnimatePresence mode="wait">
