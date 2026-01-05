@@ -58,10 +58,12 @@ def sync_metadata():
                 updated_count += 1
                 
             # 3. Rating
-            if float(row['Rating']) != float(venue.get('rating') or 0):
-                # print(f"  UPDATE {name}: Rating {venue.get('rating')} -> {row['Rating']}") # Less noisy
-                venue['rating'] = float(row['Rating'])
-                updated_count += 1
+            rating_val = row['Rating']
+            if pd.notna(rating_val):
+                venue['rating'] = float(rating_val)
+            else:
+                venue['rating'] = None
+            updated_count += 1
                 
             # 4. Tourist Level - Force sync from CSV if we start managing it manually there
             if int(row['Tourist_Level']) != int(venue.get('tourist_level') or 0):

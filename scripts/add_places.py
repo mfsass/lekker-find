@@ -92,6 +92,36 @@ OPENAI_MODEL = 'gpt-5-nano'
 # Similarity threshold for duplicate detection
 SIMILARITY_THRESHOLD = 0.85
 
+# Suburb Normalization Mapping
+SUBURB_FIXES = {
+    "Victoria & Alfred Waterfront": "V&A Waterfront",
+    "Silo District": "V&A Waterfront",
+    "Clock Tower District": "V&A Waterfront",
+    "Stellenbosch Central": "Stellenbosch",
+    "Wynberg NU (2)": "Wynberg",
+    "City Centre": "Cape Town City Centre",
+    "CBD": "Cape Town City Centre",
+    "Central": "Cape Town City Centre",
+    "Foreshore": "Cape Town City Centre",
+    "Wharf St": "V&A Waterfront",
+    "Dock Rd": "V&A Waterfront",
+    "Breakwater Blvd": "V&A Waterfront",
+    "Buitenkant St": "Cape Town City Centre",
+    "13 Drama St": "Somerset West",
+    "6 Nobel St": "Somerset West",
+    "23 Estmil Rd": "Diep River",
+    "Ronelle St": "Brackenfell South",
+    "Asla Cres": "Somerset West",
+    "Paradyskloof Rd": "Stellenbosch",
+    "Banghoek Rd": "Stellenbosch",
+    "R304": "Stellenbosch",
+    "R45": "Franschhoek",
+    "Dassenberg Rd": "Franschhoek",
+    "Hout Bay Main Rd": "Hout Bay",
+    "Strandsig Building": "Strand",
+    "The Ridge": "V&A Waterfront"
+}
+
 # ============================================================================
 # DATA CLASSES
 # ============================================================================
@@ -246,7 +276,8 @@ def extract_suburb(place: Dict) -> str:
     for component in components:
         types = component.get('types', [])
         if 'locality' in types:
-            return component.get('longText', '')
+            suburb = component.get('longText', '')
+            return SUBURB_FIXES.get(suburb, suburb)
     
     # Fallback: extract from formatted address
     address = place.get('formattedAddress', '')
@@ -256,7 +287,7 @@ def extract_suburb(place: Dict) -> str:
         potential_suburb = parts[1].strip() if len(parts) > 2 else parts[0].strip()
         # Filter out "Cape Town" and similar
         if potential_suburb.lower() not in ['cape town', 'south africa', 'western cape']:
-            return potential_suburb
+            return SUBURB_FIXES.get(potential_suburb, potential_suburb)
     
     return ""
 
@@ -425,28 +456,53 @@ def generate_vibe_description_ai(
     
     context = "\n".join(context_parts) if context_parts else "Limited information available."
     
-    prompt = f"""You are a Cape Town travel expert. Write a 2-3 sentence vibe description for this place.
-Focus on the FEELING and ATMOSPHERE - what makes it special, who would love it, and the energy.
-Use warm, inviting language. Be specific and evocative. Avoid clichés.
+    prompt = f"""You are a Cape Town travel expert. Write EXACTLY ONE SHORT, ATMOSPHERIC SENTENCE for this place.
+    
+    CRITICAL RULES:
+    1. EXTREMELY CONCISE: Maximum 120 characters. 
+    2. ATMOSPHERE ONLY: Focus ONLY on the feeling, energy, or "vibe".
+    3. NO FACTS: Do NOT mention the name, location, category, or specific activities.
+    4. EVOCATIVE: Use warm, punchy, inviting language.
+    5. NO INTRO: Do not start with "This place..." or "A...". Just the vibe.
+    6. DISTINCT: Provide a fresh emotional angle.
 
-Place: {details.name}
-Category: {category}
-Location: {details.suburb or details.formatted_address}
-Vibes: {vibe_tags}
-Rating: {details.rating}/5 ({details.review_count:,} reviews)
+    Place: {details.name}
+    Category: {category}
+    Location: {details.suburb or details.formatted_address}
+    Vibes: {vibe_tags}
+    Rating: {details.rating}/5 ({details.review_count:,} reviews)
 
-Context:
-{context}
+    Context:
+    {context}
 
-Write ONLY the vibe description (2-3 sentences). No intro or labels."""
+    Example of what I want: "Sun-dappled tables and a gentle salt breeze invite long, lazy afternoons by the water."
+    Example of what I DON'T want: "This is a seafood restaurant in Kalk Bay with great views."
+
+    Write ONLY the vibe sentence."""
 
     try:
         response = client.chat.completions.create(
             model=OPENAI_MODEL,
             messages=[{"role": "user", "content": prompt}],
-            max_completion_tokens=200,  # Use max_completion_tokens for GPT-5 models
+            max_completion_tokens=500
         )
-        return response.choices[0].message.content.strip()
+        content = response.choices[0].message.content.strip().strip('"')
+        
+        # Cleanup: Remove common AI prefixes despite instructions
+        if content.lower().startswith("the vibe is "):
+            content = content[12:]
+        if content.lower().startswith("vibe: "):
+            content = content[6:]
+        
+        # Validation: Reject if empty or looks like raw API data
+        if not content:
+            return None
+            
+        if "stars" in content and "reviews" in content and len(content) < 50:
+            print(f"  ⚠ AI returned raw data format: '{content}' - discarding")
+            return None
+            
+        return content
     except Exception as e:
         print(f"  ⚠ OpenAI error: {e}")
         return None
