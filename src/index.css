@@ -72,10 +72,14 @@ body {
     color: var(--foreground);
     line-height: 1.6;
     min-height: 100vh;
+    min-height: 100dvh;
+    /* Prevent pull-to-refresh on mobile to feel like an app */
+    overscroll-behavior: none;
 }
 
 #root {
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
 }
@@ -157,6 +161,7 @@ h6 {
 /* ===== Landing Page Specific ===== */
 .landing-page {
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -235,13 +240,15 @@ h6 {
     text-align: center;
     padding: 2rem;
     max-width: 600px;
-    margin-bottom: 6rem;
-    /* Space for footer on mobile */
+    margin-bottom: 4rem;
+    /* Reduced from 6rem */
 }
 
 @media (max-width: 767px) {
     .landing-content {
+        padding: 1rem 1.5rem;
         margin-bottom: 2rem;
+        /* Ensure content is optically centered above footer */
     }
 }
 
@@ -251,10 +258,12 @@ h6 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Added to prepare for animation */
-    /* opacity: 0; */
-    /* transform: scale(0.8); */
-    /* animation: fadeScaleIn 0.8s ease-out forwards; */
+}
+
+@media (max-width: 767px) {
+    .landing-logo {
+        margin-bottom: 1rem;
+    }
 }
 
 /* @keyframes fadeScaleIn {
@@ -292,6 +301,13 @@ h6 {
     margin-bottom: 1.5rem;
 }
 
+@media (max-width: 767px) {
+    .landing-slogan {
+        font-size: clamp(2rem, 8vw, 2.75rem);
+        margin-bottom: 0.75rem;
+    }
+}
+
 .landing-slogan-accent {
     background: linear-gradient(135deg, var(--primary), hsl(174, 72%, 30%));
     -webkit-background-clip: text;
@@ -303,9 +319,17 @@ h6 {
 .landing-description {
     font-size: 1.125rem;
     color: var(--muted-foreground);
-    line-height: 1.6;
+    line-height: 1.5;
     margin-bottom: 3rem;
     max-width: 440px;
+}
+
+@media (max-width: 767px) {
+    .landing-description {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.4;
+    }
 }
 
 @media (min-width: 768px) {
@@ -322,7 +346,7 @@ h6 {
     align-items: center;
     gap: 0.75rem;
     width: 100%;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
 
 
@@ -546,14 +570,14 @@ h6 {
     right: 0;
     padding: 1.5rem 2rem;
     text-align: center;
-    z-index: 1;
+    z-index: 10;
+    /* Ensure it stays on top of orbs */
 }
 
 @media (max-width: 767px) {
     .landing-footer {
-        position: relative;
-        margin-top: 4rem;
-        padding: 1rem;
+        padding: 1rem 1.5rem 2rem 1.5rem;
+        /* Extra padding bottom for safe area */
     }
 }
 
@@ -588,6 +612,7 @@ h6 {
 /* ===== App Container ===== */
 .app-container {
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -599,6 +624,7 @@ h6 {
 .page-wrapper {
     width: 100%;
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -190,9 +190,14 @@ const ResultsCard = React.memo(({
 
                 {/* Footer Actions */}
                 <div className="results-card-footer">
-                    <button onClick={() => openInMaps(venue)} className="results-maps-btn" style={{ flex: 1, justifyContent: 'center' }}>
-                        <MapPin size={18} />
-                        Open in Maps
+                    <button
+                        onClick={() => openInMaps(venue)}
+                        className="results-maps-btn"
+                        style={{ flex: 1, justifyContent: 'center' }}
+                        aria-label="Open location in Maps"
+                    >
+                        <MapPin size={20} />
+                        Maps
                     </button>
 
                     <div className="results-feedback-wrapper">
@@ -241,11 +246,11 @@ const ResultsCard = React.memo(({
                                             <div className="feedback-icon-check">
                                                 <ThumbsUp size={12} fill="white" strokeWidth={3} />
                                             </div>
-                                            <span>Great choice!</span>
+                                            <span>Liked</span>
                                         </>
                                     ) : (
                                         <>
-                                            <span>Got it, skipping...</span>
+                                            <span>Disliked</span>
                                         </>
                                     )}
                                 </motion.div>
