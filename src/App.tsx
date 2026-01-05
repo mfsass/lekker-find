@@ -262,9 +262,9 @@ function App() {
 
     // Page transition variants
     const pageVariants = {
-        initial: (custom: { isFirstMount: boolean }) => ({
-            opacity: custom.isFirstMount ? 1 : 0,
-            y: custom.isFirstMount ? 0 : 20
+        initial: (custom?: { isFirstMount: boolean }) => ({
+            opacity: custom?.isFirstMount ? 1 : 0,
+            y: custom?.isFirstMount ? 0 : 20
         }),
         animate: {
             opacity: 1,
@@ -854,6 +854,30 @@ function App() {
                         </m.div>
                     )}
 
+                    {currentStep === 'results' && (
+                        <m.div
+                            key="results"
+                            className="page-wrapper"
+                            variants={pageVariants}
+                            initial="initial"
+                            animate="animate"
+                            exit="exit"
+                            custom={{ isFirstMount: false }}
+                        >
+                            <Suspense fallback={null}>
+                                <SwipeableResults
+                                    venues={matchedVenues}
+                                    onClose={handleStartOver}
+                                    onBack={handleBackFromResults}
+                                    onStartOver={handleStartOver}
+                                    currency={currency}
+                                    exchangeRates={exchangeRates}
+                                    isCuriousMode={isCuriousMode}
+                                />
+                            </Suspense>
+                        </m.div>
+                    )}
+
                     {currentStep === 'question-mood' && (
                         <m.div
                             key="question-mood"
@@ -1166,21 +1190,9 @@ function App() {
                             setCurrentStep('results');
                         }}
                     />
-
-                    {/* Results View */}
-                    {currentStep === 'results' && (
-                        <SwipeableResults
-                            venues={matchedVenues}
-                            onClose={handleStartOver}
-                            onBack={handleBackFromResults}
-                            onStartOver={handleStartOver}
-                            currency={currency}
-                            exchangeRates={exchangeRates}
-                        />
-                    )}
                 </Suspense>
-            </main >
-        </LazyMotion >
+            </main>
+        </LazyMotion>
     );
 }
 

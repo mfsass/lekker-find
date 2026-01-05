@@ -18,6 +18,7 @@ interface VenueInteraction {
     venueName: string;
     sentiment: 'positive' | 'negative';
     actionType: 'vote' | 'map_click';
+    source?: string;
 }
 
 /**
@@ -72,6 +73,7 @@ export const captureFeedback = (interaction: VenueInteraction) => {
         venue_name: interaction.venueName,
         sentiment: interaction.sentiment,
         action_type: interaction.actionType,
+        source: interaction.source || 'recommendation', // Default to normal flow
         // Note: detailed context is already attached via register()
     });
 };

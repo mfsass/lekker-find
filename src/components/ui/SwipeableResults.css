@@ -75,11 +75,17 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    /* Ensure perspective for 3D transforms if needed */
+    perspective: 1000px;
 }
 
 /* Card */
 .results-card {
-    position: relative;
+    position: absolute;
+    /* Changed from relative to absolute for stacking */
+    inset: 0;
+    margin: auto;
+    /* Center within the absolute space */
     width: 100%;
     max-width: 420px;
     height: 100%;
@@ -94,6 +100,8 @@
     overflow: hidden;
     cursor: grab;
     touch-action: pan-y;
+    /* Hardware acceleration for smoother animation */
+    will-change: transform, opacity;
 }
 
 .results-card:active {
@@ -156,9 +164,19 @@
     left: 0;
     right: 0;
     padding: 2rem 1.5rem 1.5rem;
-    /* More top padding for airiness */
     color: white;
     z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 50%;
+    pointer-events: none;
+    /* Let clicks pass through to card unless on interactive elements */
+}
+
+.results-card-content>* {
+    pointer-events: auto;
+    /* Re-enable for content */
 }
 
 .results-venue-name {
@@ -198,11 +216,10 @@
 
 .results-card-footer {
     display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-top: 0.5rem;
-    flex-wrap: wrap;
-    /* Wrap on very small screens */
+    align-items: stretch;
+    gap: 1rem;
+    margin-top: auto;
+    width: 100%;
 }
 
 .results-venue-meta {
@@ -273,6 +290,88 @@
 .results-maps-btn:active {
     transform: translateY(0);
 }
+
+/* Feedback Section */
+.results-feedback-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-width: 120px;
+    height: 52px;
+}
+
+.feedback-btn {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid hsla(0, 0%, 100%, 0.2);
+    background: hsla(220, 20%, 10%, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: white;
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.feedback-btn.like {
+    border-color: hsla(174, 72%, 40%, 0.4);
+    background: hsla(174, 72%, 40%, 0.25);
+}
+
+.feedback-btn:hover {
+    transform: scale(1.1);
+    background: hsla(220, 20%, 10%, 0.6);
+    border-color: hsla(0, 0%, 100%, 0.4);
+}
+
+.feedback-btn.like:hover {
+    background: hsla(174, 72%, 40%, 0.4);
+    border-color: hsla(174, 72%, 40%, 0.6);
+}
+
+.feedback-btn:active {
+    transform: scale(0.95);
+}
+
+.feedback-success-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0 1.25rem;
+    height: 52px;
+    background: hsla(174, 72%, 20%, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsla(174, 72%, 40%, 0.4);
+    border-radius: 9999px;
+    color: white;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: 0 8px 32px -8px hsla(174, 72%, 20%, 0.5);
+}
+
+.feedback-success-pill.dislike {
+    background: hsla(0, 0%, 20%, 0.4);
+    border-color: hsla(0, 0%, 100%, 0.2);
+    box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.5);
+}
+
+.feedback-icon-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: hsl(174, 72%, 40%);
+    border-radius: 50%;
+    box-shadow: 0 0 10px hsla(174, 72%, 40%, 0.4);
+}
+
 
 /* Navigation */
 .results-nav {
@@ -453,7 +552,9 @@
     .results-card {
         border-radius: 1rem;
         max-height: none;
-        height: calc(100% - 0.5rem);
+        width: calc(100% - 1rem);
+        /* Add margin for mobile */
+        height: calc(100% - 1rem);
     }
 
     .results-venue-name {

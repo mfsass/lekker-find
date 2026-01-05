@@ -41,6 +41,223 @@ const CARD_VARIANTS = {
     }),
 };
 
+// Isolated Card Component to handle its own state (image loading, votes)
+// This prevents state leakage and race conditions during transitions
+const ResultsCard = React.memo(({
+    venue,
+    direction,
+    dragHandlers,
+    onVote,
+    openInMaps,
+    currency,
+    exchangeRates
+}: {
+    venue: VenueWithMatch;
+    direction: 'left' | 'right' | null;
+    dragHandlers: {
+        drag: "x";
+        dragConstraints: { left: number; right: number };
+        dragElastic: number;
+        onDrag: (e: any, info: PanInfo) => void;
+        onDragEnd: (e: any, info: PanInfo) => void;
+        whileDrag: any;
+    };
+    onVote: (sentiment: 'positive' | 'negative') => void;
+    openInMaps: (venue: VenueWithMatch) => void;
+    currency: 'ZAR' | 'EUR' | 'USD' | 'GBP';
+    exchangeRates: Record<string, number>;
+}) => {
+    const [imageLoaded, setImageLoaded] = useState(false);
+    const [localVoteState, setLocalVoteState] = useState<'idle' | 'liked' | 'disliked'>('idle');
+    const imageUrl = useMemo(() => getVenueImage(venue), [venue]);
+    const imgRef = React.useRef<HTMLImageElement>(null);
+
+    // Check if image is already cached/loaded on mount
+    React.useEffect(() => {
+        if (imgRef.current && imgRef.current.complete) {
+            setImageLoaded(true);
+        }
+    }, [imageUrl]);
+
+    const handleImageLoad = useCallback(() => {
+        setImageLoaded(true);
+    }, []);
+
+    // Handle local vote interaction
+    const handleLocalVote = useCallback((sentiment: 'positive' | 'negative') => {
+        if (localVoteState !== 'idle') return;
+
+        setLocalVoteState(sentiment === 'positive' ? 'liked' : 'disliked');
+        onVote(sentiment);
+    }, [localVoteState, onVote]);
+
+    // Format price
+    const priceDisplay = useMemo(() => {
+        const tier = venue.price_tier?.toLowerCase();
+        if (tier === 'free' || venue.price_tier === 'Free') return 'Free';
+        if (venue.numerical_price === 'Free') return 'Free';
+        if (venue.numerical_price) {
+            return convertPriceString(venue.numerical_price, currency, exchangeRates);
+        }
+        return venue.price_tier;
+    }, [venue, currency, exchangeRates]);
+
+    // Determine description
+    const displayDescription = useMemo(() => {
+        const desc = venue.description;
+        const vibe = venue.vibeDescription;
+        if (!desc) return vibe || '';
+        // Check for generic Google Places description like "wine farms (4.8 stars, 453 reviews)"
+        const isGeneric = /\(\d+(\.\d+)? stars, \d+ reviews\)$/.test(desc);
+        if (isGeneric && vibe) return vibe;
+        return desc;
+    }, [venue]);
+
+    return (
+        <motion.div
+            className="results-card"
+            custom={direction}
+            variants={CARD_VARIANTS}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            {...dragHandlers}
+            style={{
+                backgroundImage: `url(${imageUrl})`,
+                // We can't access dragOffset easily here without context or prop, 
+                // but simpler is better for stability. Removing rotation for now to simplify prop drilling.
+            }}
+        >
+            {/* Loading state - managed locally per card instance */}
+            {!imageLoaded && <div className="results-card-skeleton" />}
+
+            {/* Hidden image to trigger load */}
+            <img
+                ref={imgRef}
+                src={imageUrl}
+                alt=""
+                style={{ display: 'none' }}
+                onLoad={handleImageLoad}
+            />
+
+            <div className="results-card-overlay" />
+
+            {/* Match badge */}
+            {venue.matchPercentage > 0 && (
+                <div className="results-match-badge-container" style={{ position: 'absolute', top: '12px', right: '12px', zIndex: 10 }}>
+                    <div className="results-match-badge" style={{ whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        <Sparkles size={14} fill="currentColor" strokeWidth={0} style={{ opacity: 0.8 }} />
+                        {venue.matchPercentage}% match
+                    </div>
+                </div>
+            )}
+
+            {/* Content */}
+            <div className="results-card-content">
+                <h2 className="results-venue-name">{venue.name}</h2>
+
+                <div className="results-venue-meta">
+                    <span className="results-category">{venue.category}</span>
+                    {venue.rating && (
+                        <>
+                            <span className="results-divider">•</span>
+                            <span className="results-rating" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                                <Star size={14} fill="currentColor" strokeWidth={0} />
+                                {venue.rating.toFixed(1)}/5
+                            </span>
+                        </>
+                    )}
+                    {priceDisplay && (
+                        <>
+                            <span className="results-divider">•</span>
+                            <span className="results-price">{priceDisplay}</span>
+                        </>
+                    )}
+                    {venue.suburb && (
+                        <>
+                            <span className="results-divider">•</span>
+                            <span className="results-suburb-text" style={{ display: 'inline-flex', alignItems: 'center', gap: '3px' }}>
+                                <MapPin size={12} style={{ opacity: 0.8 }} />
+                                {venue.suburb}
+                            </span>
+                        </>
+                    )}
+                </div>
+
+                <p className="results-description">
+                    {displayDescription}
+                </p>
+
+                {/* Footer Actions */}
+                <div className="results-card-footer">
+                    <button onClick={() => openInMaps(venue)} className="results-maps-btn" style={{ flex: 1, justifyContent: 'center' }}>
+                        <MapPin size={18} />
+                        Open in Maps
+                    </button>
+
+                    <div className="results-feedback-wrapper">
+                        <AnimatePresence mode="popLayout" initial={false}>
+                            {localVoteState === 'idle' ? (
+                                <motion.div
+                                    key="buttons"
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0.5, filter: 'blur(8px)' }}
+                                    transition={{ duration: 0.2 }}
+                                    style={{ display: 'flex', gap: '12px' }}
+                                >
+                                    <button
+                                        onClick={(e) => { e.stopPropagation(); handleLocalVote('negative'); }}
+                                        className="feedback-btn dislike"
+                                        aria-label="Dislike"
+                                    >
+                                        <ThumbsDown size={22} />
+                                    </button>
+
+                                    <button
+                                        onClick={(e) => { e.stopPropagation(); handleLocalVote('positive'); }}
+                                        className="feedback-btn like"
+                                        aria-label="Like"
+                                    >
+                                        <ThumbsUp size={22} />
+                                    </button>
+                                </motion.div>
+                            ) : (
+                                <motion.div
+                                    key="feedback-message"
+                                    initial={{ opacity: 0, scale: 0.8, y: 10, filter: 'blur(4px)' }}
+                                    animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
+                                    exit={{ opacity: 0, scale: 0.8 }}
+                                    transition={{
+                                        type: 'spring',
+                                        stiffness: 260,
+                                        damping: 20,
+                                        filter: { type: 'tween', duration: 0.2, ease: 'easeOut' }
+                                    }}
+                                    className={`feedback-success-pill ${localVoteState === 'disliked' ? 'dislike' : ''}`}
+                                >
+                                    {localVoteState === 'liked' ? (
+                                        <>
+                                            <div className="feedback-icon-check">
+                                                <ThumbsUp size={12} fill="white" strokeWidth={3} />
+                                            </div>
+                                            <span>Great choice!</span>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <span>Got it, skipping...</span>
+                                        </>
+                                    )}
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </div>
+                </div>
+            </div>
+        </motion.div>
+    );
+});
+
 interface SwipeableResultsProps {
     venues: VenueWithMatch[];
     onClose: () => void;
@@ -48,22 +265,23 @@ interface SwipeableResultsProps {
     onStartOver: () => void;
     currency: 'ZAR' | 'EUR' | 'USD' | 'GBP';
     exchangeRates: Record<string, number>;
+    isCuriousMode?: boolean;
 }
 
 export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
     venues,
-    onClose: _onClose, // Deprecated, keeping for safety but not using in UI
+    onClose: _onClose,
     onBack,
     onStartOver,
     currency = 'ZAR',
-    exchangeRates = { ZAR: 1 }
+    exchangeRates = { ZAR: 1 },
+    isCuriousMode = false
 }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [direction, setDirection] = useState<'left' | 'right' | null>(null);
-    const [voteState, setVoteState] = useState<'idle' | 'liked' | 'disliked'>('idle'); // Animation state
-    const [imageLoaded, setImageLoaded] = useState(false);
+    // Removed parent-level voteState and imageLoaded state
     const [showSwipeGuide, setShowSwipeGuide] = useState(true);
-    const [dragOffset, setDragOffset] = useState(0);
+    // Removed unused dragOffset
     const [isMobile, setIsMobile] = useState(false);
     const [tutorialTouchStart, setTutorialTouchStart] = useState<{ x: number; y: number } | null>(null);
 
@@ -76,13 +294,11 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
-    // Memoized values
     const currentVenue = useMemo(() => venues[currentIndex], [venues, currentIndex]);
     const hasNext = currentIndex < venues.length - 1;
     const hasPrev = currentIndex > 0;
-    const imageUrl = useMemo(() => currentVenue ? getVenueImage(currentVenue) : '', [currentVenue]);
 
-    // Preload next image to keep swipe smooth
+    // Preload next image logic remains same
     React.useEffect(() => {
         if (currentIndex < venues.length - 1) {
             const nextVenue = venues[currentIndex + 1];
@@ -91,7 +307,6 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
                 img.src = getVenueImage(nextVenue);
             }
         }
-        // Also keep previous image warm if going back
         if (currentIndex > 0) {
             const prevVenue = venues[currentIndex - 1];
             if (prevVenue) {
@@ -101,52 +316,11 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
         }
     }, [currentIndex, venues]);
 
-    // Format price display with currency conversion
-    const priceDisplay = useMemo(() => {
-        if (!currentVenue) return '';
-        const tier = currentVenue.price_tier?.toLowerCase();
-
-        // Always show "Free" if applicable
-        if (tier === 'free' || currentVenue.price_tier === 'Free') return 'Free';
-        if (currentVenue.numerical_price === 'Free') return 'Free';
-
-        // Show numerical price if available, converted
-        if (currentVenue.numerical_price) {
-            return convertPriceString(currentVenue.numerical_price, currency, exchangeRates);
-        }
-
-        return currentVenue.price_tier;
-    }, [currentVenue, currency, exchangeRates]);
-
-    // Determine which description to show
-    const displayDescription = useMemo(() => {
-        if (!currentVenue) return '';
-
-        const desc = currentVenue.description;
-        const vibe = currentVenue.vibeDescription;
-
-        // If we have no description, fallback to vibe
-        if (!desc) return vibe || '';
-
-        // Check for generic Google Places description: "Type (X.X stars, N reviews)"
-        // Example: "wine farms (4.8 stars, 453 reviews)"
-        const isGeneric = /\(\d+(\.\d+)? stars, \d+ reviews\)$/.test(desc);
-
-        // If description is generic and we have a vibe description, prefer vibe
-        if (isGeneric && vibe) {
-            return vibe;
-        }
-
-        // Otherwise stick with the factual description (or if vibe is missing)
-        return desc;
-    }, [currentVenue]);
-    // Hide swipe guide after first swipe or any interaction
     const dismissGuide = useCallback(() => {
         setShowSwipeGuide(false);
         setTutorialTouchStart(null);
     }, []);
 
-    // Touch handlers for the tutorial overlay - dismiss on any swipe movement
     const handleTutorialTouchStart = useCallback((e: React.TouchEvent) => {
         const touch = e.touches[0];
         setTutorialTouchStart({ x: touch.clientX, y: touch.clientY });
@@ -157,41 +331,36 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
         const touch = e.touches[0];
         const deltaX = Math.abs(touch.clientX - tutorialTouchStart.x);
         const deltaY = Math.abs(touch.clientY - tutorialTouchStart.y);
-        // Dismiss if user moves finger more than 20px in any direction
         if (deltaX > 20 || deltaY > 20) {
             dismissGuide();
         }
     }, [tutorialTouchStart, dismissGuide]);
 
     const handleTutorialTouchEnd = useCallback(() => {
-        // Still dismiss on tap (touch end without significant movement)
         setTutorialTouchStart(null);
     }, []);
 
     const goNext = useCallback(() => {
         if (hasNext) {
             setDirection('left');
-            setImageLoaded(false);
             dismissGuide();
-            setTimeout(() => setCurrentIndex(i => i + 1), 50);
+            setCurrentIndex(prev => prev + 1);
         }
     }, [hasNext, dismissGuide]);
 
     const goPrev = useCallback(() => {
         if (hasPrev) {
             setDirection('right');
-            setImageLoaded(false);
             dismissGuide();
-            setTimeout(() => setCurrentIndex(i => i - 1), 50);
+            setCurrentIndex(prev => prev - 1);
         }
     }, [hasPrev, dismissGuide]);
 
-    const handleDrag = useCallback((_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-        setDragOffset(info.offset.x);
+    const handleDrag = useCallback((_event: MouseEvent | TouchEvent | PointerEvent, _info: PanInfo) => {
+        // Drag offset tracking removed for now
     }, []);
 
     const handleDragEnd = useCallback((_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-        setDragOffset(0);
         const threshold = 60;
         const velocityThreshold = 500;
         const shouldSwipeLeft = (info.velocity.x < -velocityThreshold || info.offset.x < -threshold) && hasNext;
@@ -204,57 +373,42 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
         }
     }, [hasNext, hasPrev, goNext, goPrev]);
 
-    // Reset vote state when moving to a new card
-    React.useEffect(() => {
-        setVoteState('idle');
-        setDirection(null);
-    }, [currentIndex]);
-
     const handleVote = useCallback((sentiment: 'positive' | 'negative') => {
-        if (!currentVenue || voteState !== 'idle') return; // Prevent double taps
+        if (!currentVenue) return;
 
-        // 1. Trigger Animation State
-        setVoteState(sentiment === 'positive' ? 'liked' : 'disliked');
-
-        // 2. Track the vote
         captureFeedback({
             venueId: currentVenue.id,
             venueName: currentVenue.name,
             sentiment,
-            actionType: 'vote'
+            actionType: 'vote',
+            source: isCuriousMode ? 'curious_shuffle' : 'recommendation_engine'
         });
 
-        // 3. Handle Navigation Logic
         if (sentiment === 'negative') {
-            // For Dislike: Auto-advance after animation so user doesn't dwell on it
             setTimeout(() => {
                 setDirection('left');
                 setCurrentIndex(i => i + 1);
             }, 600);
         }
-        // For Positive: Do NOT auto-advance. 
-        // User wants the card to remain (to Map it), but controls to disappear (handled by voteState).
 
-    }, [currentVenue, voteState]);
+    }, [currentVenue, isCuriousMode]);
 
-    const openInMaps = useCallback(() => {
-        if (!currentVenue) return;
-
-        // Track conversion
+    const openInMaps = useCallback((venue: VenueWithMatch) => {
         captureFeedback({
-            venueId: currentVenue.id,
-            venueName: currentVenue.name,
+            venueId: venue.id,
+            venueName: venue.name,
             sentiment: 'positive',
-            actionType: 'map_click'
+            actionType: 'map_click',
+            source: isCuriousMode ? 'curious_shuffle' : 'recommendation_engine'
         });
 
-        if (currentVenue.maps_url) {
-            window.open(currentVenue.maps_url, '_blank', 'noopener,noreferrer');
+        if (venue.maps_url) {
+            window.open(venue.maps_url, '_blank', 'noopener,noreferrer');
         } else {
-            const query = encodeURIComponent(`${currentVenue.name} Cape Town`);
+            const query = encodeURIComponent(`${venue.name} Cape Town`);
             window.open(`https://www.google.com/maps/search/?api=1&query=${query}`, '_blank', 'noopener,noreferrer');
         }
-    }, [currentVenue]);
+    }, [isCuriousMode]);
 
     if (!currentVenue) {
         return (
@@ -271,7 +425,6 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
 
     return (
         <div className="results-container">
-            {/* Header */}
             <header className="results-header">
                 <button onClick={onBack} className="results-close text-btn" aria-label="Back">
                     Back
@@ -284,198 +437,39 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
                 </button>
             </header>
 
-            {/* Swipeable Card */}
             <div className="results-card-wrapper">
-                <AnimatePresence mode="wait" custom={direction}>
-                    <motion.div
+                <AnimatePresence initial={false} custom={direction}>
+                    <ResultsCard
                         key={currentVenue.id}
-                        className="results-card"
-                        custom={direction}
-                        variants={CARD_VARIANTS}
-                        initial="enter"
-                        animate="center"
-                        exit="exit"
-                        drag="x"
-                        dragConstraints={{ left: 0, right: 0 }}
-                        dragElastic={0.85}
-                        onDrag={handleDrag}
-                        onDragEnd={handleDragEnd}
-                        whileDrag={{
-                            scale: 1.02,
+                        venue={currentVenue}
+                        direction={direction}
+                        dragHandlers={{
+                            drag: "x",
+                            dragConstraints: { left: 0, right: 0 },
+                            dragElastic: 0.85,
+                            onDrag: handleDrag,
+                            onDragEnd: handleDragEnd,
+                            whileDrag: { scale: 1.02 }
                         }}
-                        style={{
-                            backgroundImage: `url(${imageUrl})`,
-                            rotate: dragOffset / 25, // Subtle rotation: max ~±10 degrees
-                        }}
-                    >
-                        {/* Loading state */}
-                        {!imageLoaded && <div className="results-card-skeleton" />}
-
-                        {/* Hidden image to trigger load */}
-                        <img
-                            src={imageUrl}
-                            alt=""
-                            // crossOrigin="anonymous" // Removed for local images
-                            style={{ display: 'none' }}
-                            onLoad={() => setImageLoaded(true)}
-                        />
-
-
-                        {/* Gradient overlay */}
-                        <div className="results-card-overlay" />
-
-                        {/* Match badge */}
-                        {currentVenue.matchPercentage > 0 && (
-                            <div className="results-match-badge-container" style={{ position: 'absolute', top: '12px', right: '12px', zIndex: 10 }}>
-                                <div className="results-match-badge" style={{ whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                                    <Sparkles size={14} fill="currentColor" strokeWidth={0} style={{ opacity: 0.8 }} />
-                                    {currentVenue.matchPercentage}% match
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Content */}
-                        <div className="results-card-content">
-                            <h2 className="results-venue-name">{currentVenue.name}</h2>
-
-                            <div className="results-venue-meta">
-                                <span className="results-category">{currentVenue.category}</span>
-                                {currentVenue.rating && (
-                                    <>
-                                        <span className="results-divider">•</span>
-                                        <span className="results-rating" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                                            <Star size={14} fill="currentColor" strokeWidth={0} />
-                                            {currentVenue.rating.toFixed(1)}/5
-                                        </span>
-                                    </>
-                                )}
-                                {priceDisplay && (
-                                    <>
-                                        <span className="results-divider">•</span>
-                                        <span className="results-price">{priceDisplay}</span>
-                                    </>
-                                )}
-                                {currentVenue.suburb && (
-                                    <>
-                                        <span className="results-divider">•</span>
-                                        <span className="results-suburb-text">
-                                            {currentVenue.suburb}
-                                        </span>
-                                    </>
-                                )}
-                            </div>
-
-
-                            <p className="results-description">
-                                {displayDescription}
-                            </p>
-
-                            {/* Footer Actions */}
-                            <div className="results-card-footer" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto' }}>
-                                {/* Primary Action: Map */}
-                                <button onClick={openInMaps} className="results-maps-btn" style={{ flex: 1, justifyContent: 'center', maxWidth: '60%' }}>
-                                    <MapPin size={18} />
-                                    Open in Maps
-                                </button>
-
-                                {/* Secondary Actions: Feedback */}
-                                <div className="results-feedback-actions" style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-
-                                    <AnimatePresence mode="wait">
-                                        {/* Dislike Button */}
-                                        {voteState !== 'liked' && (
-                                            <motion.button
-                                                key="dislike"
-                                                onClick={(e) => { e.stopPropagation(); handleVote('negative'); }}
-                                                className="feedback-btn dislike"
-                                                aria-label="Dislike"
-                                                // Animation: Scale Up + Color -> THEN Fade Out/Shrink
-                                                animate={{
-                                                    scale: voteState === 'disliked' ? [1, 1.1, 0] : 1,
-                                                    opacity: voteState === 'disliked' ? 0 : 1,
-                                                    backgroundColor: voteState === 'disliked' ? 'hsl(350, 80%, 60%)' : 'rgba(0,0,0,0.4)'
-                                                }}
-                                                transition={{
-                                                    duration: 0.4,
-                                                    times: [0, 0.2, 1] // Scale up quickly, then shrink/fade
-                                                }}
-                                                exit={{ scale: 0, opacity: 0 }}
-                                                whileTap={{ scale: 0.9 }}
-                                                style={{
-                                                    width: '52px', height: '52px', borderRadius: '50%',
-                                                    border: '1px solid rgba(255,255,255,0.15)',
-                                                    color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                                    cursor: 'pointer',
-                                                    background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(8px)',
-                                                }}
-                                            >
-                                                <ThumbsDown size={24} />
-                                            </motion.button>
-                                        )}
-                                    </AnimatePresence>
-
-                                    <AnimatePresence mode="wait">
-                                        {/* Like Button */}
-                                        {voteState !== 'disliked' && (
-                                            <motion.button
-                                                key="like"
-                                                onClick={(e) => { e.stopPropagation(); handleVote('positive'); }}
-                                                className="feedback-btn like"
-                                                aria-label="Like"
-                                                animate={{
-                                                    scale: voteState === 'liked' ? [1, 1.1, 0] : 1,
-                                                    opacity: voteState === 'liked' ? 0 : 1,
-                                                    backgroundColor: voteState === 'liked' ? 'hsl(174, 72%, 40%)' : 'rgba(255,255,255,0.2)'
-                                                }}
-                                                transition={{
-                                                    duration: 0.4,
-                                                    times: [0, 0.2, 1]
-                                                }}
-                                                exit={{ scale: 0, opacity: 0 }}
-                                                whileTap={{ scale: 0.9 }}
-                                                style={{
-                                                    width: '52px', height: '52px', borderRadius: '50%',
-                                                    border: '1px solid rgba(255,255,255,0.3)',
-                                                    color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                                    cursor: 'pointer',
-                                                    background: 'hsl(174, 72%, 40%, 0.4)', backdropFilter: 'blur(8px)',
-                                                }}
-                                            >
-                                                <ThumbsUp size={24} />
-                                            </motion.button>
-                                        )}
-                                    </AnimatePresence>
-                                </div>
-
-                            </div>
-                        </div>
-                    </motion.div>
+                        onVote={handleVote}
+                        openInMaps={openInMaps}
+                        currency={currency}
+                        exchangeRates={exchangeRates}
+                    />
                 </AnimatePresence>
             </div>
 
-            {/* Navigation arrows - visible on larger screens */}
             {!isMobile && (
                 <div className="results-nav">
-                    <button
-                        onClick={goPrev}
-                        disabled={!hasPrev}
-                        className="results-nav-btn"
-                        aria-label="Previous venue"
-                    >
+                    <button onClick={goPrev} disabled={!hasPrev} className="results-nav-btn" aria-label="Previous venue">
                         <ChevronLeft size={32} />
                     </button>
-                    <button
-                        onClick={goNext}
-                        disabled={!hasNext}
-                        className="results-nav-btn"
-                        aria-label="Next venue"
-                    >
+                    <button onClick={goNext} disabled={!hasNext} className="results-nav-btn" aria-label="Next venue">
                         <ChevronRight size={32} />
                     </button>
                 </div>
             )}
 
-            {/* Swipe tutorial - mobile only, first card */}
             {isMobile && showSwipeGuide && currentIndex === 0 && (
                 <div
                     className="results-swipe-tutorial"
