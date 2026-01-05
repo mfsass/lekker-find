@@ -12,7 +12,7 @@
  */
 
 import React, { useState, useCallback, useMemo } from 'react';
-import { motion, AnimatePresence, PanInfo } from 'framer-motion';
+import { motion, AnimatePresence, PanInfo, TargetAndTransition, VariantLabels } from 'framer-motion';
 import { MapPin, ChevronLeft, ChevronRight, Star, ThumbsUp, ThumbsDown, Sparkles } from 'lucide-react';
 import { VenueWithMatch } from '../../utils/matcher';
 import { convertPriceString } from '../../utils/currency';
@@ -58,9 +58,9 @@ const ResultsCard = React.memo(({
         drag: "x";
         dragConstraints: { left: number; right: number };
         dragElastic: number;
-        onDrag: (e: any, info: PanInfo) => void;
-        onDragEnd: (e: any, info: PanInfo) => void;
-        whileDrag: any;
+        onDrag: (e: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => void;
+        onDragEnd: (e: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => void;
+        whileDrag: TargetAndTransition | VariantLabels;
     };
     onVote: (sentiment: 'positive' | 'negative') => void;
     openInMaps: (venue: VenueWithMatch) => void;
