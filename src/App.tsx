@@ -79,15 +79,15 @@ function App() {
     const [avoidShuffleClicked, setAvoidShuffleClicked] = useState(false);
 
     // Animated counter for venue count
-    const [displayedVenueCount, setDisplayedVenueCount] = useState(0);
+    const [displayedVenueCount, setDisplayedVenueCount] = useState<number | null>(null);
 
     // Animate venue count when data loads
     useEffect(() => {
         if (totalVenues <= 0) return;
 
-        const duration = 1200; // 1.2 seconds animation
+        const duration = 800; // Faster animation: 0.8 seconds
         const startTime = performance.now();
-        const startValue = displayedVenueCount;
+        const startValue = displayedVenueCount || 0;
         const endValue = totalVenues;
 
         // Skip animation if already at target
@@ -788,7 +788,7 @@ function App() {
                                     <span itemProp="about" className="landing-footer-content">
                                         <span className="footer-plug">Your local plug for Cape Town</span>
                                         <span className="footer-divider"> · </span>
-                                        <span className="footer-count">{displayedVenueCount} hand-picked spots</span>
+                                        <span className="footer-count">{displayedVenueCount !== null ? `${displayedVenueCount} ` : ''}hand-picked spots</span>
                                     </span>
                                 </p>
                             </footer>
