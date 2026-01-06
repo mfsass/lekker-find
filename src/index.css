@@ -587,6 +587,18 @@ h6 {
     opacity: 0.7;
 }
 
+@media (max-width: 480px) {
+    .landing-footer-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .footer-divider {
+        display: none;
+    }
+}
+
 /* Mailto suggestion link */
 .landing-footer-mailto {
     display: block;

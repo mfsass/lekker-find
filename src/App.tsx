@@ -785,8 +785,10 @@ function App() {
                                     Have a suggestion?
                                 </a>
                                 <p className="landing-footer-text">
-                                    <span itemProp="about">
-                                        Your local plug for Cape Town · {displayedVenueCount} hand-picked spots
+                                    <span itemProp="about" className="landing-footer-content">
+                                        <span className="footer-plug">Your local plug for Cape Town</span>
+                                        <span className="footer-divider"> · </span>
+                                        <span className="footer-count">{displayedVenueCount} hand-picked spots</span>
                                     </span>
                                 </p>
                             </footer>
