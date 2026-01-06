@@ -408,7 +408,9 @@ def incremental_update():
             if text_hash != existing_hash:
                 changed_venues.append((name, row, embedding_text))
             else:
-                unchanged_venues.append(name)
+                unchanged_venues.append((name, row))
+
+
     
     # Find removed venues (in JSON but not CSV)
     removed_venues = [name for name in existing_venues.keys() if name not in csv_names]
@@ -494,8 +496,26 @@ def incremental_update():
     final_venues = []
     
     # Add unchanged venues from existing data
-    for name in unchanged_venues:
-        final_venues.append(existing_venues[name])
+    # Add unchanged venues from existing data but UPDATE METADATA from CSV
+    for name, row in unchanged_venues:
+        existing = existing_venues[name]
+        
+        # Update metadata fields that don't affect embedding
+        existing['category'] = row['Category']
+        existing['tourist_level'] = int(row['Tourist_Level'])
+        existing['price_tier'] = row['Price_Range']
+        existing['numerical_price'] = row['Numerical_Price']
+        existing['best_season'] = row['Best_Season']
+        
+        # Also update Description if it changed (but didn't trigger re-embedding)
+        desc_str = str(row['Description']) if pd.notna(row['Description']) else ""
+        existing['description'] = desc_str
+        
+        # Update image info if CSV has it (usually CSV doesn't have image urls, they are in JSON)
+        # But keep JSON image URLs.
+        
+        final_venues.append(existing)
+
     
     # Add processed venues
     final_venues.extend(processed_venues)
