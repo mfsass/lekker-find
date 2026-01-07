@@ -10,20 +10,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <!-- Google Fonts: Inter Variable (Weights 100-900 + Italics) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 
     <!-- Preload critical logo -->
-    <link rel="preload" href="/logo-min.png" as="image" type="image/png" fetchpriority="high">
+    <link rel="preload" href="/logo-heading.svg" as="image" type="image/svg+xml" fetchpriority="high">
 
     <!-- Favicons & Device Icons -->
-    <!-- Google Search-compatible favicon (48px multiple required) -->
-    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
-    <!-- Browser fallback icons -->
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png"> <!-- Google prefers 48x48 -->
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
@@ -126,7 +122,7 @@
     <div id="app-shell" class="shell-container">
         <div class="shell-orb shell-orb-1"></div>
         <div class="shell-orb shell-orb-2"></div>
-        <img src="/logo-min.png" alt="" class="shell-logo" width="160" fetchpriority="high" decoding="async">
+        <img src="/logo-heading.svg" alt="" class="shell-logo" fetchpriority="high" decoding="async">
     </div>
 
     <!-- Shell Styles minimized for splash screen -->
@@ -169,15 +165,18 @@
             background: #ffa726;
         }
 
+        /* Shell logo - smaller, centered */
         .shell-logo {
-            width: 120px;
+            width: 100%;
+            max-width: min(80vw, 350px);
             height: auto;
-            margin-bottom: 2rem;
+            object-fit: contain;
+            margin-bottom: 0;
         }
 
         @media (min-width: 768px) {
             .shell-logo {
-                width: 160px;
+                max-width: 450px;
             }
         }
     </style>
@@ -189,7 +188,7 @@
             if (shell) {
                 shell.style.opacity = '0';
                 shell.style.pointerEvents = 'none';
-                setTimeout(() => shell.remove(), 500);
+                setTimeout(() => shell.remove(), 600);
             }
         }, 5000);
     </script>

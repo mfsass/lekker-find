@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 
 import { RainbowButton } from './components/ui/RainbowButton';
+import { AnimatedLogo } from './components/ui/AnimatedLogo';
 // Lazy load heavy components
 const LoadingScreen = lazy(() => import('./components/ui/LoadingScreen').then(module => ({ default: module.LoadingScreen })));
 const SwipeableResults = lazy(() => import('./components/ui/SwipeableResults').then(module => ({ default: module.SwipeableResults })));
@@ -715,16 +716,7 @@ function App() {
                                     variants={logoVariants}
                                     aria-label="Lekker Find"
                                 >
-                                    <img
-                                        src="/logo-min.png"
-                                        alt="Lekker Find - Best things to do in Cape Town"
-                                        className="landing-logo-img"
-                                        width="160"
-                                        height="160"
-                                        decoding="async"
-                                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                                        {...{ fetchpriority: "high" } as any}
-                                    />
+                                    <AnimatedLogo className="landing-logo-img" />
                                 </m.header>
 
                                 <m.h1
