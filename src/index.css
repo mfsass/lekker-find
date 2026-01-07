@@ -261,7 +261,7 @@ h6 {
 
 @media (max-width: 767px) {
     .landing-logo {
-        margin-bottom: 0.5rem;
+        margin-bottom: 2.5rem;
     }
 }
 
@@ -661,6 +661,20 @@ h6 {
     .page-wrapper:has(.question-content) {
         padding-top: 12vh;
         /* Slightly less on mobile */
+    }
+}
+
+/* Landing Page Specific Wrapper */
+.landing-page-wrapper {
+    /* Shift center point up to account for absolute footer height (approx 100-120px) */
+    /* This ensures visual centering in the available space above the footer */
+    padding-bottom: 110px;
+}
+
+@media (max-width: 767px) {
+    .landing-page-wrapper {
+        padding-bottom: 30vh;
+        /* Extra offset for mobile address bars and feel */
     }
 }
 

@@ -695,7 +695,7 @@ function App() {
                     {currentStep === 'landing' && (
                         <m.div
                             key="landing"
-                            className="page-wrapper"
+                            className="page-wrapper landing-page-wrapper"
                             variants={pageVariants}
                             initial="initial"
                             animate="animate"
