@@ -140,7 +140,7 @@ export function selectOppositeVibes(
         return selectDiverseVibes(candidates, embeddings, count, []);
     }
 
-    const avgLikedEmbedding = meanPool(likedEmbeddings);
+    const avgLikedEmbedding = normalizeVector(meanPool(likedEmbeddings));
 
     // Score all candidates by distance to liked vibes
     const scored = candidates
@@ -185,6 +185,29 @@ function meanPool(embeddings: number[][]): number[] {
     }
 
     return mean;
+}
+
+/**
+ * L2 normalize a vector to unit length.
+ * Required after mean pooling to maintain dot product = cosine similarity.
+ */
+function normalizeVector(v: number[]): number[] {
+    if (!v || v.length === 0) return v;
+
+    let magnitude = 0;
+    for (let i = 0; i < v.length; i++) {
+        magnitude += v[i] * v[i];
+    }
+    magnitude = Math.sqrt(magnitude);
+
+    if (magnitude === 0) return v;
+
+    const normalized = new Array(v.length);
+    for (let i = 0; i < v.length; i++) {
+        normalized[i] = v[i] / magnitude;
+    }
+
+    return normalized;
 }
 
 export default {

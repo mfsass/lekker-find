@@ -129,6 +129,30 @@ function meanPool(embeddings: number[][]): number[] {
 }
 
 /**
+ * L2 normalize a vector to unit length.
+ * Required after mean pooling or subtraction since resulting vectors
+ * are no longer unit-length, breaking dot product = cosine similarity.
+ */
+function normalizeVector(v: number[]): number[] {
+    if (!v || v.length === 0) return v;
+
+    let magnitude = 0;
+    for (let i = 0; i < v.length; i++) {
+        magnitude += v[i] * v[i];
+    }
+    magnitude = Math.sqrt(magnitude);
+
+    if (magnitude === 0) return v;
+
+    const normalized = new Array(v.length);
+    for (let i = 0; i < v.length; i++) {
+        normalized[i] = v[i] / magnitude;
+    }
+
+    return normalized;
+}
+
+/**
  * Subtract one vector from another.
  * Used for preference refinement: liked - disliked vibes.
  */
@@ -272,14 +296,14 @@ export function findMatches(
         .filter((emb): emb is number[] => emb !== undefined);
 
     // Create user vibe vector with preference refinement
-    let userVibe = meanPool(moodEmbeddings);
+    // Re-normalize after pooling to maintain unit-length vectors
+    let userVibe = normalizeVector(meanPool(moodEmbeddings));
 
     // Apply embedding subtraction if negative moods are provided
     // This implements: preference = liked - disliked
     if (negativeMoodEmbeddings.length > 0) {
-        const negativeVibe = meanPool(negativeMoodEmbeddings);
-        userVibe = subtractVectors(userVibe, negativeVibe);
-
+        const negativeVibe = normalizeVector(meanPool(negativeMoodEmbeddings));
+        userVibe = normalizeVector(subtractVectors(userVibe, negativeVibe));
     }
 
     // Step 1: Calculate raw scores with keyword boost and explicit avoid penalty
@@ -312,36 +336,50 @@ export function findMatches(
         return { venue, boostedScore, matchingVibes: matchingVibes.length };
     });
 
-    // Step 2: Find min/max for RELATIVE scaling
+    // Step 2: More realistic percentage scaling
+    // Based on benchmark data: raw cosine similarity typically ranges 0.15-0.75
+    // With keyword boost: 0.15-0.90
+    // We use a hybrid approach: absolute similarity calibration + relative boost
     const scores = rawScored.map(r => r.boostedScore);
     const highestScore = Math.max(...scores);
-    const lowestScore = Math.min(...scores);
-    const scoreRange = highestScore - lowestScore || 0.1; // Avoid division by zero
 
-    // Step 3: Relative scaling - best match gets 85-95%, others scale down
-    // The top score maps to ~90%, spread based on actual score distribution
+    // Calibration notes (from benchmark analysis):
+    // - SIM_FLOOR ~0.15: Below this = poor match
+    // - SIM_CEILING ~0.85: Above this = excellent match (with boosts)
+
     const scored = rawScored.map(({ venue, boostedScore, matchingVibes }) => {
-        // Normalize to 0-1 range within this result set
-        const normalized = (boostedScore - lowestScore) / scoreRange;
+        // Step 3a: Absolute similarity to percentage
+        // Clamp similarity to expected range and scale
+        const clampedSim = Math.max(0, Math.min(1, boostedScore));
 
-        // Map to display range: 55% (worst in set) to 90% (best in set)
-        const basePercent = 55 + (normalized * 35); // 55-90%
+        // Non-linear scaling: emphasize high matches, compress low ones
+        // Using power curve: (sim ^ 0.7) makes differences at high end more visible
+        const scaledSim = Math.pow(clampedSim, 0.7);
+
+        // Map to 40-88% range for base semantic score
+        // This leaves room for bonuses to push top results toward 95%+
+        const basePercent = 40 + (scaledSim * 48);
+
+        // Step 3b: Relative boost for top result
+        // The best match in the set gets a small bump to feel "best"
+        const isTopMatch = boostedScore === highestScore;
+        const topBoost = isTopMatch ? 3 : 0;
 
         // Bonus: Keyword matches (up to +5%)
         const keywordBonus = Math.min(5, matchingVibes * 2);
 
         // Bonus 2: Rating Quality Boost
-        // We boost high-rated venues so quality naturally rises to the top
-        // 4.9+ -> +5% | 4.7+ -> +3% | 4.5+ -> +1% | <4.0 -> -5%
+        // 4.9+ -> +4% | 4.7+ -> +2% | 4.5+ -> +1% | <4.0 -> -3%
         let ratingBonus = 0;
         if (venue.rating) {
-            if (venue.rating >= 4.9) ratingBonus = 5;
-            else if (venue.rating >= 4.7) ratingBonus = 3;
+            if (venue.rating >= 4.9) ratingBonus = 4;
+            else if (venue.rating >= 4.7) ratingBonus = 2;
             else if (venue.rating >= 4.5) ratingBonus = 1;
-            else if (venue.rating < 4.0) ratingBonus = -5;
+            else if (venue.rating < 4.0) ratingBonus = -3;
         }
 
-        const finalPercent = Math.max(30, Math.min(98, basePercent + keywordBonus + ratingBonus));
+        // Final score: capped at 98% (never show 100% - nothing is perfect)
+        const finalPercent = Math.max(35, Math.min(98, basePercent + topBoost + keywordBonus + ratingBonus));
 
         return {
             ...venue,
