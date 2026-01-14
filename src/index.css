@@ -673,8 +673,8 @@ h6 {
 
 @media (max-width: 767px) {
     .landing-page-wrapper {
-        padding-bottom: 30vh;
-        /* Extra offset for mobile address bars and feel */
+        padding-bottom: 12vh;
+        /* Reduced from 30vh to shift content down to visual center */
     }
 }
 
