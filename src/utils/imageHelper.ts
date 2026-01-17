@@ -18,9 +18,6 @@ export const FALLBACK_IMAGES: Record<string, string> = {
  */
 export function getVenueImage(venue: Venue): string {
     if (venue.image_url && (venue.image_url.startsWith('http') || venue.image_url.startsWith('/'))) {
-        if (venue.id && venue.image_url.startsWith('/images/venues/') && !venue.image_url.includes(venue.id)) {
-            return `/images/venues/${venue.id}.jpg`;
-        }
         return venue.image_url;
     }
 

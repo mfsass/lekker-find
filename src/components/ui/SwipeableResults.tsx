@@ -72,6 +72,7 @@ const ResultsCard = React.memo(({
     const [resolvedImageUrl, setResolvedImageUrl] = useState(imageUrl);
     const [imageLoaded, setImageLoaded] = useState(false);
     const [fallbackAttempted, setFallbackAttempted] = useState(false);
+    const [imageFailed, setImageFailed] = useState(false);
     const [localVoteState, setLocalVoteState] = useState<'idle' | 'liked' | 'disliked'>('idle');
     const imgRef = React.useRef<HTMLImageElement>(null);
 
@@ -79,6 +80,7 @@ const ResultsCard = React.memo(({
         setResolvedImageUrl(imageUrl);
         setImageLoaded(false);
         setFallbackAttempted(false);
+        setImageFailed(false);
     }, [imageUrl]);
 
     // Check if image is already cached/loaded on mount
@@ -90,16 +92,19 @@ const ResultsCard = React.memo(({
 
     const handleImageLoad = useCallback(() => {
         setImageLoaded(true);
+        setImageFailed(false);
     }, []);
 
     const handleImageError = useCallback(() => {
-        if (!fallbackAttempted && fallbackImageUrl && fallbackImageUrl !== resolvedImageUrl) {
+        const canFallback = !!fallbackImageUrl && resolvedImageUrl !== fallbackImageUrl;
+        if (!fallbackAttempted && canFallback) {
             setFallbackAttempted(true);
             setImageLoaded(false);
             setResolvedImageUrl(fallbackImageUrl);
             return;
         }
         setImageLoaded(true);
+        setImageFailed(true);
     }, [fallbackAttempted, fallbackImageUrl, resolvedImageUrl]);
 
     // Handle local vote interaction
@@ -149,6 +154,7 @@ const ResultsCard = React.memo(({
         >
             {/* Loading state - managed locally per card instance */}
             {!imageLoaded && <div className="results-card-skeleton" />}
+            {imageFailed && <div className="results-card-fallback" />}
 
             {/* Hidden image to trigger load */}
             <img
