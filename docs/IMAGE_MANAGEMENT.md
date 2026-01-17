@@ -254,6 +254,36 @@ Fallback behavior:
 2. Try local image based on venue.id
 3. Fall back to category default image
 
+## January 2026 Image Loading Review
+
+### Current Delivery & Preload Flow
+
+- All venues ship with a local `image_url` that points to `/images/venues/...`.
+- `getVenueImage` is the single source of truth for card images and uses `image_url` first, then the stable ID path, then category fallbacks.
+- `LoadingScreen` preloads the first 15 venue images before finishing the intro animation.
+- `SwipeableResults` preloads the next + previous card images for smooth navigation.
+- Cards render a background image and use a hidden `<img>` element to drive the loading state.
+
+### Reliability Findings
+
+- `validate_image_sync.py` has flagged local URL mismatches in past audits (e.g., the January 2026 review), which indicates data drift is still possible.
+- Previously, `imageLoaded` state could remain `true` across cards, making the skeleton disappear before the new image actually finished loading.
+- Failed image loads could mark the image as complete without verifying `naturalWidth`, leaving an empty background.
+
+### Recommendations (2026 Best Practices)
+
+1. **Keep category fallbacks** — they are still useful for last-resort resiliency without doubling storage. Hardcoded backups for every venue would noticeably increase bundle size and cache pressure.
+2. **Avoid preloading everything by default** — preloading the full catalog up front is expensive for mid-tier devices and cellular data. A staged strategy (first 10–20 + adjacent cards) balances speed and memory.
+3. **Tune preloading dynamically** — consider `navigator.connection.saveData`, `effectiveType`, and device memory to decide whether to preload more aggressively.
+4. **Adopt modern formats over time** — migrate to AVIF/WebP variants and consider `srcset` + `<img>` with `object-fit` for responsive sizing.
+5. **Instrument failures** — track `img.onerror` counts in analytics so data or CDN regressions are visible.
+
+### Actionable Next Steps
+
+- Fix any `image_url` mismatches flagged by validation (run `python scripts/migrate_images_to_stable_ids.py --apply`).
+- Add a CI step to run `python scripts/validate_image_sync.py` so broken links never ship.
+- Consider a config flag for `preloadCount = all` on Wi-Fi or kiosk devices only.
+
 ## Support
 
 If you encounter sync issues:

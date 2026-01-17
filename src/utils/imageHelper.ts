@@ -27,6 +27,10 @@ export function getVenueImage(venue: Venue): string {
         return `/images/venues/${venue.id}.jpg`;
     }
 
+    return getVenueFallbackImage(venue);
+}
+
+export function getVenueFallbackImage(venue: Venue): string {
     const category = venue.category?.toLowerCase() || 'nature';
     return FALLBACK_IMAGES[category] || FALLBACK_IMAGES.nature;
 }
