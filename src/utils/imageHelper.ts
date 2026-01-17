@@ -18,6 +18,9 @@ export const FALLBACK_IMAGES: Record<string, string> = {
  */
 export function getVenueImage(venue: Venue): string {
     if (venue.image_url && (venue.image_url.startsWith('http') || venue.image_url.startsWith('/'))) {
+        if (venue.id && venue.image_url.startsWith('/images/venues/') && !venue.image_url.includes(venue.id)) {
+            return `/images/venues/${venue.id}.jpg`;
+        }
         return venue.image_url;
     }
 
@@ -27,6 +30,10 @@ export function getVenueImage(venue: Venue): string {
         return `/images/venues/${venue.id}.jpg`;
     }
 
+    return getVenueFallbackImage(venue);
+}
+
+export function getVenueFallbackImage(venue: Venue): string {
     const category = venue.category?.toLowerCase() || 'nature';
     return FALLBACK_IMAGES[category] || FALLBACK_IMAGES.nature;
 }

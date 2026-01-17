@@ -16,7 +16,7 @@ import { motion, AnimatePresence, PanInfo, TargetAndTransition, VariantLabels } 
 import { MapPin, ChevronLeft, ChevronRight, Star, ThumbsUp, ThumbsDown, Sparkles } from 'lucide-react';
 import { VenueWithMatch } from '../../utils/matcher';
 import { convertPriceString } from '../../utils/currency';
-import { getVenueImage } from '../../utils/imageHelper';
+import { getVenueFallbackImage, getVenueImage } from '../../utils/imageHelper';
 import { captureFeedback } from '../../utils/analytics';
 import './SwipeableResults.css';
 
@@ -67,21 +67,40 @@ const ResultsCard = React.memo(({
     currency: 'ZAR' | 'EUR' | 'USD' | 'GBP';
     exchangeRates: Record<string, number>;
 }) => {
-    const [imageLoaded, setImageLoaded] = useState(false);
-    const [localVoteState, setLocalVoteState] = useState<'idle' | 'liked' | 'disliked'>('idle');
     const imageUrl = useMemo(() => getVenueImage(venue), [venue]);
+    const fallbackImageUrl = useMemo(() => getVenueFallbackImage(venue), [venue]);
+    const [resolvedImageUrl, setResolvedImageUrl] = useState(imageUrl);
+    const [imageLoaded, setImageLoaded] = useState(false);
+    const [fallbackAttempted, setFallbackAttempted] = useState(false);
+    const [localVoteState, setLocalVoteState] = useState<'idle' | 'liked' | 'disliked'>('idle');
     const imgRef = React.useRef<HTMLImageElement>(null);
+
+    React.useEffect(() => {
+        setResolvedImageUrl(imageUrl);
+        setImageLoaded(false);
+        setFallbackAttempted(false);
+    }, [imageUrl]);
 
     // Check if image is already cached/loaded on mount
     React.useEffect(() => {
-        if (imgRef.current && imgRef.current.complete) {
+        if (imgRef.current && imgRef.current.complete && imgRef.current.naturalWidth > 0) {
             setImageLoaded(true);
         }
-    }, [imageUrl]);
+    }, [resolvedImageUrl]);
 
     const handleImageLoad = useCallback(() => {
         setImageLoaded(true);
     }, []);
+
+    const handleImageError = useCallback(() => {
+        if (!fallbackAttempted && fallbackImageUrl && fallbackImageUrl !== resolvedImageUrl) {
+            setFallbackAttempted(true);
+            setImageLoaded(false);
+            setResolvedImageUrl(fallbackImageUrl);
+            return;
+        }
+        setImageLoaded(true);
+    }, [fallbackAttempted, fallbackImageUrl, resolvedImageUrl]);
 
     // Handle local vote interaction
     const handleLocalVote = useCallback((sentiment: 'positive' | 'negative') => {
@@ -123,7 +142,7 @@ const ResultsCard = React.memo(({
             exit="exit"
             {...dragHandlers}
             style={{
-                backgroundImage: `url(${imageUrl})`,
+                backgroundImage: `url(${resolvedImageUrl})`,
                 // We can't access dragOffset easily here without context or prop, 
                 // but simpler is better for stability. Removing rotation for now to simplify prop drilling.
             }}
@@ -134,10 +153,11 @@ const ResultsCard = React.memo(({
             {/* Hidden image to trigger load */}
             <img
                 ref={imgRef}
-                src={imageUrl}
+                src={resolvedImageUrl}
                 alt=""
                 style={{ display: 'none' }}
                 onLoad={handleImageLoad}
+                onError={handleImageError}
             />
 
             <div className="results-card-overlay" />
