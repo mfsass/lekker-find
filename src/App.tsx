@@ -548,7 +548,6 @@ function App() {
                                 key={option.value}
                                 className={`vibeOptionItem ${isSelected ? 'selected' : ''}`}
                                 onClick={() => onSelect(option.value)}
-                                whileHover={{ scale: 1.02, y: -2 }}
                                 whileTap={{ scale: 0.98 }}
                                 aria-pressed={isSelected}
                             >
@@ -754,7 +753,6 @@ function App() {
 
                                     <m.button
                                         className="btn-secondary-curious"
-                                        whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
                                         onClick={handleCurious}
                                         disabled={!recommendationsReady}
@@ -954,7 +952,6 @@ function App() {
                                                     initial={{ opacity: 0 }}
                                                     animate={{ opacity: 1 }}
                                                     transition={{ duration: 0.2 }}
-                                                    whileHover={{ scale: 1.05 }}
                                                     whileTap={{ scale: 0.95 }}
                                                     aria-pressed={isSelected}
                                                     aria-label={`Select ${tag} mood`}
@@ -1098,7 +1095,6 @@ function App() {
                                                     initial={{ opacity: 0 }}
                                                     animate={{ opacity: 1 }}
                                                     transition={{ duration: 0.2 }}
-                                                    whileHover={{ scale: 1.05 }}
                                                     whileTap={{ scale: 0.95 }}
                                                     aria-pressed={isSelected}
                                                     aria-label={`Avoid ${tag} mood`}
