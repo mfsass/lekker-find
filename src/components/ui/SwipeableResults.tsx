@@ -13,11 +13,13 @@
 
 import React, { useState, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence, PanInfo, TargetAndTransition, VariantLabels } from 'framer-motion';
-import { MapPin, ChevronLeft, ChevronRight, Star, ThumbsUp, ThumbsDown, Sparkles } from 'lucide-react';
+import { MapPin, ChevronLeft, ChevronRight, Star, ThumbsUp, ThumbsDown, Sparkles, Search, SearchX, Hand } from 'lucide-react';
 import { VenueWithMatch } from '../../utils/matcher';
 import { convertPriceString } from '../../utils/currency';
 import { getVenueFallbackImage, getVenueImage } from '../../utils/imageHelper';
 import { captureFeedback } from '../../utils/analytics';
+import { ShareButton } from './ShareButton';
+import { ShareState } from '../../utils/shareState';
 import './SwipeableResults.css';
 
 // Card animation variants (static, no need to recreate)
@@ -49,8 +51,11 @@ const ResultsCard = React.memo(({
     dragHandlers,
     onVote,
     openInMaps,
+    onTap,
     currency,
-    exchangeRates
+    exchangeRates,
+    selectedVibes,
+    shareState
 }: {
     venue: VenueWithMatch;
     direction: 'left' | 'right' | null;
@@ -64,8 +69,11 @@ const ResultsCard = React.memo(({
     };
     onVote: (sentiment: 'positive' | 'negative') => void;
     openInMaps: (venue: VenueWithMatch) => void;
+    onTap: () => void;
     currency: 'ZAR' | 'EUR' | 'USD' | 'GBP';
     exchangeRates: Record<string, number>;
+    selectedVibes?: string[];
+    shareState?: ShareState;
 }) => {
     const imageUrl = useMemo(() => getVenueImage(venue), [venue]);
     const fallbackImageUrl = useMemo(() => getVenueFallbackImage(venue), [venue]);
@@ -166,15 +174,60 @@ const ResultsCard = React.memo(({
                 onError={handleImageError}
             />
 
-            <div className="results-card-overlay" />
+            {/* Tap zone - clicking here advances to next card */}
+            <div
+                className="results-card-overlay results-card-tap-zone"
+                onClick={onTap}
+                role="button"
+                aria-label="Tap to see next venue"
+            />
 
-            {/* Match badge */}
+            {/* Match badge with vibes tooltip (hover on desktop, tap on mobile) */}
             {venue.matchPercentage > 0 && (
-                <div className="results-match-badge-container" style={{ position: 'absolute', top: '12px', right: '12px', zIndex: 10 }}>
-                    <div className="results-match-badge" style={{ whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <div className="results-match-badge-container" style={{
+                    position: 'absolute',
+                    top: '12px',
+                    right: '12px',
+                    zIndex: 10,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'flex-end',
+                    gap: '12px'
+                }}>
+                    <div
+                        className="results-match-badge"
+                        style={{
+                            position: 'relative', // Override absolute from CSS
+                            top: 'auto',
+                            right: 'auto',
+                            whiteSpace: 'nowrap',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '4px',
+                            cursor: 'pointer'
+                        }}
+                        title={selectedVibes && selectedVibes.length > 0
+                            ? `Your vibes: ${selectedVibes.join(', ')}`
+                            : 'Matched based on your preferences'}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            if (selectedVibes && selectedVibes.length > 0) {
+                                alert(`Your vibes: ${selectedVibes.join(', ')}`);
+                            }
+                        }}
+                        role="button"
+                        aria-label={`${venue.matchPercentage}% match - tap to see your selected vibes`}
+                    >
                         <Sparkles size={14} fill="currentColor" strokeWidth={0} style={{ opacity: 0.8 }} />
                         {venue.matchPercentage}% match
                     </div>
+
+                    {shareState && (
+                        <ShareButton
+                            state={shareState}
+                            className="share-btn-compact share-btn-glass"
+                        />
+                    )}
                 </div>
             )}
 
@@ -294,9 +347,13 @@ interface SwipeableResultsProps {
     onClose: () => void;
     onBack?: () => void;
     onStartOver: () => void;
+    onAdjustVibes?: () => void;
     currency: 'ZAR' | 'EUR' | 'USD' | 'GBP';
     exchangeRates: Record<string, number>;
     isCuriousMode?: boolean;
+    selectedVibes?: string[];
+    shareState?: ShareState;
+    initialIndex?: number;
 }
 
 export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
@@ -304,17 +361,22 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
     onClose: _onClose,
     onBack,
     onStartOver,
+    onAdjustVibes,
     currency = 'ZAR',
     exchangeRates = { ZAR: 1 },
-    isCuriousMode = false
+    isCuriousMode = false,
+    selectedVibes = [],
+    shareState,
+    initialIndex = 0
 }) => {
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(initialIndex);
     const [direction, setDirection] = useState<'left' | 'right' | null>(null);
     // Removed parent-level voteState and imageLoaded state
     const [showSwipeGuide, setShowSwipeGuide] = useState(true);
     // Removed unused dragOffset
     const [isMobile, setIsMobile] = useState(false);
     const [tutorialTouchStart, setTutorialTouchStart] = useState<{ x: number; y: number } | null>(null);
+    const [showEndMessage, setShowEndMessage] = useState(false);
 
     React.useEffect(() => {
         const checkMobile = () => {
@@ -376,6 +438,10 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
             setDirection('left');
             dismissGuide();
             setCurrentIndex(prev => prev + 1);
+            setShowEndMessage(false);
+        } else {
+            // User tried to go past last card - show end message
+            setShowEndMessage(true);
         }
     }, [hasNext, dismissGuide]);
 
@@ -384,6 +450,7 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
             setDirection('right');
             dismissGuide();
             setCurrentIndex(prev => prev - 1);
+            setShowEndMessage(false);
         }
     }, [hasPrev, dismissGuide]);
 
@@ -394,13 +461,16 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
     const handleDragEnd = useCallback((_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
         const threshold = 60;
         const velocityThreshold = 500;
-        const shouldSwipeLeft = (info.velocity.x < -velocityThreshold || info.offset.x < -threshold) && hasNext;
-        const shouldSwipeRight = (info.velocity.x > velocityThreshold || info.offset.x > threshold) && hasPrev;
+        const swipedLeft = info.velocity.x < -velocityThreshold || info.offset.x < -threshold;
+        const swipedRight = info.velocity.x > velocityThreshold || info.offset.x > threshold;
 
-        if (shouldSwipeLeft) {
+        if (swipedLeft && hasNext) {
             goNext();
-        } else if (shouldSwipeRight) {
+        } else if (swipedRight && hasPrev) {
             goPrev();
+        } else if (swipedLeft && !hasNext) {
+            // User swiped left on last card - show end message
+            setShowEndMessage(true);
         }
     }, [hasNext, hasPrev, goNext, goPrev]);
 
@@ -444,7 +514,7 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
     if (!currentVenue) {
         return (
             <div className="results-empty" role="alert">
-                <div className="results-empty-icon" aria-hidden="true">🏔️</div>
+                <div className="results-empty-icon" aria-hidden="true"><SearchX size={48} /></div>
                 <h2>No matches found</h2>
                 <p>Try adjusting your preferences</p>
                 <button onClick={onBack} className="btn-primary">
@@ -460,9 +530,18 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
                 <button onClick={onBack} className="results-close text-btn" aria-label="Back">
                     Back
                 </button>
-                <span className="results-counter">
-                    {currentIndex + 1} / {venues.length}
-                </span>
+                <div className="results-header-center">
+                    <span className="results-counter">
+                        {currentIndex + 1} / {venues.length}
+                    </span>
+                    {/* Desktop: Show share in header. Mobile: Key share action is on the card */}
+                    {!isMobile && !isCuriousMode && shareState && (
+                        <ShareButton
+                            state={{ ...shareState, index: currentIndex }}
+                            className="share-btn-glass"
+                        />
+                    )}
+                </div>
                 <button onClick={onStartOver} className="results-restart text-btn" aria-label="Start over">
                     Restart
                 </button>
@@ -484,9 +563,56 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
                         }}
                         onVote={handleVote}
                         openInMaps={openInMaps}
+                        onTap={goNext}
                         currency={currency}
                         exchangeRates={exchangeRates}
+                        selectedVibes={selectedVibes}
+                        // Pass index-aware share state to each card
+                        shareState={!isCuriousMode && shareState ? { ...shareState, index: currentIndex } : undefined}
                     />
+                </AnimatePresence>
+
+                {/* End of results overlay */}
+                <AnimatePresence>
+                    {showEndMessage && (
+                        <motion.div
+                            className="results-end-message"
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.9 }}
+                            transition={{ duration: 0.3, ease: 'easeOut' }}
+                        >
+                            <div className="results-end-content">
+                                <div className="results-end-icon" aria-hidden="true">
+                                    <Search size={48} />
+                                </div>
+                                <h3 className="results-end-title">Not quite right?</h3>
+                                <p className="results-end-subtitle">Try adjusting your vibes or budget for better matches</p>
+                                <button
+                                    className="results-end-restart-btn"
+                                    onClick={onAdjustVibes || onStartOver}
+                                >
+                                    Try Different Selections
+                                </button>
+                                <button
+                                    className="results-end-back-btn"
+                                    onClick={() => setShowEndMessage(false)}
+                                >
+                                    Cancel
+                                </button>
+
+                                {!isCuriousMode && shareState && (
+                                    <div className="results-end-share">
+                                        <p className="results-end-share-text">Share these matches with friends</p>
+                                        <ShareButton
+                                            state={{ ...shareState, index: 0 }} // Share from start
+                                            className="share-btn-primary" // New class for primary style
+                                        />
+                                    </div>
+                                )}
+                            </div>
+                        </motion.div>
+                    )}
                 </AnimatePresence>
             </div>
 
@@ -510,12 +636,15 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
                     onTouchEnd={handleTutorialTouchEnd}
                 >
                     <div className="swipe-tutorial-content">
-                        <div className="swipe-hand">👆</div>
+                        <div className="swipe-hand">
+                            <Hand size={48} />
+                        </div>
                         <p className="swipe-instruction">Swipe left or right to explore</p>
                         <span className="swipe-dismiss">Swipe or tap anywhere to start</span>
                     </div>
                 </div>
             )}
+
         </div>
     );
 };

@@ -26,6 +26,61 @@
     z-index: 10;
 }
 
+/* Mobile Bottom Share Pill */
+.results-share-pill-container {
+    position: fixed;
+    bottom: 24px;
+    /* Above standard tab bar area if any, or safe area */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 80;
+    /* Above cards (5-50), below tutorials/overlays (100+) */
+    pointer-events: none;
+    /* Let clicks pass through container */
+}
+
+.results-share-pill-container>* {
+    pointer-events: auto;
+    box-shadow: 0 8px 32px hsla(220, 20%, 10%, 0.2);
+    border: 1px solid hsla(0, 0%, 100%, 0.4);
+    background: hsla(0, 0%, 100%, 0.85);
+}
+
+/* End of Results Share Override */
+.results-end-share {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid hsla(0, 0%, 100%, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.results-end-share-text {
+    font-size: 0.875rem;
+    opacity: 0.6;
+    margin: 0;
+}
+
+.share-btn-primary {
+    width: 100%;
+    justify-content: center;
+    background: white !important;
+    color: hsl(220 20% 14%) !important;
+    border: none !important;
+}
+
+.share-btn-primary:hover {
+    background: hsl(40 20% 95%) !important;
+}
+
+.results-header-center {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
 .results-close,
 .results-restart {
     /* Base styles for icon buttons */
@@ -583,5 +638,122 @@
     .results-maps-btn {
         padding: 0.75rem 1rem;
         white-space: nowrap;
+    }
+}
+
+/* Tap zone - clickable overlay for advancing cards */
+.results-card-tap-zone {
+    cursor: pointer;
+    pointer-events: auto;
+    /* Override parent's pointer-events: none */
+}
+
+/* End of results overlay */
+.results-end-message {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 100%;
+    max-width: 420px;
+    height: 100%;
+    max-height: 680px;
+    border-radius: 1.5rem;
+    background: hsla(220, 20%, 10%, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+}
+
+.results-end-content {
+    text-align: center;
+    padding: 2rem;
+    color: white;
+}
+
+.results-end-emoji {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 1rem;
+    animation: celebrateBounce 0.6s ease-out;
+}
+
+@keyframes celebrateBounce {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.results-end-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.01em;
+}
+
+.results-end-subtitle {
+    font-size: 1rem;
+    color: hsla(0, 0%, 100%, 0.7);
+    margin: 0 0 1.5rem;
+}
+
+.results-end-restart-btn {
+    display: block;
+    width: 100%;
+    padding: 0.875rem 2rem;
+    background: hsl(174 72% 40%);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px hsl(174 72% 40% / 0.3);
+    margin-bottom: 0.75rem;
+}
+
+.results-end-restart-btn:hover {
+    background: hsl(174 72% 35%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px hsl(174 72% 40% / 0.4);
+}
+
+.results-end-back-btn {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    color: hsla(0, 0%, 100%, 0.7);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid hsla(0, 0%, 100%, 0.2);
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.results-end-back-btn:hover {
+    background: hsla(0, 0%, 100%, 0.1);
+    color: white;
+    border-color: hsla(0, 0%, 100%, 0.3);
+}
+
+@media (max-width: 480px) {
+    .results-end-message {
+        border-radius: 1rem;
+        max-height: none;
+        width: calc(100% - 1rem);
+        height: calc(100% - 1rem);
     }
 }

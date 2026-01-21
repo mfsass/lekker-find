@@ -94,3 +94,26 @@
 .btn-get-started:active {
     transform: scale(0.98) translateY(0);
 }
+
+/* Subtle attention pulse animation on page load */
+@keyframes ctaAttentionPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    }
+    50% {
+        transform: scale(1.03);
+        box-shadow: 0 25px 35px -5px hsl(174 72% 40% / 0.25), 0 10px 15px -6px hsl(174 72% 40% / 0.2);
+    }
+}
+
+.btn-get-started {
+    animation: ctaAttentionPulse 1.8s ease-in-out 0.8s 2;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .btn-get-started {
+        animation: none;
+    }
+}

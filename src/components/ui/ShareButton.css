@@ -1,0 +1,129 @@
+/**
+ * ShareButton Styles
+ * ==================
+ * 
+ * Glassmorphic floating button following design rules.
+ * Min 44px touch target, rounded-full, subtle animations.
+ */
+
+.share-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 16px;
+    min-height: 44px;
+    min-width: 44px;
+    border-radius: 9999px;
+    background: hsl(var(--background) / 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: hsl(var(--foreground));
+    font-weight: 600;
+    font-size: 0.875rem;
+    font-family: var(--font-sans);
+    border: 2px solid hsl(var(--border));
+    box-shadow:
+        0 2px 8px hsl(0 0% 0% / 0.08),
+        0 1px 2px hsl(0 0% 0% / 0.04);
+    cursor: pointer;
+    transition:
+        background-color 200ms ease,
+        border-color 200ms ease,
+        box-shadow 200ms ease,
+        transform 200ms ease;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.share-btn:hover {
+    background: hsl(var(--background) / 0.95);
+    border-color: hsl(var(--primary));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow:
+        0 4px 12px hsl(0 0% 0% / 0.1),
+        0 2px 4px hsl(0 0% 0% / 0.06);
+}
+
+.share-btn:active {
+    transform: scale(0.97);
+}
+
+.share-btn:focus-visible {
+    outline: none;
+    box-shadow:
+        0 0 0 3px hsl(var(--ring) / 0.3),
+        0 2px 8px hsl(0 0% 0% / 0.08);
+}
+
+.share-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Copied state - success green */
+.share-btn.copied {
+    background: hsl(145 70% 45% / 0.15);
+    border-color: hsl(145 70% 45%);
+    color: hsl(145 70% 35%);
+}
+
+.share-btn.copied:hover {
+    background: hsl(145 70% 45% / 0.2);
+}
+
+/* Content wrapper for animation */
+.share-btn-content {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.share-btn-content svg {
+    flex-shrink: 0;
+}
+
+/* Compact variant for tight spaces */
+.share-btn.share-btn-compact {
+    padding: 10px 12px;
+}
+
+.share-btn.share-btn-compact span:not(.share-btn-content) {
+    display: none;
+}
+
+/* Icon-only on very small screens */
+@media (max-width: 360px) {
+    .share-btn span:not(.share-btn-content) {
+        display: none;
+    }
+
+    .share-btn {
+        padding: 10px 12px;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .share-btn {
+        transition: none;
+    }
+}
+
+/* Glass variant to match results badge */
+.share-btn.share-btn-glass {
+    background: hsl(0 0% 100% / 0.95);
+    color: hsl(174 72% 35%);
+    /* Teal matching badge */
+    border: none;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.share-btn.share-btn-glass:hover {
+    background: hsl(0 0% 100% / 1);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}

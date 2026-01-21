@@ -4,7 +4,7 @@ import {
     Sparkles, Gem, ChevronRight, ArrowLeft,
     Camera, Star, Heart, Scale,
     UtensilsCrossed, Mountain, Landmark,
-    Gift, Coins, Banknote, Crown, Shuffle, RefreshCcw
+    Gift, Coins, Banknote, Crown, Shuffle
 } from 'lucide-react';
 
 import { RainbowButton } from './components/ui/RainbowButton';
@@ -16,6 +16,7 @@ import { getContextualMoods, shouldShowPriceDisclaimer, getBudgetDisplay, getCon
 import { useRecommendations, VenueWithMatch } from './utils/matcher';
 import { selectDiverseVibes } from './utils/vibeDispersion';
 import { setRecommendationContext } from './utils/analytics';
+import { parseUrlState, clearShareParams } from './utils/shareState';
 
 
 /**
@@ -65,6 +66,7 @@ function App() {
     const [isLoading, setIsLoading] = useState(false);
     const [currentStep, setCurrentStep] = useState<AppStep>('landing');
     const [matchedVenues, setMatchedVenues] = useState<VenueWithMatch[]>([]);
+    const [initialResultIndex, setInitialResultIndex] = useState(0); // For restoring share position
 
     const [selectedIntent, setSelectedIntent] = useState<string | null>(null);
     const [selectedTouristLevel, setSelectedTouristLevel] = useState<number | null>(null);
@@ -75,9 +77,6 @@ function App() {
     const [exchangeRates, setExchangeRates] = useState<Record<string, number>>({ ZAR: 1, EUR: 0.05, USD: 0.053 });
     const [isCuriousMode, setIsCuriousMode] = useState(false);
 
-    // Track if shuffle buttons have been clicked (to disable attention animation)
-    const [moodShuffleClicked, setMoodShuffleClicked] = useState(false);
-    const [avoidShuffleClicked, setAvoidShuffleClicked] = useState(false);
 
     // Animated counter for venue count
     const [displayedVenueCount, setDisplayedVenueCount] = useState<number | null>(null);
@@ -176,6 +175,38 @@ function App() {
         }
 
     }, []);
+
+    // Check for shared URL state on load
+    useEffect(() => {
+        if (!recommendationsReady) return;
+
+        const sharedState = parseUrlState();
+        if (sharedState) {
+            // Restore state from URL
+            if (sharedState.intent) setSelectedIntent(sharedState.intent);
+            if (sharedState.touristLevel) setSelectedTouristLevel(sharedState.touristLevel);
+            if (sharedState.budget) setSelectedBudget(sharedState.budget);
+            if (sharedState.moods) setSelectedMoods(sharedState.moods);
+            if (sharedState.avoidedMoods) setAvoidedMoods(sharedState.avoidedMoods);
+
+            // Generate results immediately
+            const results = findMatches({
+                ...sharedState,
+                moods: sharedState.moods || []
+            }, { minScore: 0.35, maxResults: 20 });
+            setMatchedVenues(results);
+
+            // Set initial index if shared
+            if (sharedState.index && sharedState.index > 0 && sharedState.index < results.length) {
+                setInitialResultIndex(sharedState.index);
+            }
+
+            setCurrentStep('results' as AppStep);
+
+            // Clean URL so it doesn't persist on refresh/nav
+            clearShareParams();
+        }
+    }, [recommendationsReady, findMatches]); // Only run once recommendations are ready
 
     // Show price disclaimer (general variability note)
     const showPriceDisclaimer = shouldShowPriceDisclaimer(selectedIntent, selectedTouristLevel);
@@ -353,9 +384,7 @@ function App() {
         setMatchedVenues([]);
         setCurrentStep('question-intent');
         setIsCuriousMode(false);
-        // Reset shuffle button attention animations
-        setMoodShuffleClicked(false);
-        setAvoidShuffleClicked(false);
+
     };
 
     const handleBack = () => {
@@ -466,10 +495,10 @@ function App() {
         setSelectedBudget(null);
         setSelectedMoods([]);
         setAvoidedMoods([]);
+
         setMatchedVenues([]);
-        // Reset shuffle button attention animations
-        setMoodShuffleClicked(false);
-        setAvoidShuffleClicked(false);
+        setInitialResultIndex(0);
+
     };
 
     // Render a question page
@@ -757,10 +786,10 @@ function App() {
                                         onClick={handleCurious}
                                         disabled={!recommendationsReady}
                                         style={{ opacity: recommendationsReady ? 1 : 0.8 }}
-                                        aria-label="Feeling curious? Explore Cape Town randomly"
+                                        aria-label="Surprise me - Explore Cape Town randomly"
                                     >
                                         <Shuffle className="icon" aria-hidden="true" />
-                                        <span>Feeling curious?</span>
+                                        <span>Surprise me</span>
                                     </m.button>
 
                                 </m.div>
@@ -862,9 +891,20 @@ function App() {
                                     onClose={handleStartOver}
                                     onBack={handleBackFromResults}
                                     onStartOver={handleStartOver}
+                                    onAdjustVibes={handleBackFromResults}
                                     currency={currency}
                                     exchangeRates={exchangeRates}
                                     isCuriousMode={isCuriousMode}
+                                    selectedVibes={selectedMoods}
+                                    shareState={{
+                                        intent: selectedIntent,
+                                        touristLevel: selectedTouristLevel,
+                                        budget: selectedBudget,
+                                        moods: selectedMoods,
+                                        avoidedMoods: avoidedMoods
+                                        // Index is handled dynamically within SwipeableResults
+                                    }}
+                                    initialIndex={initialResultIndex}
                                 />
                             </Suspense>
                         </m.div>
@@ -970,7 +1010,7 @@ function App() {
                                     initial="hidden"
                                     animate="visible"
                                 >
-                                    <button
+                                    {/* <button
                                         onClick={() => {
                                             // Keep selected, replace the rest with diverse options
                                             const keptMoods = availableMoods.filter(m => selectedMoods.includes(m));
@@ -991,10 +1031,11 @@ function App() {
                                         }}
                                         className={`btn-shuffle attention ${moodShuffleClicked ? 'clicked' : ''}`}
                                         aria-label="Change options"
+                                        style={{ display: 'none' }}
                                     >
                                         <RefreshCcw size={14} aria-hidden="true" />
                                         <span>Change options</span>
-                                    </button>
+                                    </button> */}
                                 </m.div>
 
                                 {/* Continue CTA */}
@@ -1113,7 +1154,7 @@ function App() {
                                     initial="hidden"
                                     animate="visible"
                                 >
-                                    <button
+                                    {/* <button
                                         onClick={() => {
                                             // Get fresh avoid options based on selected vibes
                                             // This uses the smart contextual avoid function
@@ -1149,7 +1190,7 @@ function App() {
                                     >
                                         <RefreshCcw size={14} aria-hidden="true" />
                                         <span>Change options</span>
-                                    </button>
+                                    </button> */}
                                 </m.div>
 
                                 {/* Continue CTA */}

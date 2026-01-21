@@ -913,31 +913,37 @@ h6 {
 }
 
 /* ===== Mood Tags Multi-select ===== */
+/* ===== Mood Tags Multi-select ===== */
 .moodTagsList {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.75rem;
-    /* Slightly tighter for better grouping */
-    margin-bottom: 1.25rem;
-    /* Reduced spacing to shuffle */
+    /* Clean spacing */
+    width: 100%;
+    margin-bottom: 2rem;
 }
 
 .moodTagItem {
     display: inline-flex;
     align-items: center;
-    gap: 0.375rem;
-    padding: 0.625rem 1rem;
-    background: hsla(0, 0%, 100%, 0.8);
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    /* Generous touch target */
+    background: hsla(0, 0%, 100%, 0.9);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1.5px solid var(--border);
     border-radius: var(--radius-full);
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--foreground);
+    /* The Pill Aesthetic */
+    font-size: 0.95rem;
+    /* Readable */
+    font-weight: 600;
+    /* Premium weight */
+    color: var(--muted-foreground);
     cursor: pointer;
-    transition: all var(--transition-normal);
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-sm);
 }
 
 @media (hover: hover) {

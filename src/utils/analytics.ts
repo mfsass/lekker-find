@@ -77,3 +77,14 @@ export const captureFeedback = (interaction: VenueInteraction) => {
         // Note: detailed context is already attached via register()
     });
 };
+
+/**
+ * Capture share action
+ */
+export const captureShare = (method: 'native' | 'clipboard', url: string) => {
+    posthog.capture('results_shared', {
+        share_method: method,
+        share_url: url,
+        // Note: detailed context is already attached via register()
+    });
+};

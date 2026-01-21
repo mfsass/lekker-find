@@ -19,6 +19,7 @@
  */
 
 import { useState, useEffect, useCallback } from 'react';
+import { VIBE_EMBEDDING_MAP, Pillar } from '../data/vibes';
 
 // ============================================================================
 // TYPES
@@ -276,23 +277,30 @@ export function findMatches(
         }));
     }
 
+    // ... (other imports)
+
     // Get tag embeddings for selected moods
     const moodEmbeddings = params.moods
         .slice(0, 5) // Max 5 moods
-        .map(mood => data.tag_embeddings[mood])
+        .map(mood => {
+            // Use the mapping if it exists, otherwise fall back to direct key (for legacy/safety)
+            const key = VIBE_EMBEDDING_MAP[mood as Pillar] || mood;
+            return data.tag_embeddings[key];
+        })
         .filter((emb): emb is number[] => emb !== undefined);
 
     if (moodEmbeddings.length === 0) {
-        console.warn('No valid mood embeddings found');
+        console.warn('No valid mood embeddings found for', params.moods);
         return venues.slice(0, maxResults).map(v => ({ ...v, matchPercentage: 50 }));
     }
-
-
 
     // Get negative mood embeddings if provided
     const negativeMoodEmbeddings = (params.negativeMoods || [])
         .slice(0, 5) // Max 5
-        .map(mood => data.tag_embeddings[mood])
+        .map(mood => {
+            const key = VIBE_EMBEDDING_MAP[mood as Pillar] || mood;
+            return data.tag_embeddings[key];
+        })
         .filter((emb): emb is number[] => emb !== undefined);
 
     // Create user vibe vector with preference refinement

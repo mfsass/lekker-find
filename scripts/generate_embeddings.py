@@ -128,6 +128,12 @@ TAG_DESCRIPTIONS = {
     'Street-food': 'Street food, casual eats, quick bites, local flavors',
     'Fresh': 'Fresh ingredients, farm-to-table, seasonal, just-made',
     
+    # Meal Times - describe the dining occasion
+    'Breakfast': 'Breakfast spot, morning meal, early eats, eggs and coffee, start of day dining',
+    'Brunch': 'Brunch, late morning, weekend brunch, eggs benedict, mimosas, relaxed meal',
+    'Lunch': 'Lunch spot, midday meal, afternoon dining, quick lunch, business lunch',
+    'Dinner': 'Dinner restaurant, evening meal, dinner date, romantic dinner, night out dining',
+    
     # Cultural - describe the cultural experience
     'Artsy': 'An artsy, artistic, creative, gallery, design-focused space',
     'Music': 'A music venue, live performances, concerts, musical atmosphere',
