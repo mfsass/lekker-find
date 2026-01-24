@@ -154,7 +154,7 @@
         0 0 0 1px rgba(0, 0, 0, 0.05);
     overflow: hidden;
     cursor: grab;
-    touch-action: pan-y;
+    touch-action: manipulation;
     /* Hardware acceleration for smoother animation */
     will-change: transform, opacity;
 }
@@ -239,8 +239,16 @@
 }
 
 .results-card-content>* {
+    pointer-events: none;
+    /* Let swipes/taps pass through text to card */
+}
+
+/* Only interactive elements receive pointer events - text passes through for swipes */
+.results-maps-btn,
+.feedback-btn,
+.feedback-success-pill,
+.results-match-badge-container {
     pointer-events: auto;
-    /* Re-enable for content */
 }
 
 .results-venue-name {

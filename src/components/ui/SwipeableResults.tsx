@@ -154,6 +154,7 @@ const ResultsCard = React.memo(({
             animate="center"
             exit="exit"
             {...dragHandlers}
+            onTap={onTap}
             style={{
                 backgroundImage: `url(${resolvedImageUrl})`,
                 // We can't access dragOffset easily here without context or prop, 
@@ -174,12 +175,10 @@ const ResultsCard = React.memo(({
                 onError={handleImageError}
             />
 
-            {/* Tap zone - clicking here advances to next card */}
+            {/* Gradient overlay for text readability */}
             <div
-                className="results-card-overlay results-card-tap-zone"
-                onClick={onTap}
-                role="button"
-                aria-label="Tap to see next venue"
+                className="results-card-overlay"
+                aria-hidden="true"
             />
 
             {/* Match badge with vibes tooltip (hover on desktop, tap on mobile) */}

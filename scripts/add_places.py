@@ -167,6 +167,8 @@ class VenueOutput:
     Rating: Optional[float]
     VibeDescription: str
     Suburb: str
+    place_id: Optional[str] = None
+    image_url: Optional[str] = None
 
 
 # ============================================================================
@@ -623,7 +625,9 @@ def process_place(
         Description=short_desc,
         Rating=details.rating,
         VibeDescription=vibe_description or "",
-        Suburb=details.suburb
+        Suburb=details.suburb,
+        place_id=details.place_id,
+        image_url=get_photo_url(details.photo_reference) if details.photo_reference else None
     )
 
 
@@ -645,6 +649,70 @@ def add_venues_to_csv(venues: List[VenueOutput]):
     # Save
     df.to_csv(CSV_FILE, index=False)
     print(f"\n✓ Added {len(venues)} venues to {CSV_FILE}")
+
+
+def update_json_metadata(venues: List[VenueOutput]):
+    """Update JSON file with new venue metadata (ID, images) to prevent data loss."""
+    if not venues:
+        return
+        
+    print(f"\nUPDATING JSON METADATA ({JSON_FILE})...")
+    
+    if not JSON_FILE.exists():
+        print(f"  ⚠ {JSON_FILE} not found - skipping JSON update")
+        return
+
+    try:
+        with open(JSON_FILE, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+            
+        json_venues = data.get('venues', [])
+        existing_map = {v['name']: v for v in json_venues}
+        updated_count = 0
+        
+        for v in venues:
+            # Create a partial entry if it doesn't exist, or update existing
+            if v.Name not in existing_map:
+                entry = {
+                    "id": re.sub(r'[^\w\s-]', '', v.Name.lower().replace(' ', '-')),
+                    "name": v.Name,
+                    "category": v.Category, 
+                    "place_id": v.place_id,
+                    "image_url": v.image_url,
+                    # Add other fields that might be useful immediately
+                    "suburb": v.Suburb,
+                    "rating": v.Rating,
+                    "price_tier": v.Price_Range
+                }
+                json_venues.append(entry)
+                existing_map[v.Name] = entry # Update map too
+                updated_count += 1
+                print(f"  + Added {v.Name} to JSON")
+            else:
+                # Update existing entry with better data if missing
+                entry = existing_map[v.Name]
+                changed = False
+                if v.place_id and not entry.get('place_id'):
+                    entry['place_id'] = v.place_id
+                    changed = True
+                if v.image_url and not entry.get('image_url'):
+                    entry['image_url'] = v.image_url
+                    changed = True
+                
+                if changed:
+                    updated_count += 1
+                    print(f"  ~ Updated {v.Name} in JSON")
+
+        if updated_count > 0:
+            data['metadata']['updated_at'] = datetime.now().isoformat()
+            with open(JSON_FILE, 'w', encoding='utf-8') as f:
+                json.dump(data, f, indent=2)
+            print(f"  ✓ Saved {updated_count} updates to {JSON_FILE}")
+        else:
+            print("  ✓ JSON already up to date")
+
+    except Exception as e:
+        print(f"  ✗ Failed to update JSON: {e}")
 
 
 # ============================================================================
@@ -782,6 +850,7 @@ def main():
     if new_venues:
         print(f"\n[4/4] Adding venues to CSV...")
         add_venues_to_csv(new_venues)
+        update_json_metadata(new_venues)
         
         # Suggest next steps
         print("\n" + "=" * 60)
