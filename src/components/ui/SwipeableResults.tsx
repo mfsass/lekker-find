@@ -63,6 +63,7 @@ const ResultsCard = React.memo(({
         drag: "x";
         dragConstraints: { left: number; right: number };
         dragElastic: number;
+        onDragStart?: (e: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => void;
         onDrag: (e: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => void;
         onDragEnd: (e: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => void;
         whileDrag: TargetAndTransition | VariantLabels;
@@ -453,6 +454,12 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
         }
     }, [hasPrev, dismissGuide]);
 
+    const isSwiping = React.useRef(false);
+
+    const handleDragStart = useCallback(() => {
+        isSwiping.current = true;
+    }, []);
+
     const handleDrag = useCallback((_event: MouseEvent | TouchEvent | PointerEvent, _info: PanInfo) => {
         // Drag offset tracking removed for now
     }, []);
@@ -471,7 +478,18 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
             // User swiped left on last card - show end message
             setShowEndMessage(true);
         }
+
+        // Reset swiping flag after a short delay to block immediate tap events
+        setTimeout(() => {
+            isSwiping.current = false;
+        }, 50);
     }, [hasNext, hasPrev, goNext, goPrev]);
+
+    const handleCardTap = useCallback(() => {
+        if (!isSwiping.current) {
+            goNext();
+        }
+    }, [goNext]);
 
     const handleVote = useCallback((sentiment: 'positive' | 'negative') => {
         if (!currentVenue) return;
@@ -556,13 +574,14 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
                             drag: "x",
                             dragConstraints: { left: 0, right: 0 },
                             dragElastic: 0.85,
+                            onDragStart: handleDragStart,
                             onDrag: handleDrag,
                             onDragEnd: handleDragEnd,
                             whileDrag: { scale: 1.02 }
                         }}
                         onVote={handleVote}
                         openInMaps={openInMaps}
-                        onTap={goNext}
+                        onTap={handleCardTap}
                         currency={currency}
                         exchangeRates={exchangeRates}
                         selectedVibes={selectedVibes}

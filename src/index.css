@@ -127,8 +127,10 @@ h6 {
     border-radius: var(--radius-full);
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: var(--muted-foreground);
+@media (hover: hover) {
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--muted-foreground);
+    }
 }
 
 /* ===== Utility Classes ===== */
@@ -375,6 +377,7 @@ h6 {
     transition: all var(--transition-normal);
     position: relative;
     overflow: hidden;
+    touch-action: manipulation;
 }
 
 .btn-primary::before {
@@ -431,6 +434,7 @@ h6 {
     border-radius: var(--radius-full);
     cursor: pointer;
     transition: all var(--transition-normal);
+    touch-action: manipulation;
 }
 
 @media (hover: hover) {
@@ -477,6 +481,7 @@ h6 {
     border-radius: var(--radius-full);
     cursor: pointer;
     transition: all var(--transition-normal);
+    touch-action: manipulation;
 }
 
 @media (hover: hover) {
@@ -616,9 +621,11 @@ h6 {
     transition: all var(--transition-fast);
 }
 
-.landing-footer-mailto:hover {
-    opacity: 0.85;
-    color: var(--primary);
+@media (hover: hover) {
+    .landing-footer-mailto:hover {
+        opacity: 0.85;
+        color: var(--primary);
+    }
 }
 
 .landing-footer-mailto:focus-visible {
@@ -793,6 +800,7 @@ h6 {
     cursor: pointer;
     transition: all var(--transition-normal);
     text-align: left;
+    touch-action: manipulation;
 }
 
 @media (hover: hover) {
@@ -944,6 +952,7 @@ h6 {
     cursor: pointer;
     transition: all var(--transition-fast);
     box-shadow: var(--shadow-sm);
+    touch-action: manipulation;
 }
 
 @media (hover: hover) {
@@ -1288,6 +1297,7 @@ button.moodTagItem.dislike.selected {
     text-transform: uppercase;
     letter-spacing: 0.04em;
     /* Wider spacing for "clean" feel */
+    touch-action: manipulation;
 }
 
 @media (hover: hover) {

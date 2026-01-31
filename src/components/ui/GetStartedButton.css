@@ -52,18 +52,21 @@
     opacity: 1;
 }
 
-/* Hover State: trigger the fill */
-.btn-get-started:hover::before {
-    left: 0;
-    width: 100%;
-    /* Optional: scale effect from original CSS if desired, but width/left transition is cleaner here */
+@media (hover: hover) {
+    .btn-get-started:hover::before {
+        left: 0;
+        width: 100%;
+        /* Optional: scale effect from original CSS if desired, but width/left transition is cleaner here */
+    }
 }
 
-.btn-get-started:hover {
-    color: var(--background);
-    /* Text turns light on dark bg */
-    transform: translateY(-2px);
-    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+@media (hover: hover) {
+    .btn-get-started:hover {
+        color: var(--background);
+        /* Text turns light on dark bg */
+        transform: translateY(-2px);
+        box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    }
 }
 
 /* The Icon Container - Cleaner Integration */
@@ -76,9 +79,11 @@
 }
 
 /* Icon rotation on hover */
-.btn-get-started:hover .btn-get-started-icon-wrapper {
-    transform: rotate(15deg) scale(1.1);
-    /* Subtle playful motion */
+@media (hover: hover) {
+    .btn-get-started:hover .btn-get-started-icon-wrapper {
+        transform: rotate(15deg) scale(1.1);
+        /* Subtle playful motion */
+    }
 }
 
 /* The SVG Icon itself */

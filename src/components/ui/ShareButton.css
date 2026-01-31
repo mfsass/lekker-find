@@ -36,14 +36,16 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-.share-btn:hover {
-    background: hsl(var(--background) / 0.95);
-    border-color: hsl(var(--primary));
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow:
-        0 4px 12px hsl(0 0% 0% / 0.1),
-        0 2px 4px hsl(0 0% 0% / 0.06);
+@media (hover: hover) {
+    .share-btn:hover {
+        background: hsl(var(--background) / 0.95);
+        border-color: hsl(var(--primary));
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow:
+            0 4px 12px hsl(0 0% 0% / 0.1),
+            0 2px 4px hsl(0 0% 0% / 0.06);
+    }
 }
 
 .share-btn:active {
@@ -69,8 +71,10 @@
     color: hsl(145 70% 35%);
 }
 
-.share-btn.copied:hover {
-    background: hsl(145 70% 45% / 0.2);
+@media (hover: hover) {
+    .share-btn.copied:hover {
+        background: hsl(145 70% 45% / 0.2);
+    }
 }
 
 /* Content wrapper for animation */
@@ -122,8 +126,10 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.share-btn.share-btn-glass:hover {
-    background: hsl(0 0% 100% / 1);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+@media (hover: hover) {
+    .share-btn.share-btn-glass:hover {
+        background: hsl(0 0% 100% / 1);
+        transform: translateY(-1px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
 }

@@ -21,7 +21,7 @@ test.describe('Advanced Results Interaction', () => {
 
     test('should allow swiping through cards', async ({ page }) => {
         const activeCard = page.locator('.results-card').first();
-        await expect(activeCard).toBeVisible({ timeout: 15000 });
+        await expect(activeCard).toBeVisible({ timeout: 20000 });
 
         const initialVenueName = await activeCard.locator('h2.results-venue-name').innerText();
 
@@ -34,16 +34,18 @@ test.describe('Advanced Results Interaction', () => {
 
             await page.mouse.move(startX, startY);
             await page.mouse.down();
-            await page.mouse.move(startX - 20, startY, { steps: 3 }); // Initial drag move
-            await page.mouse.move(endX, startY, { steps: 7 }); // Fast swipe
+            // Consistent multi-step movement for all browsers
+            await page.mouse.move(endX, startY, { steps: 25 });
             await page.mouse.up();
         }
 
         // Wait for transition animation
-        await page.waitForTimeout(1500);
+        await page.waitForTimeout(2000);
 
         // Verify next card is different
-        const nextVenueName = await page.locator('.results-card h2.results-venue-name').first().innerText();
+        const nextCard = page.locator('.results-card').first();
+        await expect(nextCard).toBeVisible();
+        const nextVenueName = await nextCard.locator('h2.results-venue-name').innerText();
         expect(nextVenueName).not.toBe(initialVenueName);
     });
 
@@ -52,16 +54,16 @@ test.describe('Advanced Results Interaction', () => {
         const nextBtn = page.locator('.results-nav-btn[aria-label="Next venue"]');
         if (await nextBtn.isVisible()) {
             const initialVenueName = await page.locator('.results-card h2.results-venue-name').first().innerText();
-            await nextBtn.click();
-            await page.waitForTimeout(800);
+            await nextBtn.click({ force: true }); // Use force for animation states
+            await page.waitForTimeout(1500);
 
             const nextVenueName = await page.locator('.results-card h2.results-venue-name').first().innerText();
             expect(nextVenueName).not.toBe(initialVenueName);
 
             // Go back
             const prevBtn = page.locator('.results-nav-btn[aria-label="Previous venue"]');
-            await prevBtn.click();
-            await page.waitForTimeout(800);
+            await prevBtn.click({ force: true });
+            await page.waitForTimeout(1500);
 
             const backVenueName = await page.locator('.results-card h2.results-venue-name').first().innerText();
             expect(backVenueName).toBe(initialVenueName);

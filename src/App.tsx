@@ -80,25 +80,23 @@ function App() {
 
     // Animated counter for venue count
     const [displayedVenueCount, setDisplayedVenueCount] = useState<number | null>(null);
+    const [isAppVisible, setIsAppVisible] = useState(false);
 
-    // Animate venue count when data loads
+    // Animate venue count when data loads AND app is visible
     useEffect(() => {
-        if (totalVenues <= 0) return;
+        if (totalVenues <= 0 || !isAppVisible) return;
 
-        const duration = 800; // Faster animation: 0.8 seconds
+        const duration = 1200; // Slightly slower for more impact
         const startTime = performance.now();
-        const startValue = displayedVenueCount || 0;
+        const startValue = 0;
         const endValue = totalVenues;
 
-        // Skip animation if already at target
-        if (startValue === endValue) return;
-
-        const easeOutQuad = (t: number) => t * (2 - t);
+        const easeOutQuint = (t: number) => 1 + (--t) * t * t * t * t;
 
         const animate = (currentTime: number) => {
             const elapsed = currentTime - startTime;
             const progress = Math.min(elapsed / duration, 1);
-            const easedProgress = easeOutQuad(progress);
+            const easedProgress = easeOutQuint(progress);
             const currentValue = Math.round(startValue + (endValue - startValue) * easedProgress);
 
             setDisplayedVenueCount(currentValue);
@@ -109,8 +107,7 @@ function App() {
         };
 
         requestAnimationFrame(animate);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [totalVenues]);
+    }, [totalVenues, isAppVisible]);
 
     const handleCurious = () => {
         // Preset for "Surprise Me" flow - goes straight to results
@@ -168,6 +165,7 @@ function App() {
             setTimeout(() => {
                 shell.style.opacity = '0';
                 shell.style.pointerEvents = 'none';
+                setIsAppVisible(true); // Trigger animation sequence
                 setTimeout(() => {
                     shell.remove();
                 }, 600); // 600ms matches index.html transition
@@ -762,7 +760,7 @@ function App() {
                                     itemProp="description"
                                 >
                                     Not sure what to do in Cape Town?<br />
-                                    Let us help you. Free, personal, instant.
+                                    Explore {displayedVenueCount ? <strong>{displayedVenueCount}</strong> : '375+'} hand-picked local gems.
                                 </m.p>
 
 

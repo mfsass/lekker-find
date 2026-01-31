@@ -71,8 +71,10 @@
     border: none !important;
 }
 
-.share-btn-primary:hover {
-    background: hsl(40 20% 95%) !important;
+@media (hover: hover) {
+    .share-btn-primary:hover {
+        background: hsl(40 20% 95%) !important;
+    }
 }
 
 .results-header-center {
@@ -109,10 +111,13 @@
     color: hsl(220, 10%, 40%);
 }
 
-.results-close:hover,
-.results-restart:hover {
-    background: hsl(40 15% 92%);
-    color: hsl(220 20% 14%);
+@media (hover: hover) {
+
+    .results-close:hover,
+    .results-restart:hover {
+        background: hsl(40 15% 92%);
+        color: hsl(220 20% 14%);
+    }
 }
 
 .results-counter {
@@ -154,7 +159,7 @@
         0 0 0 1px rgba(0, 0, 0, 0.05);
     overflow: hidden;
     cursor: grab;
-    touch-action: manipulation;
+    touch-action: pan-y;
     /* Hardware acceleration for smoother animation */
     will-change: transform, opacity;
 }
@@ -351,12 +356,15 @@
     cursor: pointer;
     transition: all 0.2s ease;
     box-shadow: 0 4px 12px hsl(174 72% 40% / 0.3);
+    touch-action: manipulation;
 }
 
-.results-maps-btn:hover {
-    background: hsl(174 72% 35%);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px hsl(174 72% 40% / 0.4);
+@media (hover: hover) {
+    .results-maps-btn:hover {
+        background: hsl(174 72% 35%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px hsl(174 72% 40% / 0.4);
+    }
 }
 
 .results-maps-btn:active {
@@ -387,6 +395,7 @@
     -webkit-backdrop-filter: blur(8px);
     color: white;
     transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    touch-action: manipulation;
 }
 
 .feedback-btn.like {
@@ -394,15 +403,19 @@
     background: hsla(174, 72%, 40%, 0.25);
 }
 
-.feedback-btn:hover {
-    transform: scale(1.1);
-    background: hsla(220, 20%, 10%, 0.6);
-    border-color: hsla(0, 0%, 100%, 0.4);
+@media (hover: hover) {
+    .feedback-btn:hover {
+        transform: scale(1.1);
+        background: hsla(220, 20%, 10%, 0.6);
+        border-color: hsla(0, 0%, 100%, 0.4);
+    }
 }
 
-.feedback-btn.like:hover {
-    background: hsla(174, 72%, 40%, 0.4);
-    border-color: hsla(174, 72%, 40%, 0.6);
+@media (hover: hover) {
+    .feedback-btn.like:hover {
+        background: hsla(174, 72%, 40%, 0.4);
+        border-color: hsla(174, 72%, 40%, 0.6);
+    }
 }
 
 .feedback-btn:active {
@@ -468,11 +481,13 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.results-nav-btn:hover:not(:disabled) {
-    border-color: hsl(174 72% 40%);
-    color: hsl(174 72% 40%);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+@media (hover: hover) {
+    .results-nav-btn:hover:not(:disabled) {
+        border-color: hsl(174 72% 40%);
+        color: hsl(174 72% 40%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    }
 }
 
 .results-nav-btn:disabled {
@@ -611,8 +626,10 @@
     transition: all 0.2s ease;
 }
 
-.results-empty .btn-primary:hover {
-    background: hsl(174 72% 35%);
+@media (hover: hover) {
+    .results-empty .btn-primary:hover {
+        background: hsl(174 72% 35%);
+    }
 }
 
 /* Responsive */
@@ -731,10 +748,12 @@
     margin-bottom: 0.75rem;
 }
 
-.results-end-restart-btn:hover {
-    background: hsl(174 72% 35%);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px hsl(174 72% 40% / 0.4);
+@media (hover: hover) {
+    .results-end-restart-btn:hover {
+        background: hsl(174 72% 35%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px hsl(174 72% 40% / 0.4);
+    }
 }
 
 .results-end-back-btn {
@@ -751,10 +770,12 @@
     transition: all 0.2s ease;
 }
 
-.results-end-back-btn:hover {
-    background: hsla(0, 0%, 100%, 0.1);
-    color: white;
-    border-color: hsla(0, 0%, 100%, 0.3);
+@media (hover: hover) {
+    .results-end-back-btn:hover {
+        background: hsla(0, 0%, 100%, 0.1);
+        color: white;
+        border-color: hsla(0, 0%, 100%, 0.3);
+    }
 }
 
 @media (max-width: 480px) {
