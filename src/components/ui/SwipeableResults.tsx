@@ -620,7 +620,7 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
                     <button onClick={goPrev} disabled={!hasPrev} className="results-nav-btn" aria-label="Previous venue">
                         <ChevronLeft size={32} />
                     </button>
-                    <button onClick={goNext} disabled={!hasNext} className="results-nav-btn" aria-label="Next venue">
+                    <button onClick={goNext} disabled={!hasNext && showEndMessage} className="results-nav-btn" aria-label="Next venue">
                         <ChevronRight size={32} />
                     </button>
                 </div>
