@@ -50,7 +50,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({
 }) => {
     const [isDone, setIsDone] = useState(false);
     const [imagesReady, setImagesReady] = useState(false);
-    const minDuration = useRef(3000); // Minimum 3s for animation
+    const minDuration = useRef(1500); // Minimum 1.5s for animation (Snappier)
     const startTime = useRef<number>(0);
 
     // Select curated words
@@ -79,13 +79,13 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({
                 document.body.style.overflow = 'hidden';
             }
 
-            // Wait for minimum duration (3s)
+            // Wait for minimum duration (1.5s)
             const minTimer = setTimeout(() => {
                 const checkAndComplete = () => {
                     const elapsed = Date.now() - startTime.current;
 
-                    // Images ready OR hit the 8s snappy cap
-                    if (imagesReady || elapsed > 8000) {
+                    // Images ready OR hit the 5s snappy cap
+                    if (imagesReady || elapsed > 5000) {
                         setIsDone(true);
                         setTimeout(() => {
                             if (document.body) {

@@ -245,6 +245,20 @@ function filterByIntent(venues: Venue[], intent: string | null | undefined): Ven
  * @param options - Match options (threshold, limit)
  * @returns Venues sorted by match percentage (highest first)
  */
+// Internal interface for scoring process
+interface ScoredVenue extends VenueWithMatch {
+    _tempScore: number;
+    _matchingVibesCount: number;
+}
+
+/**
+ * Find matching venues based on user selections.
+ * 
+ * @param params - User selections (intent, touristLevel, budget, moods)
+ * @param data - Loaded embeddings data
+ * @param options - Match options (threshold, limit)
+ * @returns Venues sorted by match percentage (highest first)
+ */
 export function findMatches(
     params: MatchParams,
     data: EmbeddingsData,
@@ -314,22 +328,16 @@ export function findMatches(
         userVibe = normalizeVector(subtractVectors(userVibe, negativeVibe));
     }
 
-    // Step 1: Calculate raw scores with keyword boost and explicit avoid penalty
-    const rawScored = venues.map(venue => {
-        const rawScore = cosineSimilarity(userVibe, venue.embedding);
+    // Step 1: Calculate raw scores and filter excluded venues
+    const scored: ScoredVenue[] = [];
 
-        // KEYWORD BOOST: Add bonus when venue has exact positive mood tag match
-        // Negative vibes are handled by vector subtraction in embedding space
-        const matchingVibes = params.moods.filter(mood =>
-            venue.vibes.some(v => v.toLowerCase() === mood.toLowerCase())
-        );
-        const keywordBoost = matchingVibes.length * 0.08; // +8% per matching vibe
+    // Track highest score for relative boosting
+    let highestScore = 0;
 
-        // EXPLICIT AVOID PENALTY (Hybrid Search Strategy)
-        // Vector subtraction isn't enough when the specific avoided word (e.g. "Beach")
-        // is overpowered by other positive matches (e.g. "Wildlife", "Nature").
-        // We apply a "Hard Filter" approach: penalize if the avoided word appears in the name or tags.
-        // This combines semantic search (vectors) with keyword filtering (constraints).
+    for (const venue of venues) {
+        // EXPLICIT AVOID FILTER (Hybrid Search Strategy)
+        // If a venue matches a negative mood (name or tags), we STRICTLY exclude it.
+        // This ensures the results list is contiguous and only contains desired venues.
         const matchesAvoid = (params.negativeMoods || []).some(neg => {
             const lowerNeg = neg.toLowerCase();
             return (
@@ -337,39 +345,51 @@ export function findMatches(
                 venue.name.toLowerCase().includes(lowerNeg)
             );
         });
-        const avoidPenalty = matchesAvoid ? 2.0 : 0;
 
-        const boostedScore = rawScore + keywordBoost - avoidPenalty;
+        if (matchesAvoid) {
+            continue; // Skip this venue entirely
+        }
 
-        return { venue, boostedScore, matchingVibes: matchingVibes.length };
-    });
+        const rawScore = cosineSimilarity(userVibe, venue.embedding);
 
-    // Step 2: More realistic percentage scaling
-    // Based on benchmark data: raw cosine similarity typically ranges 0.15-0.75
-    // With keyword boost: 0.15-0.90
-    // We use a hybrid approach: absolute similarity calibration + relative boost
-    const scores = rawScored.map(r => r.boostedScore);
-    const highestScore = Math.max(...scores);
+        // KEYWORD BOOST: Add bonus when venue has exact positive mood tag match
+        const matchingVibes = params.moods.filter(mood =>
+            venue.vibes.some(v => v.toLowerCase() === mood.toLowerCase())
+        );
+        const keywordBoost = matchingVibes.length * 0.08; // +8% per matching vibe
 
-    // Calibration notes (from benchmark analysis):
-    // - SIM_FLOOR ~0.15: Below this = poor match
-    // - SIM_CEILING ~0.85: Above this = excellent match (with boosts)
+        const boostedScore = rawScore + keywordBoost;
 
-    const scored = rawScored.map(({ venue, boostedScore, matchingVibes }) => {
+        if (boostedScore > highestScore) {
+            highestScore = boostedScore;
+        }
+
+        scored.push({
+            ...venue,
+            matchPercentage: 0, // Placeholder, calculated below
+            // details needed for score calc
+            _tempScore: boostedScore,
+            _matchingVibesCount: matchingVibes.length
+        });
+    }
+
+    // Step 2: Finalize percentages
+    const finalized = scored.map((item) => {
+        // Destructure to remove temp properties cleanly without delete or any
+        const { _tempScore, _matchingVibesCount, ...venue } = item;
+        const boostedScore = _tempScore;
+        const matchingVibes = _matchingVibesCount;
+
         // Step 3a: Absolute similarity to percentage
-        // Clamp similarity to expected range and scale
         const clampedSim = Math.max(0, Math.min(1, boostedScore));
 
         // Non-linear scaling: emphasize high matches, compress low ones
-        // Using power curve: (sim ^ 0.7) makes differences at high end more visible
         const scaledSim = Math.pow(clampedSim, 0.7);
 
         // Map to 40-88% range for base semantic score
-        // This leaves room for bonuses to push top results toward 95%+
         const basePercent = 40 + (scaledSim * 48);
 
         // Step 3b: Relative boost for top result
-        // The best match in the set gets a small bump to feel "best"
         const isTopMatch = boostedScore === highestScore;
         const topBoost = isTopMatch ? 3 : 0;
 
@@ -377,7 +397,6 @@ export function findMatches(
         const keywordBonus = Math.min(5, matchingVibes * 2);
 
         // Bonus 2: Rating Quality Boost
-        // 4.9+ -> +4% | 4.7+ -> +2% | 4.5+ -> +1% | <4.0 -> -3%
         let ratingBonus = 0;
         if (venue.rating) {
             if (venue.rating >= 4.9) ratingBonus = 4;
@@ -386,7 +405,7 @@ export function findMatches(
             else if (venue.rating < 4.0) ratingBonus = -3;
         }
 
-        // Final score: capped at 98% (never show 100% - nothing is perfect)
+        // Final score: capped at 98%
         const finalPercent = Math.max(35, Math.min(98, basePercent + topBoost + keywordBonus + ratingBonus));
 
         return {
@@ -396,11 +415,12 @@ export function findMatches(
     });
 
     // Filter by threshold and sort by final score (descending)
-    const filtered = scored
+    const results = finalized
         .filter(v => v.matchPercentage >= options.minScore! * 100)
-        .sort((a, b) => b.matchPercentage - a.matchPercentage);
+        .sort((a, b) => b.matchPercentage - a.matchPercentage)
+        .slice(0, maxResults);
 
-    const results = filtered.slice(0, maxResults);
+    return results;
 
 
 

@@ -208,6 +208,10 @@ def find_duplicates(new_name: str, existing_names: List[str]) -> List[Tuple[str,
 
 def is_duplicate(new_name: str, existing_names: List[str]) -> Tuple[bool, Optional[str]]:
     """Check if venue is a duplicate. Returns (is_dup, matched_name)."""
+    # Exception for Tygerberg Nature Reserve (often confused with Helderberg)
+    if "Tygerberg Nature Reserve" in new_name:
+        return False, None
+        
     matches = find_duplicates(new_name, existing_names)
     if matches:
         return True, matches[0][0]
@@ -224,7 +228,7 @@ def search_place(query: str, category_hint: str = "") -> Optional[Dict]:
     Returns the first matching place with all details.
     """
     if not MAPS_API_KEY:
-        print("  ✗ MAPS_API_KEY not found in .env")
+        print("  x MAPS_API_KEY not found in .env")
         return None
     
     # Enhanced query for better matching
@@ -251,7 +255,7 @@ def search_place(query: str, category_hint: str = "") -> Optional[Dict]:
         
         # Log API error details for debugging
         if response.status_code != 200:
-            print(f"  ✗ API {response.status_code}: {response.text[:200]}")
+            print(f"  x API {response.status_code}: {response.text[:200]}")
             return None
             
         data = response.json()
@@ -261,7 +265,7 @@ def search_place(query: str, category_hint: str = "") -> Optional[Dict]:
         return None
         
     except Exception as e:
-        print(f"  ✗ Places API error: {e}")
+        print(f"  x Places API error: {e}")
         return None
 
 
@@ -534,8 +538,12 @@ def create_short_description(details: PlaceDetails, hint: str = "") -> str:
 # ============================================================================
 
 def get_photo_url(photo_name: str, max_width: int = 1200) -> str:
-    """Construct photo URL from photo resource name."""
-    return f"{PHOTO_BASE_URL}/{photo_name}/media?maxWidthPx={max_width}&key={MAPS_API_KEY}"
+    """
+    Construct photo URL from photo resource name.
+    We EXCLUDE the API key here to prevent it from being saved to the CSV/JSON.
+    The localize_images.py script will add the key when downloading.
+    """
+    return f"{PHOTO_BASE_URL}/{photo_name}/media?maxWidthPx={max_width}"
 
 
 def download_image(url: str, venue_name: str) -> Optional[Path]:
@@ -577,7 +585,7 @@ def process_place(
     # Check for duplicates
     is_dup, match = is_duplicate(input_place.name, existing_names)
     if is_dup:
-        print(f"    ⚠ DUPLICATE: Similar to '{match}' - skipping")
+        print(f"    - DUPLICATE: Similar to '{match}' - skipping")
         return None
     
     # Search Google Places
@@ -585,12 +593,12 @@ def process_place(
     place = search_place(query, input_place.category)
     
     if not place:
-        print(f"    ✗ Not found on Google Places")
+        print(f"    x Not found on Google Places")
         return None
     
     # Parse details
     details = parse_place_details(place)
-    print(f"    ✓ Found: {details.name}")
+    print(f"    + Found: {details.name}")
     print(f"      Rating: {details.rating}/5 ({details.review_count:,} reviews)")
     print(f"      Suburb: {details.suburb or 'Unknown'}")
     
@@ -611,7 +619,7 @@ def process_place(
     )
     
     if vibe_description:
-        print(f"    ✓ Vibe: {vibe_description[:80]}...")
+        print(f"    + Vibe: {vibe_description[:80]}...")
     
     # Create output
     return VenueOutput(
@@ -648,7 +656,7 @@ def add_venues_to_csv(venues: List[VenueOutput]):
     
     # Save
     df.to_csv(CSV_FILE, index=False)
-    print(f"\n✓ Added {len(venues)} venues to {CSV_FILE}")
+    print(f"\n+ Added {len(venues)} venues to {CSV_FILE}")
 
 
 def update_json_metadata(venues: List[VenueOutput]):
@@ -780,7 +788,7 @@ def main():
     print(f"\n[1/4] Loading existing venues from {CSV_FILE}...")
     df = pd.read_csv(CSV_FILE)
     existing_names = df['Name'].tolist()
-    print(f"  ✓ Found {len(existing_names)} existing venues")
+    print(f"  + Found {len(existing_names)} existing venues")
     
     # Get places to process
     places_to_process = []
@@ -800,7 +808,7 @@ def main():
                         description_hint=parts[2].strip() if len(parts) > 2 else "",
                         category=parts[3].strip() if len(parts) > 3 else args.category
                     ))
-        print(f"  ✓ Loaded {len(places_to_process)} places")
+        print(f"  + Loaded {len(places_to_process)} places")
     elif args.search:
         print(f"\n[2/4] Searching for: '{args.search}'...")
         # TODO: Implement search-based discovery
@@ -838,9 +846,9 @@ def main():
     print("\n" + "=" * 60)
     print("SUMMARY")
     print("=" * 60)
-    print(f"  ✓ New venues found: {len(new_venues)}")
-    print(f"  ⚠ Skipped (duplicates): {skipped}")
-    print(f"  ✗ Failed (not found): {failed}")
+    print(f"  + New venues found: {len(new_venues)}")
+    print(f"  - Skipped (duplicates): {skipped}")
+    print(f"  x Failed (not found): {failed}")
     
     if args.dry_run:
         print("\n[DRY RUN] No changes made")
