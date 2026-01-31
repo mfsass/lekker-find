@@ -54,3 +54,7 @@ __pycache__/
 
 # Allow .agent rules and workflows (not ignored)
 !.agent/
+
+# Playwright
+playwright-report/
+test-results/

@@ -96,14 +96,14 @@ def localize_images(force_redownload=False):
                 with open(filepath, 'wb') as img_f:
                     img_f.write(response.content)
                 venue['image_url'] = f"/images/venues/{filename}"
-                print("✓")
+                print("DONE")
                 downloaded += 1
                 time.sleep(0.2) # Throttling
             else:
-                print(f"✗ (HTTP {response.status_code})")
+                print(f"FAIL (HTTP {response.status_code})")
                 failed += 1
         except Exception as e:
-            print(f"✗ (Error: {e})")
+            print(f"ERROR (Error: {e})")
             failed += 1
 
     # Save changes
@@ -112,9 +112,9 @@ def localize_images(force_redownload=False):
 
     print("\n" + "="*30)
     print("FINISHED")
-    print(f"  ✓ Newly downloaded: {downloaded}")
-    print(f"  ⚠ Existing/Skipped: {skipped}")
-    print(f"  ✗ Failed:           {failed}")
+    print(f"  [OK] Newly downloaded: {downloaded}")
+    print(f"  [SKIPPED] Existing/Skipped: {skipped}")
+    print(f"  [FAIL] Failed:           {failed}")
     print("="*30)
 
 if __name__ == "__main__":
