@@ -70,7 +70,7 @@ test.describe('Advanced Results Interaction', () => {
 
     test('should show end message when reaching final card', async ({ page }) => {
         // More robust approach: swipe until end message appears
-        for (let i = 0; i < 25; i++) {
+        for (let i = 0; i < 50; i++) {
             const endMessage = page.locator('.results-end-message');
             if (await endMessage.isVisible()) break;
 
@@ -83,7 +83,7 @@ test.describe('Advanced Results Interaction', () => {
                 // On mobile, tapping the card goes to the next venue
                 await card.click();
             }
-            await page.waitForTimeout(1000);
+            await page.waitForTimeout(200);
         }
 
         await expect(page.locator('.results-end-message')).toBeVisible({ timeout: 15000 });

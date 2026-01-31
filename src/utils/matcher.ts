@@ -245,6 +245,20 @@ function filterByIntent(venues: Venue[], intent: string | null | undefined): Ven
  * @param options - Match options (threshold, limit)
  * @returns Venues sorted by match percentage (highest first)
  */
+// Internal interface for scoring process
+interface ScoredVenue extends VenueWithMatch {
+    _tempScore: number;
+    _matchingVibesCount: number;
+}
+
+/**
+ * Find matching venues based on user selections.
+ * 
+ * @param params - User selections (intent, touristLevel, budget, moods)
+ * @param data - Loaded embeddings data
+ * @param options - Match options (threshold, limit)
+ * @returns Venues sorted by match percentage (highest first)
+ */
 export function findMatches(
     params: MatchParams,
     data: EmbeddingsData,
@@ -315,7 +329,7 @@ export function findMatches(
     }
 
     // Step 1: Calculate raw scores and filter excluded venues
-    const scored: VenueWithMatch[] = [];
+    const scored: ScoredVenue[] = [];
 
     // Track highest score for relative boosting
     let highestScore = 0;
@@ -356,14 +370,15 @@ export function findMatches(
             // details needed for score calc
             _tempScore: boostedScore,
             _matchingVibesCount: matchingVibes.length
-        } as any);
+        });
     }
 
     // Step 2: Finalize percentages
-    const finalized = scored.map((item: any) => {
-        const venue = item as VenueWithMatch;
-        const boostedScore = item._tempScore;
-        const matchingVibes = item._matchingVibesCount;
+    const finalized = scored.map((item) => {
+        // Destructure to remove temp properties cleanly without delete or any
+        const { _tempScore, _matchingVibesCount, ...venue } = item;
+        const boostedScore = _tempScore;
+        const matchingVibes = _matchingVibesCount;
 
         // Step 3a: Absolute similarity to percentage
         const clampedSim = Math.max(0, Math.min(1, boostedScore));
@@ -392,10 +407,6 @@ export function findMatches(
 
         // Final score: capped at 98%
         const finalPercent = Math.max(35, Math.min(98, basePercent + topBoost + keywordBonus + ratingBonus));
-
-        // Cleanup temp props
-        delete (venue as any)._tempScore;
-        delete (venue as any)._matchingVibesCount;
 
         return {
             ...venue,
