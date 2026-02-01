@@ -70,7 +70,7 @@ const ResultsCard = React.memo(({
     };
     // onVote removed
     openInMaps: (venue: VenueWithMatch, e?: React.MouseEvent | React.TouchEvent) => void;
-    onTap: (e: any) => void;
+    onTap: (e: MouseEvent | TouchEvent | PointerEvent) => void;
     currency: 'ZAR' | 'EUR' | 'USD' | 'GBP';
     exchangeRates: Record<string, number>;
     selectedVibes?: string[];
@@ -454,7 +454,7 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
         }, 50);
     }, [hasNext, hasPrev, goNext, goPrev]);
 
-    const handleCardTap = useCallback((e: any) => {
+    const handleCardTap = useCallback((e: MouseEvent | TouchEvent | PointerEvent) => {
         if (isSwiping.current) return;
 
         // Prevent advancement if tapping an interactive element (buttons, pills, badges)

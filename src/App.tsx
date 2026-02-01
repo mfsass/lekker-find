@@ -228,7 +228,7 @@ function App() {
             // Clean URL so it doesn't persist on refresh/nav
             clearShareParams();
         }
-    }, [recommendationsReady, findMatches, allVenues]); // Only run once recommendations are ready
+    }, [recommendationsReady, findMatches, allVenues, surpriseMe]); // Only run once recommendations are ready
 
     // Show price disclaimer (general variability note)
     const showPriceDisclaimer = shouldShowPriceDisclaimer(selectedIntent, selectedTouristLevel);
