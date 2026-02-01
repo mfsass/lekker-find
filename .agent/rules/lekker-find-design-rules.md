@@ -135,6 +135,9 @@ description: When designer or imporving css, follow this style guide for fronten
 - Min touch target: 44×44px
 - Hover: lift + shadow
 - Active: press down
+- **Mobile Optimization:**
+    - Use `touch-action: manipulation` to prevent double-tap zoom and improve response.
+    - Wrap `:hover` effects in `@media (hover: hover)` to prevent sticky states on touch.
 
 ### Card
 

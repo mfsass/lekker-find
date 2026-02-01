@@ -97,6 +97,7 @@
     color: hsl(220 10% 40%);
     cursor: pointer;
     transition: all 0.15s ease;
+    touch-action: manipulation;
 }
 
 /* Text Button Variant */
@@ -443,6 +444,7 @@
     cursor: pointer;
     transition: all 0.2s ease;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    touch-action: manipulation;
 }
 
 @media (hover: hover) {
@@ -727,6 +729,7 @@
     transition: all 0.2s ease;
     box-shadow: 0 4px 12px hsl(174 72% 40% / 0.3);
     margin-bottom: 0.75rem;
+    touch-action: manipulation;
 }
 
 @media (hover: hover) {
@@ -749,6 +752,7 @@
     border-radius: 9999px;
     cursor: pointer;
     transition: all 0.2s ease;
+    touch-action: manipulation;
 }
 
 @media (hover: hover) {

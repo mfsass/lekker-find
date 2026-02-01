@@ -717,6 +717,7 @@ h6 {
     cursor: pointer;
     transition: all var(--transition-normal);
     z-index: 10;
+    touch-action: manipulation;
 }
 
 @media (hover: hover) {
@@ -1062,6 +1063,7 @@ button.moodTagItem.dislike.selected {
     color: var(--muted-foreground);
     cursor: pointer;
     transition: all var(--transition-normal);
+    touch-action: manipulation;
 }
 
 @media (hover: hover) {
@@ -1113,6 +1115,7 @@ button.moodTagItem.dislike.selected {
     color: var(--muted-foreground);
     cursor: pointer;
     transition: all var(--transition-normal);
+    touch-action: manipulation;
 }
 
 @media (hover: hover) {

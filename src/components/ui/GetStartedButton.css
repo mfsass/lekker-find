@@ -31,6 +31,7 @@
     /* Isolation for pseudo-element stacking */
     isolation: isolate;
     transition: all var(--transition-normal);
+    touch-action: manipulation;
 }
 
 /* The hover fill effect (circle expanding from left) */
@@ -102,10 +103,13 @@
 
 /* Subtle attention pulse animation on page load */
 @keyframes ctaAttentionPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
         box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
     }
+
     50% {
         transform: scale(1.03);
         box-shadow: 0 25px 35px -5px hsl(174 72% 40% / 0.25), 0 10px 15px -6px hsl(174 72% 40% / 0.2);

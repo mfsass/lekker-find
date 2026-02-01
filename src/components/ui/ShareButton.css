@@ -34,6 +34,7 @@
         transform 200ms ease;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 @media (hover: hover) {
