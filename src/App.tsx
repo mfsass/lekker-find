@@ -759,8 +759,8 @@ function App() {
                                     variants={itemVariants}
                                     itemProp="description"
                                 >
-                                    Not sure what to do in Cape Town?<br />
-                                    Explore {displayedVenueCount ? <strong>{displayedVenueCount}</strong> : '375+'} hand-picked local gems.
+                                    Find your next thing to do in Cape Town.<br />
+                                    No ads. No sign-up. Free, personal, instant.
                                 </m.p>
 
 
