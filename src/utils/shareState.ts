@@ -48,6 +48,7 @@ export interface ShareState {
     moods?: string[];
     avoidedMoods?: string[];
     index?: number; // Current card index
+    venueId?: string; // Specific venue ID for single-item sharing
 }
 
 /**
@@ -83,6 +84,11 @@ export function encodeShareState(state: ShareState): string {
         parts.push(`i${state.index}`);
     }
 
+    // Venue ID (optional, prefixed with v)
+    if (state.venueId) {
+        parts.push(`v${state.venueId}`);
+    }
+
     return parts.join('.');
 }
 
@@ -115,6 +121,9 @@ export function decodeShareState(param: string): ShareState | null {
             if (part.startsWith('i')) {
                 // Index
                 state.index = parseInt(part.slice(1)) || 0;
+            } else if (part.startsWith('v')) {
+                // Venue ID
+                state.venueId = part.slice(1);
             } else if (part.startsWith('-')) {
                 // Avoided moods
                 state.avoidedMoods = part.slice(1).split(',').map(m => capitalizeWords(m));

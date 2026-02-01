@@ -46,6 +46,7 @@ export interface Venue {
     image_attribution?: string;
     rating?: number;  // Google Maps rating (1-5)
     suburb?: string;  // Extracted from address (e.g. "Sea Point")
+    safety_level?: 'high' | 'caution' | 'normal';
 }
 
 export interface VenueWithMatch extends Venue {
@@ -479,6 +480,8 @@ interface UseRecommendationsResult {
     error: Error | null;
     ready: boolean;
     totalVenues: number;
+    venues: Venue[];
+    tagEmbeddings: Record<string, number[]>;
 }
 
 /**
@@ -558,7 +561,9 @@ export function useRecommendations(): UseRecommendationsResult {
         loading,
         error,
         ready: !loading && !error && data !== null,
-        totalVenues: data?.metadata?.total_venues || 0
+        totalVenues: data?.metadata?.total_venues || 0,
+        venues: data?.venues || [],
+        tagEmbeddings: data?.tag_embeddings || {}
     };
 }
 

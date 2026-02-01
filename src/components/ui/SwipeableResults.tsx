@@ -13,7 +13,7 @@
 
 import React, { useState, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence, PanInfo, TargetAndTransition, VariantLabels } from 'framer-motion';
-import { MapPin, ChevronLeft, ChevronRight, Star, ThumbsUp, ThumbsDown, Sparkles, Search, SearchX, Hand } from 'lucide-react';
+import { MapPin, ChevronLeft, ChevronRight, Star, Sparkles, Search, SearchX, Hand, AlertTriangle, ShieldAlert, X } from 'lucide-react';
 import { VenueWithMatch } from '../../utils/matcher';
 import { convertPriceString } from '../../utils/currency';
 import { getVenueFallbackImage, getVenueImage } from '../../utils/imageHelper';
@@ -49,13 +49,13 @@ const ResultsCard = React.memo(({
     venue,
     direction,
     dragHandlers,
-    onVote,
     openInMaps,
     onTap,
     currency,
     exchangeRates,
     selectedVibes,
-    shareState
+    shareState,
+    onSafetyClick
 }: {
     venue: VenueWithMatch;
     direction: 'left' | 'right' | null;
@@ -68,13 +68,14 @@ const ResultsCard = React.memo(({
         onDragEnd: (e: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => void;
         whileDrag: TargetAndTransition | VariantLabels;
     };
-    onVote: (sentiment: 'positive' | 'negative') => void;
-    openInMaps: (venue: VenueWithMatch) => void;
-    onTap: () => void;
+    // onVote removed
+    openInMaps: (venue: VenueWithMatch, e?: React.MouseEvent | React.TouchEvent) => void;
+    onTap: (e: any) => void;
     currency: 'ZAR' | 'EUR' | 'USD' | 'GBP';
     exchangeRates: Record<string, number>;
     selectedVibes?: string[];
     shareState?: ShareState;
+    onSafetyClick: (e: React.MouseEvent | React.TouchEvent) => void;
 }) => {
     const imageUrl = useMemo(() => getVenueImage(venue), [venue]);
     const fallbackImageUrl = useMemo(() => getVenueFallbackImage(venue), [venue]);
@@ -82,7 +83,7 @@ const ResultsCard = React.memo(({
     const [imageLoaded, setImageLoaded] = useState(false);
     const [fallbackAttempted, setFallbackAttempted] = useState(false);
     const [imageFailed, setImageFailed] = useState(false);
-    const [localVoteState, setLocalVoteState] = useState<'idle' | 'liked' | 'disliked'>('idle');
+    // localVoteState removed
     const imgRef = React.useRef<HTMLImageElement>(null);
 
     React.useEffect(() => {
@@ -90,7 +91,7 @@ const ResultsCard = React.memo(({
         setImageLoaded(false);
         setFallbackAttempted(false);
         setImageFailed(false);
-    }, [imageUrl]);
+    }, [imageUrl, venue]);
 
     // Check if image is already cached/loaded on mount
     React.useEffect(() => {
@@ -116,13 +117,7 @@ const ResultsCard = React.memo(({
         setImageFailed(true);
     }, [fallbackAttempted, fallbackImageUrl, resolvedImageUrl]);
 
-    // Handle local vote interaction
-    const handleLocalVote = useCallback((sentiment: 'positive' | 'negative') => {
-        if (localVoteState !== 'idle') return;
-
-        setLocalVoteState(sentiment === 'positive' ? 'liked' : 'disliked');
-        onVote(sentiment);
-    }, [localVoteState, onVote]);
+    // Handle local vote interaction removed
 
     // Format price
     const priceDisplay = useMemo(() => {
@@ -194,7 +189,7 @@ const ResultsCard = React.memo(({
                     alignItems: 'flex-end',
                     gap: '12px'
                 }}>
-                    <div
+                    <motion.div
                         className="results-match-badge"
                         style={{
                             position: 'relative', // Override absolute from CSS
@@ -215,24 +210,34 @@ const ResultsCard = React.memo(({
                                 alert(`Your vibes: ${selectedVibes.join(', ')}`);
                             }
                         }}
+                        onPointerDown={(e) => e.stopPropagation()}
+                        onTap={(e) => e.stopPropagation()}
                         role="button"
                         aria-label={`${venue.matchPercentage}% match - tap to see your selected vibes`}
                     >
                         <Sparkles size={14} fill="currentColor" strokeWidth={0} style={{ opacity: 0.8 }} />
                         {venue.matchPercentage}% match
-                    </div>
-
-                    {shareState && (
-                        <ShareButton
-                            state={shareState}
-                            className="share-btn-compact share-btn-glass"
-                        />
-                    )}
+                    </motion.div>
                 </div>
             )}
 
             {/* Content */}
             <div className="results-card-content">
+                {venue.safety_level && venue.safety_level !== 'normal' && (
+                    <motion.button
+                        className={`safety-pill ${venue.safety_level}`}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            onSafetyClick(e);
+                        }}
+                        onPointerDown={(e) => e.stopPropagation()}
+                        onTap={(e) => e.stopPropagation()}
+                        title="Click for safety info"
+                    >
+                        <span className="safety-pill-dot" />
+                        {venue.safety_level === 'high' ? 'Local Area' : 'Caution Area'}
+                    </motion.button>
+                )}
                 <h2 className="results-venue-name">{venue.name}</h2>
 
                 <div className="results-venue-meta">
@@ -269,73 +274,35 @@ const ResultsCard = React.memo(({
 
                 {/* Footer Actions */}
                 <div className="results-card-footer">
-                    <button
-                        onClick={() => openInMaps(venue)}
+                    <motion.button
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            openInMaps(venue, e);
+                        }}
+                        onPointerDown={(e) => e.stopPropagation()}
+                        onTap={(e) => e.stopPropagation()}
                         className="results-maps-btn"
                         style={{ flex: 1, justifyContent: 'center' }}
                         aria-label="Open location in Maps"
+                        data-clarity-action="map-click"
                     >
                         <MapPin size={20} />
                         Maps
-                    </button>
+                    </motion.button>
 
-                    <div className="results-feedback-wrapper">
-                        <AnimatePresence mode="popLayout" initial={false}>
-                            {localVoteState === 'idle' ? (
-                                <motion.div
-                                    key="buttons"
-                                    initial={{ opacity: 0, scale: 0.8 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.5, filter: 'blur(8px)' }}
-                                    transition={{ duration: 0.2 }}
-                                    style={{ display: 'flex', gap: '12px' }}
-                                >
-                                    <button
-                                        onClick={(e) => { e.stopPropagation(); handleLocalVote('negative'); }}
-                                        className="feedback-btn dislike"
-                                        aria-label="Dislike"
-                                    >
-                                        <ThumbsDown size={22} />
-                                    </button>
-
-                                    <button
-                                        onClick={(e) => { e.stopPropagation(); handleLocalVote('positive'); }}
-                                        className="feedback-btn like"
-                                        aria-label="Like"
-                                    >
-                                        <ThumbsUp size={22} />
-                                    </button>
-                                </motion.div>
-                            ) : (
-                                <motion.div
-                                    key="feedback-message"
-                                    initial={{ opacity: 0, scale: 0.8, y: 10, filter: 'blur(4px)' }}
-                                    animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
-                                    exit={{ opacity: 0, scale: 0.8 }}
-                                    transition={{
-                                        type: 'spring',
-                                        stiffness: 260,
-                                        damping: 20,
-                                        filter: { type: 'tween', duration: 0.2, ease: 'easeOut' }
-                                    }}
-                                    className={`feedback-success-pill ${localVoteState === 'disliked' ? 'dislike' : ''}`}
-                                >
-                                    {localVoteState === 'liked' ? (
-                                        <>
-                                            <div className="feedback-icon-check">
-                                                <ThumbsUp size={12} fill="white" strokeWidth={3} />
-                                            </div>
-                                            <span>Liked</span>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <span>Disliked</span>
-                                        </>
-                                    )}
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-                    </div>
+                    {shareState && (
+                        <motion.div
+                            onClick={(e) => e.stopPropagation()}
+                            onPointerDown={(e) => e.stopPropagation()}
+                            onTap={(e) => e.stopPropagation()}
+                            className="results-share-wrapper"
+                        >
+                            <ShareButton
+                                state={shareState}
+                                className="results-share-btn"
+                            />
+                        </motion.div>
+                    )}
                 </div>
             </div>
         </motion.div>
@@ -377,6 +344,8 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
     const [isMobile, setIsMobile] = useState(false);
     const [tutorialTouchStart, setTutorialTouchStart] = useState<{ x: number; y: number } | null>(null);
     const [showEndMessage, setShowEndMessage] = useState(false);
+
+    const [showSafetyPopup, setShowSafetyPopup] = useState(false);
 
     React.useEffect(() => {
         const checkMobile = () => {
@@ -485,33 +454,28 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
         }, 50);
     }, [hasNext, hasPrev, goNext, goPrev]);
 
-    const handleCardTap = useCallback(() => {
-        if (!isSwiping.current) {
-            goNext();
+    const handleCardTap = useCallback((e: any) => {
+        if (isSwiping.current) return;
+
+        // Prevent advancement if tapping an interactive element (buttons, pills, badges)
+        // framer-motion's onTap sometimes bypasses stopPropagation, so this is a robust fall-back
+        const target = e?.target as HTMLElement;
+        if (target && (
+            target.closest('button') ||
+            target.closest('.results-match-badge') ||
+            target.closest('.safety-pill') ||
+            target.closest('.share-btn')
+        )) {
+            return;
         }
+
+        goNext();
     }, [goNext]);
 
-    const handleVote = useCallback((sentiment: 'positive' | 'negative') => {
-        if (!currentVenue) return;
+    // handleVote removed
 
-        captureFeedback({
-            venueId: currentVenue.id,
-            venueName: currentVenue.name,
-            sentiment,
-            actionType: 'vote',
-            source: isCuriousMode ? 'curious_shuffle' : 'recommendation_engine'
-        });
-
-        if (sentiment === 'negative') {
-            setTimeout(() => {
-                setDirection('left');
-                setCurrentIndex(i => i + 1);
-            }, 600);
-        }
-
-    }, [currentVenue, isCuriousMode]);
-
-    const openInMaps = useCallback((venue: VenueWithMatch) => {
+    const openInMaps = useCallback((venue: VenueWithMatch, e?: React.MouseEvent | React.TouchEvent) => {
+        if (e) e.stopPropagation();
         captureFeedback({
             venueId: venue.id,
             venueName: venue.name,
@@ -527,6 +491,15 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
             window.open(`https://www.google.com/maps/search/?api=1&query=${query}`, '_blank', 'noopener,noreferrer');
         }
     }, [isCuriousMode]);
+
+    const handleSafetyClick = useCallback((e: React.MouseEvent | React.TouchEvent) => {
+        e.stopPropagation();
+        setShowSafetyPopup(true);
+    }, []);
+
+    const closeSafetyPopup = useCallback(() => {
+        setShowSafetyPopup(false);
+    }, []);
 
     if (!currentVenue) {
         return (
@@ -552,12 +525,7 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
                         {currentIndex + 1} / {venues.length}
                     </span>
                     {/* Desktop: Show share in header. Mobile: Key share action is on the card */}
-                    {!isMobile && !isCuriousMode && shareState && (
-                        <ShareButton
-                            state={{ ...shareState, index: currentIndex }}
-                            className="share-btn-glass"
-                        />
-                    )}
+                    {/* Share removed from header */}
                 </div>
                 <button onClick={onStartOver} className="results-restart text-btn" aria-label="Start over">
                     Restart
@@ -579,60 +547,132 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
                             onDragEnd: handleDragEnd,
                             whileDrag: { scale: 1.02 }
                         }}
-                        onVote={handleVote}
                         openInMaps={openInMaps}
                         onTap={handleCardTap}
                         currency={currency}
                         exchangeRates={exchangeRates}
                         selectedVibes={selectedVibes}
-                        // Pass index-aware share state to each card
-                        shareState={!isCuriousMode && shareState ? { ...shareState, index: currentIndex } : undefined}
+                        shareState={shareState ? (isCuriousMode ? { venueId: currentVenue.id } : { ...shareState, index: currentIndex }) : undefined}
+                        onSafetyClick={handleSafetyClick}
                     />
                 </AnimatePresence>
 
                 {/* End of results overlay */}
                 <AnimatePresence>
-                    {showEndMessage && (
-                        <motion.div
-                            className="results-end-message"
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.9 }}
-                            transition={{ duration: 0.3, ease: 'easeOut' }}
-                        >
-                            <div className="results-end-content">
-                                <div className="results-end-icon" aria-hidden="true">
-                                    <Search size={48} />
-                                </div>
-                                <h3 className="results-end-title">Not quite right?</h3>
-                                <p className="results-end-subtitle">Try adjusting your vibes or budget for better matches</p>
-                                <button
-                                    className="results-end-restart-btn"
-                                    onClick={onAdjustVibes || onStartOver}
-                                >
-                                    Try Different Selections
-                                </button>
-                                <button
-                                    className="results-end-back-btn"
-                                    onClick={() => setShowEndMessage(false)}
-                                >
-                                    Cancel
-                                </button>
-
-                                {!isCuriousMode && shareState && (
-                                    <div className="results-end-share">
-                                        <p className="results-end-share-text">Share these matches with friends</p>
-                                        <ShareButton
-                                            state={{ ...shareState, index: 0 }} // Share from start
-                                            className="share-btn-primary" // New class for primary style
-                                        />
+                    {
+                        showEndMessage && (
+                            <motion.div
+                                className="results-end-message"
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.9 }}
+                                transition={{ duration: 0.3, ease: 'easeOut' }}
+                            >
+                                <div className="results-end-content">
+                                    <div className="results-end-icon" aria-hidden="true">
+                                        <Search size={48} />
                                     </div>
-                                )}
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </div>
+                                    <h3 className="results-end-title">Not quite right?</h3>
+                                    <p className="results-end-subtitle">Try adjusting your vibes or budget for better matches</p>
+                                    <button
+                                        className="results-end-restart-btn"
+                                        onClick={onAdjustVibes || onStartOver}
+                                    >
+                                        Try Different Selections
+                                    </button>
+                                    <button
+                                        className="results-end-back-btn"
+                                        onClick={() => setShowEndMessage(false)}
+                                    >
+                                        Cancel
+                                    </button>
+
+                                    {!isCuriousMode && shareState && (
+                                        <div className="results-end-share">
+                                            <p className="results-end-share-text">Share these matches with friends</p>
+                                            <ShareButton
+                                                state={{ ...shareState, index: 0 }} // Share from start
+                                                venueName={venues[0]?.name}
+                                                className="share-btn-primary" // New class for primary style
+                                            />
+                                        </div>
+                                    )}
+                                </div>
+                            </motion.div>
+                        )
+                    }
+                </AnimatePresence >
+
+                {/* Safety Popup */}
+                <AnimatePresence>
+                    {
+                        showSafetyPopup && (
+                            <motion.div
+                                className="safety-popup-overlay"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                onClick={closeSafetyPopup}
+                            >
+                                <motion.div
+                                    className="safety-popup-card"
+                                    initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                                    animate={{ scale: 1, opacity: 1, y: 0 }}
+                                    exit={{ scale: 0.9, opacity: 0, y: 20 }}
+                                    onClick={(e) => e.stopPropagation()}
+                                >
+                                    <button
+                                        className="safety-popup-close"
+                                        onClick={closeSafetyPopup}
+                                        aria-label="Close"
+                                    >
+                                        <X size={20} />
+                                    </button>
+
+                                    <div className={`safety-popup-icon-wrapper ${currentVenue.safety_level}`}>
+                                        {currentVenue.safety_level === 'high' ? (
+                                            <ShieldAlert size={48} />
+                                        ) : (
+                                            <AlertTriangle size={48} />
+                                        )}
+                                    </div>
+
+                                    <h3 className="safety-popup-title">
+                                        {currentVenue.safety_level === 'high' ? 'Local Area Alert' : 'Heads Up!'}
+                                    </h3>
+
+                                    <p className="safety-popup-text">
+                                        {currentVenue.safety_level === 'high'
+                                            ? "This area requires extra caution. We recommend staying aware of your surroundings and using reliable transport."
+                                            : "This area is generally fine, just be aware of your surroundings like in any busy city."}
+                                    </p>
+
+                                    <p className="safety-popup-subtext">
+                                        Visit at your own discretion and have a lekker time!
+                                    </p>
+
+                                    <div className="safety-popup-actions">
+                                        <button className="safety-popup-btn primary" onClick={closeSafetyPopup}>
+                                            Got it
+                                        </button>
+                                        {hasNext && (
+                                            <button
+                                                className="safety-popup-btn secondary"
+                                                onClick={() => {
+                                                    closeSafetyPopup();
+                                                    goNext();
+                                                }}
+                                            >
+                                                Next Location
+                                            </button>
+                                        )}
+                                    </div>
+                                </motion.div>
+                            </motion.div>
+                        )
+                    }
+                </AnimatePresence >
+            </div >
 
             {!isMobile && (
                 <div className="results-nav">
@@ -645,24 +685,26 @@ export const SwipeableResults: React.FC<SwipeableResultsProps> = ({
                 </div>
             )}
 
-            {isMobile && showSwipeGuide && currentIndex === 0 && (
-                <div
-                    className="results-swipe-tutorial"
-                    onClick={dismissGuide}
-                    onTouchStart={handleTutorialTouchStart}
-                    onTouchMove={handleTutorialTouchMove}
-                    onTouchEnd={handleTutorialTouchEnd}
-                >
-                    <div className="swipe-tutorial-content">
-                        <div className="swipe-hand">
-                            <Hand size={48} />
+            {
+                isMobile && showSwipeGuide && currentIndex === 0 && (
+                    <div
+                        className="results-swipe-tutorial"
+                        onClick={dismissGuide}
+                        onTouchStart={handleTutorialTouchStart}
+                        onTouchMove={handleTutorialTouchMove}
+                        onTouchEnd={handleTutorialTouchEnd}
+                    >
+                        <div className="swipe-tutorial-content">
+                            <div className="swipe-hand">
+                                <Hand size={48} />
+                            </div>
+                            <p className="swipe-instruction">Swipe left or right to explore</p>
+                            <span className="swipe-dismiss">Swipe or tap anywhere to start</span>
                         </div>
-                        <p className="swipe-instruction">Swipe left or right to explore</p>
-                        <span className="swipe-dismiss">Swipe or tap anywhere to start</span>
                     </div>
-                </div>
-            )}
+                )
+            }
 
-        </div>
+        </div >
     );
 };

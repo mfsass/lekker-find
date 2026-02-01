@@ -15,21 +15,23 @@ import './ShareButton.css';
 
 interface ShareButtonProps {
     state: ShareState;
+    venueName?: string;
     className?: string;
 }
 
-export function ShareButton({ state, className = '' }: ShareButtonProps) {
+export function ShareButton({ state, venueName, className = '' }: ShareButtonProps) {
     const [copied, setCopied] = useState(false);
     const [isSharing, setIsSharing] = useState(false);
 
-    const handleShare = async () => {
+    const handleShare = async (e?: React.MouseEvent | React.TouchEvent) => {
+        if (e) e.stopPropagation();
         if (isSharing) return;
         setIsSharing(true);
 
         const shareUrl = getShareUrl(state);
         const shareData = {
             title: 'Discover something Lekker',
-            text: "Here's something lekker to do!",
+            text: venueName ? `Check out "${venueName}" on Lekker Find!` : "Here's something lekker to do!",
             url: shareUrl,
         };
 
@@ -60,10 +62,16 @@ export function ShareButton({ state, className = '' }: ShareButtonProps) {
     return (
         <motion.button
             className={`share-btn ${className} ${copied ? 'copied' : ''}`}
-            onClick={handleShare}
+            onClick={(e) => handleShare(e)}
+            onTap={(e) => {
+                e.stopPropagation();
+                handleShare();
+            }}
+            onPointerDown={(e) => e.stopPropagation()}
             whileTap={{ scale: 0.97 }}
             aria-label={copied ? 'Link copied!' : 'Share results'}
             disabled={isSharing}
+            data-clarity-action="share"
         >
             <AnimatePresence mode="wait" initial={false}>
                 {copied ? (

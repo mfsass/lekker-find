@@ -110,8 +110,11 @@ export function getContextualAvoidOptions(
         allowed = [...PILLARS];
     }
 
+    // Deduplicate allowed choices (Scenic exists in multiple categories)
+    const uniqueAllowed = Array.from(new Set(allowed));
+
     // 2. Filter out already selected vibes
-    const options = allowed.filter(p => !selected.has(p));
+    const options = uniqueAllowed.filter(p => !selected.has(p));
 
     // 3. Sort/Shuffle
     // In the future, we can add "Antagonist" logic here (e.g. if 'Chill' selected, priorize 'Active' for avoid)

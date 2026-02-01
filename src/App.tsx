@@ -61,7 +61,7 @@ const getBudgetOptions = (currency: 'ZAR' | 'EUR' | 'USD', rates: Record<string,
 
 function App() {
     // Recommendation engine
-    const { findMatches, surpriseMe, ready: recommendationsReady, totalVenues } = useRecommendations();
+    const { findMatches, surpriseMe, ready: recommendationsReady, totalVenues, venues: allVenues } = useRecommendations();
 
     const [isLoading, setIsLoading] = useState(false);
     const [currentStep, setCurrentStep] = useState<AppStep>('landing');
@@ -187,15 +187,39 @@ function App() {
             if (sharedState.moods) setSelectedMoods(sharedState.moods);
             if (sharedState.avoidedMoods) setAvoidedMoods(sharedState.avoidedMoods);
 
-            // Generate results immediately
-            const results = findMatches({
-                ...sharedState,
-                moods: sharedState.moods || []
-            }, { minScore: 0.35, maxResults: 20 });
+            let results: VenueWithMatch[] = [];
+
+            if (sharedState.venueId) {
+                // SINGLE VENUE SHARE (Likely from Surprise Me)
+                const venue = allVenues.find(v => v.id === sharedState.venueId);
+                if (venue) {
+                    // Start with the shared venue
+                    const sharedVenueWithMatch = { ...venue, matchPercentage: 0 };
+
+                    // Add 19 other random venues (excluding the shared one)
+                    const others = surpriseMe(50)
+                        .filter(v => v.id !== sharedState.venueId)
+                        .slice(0, 19);
+
+                    results = [sharedVenueWithMatch, ...others];
+
+                    // If sharing only one venue, we likely came from a shuffle or direct link
+                    setIsCuriousMode(true);
+                }
+            }
+
+            if (results.length === 0) {
+                // FILTER BASED SHARE (Personalized)
+                results = findMatches({
+                    ...sharedState,
+                    moods: sharedState.moods || []
+                }, { minScore: 0.35, maxResults: 20 });
+            }
+
             setMatchedVenues(results);
 
-            // Set initial index if shared
-            if (sharedState.index && sharedState.index > 0 && sharedState.index < results.length) {
+            // Set initial index if shared (only if not a single venue share)
+            if (!sharedState.venueId && sharedState.index && sharedState.index > 0 && sharedState.index < results.length) {
                 setInitialResultIndex(sharedState.index);
             }
 
@@ -204,7 +228,7 @@ function App() {
             // Clean URL so it doesn't persist on refresh/nav
             clearShareParams();
         }
-    }, [recommendationsReady, findMatches]); // Only run once recommendations are ready
+    }, [recommendationsReady, findMatches, allVenues]); // Only run once recommendations are ready
 
     // Show price disclaimer (general variability note)
     const showPriceDisclaimer = shouldShowPriceDisclaimer(selectedIntent, selectedTouristLevel);
