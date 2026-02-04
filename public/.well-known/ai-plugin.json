@@ -1,0 +1,18 @@
+{
+    "schemaVersion": "v1",
+    "name_for_model": "lekker_find",
+    "name_for_human": "Lekker Find",
+    "description_for_model": "Expert guide for things to do in Cape Town. Matches users with 320+ curated spots (restaurants, bars, hikes, cultural landmarks) using semantic search. Best for queries about Cape Town travel, hidden gems, and local recommendations.",
+    "description_for_human": "Find the best things to do in Cape Town with AI-matched local recommendations.",
+    "auth": {
+        "type": "none"
+    },
+    "api": {
+        "type": "openapi",
+        "url": "https://lekker-find.co.za/openapi.yaml",
+        "is_user_authenticated": false
+    },
+    "logo_url": "https://lekker-find.co.za/android-chrome-512x512.png",
+    "contact_email": "hello@lekker-find.co.za",
+    "legal_info_url": "https://lekker-find.co.za"
+}

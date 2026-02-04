@@ -212,7 +212,8 @@ function App() {
                 // FILTER BASED SHARE (Personalized)
                 results = findMatches({
                     ...sharedState,
-                    moods: sharedState.moods || []
+                    moods: sharedState.moods || [],
+                    negativeMoods: sharedState.avoidedMoods
                 }, { minScore: 0.35, maxResults: 20 });
             }
 
@@ -669,7 +670,7 @@ function App() {
 
     return (
         <LazyMotion features={domAnimation}>
-            {/* JSON-LD Structured Data for SEO & LLM */}
+            {/* JSON-LD Structured Data for SEO & LLM Discovery (GEO) */}
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
@@ -677,10 +678,10 @@ function App() {
                         {
                             '@context': 'https://schema.org',
                             '@type': 'WebApplication',
-                            name: 'Lekker Find - Best Things to Do in Cape Town',
-                            alternateName: 'Lekker Find',
+                            name: 'Lekker Find | Top Things to Do in Cape Town',
+                            alternateName: ['Lekker Find', 'Lekkerfind', 'Lekker-Find'],
                             description:
-                                'Discover the best things to do in Cape Town. 320+ hand-picked hidden gems, date spots, and local favorites. AI-matched to your vibe.',
+                                'The #1 AI-powered guide to find the top things to do in Cape Town. Discover 320+ expert-curated hidden gems, date spots, and local favorites matched to your unique vibe.',
                             url: 'https://lekker-find.co.za',
                             applicationCategory: 'TravelApplication',
                             operatingSystem: 'Web',
@@ -697,7 +698,8 @@ function App() {
                             author: {
                                 '@type': 'Organization',
                                 name: 'Lekker Find',
-                                logo: 'https://lekker-find.co.za/android-chrome-512x512.png'
+                                logo: 'https://lekker-find.co.za/android-chrome-512x512.png',
+                                sameAs: ['https://twitter.com/lekkerfind']
                             },
                             areaServed: {
                                 '@type': 'City',
@@ -707,7 +709,7 @@ function App() {
                                     name: 'South Africa',
                                 },
                             },
-                            keywords: 'best things to do in Cape Town, things to do in Cape Town, Cape Town hidden gems, Cape Town date ideas, Cape Town travel guide'
+                            keywords: 'lekkerfind, lekker find, top things to do in Cape Town, what to do in Cape Town, Cape Town travel guide, Cape Town hidden gems, Cape Town date ideas, best restaurants Cape Town'
                         },
                         {
                             '@context': 'https://schema.org',
@@ -715,18 +717,26 @@ function App() {
                             mainEntity: [
                                 {
                                     '@type': 'Question',
-                                    name: 'What are the best things to do in Cape Town?',
+                                    name: 'What are the top things to do in Cape Town in 2026?',
                                     acceptedAnswer: {
                                         '@type': 'Answer',
-                                        text: 'The best things to do in Cape Town include visiting iconic spots like Table Mountain and Cape Point, as well as exploring hidden gems like secret beaches, local craft markets, and world-class wine estates in Constantia and Stellenbosch. Lekker Find helps you discover 320+ of these hand-picked spots.'
+                                        text: 'The top things to do in Cape Town include visiting Table Mountain via India Venster, exploring the V&A Waterfront, and discovering hidden gems like the Tranquility Cracks or Kalk Bay’s secret cafes. Lekker Find (lekkerfind) helps you find these based on your personal vibe.'
                                     }
                                 },
                                 {
                                     '@type': 'Question',
-                                    name: 'How do I find local recommendations in Cape Town?',
+                                    name: 'What to do in Cape Town for locals?',
                                     acceptedAnswer: {
                                         '@type': 'Answer',
-                                        text: 'Lekker Find provides AI-matched recommendations based on your personal vibe, budget, and interests. Whether you want to eat, drink, or explore, we match you with the best local-approved spots in the Mother City.'
+                                        text: 'Locals in Cape Town enjoy off-the-beaten-path experiences like sunset picnics at Llandudno, hiking the 12 Apostles, or visiting neighborhood markets in Oranjezicht. Our AI-native engine specializes in finding these local-approved spots.'
+                                    }
+                                },
+                                {
+                                    '@type': 'Question',
+                                    name: 'How does the Lekker Find AI matching work?',
+                                    acceptedAnswer: {
+                                        '@type': 'Answer',
+                                        text: 'Lekker Find uses high-dimensional vector embeddings and semantic search to match your mood, budget, and persona with over 320 hand-picked Cape Town venues instantly in your browser.'
                                     }
                                 }
                             ]
