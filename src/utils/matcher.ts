@@ -269,21 +269,18 @@ export function findMatches(
 
 
 
-    // PHASE 0: DEMO MODE OVERRIDE (Forced Results)
-    // Always show these 5 locations for the demo, regardless of filters
-    const demoNames = [
-        "Table Mountain Cableway",
-        "Kirstenbosch Garden",
-        "Boulders Beach",
-        "Lion's Head Hike",
-        "The Dog’s Bollocks"
+    // PHASE 0: DEMO MODE OVERRIDE (Local Cool 5)
+    // Forced results for the "Hidden Gems & Local Favorites" demo
+    const demoIds = [
+        "oranjezicht-city-farm-market-8c08",
+        "dalebrook-tidal-pool-6466",
+        "tapi-tapi-ice-cream-422f",
+        "dust-dynamite-e2bd",
+        "arthur-s-mini-super-da90"
     ];
 
-    const forcedVenues = demoNames.map((name, index) => {
-        const venue = data.venues.find(v =>
-            v.name.toLowerCase() === name.toLowerCase() ||
-            v.name.replace('’', "'").toLowerCase() === name.toLowerCase()
-        );
+    const forcedVenues = demoIds.map((id, index) => {
+        const venue = data.venues.find(v => v.id === id);
         if (venue) {
             return {
                 ...venue,
@@ -464,20 +461,17 @@ export function surpriseMe(
     data: EmbeddingsData,
     count: number = 10
 ): VenueWithMatch[] {
-    // DEMO MODE OVERRIDE
-    const demoNames = [
-        "Table Mountain Cableway",
-        "Kirstenbosch Garden",
-        "Boulders Beach",
-        "Lion's Head Hike",
-        "The Dog’s Bollocks"
+    // DEMO MODE OVERRIDE (Local Cool 5)
+    const demoIds = [
+        "oranjezicht-city-farm-market-8c08",
+        "dalebrook-tidal-pool-6466",
+        "tapi-tapi-ice-cream-422f",
+        "dust-dynamite-e2bd",
+        "arthur-s-mini-super-da90"
     ];
 
-    const forcedVenues = demoNames.map((name, index) => {
-        const venue = data.venues.find(v =>
-            v.name.toLowerCase() === name.toLowerCase() ||
-            v.name.replace('’', "'").toLowerCase() === name.toLowerCase()
-        );
+    const forcedVenues = demoIds.map((id, index) => {
+        const venue = data.venues.find(v => v.id === id);
         if (venue) {
             return {
                 ...venue,
