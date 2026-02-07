@@ -269,6 +269,34 @@ export function findMatches(
 
 
 
+    // PHASE 0: DEMO MODE OVERRIDE (Forced Results)
+    // Always show these 5 locations for the demo, regardless of filters
+    const demoNames = [
+        "Table Mountain Cableway",
+        "Kirstenbosch Garden",
+        "Boulders Beach",
+        "Lion's Head Hike",
+        "The Dog’s Bollocks"
+    ];
+
+    const forcedVenues = demoNames.map((name, index) => {
+        const venue = data.venues.find(v =>
+            v.name.toLowerCase() === name.toLowerCase() ||
+            v.name.replace('’', "'").toLowerCase() === name.toLowerCase()
+        );
+        if (venue) {
+            return {
+                ...venue,
+                matchPercentage: 99 - index
+            };
+        }
+        return null;
+    }).filter((v): v is VenueWithMatch => v !== null);
+
+    if (forcedVenues.length > 0) {
+        return forcedVenues;
+    }
+
     let venues = [...data.venues];
 
     // Phase 1: Hard filters
@@ -436,6 +464,33 @@ export function surpriseMe(
     data: EmbeddingsData,
     count: number = 10
 ): VenueWithMatch[] {
+    // DEMO MODE OVERRIDE
+    const demoNames = [
+        "Table Mountain Cableway",
+        "Kirstenbosch Garden",
+        "Boulders Beach",
+        "Lion's Head Hike",
+        "The Dog’s Bollocks"
+    ];
+
+    const forcedVenues = demoNames.map((name, index) => {
+        const venue = data.venues.find(v =>
+            v.name.toLowerCase() === name.toLowerCase() ||
+            v.name.replace('’', "'").toLowerCase() === name.toLowerCase()
+        );
+        if (venue) {
+            return {
+                ...venue,
+                matchPercentage: 99 - index
+            };
+        }
+        return null;
+    }).filter((v): v is VenueWithMatch => v !== null);
+
+    if (forcedVenues.length > 0) {
+        return forcedVenues;
+    }
+
     const shuffled = [...data.venues].sort(() => Math.random() - 0.5);
 
     // Ensure diversity: at least 2 categories, 2 price tiers
