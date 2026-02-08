@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-50">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ lead.Name }} | Agency Scout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="h-full">
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+        <!-- Breadcrumb -->
+        <nav class="flex mb-6" aria-label="Breadcrumb">
+            <ol class="flex items-center space-x-2">
+                <li><a href="/" class="text-slate-400 hover:text-slate-500">Dashboard</a></li>
+                <li><span class="text-slate-300">/</span></li>
+                <li><span class="text-slate-500 font-medium">Lead Details</span></li>
+            </ol>
+        </nav>
+
+        <!-- Header -->
+        <div class="bg-white rounded-lg shadow-sm border border-slate-200 p-6 mb-8 flex justify-between items-start">
+            <div>
+                <h1 class="text-3xl font-bold text-slate-900 tracking-tight">{{ lead.Name }}</h1>
+                <p class="mt-2 text-slate-500 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                        </path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    {{ lead.Address }}
+                </p>
+                <div class="mt-4 flex gap-3">
+                    {% if lead.Website %}
+                    <a href="{{ lead.Website }}" target="_blank"
+                        class="inline-flex items-center px-3 py-1.5 rounded text-sm font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+                        Visit Website
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                    </a>
+                    {% else %}
+                    <span
+                        class="inline-flex items-center px-3 py-1.5 rounded text-sm font-medium bg-rose-100 text-rose-800">No
+                        Website Found</span>
+                    {% endif %}
+
+                    <a href="https://www.google.com/search?q={{ lead.Name }} {{ lead.Address }}" target="_blank"
+                        class="inline-flex items-center px-3 py-1.5 rounded text-sm font-medium bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 transition">
+                        Google Search
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="text-center">
+                <div class="text-xs text-slate-500 uppercase tracking-wide font-semibold mb-1">Lead Score</div>
+                <div class="inline-flex items-center justify-center p-4 rounded-2xl bg-slate-900 text-white">
+                    <span class="text-4xl font-bold">{{ lead.Lead_Score | round }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+            <!-- Left Column: Audit Data -->
+            <div class="lg:col-span-2 space-y-8">
+
+                <!-- Vibe Check & Strategy -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Vibe -->
+                    <div class="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
+                        <h2 class="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-3">Vibe Check</h2>
+                        <div class="flex flex-wrap gap-2">
+                            {% for vibe in lead.Vibes %}
+                            <span
+                                class="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-sm font-medium border border-indigo-100 flex items-center gap-1">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z">
+                                    </path>
+                                </svg>
+                                {{ vibe }}
+                            </span>
+                            {% else %}
+                            <span class="text-sm text-slate-400 italic">General Establishment</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <!-- Recommended Package -->
+                    <div class="bg-white rounded-lg shadow-sm border border-slate-200 p-6 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-4 opacity-10">
+                            <svg class="w-24 h-24 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h2 class="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-1">Proposed Solution
+                        </h2>
+                        <div class="text-xl font-bold text-slate-900">{{ lead.Package_Name }}</div>
+                        <div class="text-lg font-medium text-emerald-600 mt-1">{{ lead.Package_Price }}</div>
+                        <p class="text-xs text-slate-500 mt-2">{{ lead.Package_Includes }}</p>
+                    </div>
+                </div>
+
+                <!-- The Strategy / Pitch -->
+                <div class="bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden relative group">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
+                    <div class="p-6">
+                        <h2 class="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+                                </path>
+                            </svg>
+                            Pitch Strategy
+                        </h2>
+                        <div
+                            class="bg-blue-50/50 p-4 rounded-lg border border-blue-100 text-slate-700 text-base leading-relaxed">
+                            {{ lead.Advice.replace('|', '<br /><br />') | safe }}
+                        </div>
+
+                        <!-- Outreach Snippet -->
+                        <div class="mt-6 pt-6 border-t border-slate-100" x-data="{ copied: false }">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="text-sm font-semibold text-slate-700">Outreach Email Snippet</h3>
+                                <button
+                                    @click="navigator.clipboard.writeText($refs.emailBody.innerText); copied = true; setTimeout(() => copied = false, 2000)"
+                                    class="text-xs font-medium text-blue-600 hover:text-blue-800 flex items-center gap-1">
+                                    <span x-text="copied ? 'Copied!' : 'Copy to Clipboard'"></span>
+                                    <svg x-show="!copied" class="w-3 h-3" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div x-ref="emailBody"
+                                class="bg-slate-50 p-3 rounded-md text-slate-600 text-sm font-mono border border-slate-200">
+                                Hi {{ lead.Name }} Team,
+
+                                I'm a local digital specialist and I noticed {% if 'No Website' in lead.Tags %}you don't
+                                have a website listed on Google Maps{% elif 'Outdated' in lead.Tags %}your website
+                                content seems a bit outdated (showing {{ lead.Tags | select('search', 'Outdated') | list
+                                | first }}){% else %}your digital presence has huge potential{% endif %}.
+
+                                For a venue with your vibe ({% for v in lead.Vibes %}{{ v }}{% if not loop.last %}, {%
+                                endif %}{% endfor %}), clients expect a premium digital experience.
+
+                                I'd love to help you with our {{ lead.Package_Name }} package (approx {{
+                                lead.Package_Price }}) which includes {{ lead.Package_Includes }}.
+
+                                Are you open to a quick chat?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Audit -->
+                <div class="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
+                    <h2 class="text-lg font-semibold text-slate-900 mb-4">Technical Audit</h2>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-100">
+                            <div class="text-xs text-slate-500 uppercase">Website Status</div>
+                            <div class="font-medium text-slate-900 mt-1">{{ lead.Website_Status }}</div>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-100">
+                            <div class="text-xs text-slate-500 uppercase">Tech Stack</div>
+                            <div class="font-medium text-slate-900 mt-1">{{ lead.Tech_Stack or 'None Detected' }}</div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <h3 class="text-sm font-medium text-slate-700 mb-3">Detected Issues</h3>
+                        {% if lead.Issues %}
+                        <ul class="space-y-2">
+                            {% for issue in lead.Issues.split(', ') %}
+                            <li
+                                class="flex items-start text-sm text-rose-600 bg-rose-50 px-3 py-2 rounded-md border border-rose-100">
+                                <svg class="w-5 h-5 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                                    </path>
+                                </svg>
+                                {{ issue }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% else %}
+                        <div class="text-sm text-slate-500 italic">No critical issues detected.</div>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Column: Contact & Metadata -->
+            <div class="space-y-8">
+
+                <!-- Contact Card -->
+                <div class="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
+                    <h2 class="text-lg font-semibold text-slate-900 mb-4">Contact Info</h2>
+                    <ul class="space-y-4">
+                        {% if lead.Phone %}
+                        <li class="flex items-center text-sm text-slate-600">
+                            <svg class="w-5 h-5 mr-3 text-slate-400" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                                </path>
+                            </svg>
+                            {{ lead.Phone }}
+                        </li>
+                        {% endif %}
+                        {% if lead.Emails %}
+                        <li class="flex items-center text-sm text-slate-600">
+                            <svg class="w-5 h-5 mr-3 text-slate-400" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                            {{ lead.Emails }}
+                        </li>
+                        {% endif %}
+                    </ul>
+
+                    <div class="mt-6 pt-6 border-t border-slate-100">
+                        <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">Social Presence
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            {% if lead.Socials %}
+                            {% for social in lead.Socials.split(', ') %}
+                            <span class="px-2 py-1 rounded-md bg-slate-100 text-slate-600 text-xs font-medium">{{ social
+                                }}</span>
+                            {% endfor %}
+                            {% else %}
+                            <span class="text-sm text-slate-400">No socials found</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Market Data -->
+                <div class="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
+                    <h2 class="text-lg font-semibold text-slate-900 mb-4">Market Data</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="text-slate-500">Google Rating</span>
+                                <span class="font-medium text-slate-900">{{ lead.Rating }}</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-2">
+                                <div class="bg-yellow-400 h-2 rounded-full"
+                                    style="width: {{ (lead.Rating / 5.0 * 100) | round(1) }}%"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between text-sm border-t border-slate-100 pt-3">
+                            <span class="text-slate-500">Total Reviews</span>
+                            <span class="font-medium text-slate-900">{{ lead.Reviews }}</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

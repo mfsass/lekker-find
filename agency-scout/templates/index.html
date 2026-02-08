@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-50">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agency Scout | Admin</title>
+
+    <!-- Tailwind CSS & Plugins -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        [x-cloak] {
+            display: none !important;
+        }
+
+        /* Tooltip Styles */
+        [data-tooltip]:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 4px 8px;
+            background-color: #1e293b;
+            color: white;
+            font-size: 12px;
+            border-radius: 4px;
+            white-space: nowrap;
+            z-index: 50;
+            opacity: 1;
+            transition: opacity 0.2s;
+            pointer-events: none;
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+
+<body class="h-full" x-data="app()">
+
+    <!-- Sidebar Layout -->
+    <div class="flex h-full">
+
+        <!-- Sidebar -->
+        <div class="hidden md:flex flex-col w-64 bg-slate-900 border-r border-slate-800">
+            <div class="h-16 flex items-center px-6 bg-slate-900 border-b border-slate-800">
+                <div class="h-8 w-8 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                </div>
+                <span class="text-white font-semibold tracking-tight">Agency Scout</span>
+            </div>
+
+            <div class="flex-1 overflow-y-auto py-4 px-3 space-y-1">
+                <a href="#" class="flex items-center px-3 py-2 text-slate-300 rounded-lg bg-slate-800 transition">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
+                        </path>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+
+                <div class="pt-4 pb-2 px-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Discovery
+                </div>
+                <button @click="openScanModal = true"
+                    class="w-full flex items-center px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition text-left group">
+                    <svg class="w-5 h-5 mr-3 text-slate-500 group-hover:text-blue-400" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    <span>New Scan</span>
+                </button>
+            </div>
+
+            <div class="p-4 border-t border-slate-800">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-xs text-slate-300 font-medium">
+                        AD</div>
+                    <div class="text-sm">
+                        <div class="text-white font-medium">Admin</div>
+                        <div class="text-xs text-slate-500">Super User</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+
+            <!-- Top Header -->
+            <header class="bg-white border-b border-slate-200 h-16 flex items-center justify-between px-8">
+                <h1 class="text-xl font-semibold text-slate-800">Lead Database</h1>
+                <div class="flex items-center gap-4">
+                    <span class="text-xs text-slate-500 bg-slate-100 px-2 py-1 rounded border border-slate-200"
+                        x-text="'v'+version"></span>
+                    <a href="/api/export" target="_blank"
+                        class="text-sm text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                        Export CSV
+                    </a>
+                </div>
+            </header>
+
+            <!-- Content Scroll Area -->
+            <main class="flex-1 overflow-y-auto p-8">
+
+                <!-- Stats Row -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <!-- Metric 1 -->
+                    <div
+                        class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm relative overflow-hidden group">
+                        <div class="flex justify-between items-start z-10 relative">
+                            <div>
+                                <div class="text-xs font-medium text-slate-500 uppercase tracking-wider">Total Leads
+                                </div>
+                                <div class="mt-1 text-2xl font-semibold text-slate-900" x-text="leads.length"></div>
+                            </div>
+                            <div class="p-2 bg-slate-50 rounded-lg text-slate-400">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Metric 2 -->
+                    <div
+                        class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm relative overflow-hidden group">
+                        <div class="flex justify-between items-start z-10 relative">
+                            <div>
+                                <div class="text-xs font-medium text-slate-500 uppercase tracking-wider">High Value
+                                </div>
+                                <div class="mt-1 text-2xl font-semibold text-emerald-600" x-text="stats.highValue">
+                                </div>
+                            </div>
+                            <div class="p-2 bg-emerald-50 rounded-lg text-emerald-600">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Metric 3 -->
+                    <div
+                        class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm relative overflow-hidden group">
+                        <div class="flex justify-between items-start z-10 relative">
+                            <div>
+                                <div class="text-xs font-medium text-slate-500 uppercase tracking-wider">No Website
+                                </div>
+                                <div class="mt-1 text-2xl font-semibold text-rose-600" x-text="stats.noWebsite"></div>
+                            </div>
+                            <div class="p-2 bg-rose-50 rounded-lg text-rose-600">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Metric 4 -->
+                    <div
+                        class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm relative overflow-hidden group">
+                        <div class="flex justify-between items-start z-10 relative">
+                            <div>
+                                <div class="text-xs font-medium text-slate-500 uppercase tracking-wider">Avg Score</div>
+                                <div class="mt-1 text-2xl font-semibold text-blue-600" x-text="stats.avgScore"></div>
+                            </div>
+                            <div class="p-2 bg-blue-50 rounded-lg text-blue-600">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filters Toolbar -->
+                <div class="mb-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <div class="relative w-full sm:w-96 group">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg class="h-4 w-4 text-slate-400 group-focus-within:text-blue-500 transition" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </div>
+                        <input type="text" x-model="search"
+                            class="block w-full pl-10 pr-3 py-2 border border-slate-300 rounded-lg leading-5 bg-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 sm:text-sm transition duration-150 ease-in-out"
+                            placeholder="Search venues, stacks, or keywords...">
+                    </div>
+
+                    <div class="flex items-center space-x-2 bg-white p-1 rounded-lg border border-slate-200">
+                        <button @click="filter = 'all'"
+                            :class="filter === 'all' ? 'bg-slate-100 text-slate-900 font-medium' : 'text-slate-500 hover:text-slate-700'"
+                            class="px-3 py-1.5 rounded-md text-sm transition-colors">All</button>
+                        <button @click="filter = 'high_value'"
+                            :class="filter === 'high_value' ? 'bg-emerald-50 text-emerald-700 font-medium' : 'text-slate-500 hover:text-slate-700'"
+                            class="px-3 py-1.5 rounded-md text-sm transition-colors">High Value</button>
+                        <button @click="filter = 'no_website'"
+                            :class="filter === 'no_website' ? 'bg-rose-50 text-rose-700 font-medium' : 'text-slate-500 hover:text-slate-700'"
+                            class="px-3 py-1.5 rounded-md text-sm transition-colors">No Website</button>
+                    </div>
+                </div>
+
+                <!-- Loading State -->
+                <div x-show="isLoading" class="flex flex-col items-center justify-center h-64 text-slate-500">
+                    <svg class="animate-spin h-8 w-8 text-blue-600 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                        </circle>
+                        <path class="opacity-75" fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                        </path>
+                    </svg>
+                    <p class="text-sm font-medium">Loading Leads...</p>
+                </div>
+
+                <!-- Table -->
+                <div x-show="!isLoading" class="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
+                    <table class="min-w-full divide-y divide-slate-200">
+                        <thead class="bg-slate-50">
+                            <tr>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                                    Venue</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-center text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                                    Lead Score</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                                    Status</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider w-1/3">
+                                    Key Insights</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-right text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                                    Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 bg-white">
+                            <template x-for="lead in filteredLeads" :key="lead.Name">
+                                <tr class="hover:bg-slate-50 transition-colors duration-150" x-transition>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="ml-0">
+                                                <div class="text-sm font-medium text-slate-900" x-text="lead.Name">
+                                                </div>
+                                                <div class="text-xs text-slate-500 truncate max-w-xs"
+                                                    x-text="lead.Address"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td class="px-6 py-4 whitespace-nowrap text-center">
+                                        <div class="inline-flex items-center justify-center px-2.5 py-0.5 rounded-full text-xs font-bold"
+                                            :class="lead.Lead_Score > 100 ? 'bg-emerald-100 text-emerald-800' : (lead.Lead_Score > 60 ? 'bg-blue-100 text-blue-800' : 'bg-slate-100 text-slate-800')">
+                                            <span x-text="Math.round(lead.Lead_Score)"></span>
+                                        </div>
+                                    </td>
+
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex flex-col gap-1">
+                                            <span x-show="lead.Website_Status === 'Missing'"
+                                                class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-rose-100 text-rose-800 w-fit">
+                                                Missing Website
+                                            </span>
+                                            <span x-show="lead.Website_Status === 'Found by Scout'"
+                                                class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-purple-100 text-purple-800 w-fit">
+                                                Found by Scout
+                                            </span>
+                                            <div class="flex gap-1 mt-1">
+                                                <template
+                                                    x-for="stack in (lead.Tech_Stack || '').split(', ').slice(0, 2)">
+                                                    <span x-show="stack"
+                                                        class="text-[10px] bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded border border-slate-200"
+                                                        x-text="stack"></span>
+                                                </template>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td class="px-6 py-4">
+                                        <div class="flex flex-wrap gap-1">
+                                            <template x-if="lead.Tags && lead.Tags.length">
+                                                <template x-for="tag in lead.Tags">
+                                                    <span
+                                                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium border"
+                                                        :class="{
+                                                            'bg-rose-50 text-rose-700 border-rose-100': ['No Website', 'Site Down', 'Insecure', 'Slow Load'].includes(tag),
+                                                            'bg-amber-50 text-amber-700 border-amber-100': ['Desktop Only', 'Outdated'].some(t => tag.includes(t)),
+                                                            'bg-emerald-50 text-emerald-700 border-emerald-100': ['High Budget', 'Ads Active', 'Luxury'].includes(tag),
+                                                            'bg-slate-50 text-slate-600 border-slate-200': !(['No Website', 'Site Down', 'Insecure', 'Slow Load', 'Desktop Only', 'Outdated', 'High Budget', 'Ads Active', 'Luxury'].some(t => tag.includes(t)))
+                                                        }" x-text="tag"></span>
+                                                </template>
+                                            </template>
+                                            <template x-if="!lead.Tags || !lead.Tags.length">
+                                                <span class="text-xs text-slate-400 italic">No specific issues</span>
+                                            </template>
+                                        </div>
+                                    </td>
+
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <div class="flex items-center justify-end gap-3">
+                                            <template x-if="lead.Website">
+                                                <a :href="lead.Website" target="_blank"
+                                                    class="text-slate-400 hover:text-blue-600 transition"
+                                                    title="Visit Website">
+                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor"
+                                                        viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                                        </path>
+                                                    </svg>
+                                                </a>
+                                            </template>
+
+                                            <!-- Link to Details Page -->
+                                            <a :href="'/lead/' + (lead.id || '')"
+                                                class="text-blue-600 hover:text-blue-800 font-medium text-xs border border-blue-200 bg-blue-50 px-3 py-1.5 rounded transition hover:bg-blue-100"
+                                                target="_blank">
+                                                View Strategy
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </template>
+                            <tr x-show="filteredLeads.length === 0">
+                                <td colspan="5" class="px-6 py-12 text-center text-slate-500 text-sm">
+                                    No leads match your active filters.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </main>
+        </div>
+
+    </div>
+
+    <!-- Modals & Toasts -->
+    <div x-show="toast.visible" x-transition
+        class="fixed bottom-6 right-6 z-50 bg-slate-900 shadow-xl rounded-lg px-4 py-3 text-white text-sm font-medium flex items-center gap-3"
+        x-cloak>
+        <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+        <span x-text="toast.message"></span>
+    </div>
+
+    <!-- Scan Modal -->
+    <div x-show="openScanModal"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 backdrop-blur-sm" x-cloak
+        x-transition>
+        <div class="bg-white rounded-lg shadow-2xl w-full max-w-md p-0 overflow-hidden"
+            @click.away="openScanModal = false">
+            <div class="px-6 py-4 border-b border-slate-100 bg-slate-50/50">
+                <h3 class="text-lg font-semibold text-slate-900">Run New Discovery Scan</h3>
+            </div>
+            <div class="p-6 space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Target Category</label>
+                    <select x-model="scanForm.category"
+                        class="w-full border-slate-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm bg-white">
+                        <template x-for="cat in categories" :key="cat">
+                            <option :value="cat" x-text="cat"></option>
+                        </template>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Target Location</label>
+                    <select x-model="scanForm.location"
+                        class="w-full border-slate-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm bg-white">
+                        <template x-for="loc in locations" :key="loc">
+                            <option :value="loc" x-text="loc"></option>
+                        </template>
+                    </select>
+                </div>
+
+                <div class="flex items-center gap-2 mb-4">
+                    <input type="checkbox" id="deepScan" x-model="scanForm.deep"
+                        class="rounded border-slate-300 text-blue-600 focus:ring-blue-500">
+                    <label for="deepScan" class="text-sm text-slate-700 font-medium cursor-pointer">
+                        Enable Deep Search (Slower, finds more leads)
+                    </label>
+                </div>
+
+                <div class="flex items-center gap-2 bg-blue-50 text-blue-700 px-3 py-2 rounded-md text-xs">
+                    <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span>Caching enabled. Duplicate queries won't consume API credits.</span>
+                </div>
+            </div>
+            <div class="px-6 py-4 bg-slate-50 border-t border-slate-100 flex justify-between gap-3">
+                <button @click="openScanModal = false"
+                    class="px-4 py-2 border border-slate-300 rounded-lg text-slate-600 text-sm font-medium hover:bg-slate-50 transition">Cancel</button>
+                <button @click="startScan" :disabled="scanning"
+                    class="flex-1 px-4 py-2 bg-blue-600 rounded-lg text-white text-sm font-medium hover:bg-blue-700 transition disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+                    <svg x-show="scanning" class="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                        </circle>
+                        <path class="opacity-75" fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                        </path>
+                    </svg>
+                    <span
+                        x-text="scanning ? 'Scanning Network...' : (scanForm.deep ? 'Run Deep Scan' : 'Execute Scan')"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('app', () => ({
+                version: '1.4.0',
+                leads: [],
+                search: '',
+                filter: 'all',
+                openScanModal: false,
+                scanning: false,
+                isLoading: true,
+                toast: { visible: false, message: '' },
+
+                // Dropdown Options
+                categories: [
+                    'Restaurants', 'Wineries', 'Coffee Shops', 'Gyms', 'Dentists',
+                    'Real Estate Agents', 'Law Firms', 'Salons', 'Hotels', 'Architects'
+                ],
+                locations: [
+                    'Stellenbosch', 'Somerset West', 'Cape Town City Centre', 'Sea Point',
+                    'Claremont', 'Bellville', 'Paarl', 'Franschhoek', 'Durbanville'
+                ],
+
+                scanForm: { category: 'Restaurants', location: 'Stellenbosch', deep: false },
+
+                async init() {
+                    try {
+                        const res = await fetch('/api/leads');
+                        if (!res.ok) throw new Error('Failed to fetch leads');
+                        this.leads = await res.json();
+                    } catch (e) {
+                        this.showToast('Error loading data. Is the server running?');
+                        console.error(e);
+                    } finally {
+                        this.isLoading = false;
+                    }
+                },
+
+                async startScan() {
+                    this.scanning = true;
+                    try {
+                        const res = await fetch('/api/scan', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(this.scanForm)
+                        });
+                        const data = await res.json();
+                        this.leads = await (await fetch('/api/leads')).json(); // Refresh entire list
+                        this.showToast(data.message);
+                        this.openScanModal = false;
+                    } catch (e) {
+                        this.showToast('Error: Scan failed. Check API logs.');
+                    } finally {
+                        this.scanning = false;
+                    }
+                },
+
+                get filteredLeads() {
+                    return this.leads.filter(lead => {
+                        const searchLower = this.search.toLowerCase();
+                        const matchesSearch = (lead.Name || '').toLowerCase().includes(searchLower) ||
+                            (lead.Advice || '').toLowerCase().includes(searchLower) ||
+                            (lead.Issues || '').toLowerCase().includes(searchLower);
+
+                        if (!matchesSearch) return false;
+                        if (this.filter === 'high_value') return lead.Lead_Score > 100;
+                        if (this.filter === 'no_website') return lead.Website_Status === 'Missing';
+                        return true;
+                    }).sort((a, b) => b.Lead_Score - a.Lead_Score);
+                },
+
+                get stats() {
+                    const l = this.leads;
+                    return {
+                        highValue: l.filter(x => x.Lead_Score > 100).length,
+                        noWebsite: l.filter(x => x.Website_Status === 'Missing').length,
+                        avgScore: l.length ? Math.round(l.reduce((a, b) => a + (b.Lead_Score || 0), 0) / l.length) : 0
+                    }
+                },
+
+                async copyPitch(lead) {
+                    const text = lead.Advice.replace(/\|/g, '\\n');
+                    await navigator.clipboard.writeText(text);
+                    this.showToast('Pitch strategy copied to clipboard');
+                },
+
+                showToast(msg) {
+                    this.toast.message = msg;
+                    this.toast.visible = true;
+                    setTimeout(() => this.toast.visible = false, 3000);
+                }
+            }))
+        });
+    </script>
+</body>
+
+</html>
