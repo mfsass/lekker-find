@@ -8,3 +8,9 @@ python-whois
 jinja2
 python-multipart
 googlemaps
+python-dotenv
+google-api-python-client
+google-auth-oauthlib
+google-auth-httplib2
+google-genai
+apscheduler

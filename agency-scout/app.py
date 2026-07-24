@@ -1,20 +1,77 @@
 from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import Optional
 import uvicorn
 import os
 import pandas as pd
 from datetime import datetime
+from pathlib import Path
+from contextlib import asynccontextmanager
+
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
+from apscheduler.triggers.cron import CronTrigger
 
 # Import Services
 from services.maps import MapsService
 from services.auditor import WebsiteAuditor
 from services.scoring import calculate_score, generate_advice, detect_vibes, recommend_package
+from services.config import load_environment
+from services.database import (
+    add_to_suppression,
+    get_candidate_leads,
+    get_email_drafts,
+    get_outreach_stats,
+    get_suppression_list,
+    ingest_agency_leads,
+    mark_draft_status,
+    update_email_draft,
+)
+from services.gmail_service import GmailServiceError
+from services.llm import LLMServiceError
+from services.outreach import approve_and_send, generate_drafts, process_unsubscribe, regenerate_draft
 
-app = FastAPI()
+import hashlib
+import logging
+
+logger = logging.getLogger(__name__)
+
+
+async def _daily_draft_job() -> None:
+    """Auto-generate 5 drafts every morning. Requires leads in the database."""
+    from services.outreach import generate_drafts
+    load_environment()
+    try:
+        result = generate_drafts(limit=5, candidate_limit=10, allow_template_fallback=True)
+        created = len(result.get("created", []))
+        errors = len(result.get("errors", []))
+        logger.info("Daily draft job: created=%d errors=%d", created, errors)
+    except Exception as exc:
+        logger.error("Daily draft job failed: %s", exc)
+
+
+_scheduler = AsyncIOScheduler(timezone="Europe/Amsterdam")
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    _scheduler.add_job(
+        _daily_draft_job,
+        CronTrigger(hour=9, minute=0, timezone="Europe/Amsterdam"),
+        id="daily_drafts",
+        replace_existing=True,
+        misfire_grace_time=3600,
+    )
+    _scheduler.start()
+    logger.info("Daily draft scheduler started (runs at 09:00 Amsterdam time)")
+    yield
+    _scheduler.shutdown(wait=False)
+
+
+app = FastAPI(lifespan=lifespan)
+load_environment()
 
 # Mount Static & Templates
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -67,11 +124,98 @@ async def export_leads():
         return HTMLResponse(content=content, media_type='text/csv', headers={"Content-Disposition": "attachment; filename=agency_leads.csv"})
     return {"error": "No data found"}
 
+@app.post("/api/masa/ingest")
+async def masa_ingest():
+    try:
+        result = ingest_agency_leads(Path("data") / "agency_leads.json")
+        return {"message": "MASA lead database refreshed", **result}
+    except Exception as e:
+        return JSONResponse({"error": str(e)}, status_code=500)
+
+@app.get("/api/masa/candidates")
+async def masa_candidates(limit: int = 10):
+    return get_candidate_leads(limit)
+
+@app.get("/api/masa/drafts")
+async def masa_drafts(limit: int = 5):
+    return get_email_drafts(limit, status="Drafted")
+
+@app.get("/api/masa/stats")
+async def masa_stats():
+    return get_outreach_stats()
+
+@app.get("/api/masa/suppression")
+async def masa_suppression(limit: int = 50):
+    return get_suppression_list(limit)
+
+@app.post("/api/masa/drafts")
+async def masa_create_drafts(limit: int = 5, candidate_limit: int = 10):
+    try:
+        result = generate_drafts(limit=limit, candidate_limit=candidate_limit, allow_template_fallback=True)
+        status_code = 200 if result["created"] else 424
+        return JSONResponse(result, status_code=status_code)
+    except Exception as e:
+        return JSONResponse({"error": str(e)}, status_code=500)
+
+@app.post("/api/masa/drafts/{draft_id}/regenerate")
+async def masa_regenerate(draft_id: int):
+    try:
+        return regenerate_draft(draft_id, allow_template_fallback=True)
+    except (KeyError, LLMServiceError) as e:
+        return JSONResponse({"error": str(e)}, status_code=400)
+
+class DraftUpdateRequest(BaseModel):
+    subject: str = Field(min_length=1, max_length=180)
+    body: str = Field(min_length=1, max_length=2000)
+
+@app.patch("/api/masa/drafts/{draft_id}")
+async def masa_update_draft(draft_id: int, update: DraftUpdateRequest):
+    try:
+        return update_email_draft(draft_id, update.subject, update.body)
+    except (KeyError, ValueError) as e:
+        return JSONResponse({"error": str(e)}, status_code=400)
+
+@app.post("/api/masa/drafts/{draft_id}/archive")
+async def masa_archive_draft(draft_id: int):
+    try:
+        mark_draft_status(draft_id, "Archived")
+        return {"message": "Draft archived"}
+    except (KeyError, ValueError) as e:
+        return JSONResponse({"error": str(e)}, status_code=400)
+
+@app.post("/api/masa/drafts/{draft_id}/approve")
+async def masa_approve(draft_id: int):
+    try:
+        return approve_and_send(draft_id)
+    except (KeyError, GmailServiceError) as e:
+        return JSONResponse({"error": str(e)}, status_code=400)
+
+@app.get("/unsubscribe", response_class=PlainTextResponse)
+async def unsubscribe(email: str, token: str):
+    try:
+        process_unsubscribe(email, token)
+    except ValueError:
+        return PlainTextResponse("Invalid unsubscribe link.", status_code=400)
+    return "You have been unsubscribed. No further outreach will be sent to this address."
+
+class SuppressionRequest(BaseModel):
+    email: str = Field(min_length=3, max_length=320)
+    reason: str = Field(default="Manual suppression", max_length=200)
+
+@app.post("/api/masa/suppression")
+async def masa_add_suppression(request: SuppressionRequest):
+    try:
+        add_to_suppression(request.email, request.reason)
+        return {"message": "Email suppressed"}
+    except ValueError as e:
+        return JSONResponse({"error": str(e)}, status_code=400)
+
 class SearchRequest(BaseModel):
     category: str
     location: str
+    deep: bool = False
+    max_results: int = Field(default=40, ge=5, le=80)
 
-import hashlib
 
 def generate_lead_id(name, address):
     """Generate a consistent ID based on name and address"""
@@ -96,7 +240,7 @@ async def scan_venues(search: SearchRequest):
     # Generate Permutations for Massive Coverage
     # If it's a "Deep" scan, we expand the single query into multiple specific ones
     queries = []
-    if getattr(search, 'deep', True): # Default to Deep if not specified
+    if search.deep:
         if base_category == "Restaurants":
             prefixes = ["Best", "Cheap", "Luxury", "Romantic", "Family", "Italian", "Burger", "Steak", "Sushi", "Cafe", "Bistro"]
             queries = [f"{p} {base_category} in {location}" for p in prefixes]
@@ -117,6 +261,7 @@ async def scan_venues(search: SearchRequest):
 
     all_raw_places = []
     seen_place_ids = set()
+    scan_errors = []
 
     # 1. Maps Search Loop
     for q in queries:
@@ -124,7 +269,11 @@ async def scan_venues(search: SearchRequest):
             # We use a slightly smaller max_results per sub-query to be efficient, 
             # but rely on the breadth of queries to get quantity.
             print(f"Scanning sub-query: {q}")
-            places = maps_service.search_places(q, max_results=40, search_strategy="deep_discovery")
+            places = maps_service.search_places(
+                q,
+                max_results=search.max_results,
+                search_strategy="deep_discovery" if search.deep else "normal"
+            )
             
             for p in places:
                 pid = p.get('id')
@@ -134,6 +283,7 @@ async def scan_venues(search: SearchRequest):
                     
         except Exception as e:
             print(f"Error scanning '{q}': {e}")
+            scan_errors.append({"query": q, "error": str(e)})
             continue
 
     print(f"Total Unique Places Found: {len(all_raw_places)}")
@@ -244,8 +394,17 @@ async def scan_venues(search: SearchRequest):
         df = df.drop_duplicates(subset=['Name'])
         os.makedirs('data', exist_ok=True)
         df.to_csv(LEADS_FILE, index=False)
+        df.to_json('data/agency_leads.json', orient='records', indent=2, force_ascii=False)
+        ingest_agency_leads(Path("data") / "agency_leads.json")
         
-    return {"message": f"Massive Scan complete. Scanned {len(queries)} queries. Found {len(all_raw_places)} places. Added {len(top_results)} unique high-value leads.", "leads": top_results}
+    response_body = {
+        "message": f"Scan complete. Scanned {len(queries)} queries. Found {len(all_raw_places)} places. Added {len(top_results)} unique high-value leads.",
+        "leads": top_results,
+        "errors": scan_errors,
+    }
+    if scan_errors and not all_raw_places:
+        return JSONResponse(response_body, status_code=424)
+    return response_body
 
 if __name__ == "__main__":
     uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)

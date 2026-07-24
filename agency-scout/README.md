@@ -12,6 +12,7 @@ Consolidated database of **173 verified leads** across Stellenbosch, Strand, and
 
 2.  **Run Dashboard:**
     ```bash
+    cd .\agency-scout &&
     uvicorn app:app --reload --port 8000
     ```
 

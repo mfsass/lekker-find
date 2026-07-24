@@ -39,7 +39,10 @@ class MapsService:
         if not force_refresh and os.path.exists(cache_file):
             print(f"  [CACHE HIT] Loading results for '{query}'...")
             with open(cache_file, 'r') as f:
-                return json.load(f)
+                cached = json.load(f)
+            if cached:
+                return cached
+            print(f"  [CACHE EMPTY] Retrying '{query}' to avoid preserving failed scans...")
 
         # Cache Miss - Call API
         print(f"  [API CALL] Searching Maps for: '{query}' (Depth: {max_results}, Strategy: {search_strategy})...")
@@ -78,8 +81,7 @@ class MapsService:
                 response = requests.post(TEXT_SEARCH_URL, headers=headers, json=payload)
                 
                 if response.status_code != 200:
-                    print(f"  Maps API Error: {response.text}")
-                    break
+                    raise RuntimeError(f"Maps API Error ({response.status_code}): {response.text}")
                     
                 data = response.json()
                 places = data.get('places', [])
@@ -93,6 +95,8 @@ class MapsService:
                 next_page_token = data.get('nextPageToken')
                 if not next_page_token:
                     break
+            except RuntimeError:
+                raise
             except Exception as e:
                 print(f"  Maps Request Failed: {e}")
                 break

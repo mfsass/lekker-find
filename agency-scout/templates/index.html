@@ -80,6 +80,15 @@
                     </svg>
                     <span>New Scan</span>
                 </button>
+                <button @click="document.getElementById('outreach-desk').scrollIntoView({ behavior: 'smooth' })"
+                    class="w-full flex items-center px-3 py-2 text-amber-200 hover:text-white hover:bg-slate-800 rounded-lg transition text-left group">
+                    <svg class="w-5 h-5 mr-3 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-18 8h18a2 2 0 002-2V8a2 2 0 00-2-2H3a2 2 0 00-2 2v6a2 2 0 002 2z">
+                        </path>
+                    </svg>
+                    <span>Outreach Desk</span>
+                </button>
             </div>
 
             <div class="p-4 border-t border-slate-800">
@@ -196,6 +205,163 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- MASA Outreach Desk -->
+                <section id="outreach-desk"
+                    class="mb-8 overflow-hidden rounded-2xl border border-stone-900 bg-[#16110d] text-stone-100 shadow-xl">
+                    <div class="grid grid-cols-1 xl:grid-cols-3">
+                        <div class="relative p-6 xl:p-8 border-b xl:border-b-0 xl:border-r border-stone-700">
+                            <div class="absolute inset-0 opacity-20"
+                                style="background-image: radial-gradient(circle at 20% 20%, #f59e0b 0, transparent 28%), radial-gradient(circle at 80% 0%, #ef4444 0, transparent 22%);">
+                            </div>
+                            <div class="relative">
+                                <div class="text-xs uppercase tracking-[0.35em] text-amber-300">Mindy MASA</div>
+                                <h2 class="mt-3 text-3xl font-semibold tracking-tight text-stone-50">Outreach Desk</h2>
+                                <p class="mt-3 text-sm leading-6 text-stone-300">
+                                    Low-volume review queue: 10 ranked candidates, 5 draft emails per day, manual approval before Gmail send.
+                                </p>
+                                <div class="mt-5 grid grid-cols-3 gap-3 text-center">
+                                    <div class="rounded-xl border border-stone-700 bg-stone-950/50 p-3">
+                                        <div class="text-2xl font-semibold text-amber-300" x-text="masaCandidates.length"></div>
+                                        <div class="text-[10px] uppercase tracking-wider text-stone-500">candidates</div>
+                                    </div>
+                                    <div class="rounded-xl border border-stone-700 bg-stone-950/50 p-3">
+                                        <div class="text-2xl font-semibold text-emerald-300" x-text="masaStats.active_drafts || masaDrafts.length"></div>
+                                        <div class="text-[10px] uppercase tracking-wider text-stone-500">drafts</div>
+                                    </div>
+                                    <div class="rounded-xl border border-stone-700 bg-stone-950/50 p-3">
+                                        <div class="text-2xl font-semibold text-stone-100" x-text="masaStats.opted_out || 0"></div>
+                                        <div class="text-[10px] uppercase tracking-wider text-stone-500">suppressed</div>
+                                    </div>
+                                </div>
+                                <div class="mt-4 rounded-xl border border-stone-700 bg-stone-950/40 p-3">
+                                    <div class="text-[10px] uppercase tracking-[0.22em] text-stone-500">reputation guardrail</div>
+                                    <div class="mt-2 flex items-center justify-between text-sm">
+                                        <span class="text-stone-300">Daily send cap</span>
+                                        <span class="font-semibold text-amber-200">5 reviewed emails</span>
+                                    </div>
+                                    <div class="mt-1 flex items-center justify-between text-sm">
+                                        <span class="text-stone-300">Queue policy</span>
+                                        <span class="font-semibold text-emerald-200">manual approve only</span>
+                                    </div>
+                                </div>
+                                <div class="mt-5 flex flex-wrap gap-2">
+                                    <button @click="createMasaDrafts" :disabled="masaBusy"
+                                        class="rounded-full bg-amber-300 px-4 py-2 text-sm font-semibold text-stone-950 hover:bg-amber-200 disabled:opacity-60">
+                                        <span x-text="masaBusy ? 'Working...' : 'Generate 5 drafts'"></span>
+                                    </button>
+                                    <button @click="ingestMasa" :disabled="masaBusy"
+                                        class="rounded-full border border-stone-600 px-4 py-2 text-sm font-semibold text-stone-200 hover:bg-stone-800 disabled:opacity-60">
+                                        Sync leads
+                                    </button>
+                                    <button @click="refreshMasa"
+                                        class="rounded-full border border-stone-600 px-4 py-2 text-sm font-semibold text-stone-200 hover:bg-stone-800">
+                                        Refresh queue
+                                    </button>
+                                </div>
+                                <form class="mt-5 rounded-xl border border-stone-700 bg-stone-950/50 p-3"
+                                    @submit.prevent="suppressEmail">
+                                    <label class="text-[10px] uppercase tracking-[0.22em] text-stone-500">manual suppression</label>
+                                    <input x-model="suppression.email" type="email" placeholder="owner@example.com"
+                                        class="mt-2 w-full rounded-lg border border-stone-700 bg-stone-900 px-3 py-2 text-sm text-stone-100 placeholder-stone-600 focus:border-amber-300 focus:outline-none">
+                                    <input x-model="suppression.reason" type="text" placeholder="Reason"
+                                        class="mt-2 w-full rounded-lg border border-stone-700 bg-stone-900 px-3 py-2 text-sm text-stone-100 placeholder-stone-600 focus:border-amber-300 focus:outline-none">
+                                    <button type="submit" :disabled="masaBusy || !suppression.email"
+                                        class="mt-2 w-full rounded-lg bg-stone-200 px-3 py-2 text-sm font-semibold text-stone-950 hover:bg-white disabled:opacity-60">
+                                        Suppress address
+                                    </button>
+                                </form>
+                                <p x-show="masaError" x-text="masaError" class="mt-4 text-sm text-rose-300"></p>
+                            </div>
+                        </div>
+
+                        <div class="p-6 xl:col-span-2">
+                            <div class="flex items-center justify-between gap-4">
+                                <h3 class="text-sm font-semibold uppercase tracking-[0.25em] text-stone-400">Draft review</h3>
+                                <span class="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs text-emerald-200">
+                                    SPF/DKIM/DMARC + opt-out required
+                                </span>
+                            </div>
+                            <div class="mt-4 grid gap-4">
+                                <template x-for="draft in masaDrafts" :key="draft.id">
+                                    <article class="rounded-xl border border-stone-700 bg-stone-950/60 p-4">
+                                        <div class="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
+                                            <div>
+                                                <div class="text-lg font-semibold text-stone-50" x-text="draft.name"></div>
+                                                <div class="mt-1 text-xs text-stone-500" x-text="draft.recipient_email"></div>
+                                                <div x-show="!draft.editing" class="mt-2 text-sm font-medium text-amber-200" x-text="draft.subject"></div>
+                                                <input x-show="draft.editing" x-model="draft.editSubject"
+                                                    class="mt-2 w-full rounded-lg border border-stone-700 bg-stone-900 px-3 py-2 text-sm text-amber-100 focus:border-amber-300 focus:outline-none">
+                                            </div>
+                                            <div class="flex flex-wrap gap-2">
+                                                <button @click="toggleDraftEdit(draft)"
+                                                    class="rounded-full border border-stone-600 px-3 py-1.5 text-xs font-semibold text-stone-200 hover:bg-stone-800"
+                                                    x-text="draft.editing ? 'Cancel' : 'Edit'">
+                                                </button>
+                                                <button x-show="draft.editing" @click="saveDraft(draft)"
+                                                    class="rounded-full bg-sky-300 px-3 py-1.5 text-xs font-semibold text-stone-950 hover:bg-sky-200">
+                                                    Save
+                                                </button>
+                                                <button @click="regenerateDraft(draft.id)"
+                                                    class="rounded-full border border-stone-600 px-3 py-1.5 text-xs font-semibold text-stone-200 hover:bg-stone-800">
+                                                    Regenerate
+                                                </button>
+                                                <button @click="archiveDraft(draft.id)"
+                                                    class="rounded-full border border-stone-600 px-3 py-1.5 text-xs font-semibold text-stone-200 hover:bg-stone-800">
+                                                    Archive
+                                                </button>
+                                                <button @click="approveDraft(draft.id)"
+                                                    class="rounded-full bg-emerald-300 px-3 py-1.5 text-xs font-semibold text-stone-950 hover:bg-emerald-200">
+                                                    Approve & Send
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <pre x-show="!draft.editing" class="mt-4 whitespace-pre-wrap rounded-lg bg-stone-900 p-3 text-sm leading-6 text-stone-200" x-text="draft.body"></pre>
+                                        <textarea x-show="draft.editing" x-model="draft.editBody" rows="7"
+                                            class="mt-4 w-full rounded-lg border border-stone-700 bg-stone-900 p-3 text-sm leading-6 text-stone-100 focus:border-amber-300 focus:outline-none"></textarea>
+                                        <div class="mt-3 flex flex-wrap items-center gap-2 text-xs text-stone-500">
+                                            <span x-text="'Model: ' + draft.model"></span>
+                                            <span>·</span>
+                                            <span x-text="draft.word_count + ' words'"></span>
+                                            <span>·</span>
+                                            <span x-text="'Lead score ' + Math.round(draft.lead_score || 0)"></span>
+                                        </div>
+                                    </article>
+                                </template>
+                                <div x-show="!masaDrafts.length"
+                                    class="rounded-xl border border-dashed border-stone-700 p-8 text-center text-sm text-stone-400">
+                                    No drafts yet. Generate five drafts after reviewing the candidate pool.
+                                </div>
+                            </div>
+
+                            <div class="mt-6 rounded-xl border border-stone-700 bg-stone-950/40 p-4">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="text-sm font-semibold uppercase tracking-[0.25em] text-stone-400">Top 10 candidates</h3>
+                                    <span class="text-xs text-stone-500">ranked by score, suppression-safe</span>
+                                </div>
+                                <div class="mt-3 grid gap-2">
+                                    <template x-for="lead in masaCandidates" :key="lead.id">
+                                        <div class="grid grid-cols-1 gap-2 rounded-lg border border-stone-800 bg-stone-900/60 p-3 text-sm lg:grid-cols-[1fr_auto] lg:items-center">
+                                            <div>
+                                                <div class="font-semibold text-stone-100" x-text="lead.name"></div>
+                                                <div class="mt-1 text-xs text-stone-500" x-text="lead.email"></div>
+                                                <div class="mt-2 line-clamp-2 text-xs text-stone-400" x-text="lead.issues || 'No issue text'"></div>
+                                            </div>
+                                            <div class="flex flex-wrap items-center gap-2 lg:justify-end">
+                                                <span class="rounded-full bg-amber-300/10 px-2 py-1 text-xs font-semibold text-amber-200"
+                                                    x-text="Math.round(lead.lead_score || 0)"></span>
+                                                <a :href="'/lead/' + lead.id" target="_blank"
+                                                    class="rounded-full border border-stone-700 px-3 py-1.5 text-xs font-semibold text-stone-200 hover:bg-stone-800">Strategy</a>
+                                                <button @click="suppressCandidate(lead)"
+                                                    class="rounded-full border border-rose-500/40 px-3 py-1.5 text-xs font-semibold text-rose-200 hover:bg-rose-950/40">Suppress</button>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
                 <!-- Filters Toolbar -->
                 <div class="mb-6 flex flex-col sm:flex-row justify-between items-center gap-4">
@@ -392,6 +558,19 @@
                     </select>
                 </div>
                 <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Smart presets</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button type="button" @click="applyScanPreset('Restaurants', 'Stellenbosch', true)"
+                            class="rounded-lg border border-slate-200 px-3 py-2 text-xs font-medium text-slate-600 hover:bg-slate-50">Stellenbosch restaurants</button>
+                        <button type="button" @click="applyScanPreset('Wineries', 'Franschhoek', true)"
+                            class="rounded-lg border border-slate-200 px-3 py-2 text-xs font-medium text-slate-600 hover:bg-slate-50">Franschhoek wineries</button>
+                        <button type="button" @click="applyScanPreset('Hotels', 'Sea Point', false)"
+                            class="rounded-lg border border-slate-200 px-3 py-2 text-xs font-medium text-slate-600 hover:bg-slate-50">Sea Point hotels</button>
+                        <button type="button" @click="applyScanPreset('Coffee Shops', 'Cape Town City Centre', false)"
+                            class="rounded-lg border border-slate-200 px-3 py-2 text-xs font-medium text-slate-600 hover:bg-slate-50">CBD coffee shops</button>
+                    </div>
+                </div>
+                <div>
                     <label class="block text-sm font-medium text-slate-700 mb-1">Target Location</label>
                     <select x-model="scanForm.location"
                         class="w-full border-slate-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm bg-white">
@@ -407,6 +586,12 @@
                     <label for="deepScan" class="text-sm text-slate-700 font-medium cursor-pointer">
                         Enable Deep Search (Slower, finds more leads)
                     </label>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Max results per query</label>
+                    <input type="number" min="5" max="80" step="5" x-model.number="scanForm.max_results"
+                        class="w-full border-slate-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm bg-white">
+                    <p class="mt-1 text-xs text-slate-500">Use 20-40 for cheap scans. Deep mode expands into multiple query variations.</p>
                 </div>
 
                 <div class="flex items-center gap-2 bg-blue-50 text-blue-700 px-3 py-2 rounded-md text-xs">
@@ -440,8 +625,14 @@
     <script>
         document.addEventListener('alpine:init', () => {
             Alpine.data('app', () => ({
-                version: '1.4.0',
+                version: '1.5.0',
                 leads: [],
+                masaCandidates: [],
+                masaDrafts: [],
+                masaStats: {},
+                masaBusy: false,
+                masaError: '',
+                suppression: { email: '', reason: 'Manual suppression' },
                 search: '',
                 filter: 'all',
                 openScanModal: false,
@@ -459,13 +650,14 @@
                     'Claremont', 'Bellville', 'Paarl', 'Franschhoek', 'Durbanville'
                 ],
 
-                scanForm: { category: 'Restaurants', location: 'Stellenbosch', deep: false },
+                scanForm: { category: 'Restaurants', location: 'Stellenbosch', deep: false, max_results: 40 },
 
                 async init() {
                     try {
                         const res = await fetch('/api/leads');
                         if (!res.ok) throw new Error('Failed to fetch leads');
                         this.leads = await res.json();
+                        await this.refreshMasa();
                     } catch (e) {
                         this.showToast('Error loading data. Is the server running?');
                         console.error(e);
@@ -483,7 +675,12 @@
                             body: JSON.stringify(this.scanForm)
                         });
                         const data = await res.json();
+                        if (!res.ok) {
+                            const details = (data.errors || []).map(error => error.error).join('; ');
+                            throw new Error(details || data.message || 'Scan failed');
+                        }
                         this.leads = await (await fetch('/api/leads')).json(); // Refresh entire list
+                        await this.refreshMasa();
                         this.showToast(data.message);
                         this.openScanModal = false;
                     } catch (e) {
@@ -491,6 +688,162 @@
                     } finally {
                         this.scanning = false;
                     }
+                },
+
+                async refreshMasa() {
+                    const [candidatesRes, draftsRes, statsRes] = await Promise.all([
+                        fetch('/api/masa/candidates?limit=10'),
+                        fetch('/api/masa/drafts?limit=5'),
+                        fetch('/api/masa/stats')
+                    ]);
+                    if (!candidatesRes.ok || !draftsRes.ok || !statsRes.ok) throw new Error('Failed to fetch MASA queue');
+                    this.masaCandidates = await candidatesRes.json();
+                    this.masaDrafts = (await draftsRes.json()).map(draft => ({
+                        ...draft,
+                        editing: false,
+                        editSubject: draft.subject,
+                        editBody: draft.body
+                    }));
+                    this.masaStats = await statsRes.json();
+                },
+
+                async ingestMasa() {
+                    this.masaBusy = true;
+                    this.masaError = '';
+                    try {
+                        const res = await fetch('/api/masa/ingest', { method: 'POST' });
+                        const data = await res.json();
+                        if (!res.ok) throw new Error(data.error || 'Lead sync failed');
+                        await this.refreshMasa();
+                        this.showToast(data.message);
+                    } catch (e) {
+                        this.masaError = e.message;
+                    } finally {
+                        this.masaBusy = false;
+                    }
+                },
+
+                async createMasaDrafts() {
+                    this.masaBusy = true;
+                    this.masaError = '';
+                    try {
+                        const res = await fetch('/api/masa/drafts?limit=5&candidate_limit=10', { method: 'POST' });
+                        const data = await res.json();
+                        if (!res.ok) throw new Error(data.error || (data.errors || []).map(e => e.error).join('; ') || 'Draft generation failed');
+                        await this.refreshMasa();
+                        this.showToast(`Ready: ${data.created.length} drafts in review`);
+                    } catch (e) {
+                        this.masaError = e.message;
+                    } finally {
+                        this.masaBusy = false;
+                    }
+                },
+
+                async regenerateDraft(draftId) {
+                    this.masaBusy = true;
+                    this.masaError = '';
+                    try {
+                        const res = await fetch(`/api/masa/drafts/${draftId}/regenerate`, { method: 'POST' });
+                        const data = await res.json();
+                        if (!res.ok) throw new Error(data.error || 'Regeneration failed');
+                        await this.refreshMasa();
+                        this.showToast('Draft regenerated');
+                    } catch (e) {
+                        this.masaError = e.message;
+                    } finally {
+                        this.masaBusy = false;
+                    }
+                },
+
+                toggleDraftEdit(draft) {
+                    draft.editing = !draft.editing;
+                    draft.editSubject = draft.subject;
+                    draft.editBody = draft.body;
+                },
+
+                async saveDraft(draft) {
+                    this.masaBusy = true;
+                    this.masaError = '';
+                    try {
+                        const res = await fetch(`/api/masa/drafts/${draft.id}`, {
+                            method: 'PATCH',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ subject: draft.editSubject, body: draft.editBody })
+                        });
+                        const data = await res.json();
+                        if (!res.ok) throw new Error(data.error || 'Draft save failed');
+                        await this.refreshMasa();
+                        this.showToast('Draft saved');
+                    } catch (e) {
+                        this.masaError = e.message;
+                    } finally {
+                        this.masaBusy = false;
+                    }
+                },
+
+                async archiveDraft(draftId) {
+                    this.masaBusy = true;
+                    this.masaError = '';
+                    try {
+                        const res = await fetch(`/api/masa/drafts/${draftId}/archive`, { method: 'POST' });
+                        const data = await res.json();
+                        if (!res.ok) throw new Error(data.error || 'Archive failed');
+                        await this.refreshMasa();
+                        this.showToast('Draft archived');
+                    } catch (e) {
+                        this.masaError = e.message;
+                    } finally {
+                        this.masaBusy = false;
+                    }
+                },
+
+                async approveDraft(draftId) {
+                    this.masaBusy = true;
+                    this.masaError = '';
+                    try {
+                        const res = await fetch(`/api/masa/drafts/${draftId}/approve`, { method: 'POST' });
+                        const data = await res.json();
+                        if (!res.ok) throw new Error(data.error || 'Gmail approval failed');
+                        await this.refreshMasa();
+                        this.showToast('Email sent through Gmail');
+                    } catch (e) {
+                        this.masaError = e.message;
+                    } finally {
+                        this.masaBusy = false;
+                    }
+                },
+
+                async suppressEmail() {
+                    this.masaBusy = true;
+                    this.masaError = '';
+                    try {
+                        const res = await fetch('/api/masa/suppression', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(this.suppression)
+                        });
+                        const data = await res.json();
+                        if (!res.ok) throw new Error(data.error || 'Suppression failed');
+                        this.suppression = { email: '', reason: 'Manual suppression' };
+                        await this.refreshMasa();
+                        this.showToast('Address suppressed');
+                    } catch (e) {
+                        this.masaError = e.message;
+                    } finally {
+                        this.masaBusy = false;
+                    }
+                },
+
+                async suppressCandidate(lead) {
+                    this.suppression = { email: lead.email, reason: 'Suppressed from candidate queue' };
+                    await this.suppressEmail();
+                },
+
+                applyScanPreset(category, location, deep) {
+                    this.scanForm.category = category;
+                    this.scanForm.location = location;
+                    this.scanForm.deep = deep;
+                    this.scanForm.max_results = deep ? 40 : 20;
                 },
 
                 get filteredLeads() {
